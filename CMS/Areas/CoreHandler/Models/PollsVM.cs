@@ -1,4 +1,4 @@
-﻿using Akhbar.DBEntities;
+﻿using Domain.Akhbar.DBEntities;
 using PagedList;
 using System;
 using System.Collections.Generic;

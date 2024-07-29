@@ -1,8 +1,12 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.27703.2035
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34728.123
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{54E986B2-77E6-42E3-8716-73B65E39E1CD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain", "Core\Domain\Domain.csproj", "{A60BE2AF-61C7-4BD1-8511-876044854649}"
+EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CMS", "CMS\CMS.csproj", "{C2B79CBC-7417-40EF-9C48-8FE25F38E0EA}"
 EndProject
 Global
@@ -11,6 +15,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A60BE2AF-61C7-4BD1-8511-876044854649}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A60BE2AF-61C7-4BD1-8511-876044854649}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A60BE2AF-61C7-4BD1-8511-876044854649}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A60BE2AF-61C7-4BD1-8511-876044854649}.Release|Any CPU.Build.0 = Release|Any CPU
 		{C2B79CBC-7417-40EF-9C48-8FE25F38E0EA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{C2B79CBC-7417-40EF-9C48-8FE25F38E0EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C2B79CBC-7417-40EF-9C48-8FE25F38E0EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -18,6 +26,9 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{A60BE2AF-61C7-4BD1-8511-876044854649} = {54E986B2-77E6-42E3-8716-73B65E39E1CD}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {E9EB3006-F66D-48EB-B59D-FC3242D81170}

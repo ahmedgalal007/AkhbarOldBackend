@@ -1,6 +1,6 @@
-﻿using Akhbar.DBBusiness;
-using Akhbar.DBContext;
-using Akhbar.DBEntities;
+﻿using Domain.Akhbar.DBBusiness;
+using Domain.Akhbar.DBContext;
+using Domain.Akhbar.DBEntities;
 using CMS.Areas.FrameWork.Controllers;
 using CMS.Areas.UserManagment.Models;
 using SimpleHashing;

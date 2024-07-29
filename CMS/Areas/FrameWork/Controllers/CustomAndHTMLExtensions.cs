@@ -9,7 +9,7 @@ using PagedList.Mvc;
 using PagedList;
 using System.Web.Mvc.Ajax;
 using System.Web.SessionState;
-using Akhbar.DBEntities;
+using Domain.Akhbar.DBEntities;
 
 namespace CMS.Areas.FrameWork.Controllers
 {

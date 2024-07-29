@@ -1,4 +1,4 @@
-﻿using Akhbar.DBEntities;
+﻿using Domain.Akhbar.DBEntities;
 using CMS.ReportingWebService;
 using PagedList;
 using System;

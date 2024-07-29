@@ -1,7 +1,263 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
-
+﻿<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{A60BE2AF-61C7-4BD1-8511-876044854649}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Domain</RootNamespace>
+    <AssemblyName>Domain</AssemblyName>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
   </PropertyGroup>
-
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.DynamicFilters, Version=3.1.1.0, Culture=neutral, PublicKeyToken=59b66d028979105b, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\EntityFramework.DynamicFilters.3.1.1\lib\net40\EntityFramework.DynamicFilters.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="LinqKit, Version=1.1.9.0, Culture=neutral, PublicKeyToken=bc217f8844052a91, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\LinqKit.1.1.9.0\lib\net45\LinqKit.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
+      <HintPath>..\..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AkhbarDBContext.cs" />
+    <Compile Include="BaseBusiness.cs" />
+    <Compile Include="Bussines\AdminEditorBusiness.cs" />
+    <Compile Include="Bussines\AdminLogBusiness.cs" />
+    <Compile Include="Bussines\AdminUserBusiness.cs" />
+    <Compile Include="Bussines\AttachmentBusiness.cs" />
+    <Compile Include="Bussines\BlocksZoneBusiness.cs" />
+    <Compile Include="Bussines\BusinessException.cs" />
+    <Compile Include="Bussines\ByLineBusiness.cs" />
+    <Compile Include="Bussines\ComicsofDayBusiness.cs" />
+    <Compile Include="Bussines\EditorBusiness.cs" />
+    <Compile Include="Bussines\EmployeeBusinesss.cs" />
+    <Compile Include="Bussines\Filter.cs" />
+    <Compile Include="Bussines\GalleryBusiness.cs" />
+    <Compile Include="Bussines\GalleryPictureBusiness.cs" />
+    <Compile Include="Bussines\GalleryTypeBusiness.cs" />
+    <Compile Include="Bussines\HomeMostCommentedBusiness.cs" />
+    <Compile Include="Bussines\IssueBusiness.cs" />
+    <Compile Include="Bussines\IssuesNewBusiness.cs" />
+    <Compile Include="Bussines\IssuesTopNewBusiness.cs" />
+    <Compile Include="Bussines\JournalBusiness.cs" />
+    <Compile Include="Bussines\LinkedNewBusiness.cs" />
+    <Compile Include="Bussines\MainSectionBusiness.cs" />
+    <Compile Include="Bussines\NationalitesBusiness.cs" />
+    <Compile Include="Bussines\NewsBlocksBusiness.cs" />
+    <Compile Include="Bussines\NewsBusiness.cs" />
+    <Compile Include="Bussines\NewsCategoryBusiness.cs" />
+    <Compile Include="Bussines\NewsGalleryBusiness.cs" />
+    <Compile Include="Bussines\NewsPictureBusiness.cs" />
+    <Compile Include="Bussines\NewsPicturesCatBusiness.cs" />
+    <Compile Include="Bussines\NewsPollBusiness.cs" />
+    <Compile Include="Bussines\NewsSearchBusiness.cs" />
+    <Compile Include="Bussines\NewsSectionBusiness.cs" />
+    <Compile Include="Bussines\NewsTagBusiness.cs" />
+    <Compile Include="Bussines\NewsTickerBusiness.cs" />
+    <Compile Include="Bussines\NewsVersionBusiness.cs" />
+    <Compile Include="Bussines\NewsViewBusiness.cs" />
+    <Compile Include="Bussines\News_BylineBusiness.cs" />
+    <Compile Include="Bussines\News_VideosBusiness.cs" />
+    <Compile Include="Bussines\PictureofDayBusiness.cs" />
+    <Compile Include="Bussines\PollsBusiness.cs" />
+    <Compile Include="Bussines\PollsOptionBusiness.cs" />
+    <Compile Include="Bussines\ProfileBusiness.cs" />
+    <Compile Include="Bussines\RelatedNewBusiness.cs" />
+    <Compile Include="Bussines\ReviewerNewBusiness.cs" />
+    <Compile Include="Bussines\RoleBusiness.cs" />
+    <Compile Include="Bussines\RoleServiceBusiness.cs" />
+    <Compile Include="Bussines\SectionLatestNewBusiness.cs" />
+    <Compile Include="Bussines\SesstionTextBusiness.cs" />
+    <Compile Include="Bussines\TagBusiness.cs" />
+    <Compile Include="Bussines\TempDeskShiftBusiness.cs" />
+    <Compile Include="Bussines\TopNewsBusiness.cs" />
+    <Compile Include="Bussines\TraceTableBusiness.cs" />
+    <Compile Include="Bussines\TrendBusiness.cs" />
+    <Compile Include="Bussines\UMModulesBusiness.cs" />
+    <Compile Include="Bussines\UMServicesBusiness.cs" />
+    <Compile Include="Bussines\UserRoleBusiness.cs" />
+    <Compile Include="Bussines\UsersOpinionBusiness.cs" />
+    <Compile Include="Bussines\VersionTagBusiness.cs" />
+    <Compile Include="Bussines\VideoFeedBusiness.cs" />
+    <Compile Include="DBEntities\AdminEditor.cs" />
+    <Compile Include="DBEntities\AdminLog.cs" />
+    <Compile Include="DBEntities\AdminUser.cs" />
+    <Compile Include="DBEntities\Attachment.cs" />
+    <Compile Include="DBEntities\BlocksZone.cs" />
+    <Compile Include="DBEntities\ByLine.cs" />
+    <Compile Include="DBEntities\ComicsofDay.cs" />
+    <Compile Include="DBEntities\DatabaseExtensions.cs" />
+    <Compile Include="DBEntities\Editor.cs" />
+    <Compile Include="DBEntities\Employee.cs" />
+    <Compile Include="DBEntities\Gallery.cs" />
+    <Compile Include="DBEntities\GalleryPictures.cs" />
+    <Compile Include="DBEntities\GalleryType.cs" />
+    <Compile Include="DBEntities\HomeMostCommented.cs" />
+    <Compile Include="DBEntities\Issue.cs" />
+    <Compile Include="DBEntities\IssuesNew.cs" />
+    <Compile Include="DBEntities\IssuesTopNew.cs" />
+    <Compile Include="DBEntities\IStoredProcedure`1.cs" />
+    <Compile Include="DBEntities\Journal.cs" />
+    <Compile Include="DBEntities\LinkedNew.cs" />
+    <Compile Include="DBEntities\MainSection.cs" />
+    <Compile Include="DBEntities\m_SP_SelectNewsToArrange.cs" />
+    <Compile Include="DBEntities\Nationality.cs" />
+    <Compile Include="DBEntities\News.cs" />
+    <Compile Include="DBEntities\NewsBlocks.cs" />
+    <Compile Include="DBEntities\NewsCategory.cs" />
+    <Compile Include="DBEntities\NewsForSort.cs" />
+    <Compile Include="DBEntities\NewsGallery.cs" />
+    <Compile Include="DBEntities\NewsPictures.cs" />
+    <Compile Include="DBEntities\NewsPicturesCat.cs" />
+    <Compile Include="DBEntities\NewsPoll.cs" />
+    <Compile Include="DBEntities\NewsSearch.cs" />
+    <Compile Include="DBEntities\NewsSection.cs" />
+    <Compile Include="DBEntities\NewsTag.cs" />
+    <Compile Include="DBEntities\NewsTicker.cs" />
+    <Compile Include="DBEntities\NewsVersions.cs" />
+    <Compile Include="DBEntities\NewsView.cs" />
+    <Compile Include="DBEntities\News_Byline.cs" />
+    <Compile Include="DBEntities\News_Videos.cs" />
+    <Compile Include="DBEntities\PictureofDay.cs" />
+    <Compile Include="DBEntities\Polls.cs" />
+    <Compile Include="DBEntities\PollsOption.cs" />
+    <Compile Include="DBEntities\Profile.cs" />
+    <Compile Include="DBEntities\QuickNewsRptData.cs" />
+    <Compile Include="DBEntities\RelatedNew.cs" />
+    <Compile Include="DBEntities\ReviewerNew.cs" />
+    <Compile Include="DBEntities\Role.cs" />
+    <Compile Include="DBEntities\RoleServices.cs" />
+    <Compile Include="DBEntities\SectionLatestNew.cs" />
+    <Compile Include="DBEntities\SesstionText.cs" />
+    <Compile Include="DBEntities\SP_NewsQuickReport.cs" />
+    <Compile Include="DBEntities\sysdiagram.cs" />
+    <Compile Include="DBEntities\Tag.cs" />
+    <Compile Include="DBEntities\TempDeskShift.cs" />
+    <Compile Include="DBEntities\TopNews.cs" />
+    <Compile Include="DBEntities\TraceTable.cs" />
+    <Compile Include="DBEntities\Trend.cs" />
+    <Compile Include="DBEntities\UMModules.cs" />
+    <Compile Include="DBEntities\UMServices.cs" />
+    <Compile Include="DBEntities\UpdateRelatedNews.cs" />
+    <Compile Include="DBEntities\UserRole.cs" />
+    <Compile Include="DBEntities\UsersOpinion.cs" />
+    <Compile Include="DBEntities\VersionTag.cs" />
+    <Compile Include="DBEntities\VideoFeed.cs" />
+    <Compile Include="DBEntities\vTopNewsToday.cs" />
+    <Compile Include="DBEntities\VUserPermissions.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>51107</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:51107/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
 </Project>

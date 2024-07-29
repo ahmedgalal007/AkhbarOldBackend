@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using Akhbar.DBContext;
-using Akhbar.DBEntities;
-using Akhbar.DBBusiness;
+using Domain.Akhbar.DBContext;
+using Domain.Akhbar.DBEntities;
+using Domain.Akhbar.DBBusiness;
 using PagedList;
 using CMS.Areas.FrameWork.Controllers;
 using CMS.Areas.FrameWork.ViewModels;

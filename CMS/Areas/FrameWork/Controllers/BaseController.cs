@@ -1,4 +1,4 @@
-﻿using Akhbar.DBContext;
+﻿using Domain.Akhbar.DBContext;
 using CMS.Areas.FrameWork.ViewModels;
 using System;
 using System.Collections.Generic;

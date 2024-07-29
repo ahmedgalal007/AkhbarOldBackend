@@ -9,9 +9,9 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using CMS.Areas.Reports.Models;
-using Akhbar.DBContext;
-using Akhbar.DBBusiness;
-using Akhbar.DBEntities;
+using Domain.Akhbar.DBContext;
+using Domain.Akhbar.DBBusiness;
+using Domain.Akhbar.DBEntities;
 
 namespace CMS.Areas.Reports.Controllers
 {

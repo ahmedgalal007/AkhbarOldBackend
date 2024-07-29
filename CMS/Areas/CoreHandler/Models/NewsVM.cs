@@ -1,4 +1,4 @@
-﻿using Akhbar.DBEntities;
+﻿using Domain.Akhbar.DBEntities;
 using CMS.Areas.FrameWork.Controllers;
 using PagedList;
 using System.Collections.Generic;

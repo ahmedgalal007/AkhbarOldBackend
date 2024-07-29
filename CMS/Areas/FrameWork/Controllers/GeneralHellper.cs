@@ -10,9 +10,9 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
 using System.Web.SessionState;
-using Akhbar.DBBusiness;
-using Akhbar.DBEntities;
-using Akhbar.DBContext;
+using Domain.Akhbar.DBBusiness;
+using Domain.Akhbar.DBEntities;
+using Domain.Akhbar.DBContext;
 
 namespace CMS.Areas.FrameWork.Controllers
 {
