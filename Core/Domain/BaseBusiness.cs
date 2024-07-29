@@ -1,10 +1,4 @@
-﻿// Decompiled with JetBrains decompiler
-// Type: BaseBusiness.BaseBusiness`1
-// Assembly: BaseBusiness, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-// MVID: D50DAB97-85B9-4020-A77A-3C82CE0783B6
-// Assembly location: E:\Dot Net Projects\_Akhbar\Backend\CMSWebGate\CMS\bin\BaseBusiness.dll
-
-using EntityFramework.DynamicFilters;
+﻿using EntityFramework.DynamicFilters;
 using LinqKit;
 using PagedList;
 using System;

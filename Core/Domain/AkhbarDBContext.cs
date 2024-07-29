@@ -1,10 +1,4 @@
-﻿// Decompiled with JetBrains decompiler
-// Type: Akhbar.DBContext.AkhbarDBContext
-// Assembly: AkhbarDBContext, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-// MVID: 9F804A99-A32E-4C6A-A6A2-2C82B65A8800
-// Assembly location: E:\Dot Net Projects\_Akhbar\Backend\CMSWebGate\CMS\bin\AkhbarDBContext.dll
-
-using Domain.Akhbar.DBEntities;
+﻿using Domain.Akhbar.DBEntities;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -69,17 +63,17 @@ namespace Domain.Akhbar.DBContext
 
         public virtual DbSet<Profile> Profiles { get; set; }
 
-        public virtual DbSet<Akhbar.DBEntities.News> News { get; set; }
+        public virtual DbSet<News> News { get; set; }
 
-        public virtual DbSet<Akhbar.DBEntities.News_Videos> News_Videos { get; set; }
+        public virtual DbSet<News_Videos> News_Videos { get; set; }
 
-        public virtual DbSet<Akhbar.DBEntities.NewsBlocks> NewsBlocks { get; set; }
+        public virtual DbSet<NewsBlocks> NewsBlocks { get; set; }
 
         public virtual DbSet<NewsCategory> NewsCategories { get; set; }
 
-        public virtual DbSet<Akhbar.DBEntities.NewsGallery> NewsGallery { get; set; }
+        public virtual DbSet<NewsGallery> NewsGallery { get; set; }
 
-        public virtual DbSet<Akhbar.DBEntities.NewsPictures> NewsPictures { get; set; }
+        public virtual DbSet<NewsPictures> NewsPictures { get; set; }
 
         public virtual DbSet<NewsPicturesCat> NewsPicturesCats { get; set; }
 
@@ -97,7 +91,7 @@ namespace Domain.Akhbar.DBContext
 
         public virtual DbSet<PictureofDay> PictureofDays { get; set; }
 
-        public virtual DbSet<Akhbar.DBEntities.Polls> Polls { get; set; }
+        public virtual DbSet<Polls> Polls { get; set; }
 
         public virtual DbSet<PollsOption> PollsOptions { get; set; }
 
@@ -113,7 +107,7 @@ namespace Domain.Akhbar.DBContext
 
         public virtual DbSet<Tag> Tags { get; set; }
 
-        public virtual DbSet<Akhbar.DBEntities.TopNews> TopNews { get; set; }
+        public virtual DbSet<TopNews> TopNews { get; set; }
 
         public virtual DbSet<TraceTable> TraceTables { get; set; }
 
@@ -125,7 +119,7 @@ namespace Domain.Akhbar.DBContext
 
         public virtual DbSet<HomeMostCommented> HomeMostCommenteds { get; set; }
 
-        public virtual DbSet<Akhbar.DBEntities.NewsVersions> NewsVersions { get; set; }
+        public virtual DbSet<NewsVersions> NewsVersions { get; set; }
 
         public virtual DbSet<SectionLatestNew> SectionLatestNews { get; set; }
 
@@ -133,13 +127,13 @@ namespace Domain.Akhbar.DBContext
 
         public virtual DbSet<vTopNewsToday> vTopNewsTodays { get; set; }
 
-        public virtual DbSet<Akhbar.DBEntities.VUserPermissions> VUserPermissions { get; set; }
+        public virtual DbSet<VUserPermissions> VUserPermissions { get; set; }
 
         public virtual DbSet<TempDeskShift> TempDeskShifts { get; set; }
 
         public virtual DbSet<ByLine> ByLines { get; set; }
 
-        public virtual DbSet<Akhbar.DBEntities.News_Byline> News_Byline { get; set; }
+        public virtual DbSet<News_Byline> News_Byline { get; set; }
 
         public virtual DbSet<Trend> Trends { get; set; }
 
@@ -178,17 +172,17 @@ namespace Domain.Akhbar.DBContext
             modelBuilder.Entity<MainSection>().Property((Expression<Func<MainSection, string>>)(e => e.Description)).IsUnicode(new bool?(false));
             modelBuilder.Entity<MainSection>().HasMany<NewsSection>((Expression<Func<MainSection, ICollection<NewsSection>>>)(e => e.NewsSectionLst)).WithRequired((Expression<Func<NewsSection, MainSection>>)(e => e.MainSection)).WillCascadeOnDelete(false);
             modelBuilder.Entity<MainSection>().HasMany<Editor>((Expression<Func<MainSection, ICollection<Editor>>>)(e => e.EditorsLst)).WithRequired((Expression<Func<Editor, MainSection>>)(e => e.Section)).HasForeignKey<int?>((Expression<Func<Editor, int?>>)(e => e.SectionID)).WillCascadeOnDelete(false);
-            modelBuilder.Entity<Akhbar.DBEntities.NewsBlocks>().Property((Expression<Func<Akhbar.DBEntities.NewsBlocks, string>>)(e => e.BlockText)).IsUnicode(new bool?(false));
+            modelBuilder.Entity<NewsBlocks>().Property((Expression<Func<NewsBlocks, string>>)(e => e.BlockText)).IsUnicode(new bool?(false));
             modelBuilder.Entity<NewsCategory>().Property((Expression<Func<NewsCategory, string>>)(e => e.Name)).IsUnicode(new bool?(false));
-            modelBuilder.Entity<Akhbar.DBEntities.NewsPictures>().Property((Expression<Func<Akhbar.DBEntities.NewsPictures, string>>)(e => e.PictureName)).IsUnicode(new bool?(false));
-            modelBuilder.Entity<Akhbar.DBEntities.NewsPictures>().Property((Expression<Func<Akhbar.DBEntities.NewsPictures, string>>)(e => e.KeyWords)).IsUnicode(new bool?(false));
-            modelBuilder.Entity<Akhbar.DBEntities.NewsPictures>().Property((Expression<Func<Akhbar.DBEntities.NewsPictures, string>>)(e => e.PicCaption)).IsUnicode(new bool?(false));
-            modelBuilder.Entity<Akhbar.DBEntities.NewsPictures>().HasMany<Akhbar.DBEntities.News>((Expression<Func<Akhbar.DBEntities.NewsPictures, ICollection<Akhbar.DBEntities.News>>>)(e => e.NewsLst)).WithRequired((Expression<Func<Akhbar.DBEntities.News, Akhbar.DBEntities.NewsPictures>>)(e => e.NewsPicture)).HasForeignKey<int?>((Expression<Func<Akhbar.DBEntities.News, int?>>)(e => e.PictureID1)).WillCascadeOnDelete(false);
-            modelBuilder.Entity<Akhbar.DBEntities.NewsPictures>().HasMany<Akhbar.DBEntities.NewsVersions>((Expression<Func<Akhbar.DBEntities.NewsPictures, ICollection<Akhbar.DBEntities.NewsVersions>>>)(e => e.NewsVersionsLst)).WithRequired((Expression<Func<Akhbar.DBEntities.NewsVersions, Akhbar.DBEntities.NewsPictures>>)(e => e.NewsPicture)).HasForeignKey<int>((Expression<Func<Akhbar.DBEntities.NewsVersions, int>>)(e => e.PictureID1)).WillCascadeOnDelete(false);
-            modelBuilder.Entity<Akhbar.DBEntities.News>().HasMany<NewsTag>((Expression<Func<Akhbar.DBEntities.News, ICollection<NewsTag>>>)(e => e.NewsTagsLst)).WithRequired((Expression<Func<NewsTag, Akhbar.DBEntities.News>>)(e => e.News)).HasForeignKey<int>((Expression<Func<NewsTag, int>>)(e => e.NewID)).WillCascadeOnDelete(false);
-            modelBuilder.Entity<Akhbar.DBEntities.NewsVersions>().HasMany<VersionTag>((Expression<Func<Akhbar.DBEntities.NewsVersions, ICollection<VersionTag>>>)(e => e.VersionTagsLst)).WithRequired((Expression<Func<VersionTag, Akhbar.DBEntities.NewsVersions>>)(e => e.NewsVersions)).HasForeignKey<long>((Expression<Func<VersionTag, long>>)(e => e.VersionID)).WillCascadeOnDelete(false);
-            modelBuilder.Entity<Akhbar.DBEntities.News>().HasMany<Akhbar.DBEntities.NewsGallery>((Expression<Func<Akhbar.DBEntities.News, ICollection<Akhbar.DBEntities.NewsGallery>>>)(e => e.NewsGalleryLst)).WithRequired((Expression<Func<Akhbar.DBEntities.NewsGallery, Akhbar.DBEntities.News>>)(e => e.News)).HasForeignKey<int>((Expression<Func<Akhbar.DBEntities.NewsGallery, int>>)(e => e.NewID)).WillCascadeOnDelete(false);
-            modelBuilder.Entity<Akhbar.DBEntities.News>().HasMany<Akhbar.DBEntities.News_Byline>((Expression<Func<Akhbar.DBEntities.News, ICollection<Akhbar.DBEntities.News_Byline>>>)(e => e.NewsByLineLst)).WithRequired((Expression<Func<Akhbar.DBEntities.News_Byline, Akhbar.DBEntities.News>>)(e => e.News)).HasForeignKey<int>((Expression<Func<Akhbar.DBEntities.News_Byline, int>>)(e => e.NewId)).WillCascadeOnDelete(false);
+            modelBuilder.Entity<NewsPictures>().Property((Expression<Func<NewsPictures, string>>)(e => e.PictureName)).IsUnicode(new bool?(false));
+            modelBuilder.Entity<NewsPictures>().Property((Expression<Func<NewsPictures, string>>)(e => e.KeyWords)).IsUnicode(new bool?(false));
+            modelBuilder.Entity<NewsPictures>().Property((Expression<Func<NewsPictures, string>>)(e => e.PicCaption)).IsUnicode(new bool?(false));
+            modelBuilder.Entity<NewsPictures>().HasMany<News>((Expression<Func<NewsPictures, ICollection<News>>>)(e => e.NewsLst)).WithRequired((Expression<Func<News, NewsPictures>>)(e => e.NewsPicture)).HasForeignKey<int?>((Expression<Func<News, int?>>)(e => e.PictureID1)).WillCascadeOnDelete(false);
+            modelBuilder.Entity<NewsPictures>().HasMany<NewsVersions>((Expression<Func<NewsPictures, ICollection<NewsVersions>>>)(e => e.NewsVersionsLst)).WithRequired((Expression<Func<NewsVersions, NewsPictures>>)(e => e.NewsPicture)).HasForeignKey<int>((Expression<Func<NewsVersions, int>>)(e => e.PictureID1)).WillCascadeOnDelete(false);
+            modelBuilder.Entity<News>().HasMany<NewsTag>((Expression<Func<News, ICollection<NewsTag>>>)(e => e.NewsTagsLst)).WithRequired((Expression<Func<NewsTag, News>>)(e => e.News)).HasForeignKey<int>((Expression<Func<NewsTag, int>>)(e => e.NewID)).WillCascadeOnDelete(false);
+            modelBuilder.Entity<NewsVersions>().HasMany<VersionTag>((Expression<Func<NewsVersions, ICollection<VersionTag>>>)(e => e.VersionTagsLst)).WithRequired((Expression<Func<VersionTag, NewsVersions>>)(e => e.NewsVersions)).HasForeignKey<long>((Expression<Func<VersionTag, long>>)(e => e.VersionID)).WillCascadeOnDelete(false);
+            modelBuilder.Entity<News>().HasMany<NewsGallery>((Expression<Func<News, ICollection<NewsGallery>>>)(e => e.NewsGalleryLst)).WithRequired((Expression<Func<NewsGallery, News>>)(e => e.News)).HasForeignKey<int>((Expression<Func<NewsGallery, int>>)(e => e.NewID)).WillCascadeOnDelete(false);
+            modelBuilder.Entity<News>().HasMany<News_Byline>((Expression<Func<News, ICollection<News_Byline>>>)(e => e.NewsByLineLst)).WithRequired((Expression<Func<News_Byline, News>>)(e => e.News)).HasForeignKey<int>((Expression<Func<News_Byline, int>>)(e => e.NewId)).WillCascadeOnDelete(false);
             modelBuilder.Entity<NewsPicturesCat>().Property((Expression<Func<NewsPicturesCat, string>>)(e => e.CatName)).IsUnicode(new bool?(false));
             modelBuilder.Entity<NewsSearch>().Property((Expression<Func<NewsSearch, string>>)(e => e.title)).IsUnicode(new bool?(false));
             modelBuilder.Entity<NewsSearch>().Property((Expression<Func<NewsSearch, string>>)(e => e.byline)).IsUnicode(new bool?(false));
@@ -197,8 +191,8 @@ namespace Domain.Akhbar.DBContext
             modelBuilder.Entity<NewsSearch>().Property((Expression<Func<NewsSearch, string>>)(e => e.brief2)).IsUnicode(new bool?(false));
             modelBuilder.Entity<NewsSearch>().Property((Expression<Func<NewsSearch, string>>)(e => e.byline2)).IsUnicode(new bool?(false));
             modelBuilder.Entity<NewsTicker>().Property((Expression<Func<NewsTicker, string>>)(e => e.Title)).IsUnicode(new bool?(false));
-            modelBuilder.Entity<Akhbar.DBEntities.Polls>().Property((Expression<Func<Akhbar.DBEntities.Polls, string>>)(e => e.PollBody)).IsUnicode(new bool?(false));
-            modelBuilder.Entity<Akhbar.DBEntities.Polls>().HasMany<NewsPoll>((Expression<Func<Akhbar.DBEntities.Polls, ICollection<NewsPoll>>>)(e => e.NewsPollLst)).WithRequired((Expression<Func<NewsPoll, Akhbar.DBEntities.Polls>>)(e => e.Poll)).WillCascadeOnDelete(false);
+            modelBuilder.Entity<Akhbar.DBEntities.Polls>().Property((Expression<Func<Polls, string>>)(e => e.PollBody)).IsUnicode(new bool?(false));
+            modelBuilder.Entity<Akhbar.DBEntities.Polls>().HasMany<NewsPoll>((Expression<Func<Polls, ICollection<NewsPoll>>>)(e => e.NewsPollLst)).WithRequired((Expression<Func<NewsPoll, Polls>>)(e => e.Poll)).WillCascadeOnDelete(false);
             modelBuilder.Entity<PollsOption>().Property((Expression<Func<PollsOption, string>>)(e => e.OptionBody)).IsUnicode(new bool?(false));
             modelBuilder.Entity<SesstionText>().Property((Expression<Func<SesstionText, string>>)(e => e.Story)).IsUnicode(new bool?(false));
             modelBuilder.Entity<UsersOpinion>().Property((Expression<Func<UsersOpinion, string>>)(e => e.UserName)).IsUnicode(new bool?(false));
@@ -209,15 +203,15 @@ namespace Domain.Akhbar.DBContext
             modelBuilder.Entity<UsersOpinion>().Property((Expression<Func<UsersOpinion, string>>)(e => e.UserIP)).IsUnicode(new bool?(false));
             modelBuilder.Entity<UsersOpinion>().Property((Expression<Func<UsersOpinion, string>>)(e => e.CloudIP)).IsUnicode(new bool?(false));
             modelBuilder.Entity<HomeMostCommented>().Property((Expression<Func<HomeMostCommented, string>>)(e => e.Title)).IsUnicode(new bool?(false));
-            modelBuilder.Entity<Akhbar.DBEntities.NewsVersions>().Property((Expression<Func<Akhbar.DBEntities.NewsVersions, string>>)(e => e.Title)).IsUnicode(new bool?(false));
-            modelBuilder.Entity<Akhbar.DBEntities.NewsVersions>().Property((Expression<Func<Akhbar.DBEntities.NewsVersions, string>>)(e => e.SubTitle)).IsUnicode(new bool?(false));
-            modelBuilder.Entity<Akhbar.DBEntities.NewsVersions>().Property((Expression<Func<Akhbar.DBEntities.NewsVersions, string>>)(e => e.Story)).IsUnicode(new bool?(false));
-            modelBuilder.Entity<Akhbar.DBEntities.NewsVersions>().Property((Expression<Func<Akhbar.DBEntities.NewsVersions, string>>)(e => e.Brief)).IsUnicode(new bool?(false));
-            modelBuilder.Entity<Akhbar.DBEntities.NewsVersions>().Property((Expression<Func<Akhbar.DBEntities.NewsVersions, string>>)(e => e.quote)).IsUnicode(new bool?(false));
-            modelBuilder.Entity<Akhbar.DBEntities.NewsVersions>().Property((Expression<Func<Akhbar.DBEntities.NewsVersions, string>>)(e => e.Keywords)).IsUnicode(new bool?(false));
-            modelBuilder.Entity<Akhbar.DBEntities.NewsVersions>().Property((Expression<Func<Akhbar.DBEntities.NewsVersions, string>>)(e => e.PictureCaption1)).IsUnicode(new bool?(false));
-            modelBuilder.Entity<Akhbar.DBEntities.NewsVersions>().Property((Expression<Func<Akhbar.DBEntities.NewsVersions, string>>)(e => e.PictureCaption2)).IsUnicode(new bool?(false));
-            modelBuilder.Entity<Akhbar.DBEntities.NewsVersions>().Property((Expression<Func<Akhbar.DBEntities.NewsVersions, string>>)(e => e.ByLine)).IsUnicode(new bool?(false));
+            modelBuilder.Entity<NewsVersions>().Property((Expression<Func<NewsVersions, string>>)(e => e.Title)).IsUnicode(new bool?(false));
+            modelBuilder.Entity<NewsVersions>().Property((Expression<Func<NewsVersions, string>>)(e => e.SubTitle)).IsUnicode(new bool?(false));
+            modelBuilder.Entity<NewsVersions>().Property((Expression<Func<NewsVersions, string>>)(e => e.Story)).IsUnicode(new bool?(false));
+            modelBuilder.Entity<NewsVersions>().Property((Expression<Func<NewsVersions, string>>)(e => e.Brief)).IsUnicode(new bool?(false));
+            modelBuilder.Entity<NewsVersions>().Property((Expression<Func<NewsVersions, string>>)(e => e.quote)).IsUnicode(new bool?(false));
+            modelBuilder.Entity<NewsVersions>().Property((Expression<Func<NewsVersions, string>>)(e => e.Keywords)).IsUnicode(new bool?(false));
+            modelBuilder.Entity<NewsVersions>().Property((Expression<Func<NewsVersions, string>>)(e => e.PictureCaption1)).IsUnicode(new bool?(false));
+            modelBuilder.Entity<NewsVersions>().Property((Expression<Func<NewsVersions, string>>)(e => e.PictureCaption2)).IsUnicode(new bool?(false));
+            modelBuilder.Entity<NewsVersions>().Property((Expression<Func<NewsVersions, string>>)(e => e.ByLine)).IsUnicode(new bool?(false));
             modelBuilder.Entity<SectionLatestNew>().Property((Expression<Func<SectionLatestNew, string>>)(e => e.Title)).IsUnicode(new bool?(false));
             modelBuilder.Entity<SectionLatestNew>().Property((Expression<Func<SectionLatestNew, string>>)(e => e.Brief)).IsUnicode(new bool?(false));
             modelBuilder.Entity<SectionLatestNew>().Property((Expression<Func<SectionLatestNew, string>>)(e => e.PictureName)).IsUnicode(new bool?(false));
@@ -232,9 +226,9 @@ namespace Domain.Akhbar.DBContext
             modelBuilder.Entity<vTopNewsToday>().Property((Expression<Func<vTopNewsToday, string>>)(e => e.Title)).IsUnicode(new bool?(false));
             modelBuilder.Entity<vTopNewsToday>().Property((Expression<Func<vTopNewsToday, string>>)(e => e.PictureName)).IsUnicode(new bool?(false));
             modelBuilder.Entity<vTopNewsToday>().Property((Expression<Func<vTopNewsToday, string>>)(e => e.SubTitle)).IsUnicode(new bool?(false));
-            modelBuilder.Entity<Akhbar.DBEntities.VUserPermissions>().Property((Expression<Func<Akhbar.DBEntities.VUserPermissions, string>>)(e => e.UserName)).IsUnicode(new bool?(false));
-            modelBuilder.Entity<Akhbar.DBEntities.VUserPermissions>().Property((Expression<Func<Akhbar.DBEntities.VUserPermissions, string>>)(e => e.Password)).IsUnicode(new bool?(false));
-            modelBuilder.Entity<Akhbar.DBEntities.VUserPermissions>().Property((Expression<Func<Akhbar.DBEntities.VUserPermissions, string>>)(e => e.FullName)).IsUnicode(new bool?(false));
+            modelBuilder.Entity<VUserPermissions>().Property((Expression<Func<VUserPermissions, string>>)(e => e.UserName)).IsUnicode(new bool?(false));
+            modelBuilder.Entity<VUserPermissions>().Property((Expression<Func<VUserPermissions, string>>)(e => e.Password)).IsUnicode(new bool?(false));
+            modelBuilder.Entity<VUserPermissions>().Property((Expression<Func<VUserPermissions, string>>)(e => e.FullName)).IsUnicode(new bool?(false));
             modelBuilder.Entity<Nationality>().Property((Expression<Func<Nationality, string>>)(e => e.Name)).IsFixedLength().IsUnicode(new bool?(false));
             modelBuilder.Entity<Profile>().Property((Expression<Func<Profile, string>>)(e => e.ProfName)).IsUnicode(new bool?(false));
             modelBuilder.Entity<Profile>().Property((Expression<Func<Profile, string>>)(e => e.Keyword)).IsUnicode(new bool?(false));

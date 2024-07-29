@@ -171,3 +171,45 @@ AboutYourSelf :
 Active : True  
 
 ----------------------------------------------------------
+06:17:54 م  User Machine Name:Admin - UserIP:::1 - User operating system:Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36 - RemoteIP:::1 - Mac/Physical-Address:509A4CB3A4D0 - UserId:2  - Name:مدير النظام // The Entity Name:AdminUser  - With:UserID= 2  Modified //
+UserID : 2  
+FullName : مدير النظام  
+UserName : Admin  
+Password : Rfc2898DeriveBytes$50000$CUdt9UYy7IuFdECm8tVt7Q==$meLZxZ4r1AHxfASJjb2VBvnFNkCOU52I7d+U1Ka8I1I=  
+Type : 0  
+LastLive :   
+Telephone : 01122495684  
+UserPhoto : 20180101073227187.jpg  
+UserEmail : hebamusa2003@gmail.com  
+BirthDay : 06/06/1984 12:00:00 ص  
+BirthPlace : العجوزة  
+UserTwitter :   
+UserFB : heba_musa_2003@yahoo.com  
+Nationality : 2  
+EducationalQualification : كلية الحاسبات والمعلومات جامعة القاهرة  
+NickName : BOBBA  
+AboutYourSelf :   
+Active : True  
+
+----------------------------------------------------------
+06:21:36 م  User Machine Name:Admin - UserIP:::1 - User operating system:Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36 - RemoteIP:::1 - Mac/Physical-Address:509A4CB3A4D0 - UserId:2  - Name:مدير النظام // The Entity Name:AdminUser  - With:UserID= 2  Modified //
+UserID : 2  
+FullName : مدير النظام  
+UserName : Admin  
+Password : Rfc2898DeriveBytes$50000$NeKVtGgRurGuKtK+lRHJFQ==$qf2F5ZJhzNEBfMZob3idnUy4sqtX00z7Dm9tFPK8YD0=  
+Type : 0  
+LastLive :   
+Telephone : 01122495684  
+UserPhoto : 20180101073227187.jpg  
+UserEmail : hebamusa2003@gmail.com  
+BirthDay : 06/06/1984 12:00:00 ص  
+BirthPlace : العجوزة  
+UserTwitter :   
+UserFB : heba_musa_2003@yahoo.com  
+Nationality : 2  
+EducationalQualification : كلية الحاسبات والمعلومات جامعة القاهرة  
+NickName : BOBBA  
+AboutYourSelf :   
+Active : True  
+
+----------------------------------------------------------
