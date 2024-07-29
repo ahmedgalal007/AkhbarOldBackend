@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>The source code</title>
+  <link href="../resources/prettify/prettify.css" type="text/css" rel="stylesheet" />
+  <script type="text/javascript" src="../resources/prettify/prettify.js"></script>
+  <style type="text/css">
+    .highlight { display: block; background-color: #ddd; }
+  </style>
+  <script type="text/javascript">
+    function highlight() {
+      document.getElementById(location.hash.replace(/#/, "")).className = "highlight";
+    }
+  </script>
+</head>
+<body onload="prettyPrint(); highlight();">
+  <pre class="prettyprint lang-js"><span id='global-property-'>/**
+</span> * @license Copyright (c) 2003-2017, CKSource - Frederico Knabben. All rights reserved.
+ * For licensing, see LICENSE.md or http://ckeditor.com/license
+ */
+
+<span id='global-property-'>/**
+</span> * @fileOverview Paste as plain text plugin.
+ */
+
+( function() {
+	// The pastetext command definition.
+	var pasteTextCmd = {
+		// Snapshots are done manually by editable.insertXXX methods.
+		canUndo: false,
+		async: true,
+
+<span id='CKEDITOR-editor-commands-pastetext-method-exec'>		/**
+</span>		 * The Paste as plain text command. It will determine its pasted text automatically if possible.
+		 *
+		 * At the time of writing it was working correctly only in Internet Explorer browsers, due to their
+		 * `paste` support in `document.execCommand`.
+		 *
+		 * @private
+		 * @param {CKEDITOR.editor} editor An instance of the editor where the command is being executed.
+		 * @param {Object} [data] The options object.
+		 * @param {Boolean/String} [data.notification=true] Content for a notification shown after an unsuccessful
+		 * paste attempt. If `false`, the notification will not be displayed. This parameter was added in 4.7.0.
+		 * @member CKEDITOR.editor.commands.pastetext
+		 */
+		exec: function( editor, data ) {
+			var lang = editor.lang,
+				// In IE we must display keystroke for `paste` command as blocked `pastetext`
+				// can fallback only to native paste.
+				keyInfo = CKEDITOR.tools.keystrokeToString( lang.common.keyboard,
+					editor.getCommandKeystroke( CKEDITOR.env.ie ? editor.commands.paste : this ) ),
+				notification = ( data &amp;&amp; typeof data.notification !== &#39;undefined&#39; ) ? data.notification :
+					!data || !data.from || ( data.from === &#39;keystrokeHandler&#39; &amp;&amp; CKEDITOR.env.ie ),
+				msg = ( notification &amp;&amp; typeof notification === &#39;string&#39; ) ? notification : lang.pastetext.pasteNotification
+					.replace( /%1/, &#39;&lt;kbd aria-label=&quot;&#39; + keyInfo.aria + &#39;&quot;&gt;&#39; + keyInfo.display + &#39;&lt;/kbd&gt;&#39; );
+
+			editor.execCommand( &#39;paste&#39;, {
+				type: &#39;text&#39;,
+				notification: notification ? msg : false
+			} );
+		}
+	};
+
+	// Register the plugin.
+	CKEDITOR.plugins.add( &#39;pastetext&#39;, {
+		requires: &#39;clipboard&#39;,
+		// jscs:disable maximumLineLength
+		lang: &#39;af,ar,az,bg,bn,bs,ca,cs,cy,da,de,de-ch,el,en,en-au,en-ca,en-gb,eo,es,et,eu,fa,fi,fo,fr,fr-ca,gl,gu,he,hi,hr,hu,id,is,it,ja,ka,km,ko,ku,lt,lv,mk,mn,ms,nb,nl,no,oc,pl,pt,pt-br,ro,ru,si,sk,sl,sq,sr,sr-latn,sv,th,tr,tt,ug,uk,vi,zh,zh-cn&#39;, // %REMOVE_LINE_CORE%
+		// jscs:enable maximumLineLength
+		icons: &#39;pastetext,pastetext-rtl&#39;, // %REMOVE_LINE_CORE%
+		hidpi: true, // %REMOVE_LINE_CORE%
+		init: function( editor ) {
+			var commandName = &#39;pastetext&#39;,
+				pasteKeystroke = !CKEDITOR.env.safari ? CKEDITOR.CTRL + CKEDITOR.SHIFT + 86 : // Ctrl + Shift + V
+					CKEDITOR.CTRL + CKEDITOR.ALT + CKEDITOR.SHIFT + 86; // Ctrl + Shift + Alt + V
+
+			editor.addCommand( commandName, pasteTextCmd );
+
+			editor.setKeystroke( pasteKeystroke, commandName );
+
+			editor.ui.addButton &amp;&amp; editor.ui.addButton( &#39;PasteText&#39;, {
+				label: editor.lang.pastetext.button,
+				command: commandName,
+				toolbar: &#39;clipboard,40&#39;
+			} );
+
+			if ( editor.config.forcePasteAsPlainText ) {
+				editor.on( &#39;beforePaste&#39;, function( evt ) {
+					// Do NOT overwrite if HTML format is explicitly requested.
+					// This allows pastefromword dominates over pastetext.
+					if ( evt.data.type != &#39;html&#39; )
+						evt.data.type = &#39;text&#39;;
+				} );
+			}
+
+			editor.on( &#39;pasteState&#39;, function( evt ) {
+				editor.getCommand( commandName ).setState( evt.data );
+			} );
+		}
+	} );
+} )();
+
+
+<span id='CKEDITOR-config-cfg-forcePasteAsPlainText'>/**
+</span> * Whether to force all pasting operations to insert on plain text into the
+ * editor, loosing any formatting information possibly available in the source
+ * text.
+ *
+ * **Note:** paste from word (dialog) is not affected by this configuration.
+ *
+ *		config.forcePasteAsPlainText = true;
+ *
+ * @cfg {Boolean} [forcePasteAsPlainText=false]
+ * @member CKEDITOR.config
+ */
+</pre>
+</body>
+</html>

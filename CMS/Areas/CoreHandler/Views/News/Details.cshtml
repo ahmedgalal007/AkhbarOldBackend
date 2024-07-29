@@ -1,0 +1,75 @@
+﻿@model CMS.Areas.CoreHandler.Models.GalleryVM
+@using CMS.Areas.FrameWork.Controllers
+@{
+    ViewBag.Title = "تفاصيل الالبوم";
+}
+
+<div class="panel panel-default" id="@Model.RelatedTarget">
+    <div class="panel-heading">
+        <i class="fa fa-external-link-square"></i>
+        تفاصيل الالبوم
+        <div class="panel-tools">
+            <a class="btn btn-xs btn-link panel-collapse collapses " href="#">
+            </a>
+            @*<a class="btn btn-xs btn-link panel-refresh" href="#">
+                    <i class="fa fa-refresh"></i>
+                </a>*@
+            @*<a class="btn btn-xs btn-link panel-expand" href="#">
+                    <i class="fa fa-resize-full"></i>
+                </a>*@
+
+        </div>
+    </div>
+    <div class="panel-body">
+        <div class="form-horizontal">
+
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Gallery.GalleryType, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DisplayFor(model => model.Gallery.GalleryType, new { htmlAttributes = new { @class = "form-control" } })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Gallery.Title, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DisplayFor(model => model.Gallery.Title, new { htmlAttributes = new { @class = "form-control" } })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Gallery.Description, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DisplayFor(model => model.Gallery.Description, new { htmlAttributes = new { @class = "form-control" } })
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Gallery.Keywords, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DisplayFor(model => model.Gallery.Keywords, new { htmlAttributes = new { @class = "form-control" } })
+                </div>
+            </div>
+
+
+            <div class="form-group ">
+                @Html.LabelFor(model => model.Gallery.IsHome, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.CheckBoxFor(model => model.HomePageFlag, new { @class = "iCheck-helper", @disabled = "disabled" } )
+                </div>
+            </div>
+
+
+
+            <div>
+                @Html.ActionLink("العودة لصفحة الالبومات", "Index", "Gallery", new { area = "CoreHandler" }, null)
+            </div>
+
+        </div>
+
+
+    </div>
+
+</div>

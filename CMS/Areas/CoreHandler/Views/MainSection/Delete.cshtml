@@ -1,0 +1,97 @@
+﻿@model CMS.Areas.CoreHandler.Models.MainSectionVM
+
+@{
+    ViewBag.Title = "حذف الباب";
+}
+
+
+<div class="panel panel-default" id="@Model.RelatedTarget">
+    <div class="panel-heading">
+        <i class="fa fa-external-link-square"></i>
+        حذف الباب
+        <div class="panel-tools">
+            <a class="btn btn-xs btn-link panel-collapse collapses " href="#">
+            </a>
+            @*<a class="btn btn-xs btn-link panel-refresh" href="#">
+                    <i class="fa fa-refresh"></i>
+                </a>*@
+            @*<a class="btn btn-xs btn-link panel-expand" href="#">
+                    <i class="fa fa-resize-full"></i>
+                </a>*@
+
+        </div>
+    </div>
+    <div class="panel-body">
+        <div class="form-horizontal">
+
+            @using (Html.BeginForm("Delete", "MainSection", new { area = "CoreHandler", MSectionID = Model.section.SectionID }, FormMethod.Post))
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="form-group">
+                    <label class="control-label col-md-2">عنوان الباب</label>
+                    <div class="col-md-10">
+                        @Html.DisplayFor(model => model.section.SecTitle)
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-2">الكلمات الدالة</label>
+                    <div class="col-md-10">
+                        @Html.DisplayFor(model => model.section.Keywords)
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-2">وصف الباب</label>
+                    <div class="col-md-10">
+                        @Html.DisplayFor(model => model.section.Description)
+                    </div>
+                </div>
+
+                <div class="form-group ">
+                    <label class="control-label col-md-2">قسم فرعي</label>
+                    <div class="col-md-10">
+                        @Html.CheckBoxFor(model => model.SubSecFlag, new { @class = "iCheck-helper", @disabled = "disabled" })
+                    </div>
+                </div>
+                <div class="form-group" id="divParentSec">
+                    <label class="control-label col-md-2">القسم الرئيسي</label>
+                    <div class="col-sm-10">
+                        @Html.DropDownListFor(model => model.section.ParentSectionID, new SelectList(ViewBag.Sec_ID, "Value", "Text"), "--أختار الباب--", new { @class = "form-control", @disabled = "disabled" })
+                        @Html.ValidationMessageFor(model => model.section.ParentSectionID, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group ">
+                    <label class="control-label col-md-2"> إخفاء الباب</label>
+                    <div class="col-md-10">
+                        @Html.CheckBoxFor(model => model.SHide, new { @class = "iCheck-helper", @disabled = "disabled" })
+                    </div>
+                </div>
+
+
+                <div class="form-group ">
+                    <label class="control-label col-md-2">باب إسبوعي</label>
+                    <div class="col-md-10">
+                        @Html.CheckBoxFor(model => model.SWeeklySection, new { @class = "iCheck-helper", @disabled = "disabled" })
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="حذف" class="btn btn-default" />
+                    </div>
+                </div>
+
+
+            }
+
+            <div>
+
+                @Html.ActionLink("العودة لصفحة الابواب", "Index", "MainSection", new { area = "CoreHandler" }, null)
+            </div>
+
+        </div>
+    </div>
+
+</div>

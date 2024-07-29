@@ -1,0 +1,409 @@
+﻿@model CMS.Areas.CoreHandler.Models.NewsVM
+@using CMS.Areas.FrameWork.Controllers
+@using CMS.Areas.FrameWork.ViewModels
+@{
+    ViewBag.Title = "نشر خبر";
+}
+
+@section HeadScript{
+    <meta charset="utf-8">
+    <meta name="robots" content="noindex, nofollow">
+
+  <style type="text/css">
+    .divHide {
+        display: none;
+    }
+</style>
+
+@Scripts.Render("/scripts/jquery.min.js")
+<script src="~/assets/plugins/bootstrap/js/bootstrap.js"></script>
+
+<script language="javascript" type="text/javascript">
+        function onAjaxComplete() {
+            $("#TargetImgDiv").removeClass("divHide");
+            $("#dvPreview").addClass("divHide");
+        }
+
+         $(function () {
+            $("#PictureName1").change(function () {
+                $("#dvPreview").html("");
+
+                if ($.browser.msie && parseFloat(jQuery.browser.version) <= 9.0) {
+                    $("#dvPreview").removeClass("divHide");
+                    $("#dvPreview")[0].filters.item("DXImageTransform.Microsoft.AlphaImageLoader").src = $(this).val();
+                }
+                else {
+                    if (typeof (FileReader) != "undefined") {
+                        $("#dvPreview").removeClass("divHide");
+                        $("#dvPreview").append("<img />");
+                        var reader = new FileReader();
+                        reader.onload = function (e) {
+                            $("#dvPreview img").attr("src", e.target.result);
+                            $("#dvPreview img").attr("class", "img-rounded");
+                            $("#dvPreview img").attr("width", "300");
+                            $("#dvPreview img").attr("height", "300");
+                        }
+                        $("#TargetImgDiv").addClass("divHide");
+                        reader.readAsDataURL($(this)[0].files[0]);
+                    } else {
+                        alert("هذا المتصفح لا يدعم تحميل الملفات");
+                    }
+                }
+
+            });
+        });
+</script>
+
+
+    @*/* HTML Editor Script */*@
+    <script src="~/assets/plugins/ckeditor_sdk/vendor/ckeditor/ckeditor.js"></script>
+
+    @*/* Tags Script */*@
+    <link type="text/css" href="~/assets/plugins/jQuery-Tags-Input/jquery.tagsinput.css" rel="stylesheet" />
+    <script src="~/assets/plugins/jQuery-Tags-Input/jquery.tagsinput.js"></script>
+    <script src="~/assets/plugins/jQuery-Tags-Input/jquery.tagsinput.min.js"></script>
+
+    <script type="text/javascript">
+        function AddTag(tag) {
+            alert("Added a tag: " + tag);
+        }
+        function RemoveTag(tag) {
+            alert("Removed a tag: " + tag);
+        }
+        function onChangeTag(input, tag) {
+            alert("Changed a tag: " + tag);
+        }
+        $('#tags_1').tagsInput({ width: '100%', onAddTag: AddTag, onRemoveTag: RemoveTag });
+
+        $(function () {
+
+            $('#tags_1').tagsInput({ width: '100%' });
+            $('#tags_2').tagsInput({
+                width: 'auto',
+                onChange: function (elem, elem_tags) {
+                    var languages = ['php', 'ruby', 'javascript'];
+                    $('.tag', elem_tags).each(function () {
+                        if ($(this).text().search(new RegExp('\\b(' + languages.join('|') + ')\\b')) >= 0)
+                            $(this).css('background-color', 'yellow');
+                    });
+                }
+            });
+            $('#tags_3').tagsInput({
+                width: 'auto',
+
+                //autocomplete_url:'test/fake_plaintext_endpoint.html' //jquery.autocomplete (not jquery ui)
+                autocomplete_url: 'test/fake_json_endpoint.html' // jquery ui autocomplete requires a json endpoint
+            });
+
+
+            // Uncomment this line to see the callback functions in action
+            //          $('input.tags').tagsInput({onAddTag:onAddTag,onRemoveTag:onRemoveTag,onChange: onChangeTag});
+
+            // Uncomment this line to see an input with no interface for adding new tags.
+            //          $('input.tags').tagsInput({interactive:false});
+        });
+    </script>
+
+
+
+    @*/* Album MultiSelect Script */*@
+
+    @Scripts.Render("~/assets/plugins/select2/select2.js")
+
+    <script type="text/javascript">
+        $(function () {
+            $('#dropDown').select2();
+            $('#dropDownSubSec').select2();         
+            $('#dropDownByLines').select2();
+            $('#dropDownInfograph').select2();
+            $('#dropDownPhotograph').select2();
+            $('#dropDownVideograph').select2();
+        });
+    </script>
+
+}
+
+
+<div class="panel panel-default" id="@Model.RelatedTarget">
+    <div class="panel-heading">
+        <i class="fa fa-external-link-square"></i>
+        نشر خبر
+        <div class="panel-tools">
+            <a class="btn btn-xs btn-link panel-collapse collapses " href="#">
+            </a>
+            @*<a class="btn btn-xs btn-link panel-refresh" href="#">
+                    <i class="fa fa-refresh"></i>
+                </a>*@
+            @*<a class="btn btn-xs btn-link panel-expand" href="#">
+                    <i class="fa fa-resize-full"></i>
+                </a>*@
+
+        </div>
+    </div>
+    <div class="panel-body">
+        <div class="form-horizontal">
+
+            @using (Html.BeginForm("NewsPublish", "News", new { area = "CoreHandler" }, FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                @Html.AntiForgeryToken()
+
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+
+                <div class="form-group">
+                    <label class="control-label col-md-2">القسم</label>
+                    <div class="col-sm-9">
+                        @Html.DropDownListFor(model => model.News.SectionID, new SelectList(ViewBag.Sec_ID, "Value", "Text"), "--أختار الباب--", new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.News.SectionID, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-2 control-label"> الاقسام فرعية </label>
+                    <div class="col-sm-9">
+                        @Html.DropDownListFor(model => model.Sections, new SelectList(ViewBag.Sec_ID, "Value", "Text"), new { id = "dropDownSubSec", multiple = "true", @class = "form-control search-select select2-hidden-accessible", @style = "height:auto;" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-md-2">بقلم</label>
+                    <div class="col-sm-9">
+                        @Html.DropDownListFor(model => model.ByLines, new SelectList(ViewBag.ByLines, "Value", "Text"), new { id = "dropDownByLines", multiple = "true", @class = "form-control search-select select2-hidden-accessible", @style = "height:auto;" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-md-2">ميديا</label>
+                    <div class="col-sm-9">
+                        @Html.DropDownListFor(model => model.photograhers, new SelectList(ViewBag.Photograhers, "Value", "Text"), new { id = "dropDownPhotograph", multiple = "true", @class = "form-control search-select select2-hidden-accessible", @style = "height:auto;" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-md-2">انفوجراف</label>
+                    <div class="col-sm-9">
+                        @Html.DropDownListFor(model => model.Infograhers, new SelectList(ViewBag.Infograhers, "Value", "Text"), new { id = "dropDownInfograph", multiple = "true", @class = "form-control search-select select2-hidden-accessible", @style = "height:auto;" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-md-2">فيديوجراف</label>
+                    <div class="col-sm-9">
+                        @Html.DropDownListFor(model => model.Videograhers, new SelectList(ViewBag.Vidograhers, "Value", "Text"), new { id = "dropDownVideograph", multiple = "true", @class = "form-control search-select select2-hidden-accessible", @style = "height:auto;" })
+                    </div>
+                </div>
+
+                @*<div class="form-group">
+                @Html.LabelFor(model => model.News.ByLine, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-sm-9">
+                    @Html.EditorFor(model => model.News.ByLine, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.News.ByLine, "", new { @class = "text-danger" })
+                </div>
+            </div>*@
+
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.News.Title, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-sm-9">
+                        @Html.EditorFor(model => model.News.Title, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.News.Title, "", new { @class = "text-danger" })
+                        <span id="titlecharsLeft"></span>
+                        <script>
+                            $(function () {
+                                $("#News_Title").keyup(function () {
+                                    var charsLeft = $(this).attr("data-val-length-max") - $(this).val().length;
+                                    $("#titlecharsLeft").text(" الاحرف المتبقية " + charsLeft + "- الاحرف المدخلة " + $(this).val().length);
+                                });
+                            });
+                        </script>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.News.SEOTitle, htmlAttributes: new { @class = "col-md-2 control-label" })
+                    <div class="col-sm-9">
+                        @Html.EditorFor(model => model.News.SEOTitle, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.News.SEOTitle, "", new { @class = "text-danger" })
+                        <span id="seoTitlecharsLeft"></span>
+                        <script>
+                            $(function () {
+                                $("#News_SEOTitle").keyup(function (e) {
+                                    var charsLeft = $(this).attr("data-val-length-max") - $(this).val().length;
+                                    $("#seoTitlecharsLeft").text(" الاحرف المتبقية " + charsLeft + "- الاحرف المدخلة " + $(this).val().length);
+                                });
+                                $("#News_SEOTitle").keypress(function (e) {
+                                    if ($(this).val().length >= $(this).attr("data-val-length-max")) {
+                                        e.preventDefault();
+                                    }
+                                });
+                            });
+                        </script>
+
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.News.SubTitle, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-sm-9">
+                        @Html.EditorFor(model => model.News.SubTitle, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.News.SubTitle, "", new { @class = "text-danger" })
+                        <span id="subTitlecharsLeft"></span>
+                        <script>
+                            $(function () {
+                                $("#News_SubTitle").keyup(function () {
+                                    var charsLeft = $(this).attr("data-val-length-max") - $(this).val().length;
+                                    $("#subTitlecharsLeft").text(" الاحرف المتبقية " + charsLeft + "- الاحرف المدخلة " + $(this).val().length);
+                                });
+                            });
+                        </script>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.News.Brief, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-sm-9">
+                        @Html.TextAreaFor(model => model.News.Brief, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.News.Brief, "", new { @class = "text-danger" })
+                        <span id="BreifcharsLeft"></span>
+                        <script>
+                            $(function () {
+                                $("#News_Brief").keyup(function () {
+                                    var charsLeft = $(this).attr("data-val-length-max") - $(this).val().length;
+                                    $("#BreifcharsLeft").text(" الاحرف المتبقية " + charsLeft + "- الاحرف المدخلة " + $(this).val().length);
+                                });
+                            });
+                        </script>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-md-2">الصورة الرئيسية</label>
+                    <div class="col-md-2">
+                        @Html.CheckBoxFor(model => model.archImgFlag, new { @class = "iCheck-helper" })
+                        @Html.ValidationMessageFor(model => model.archImgFlag, "", new { @class = "text-danger" })
+
+                        @Ajax.CustomRowFunctionsAjaxActionLink("<i class=\"iCheck-helper\"></i> " + "صورة أرشيفية", "CoreHandler", "News", "ImageArch",
+                       0, null, null, new Dictionary<string, object> { { "tabindex", "-1" }, { "role", "menuitem" }, { "class", "demo btn btn-green" } })
+                    </div>
+                    <div class="col-md-2">
+                        <input type="file" id="PictureName1" name="PictureName1" class="file-input file-input-new" />
+                        @*@Html.HiddenFor(model => model.News.NewsPicture1.PictureName)
+                    @Html.ValidationMessageFor(model => model.News.NewsPicture1.PictureName, "", new { @class = "text-danger" })*@
+                        <div class="col-md-10">
+                            <div id="dvPreview" class="divHide">
+                            </div>
+                            <div id="TargetImgDiv" class="img-rounded">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-md-2"> العلامة المائية</label>
+                    <div class="col-md-10">
+                        @Html.CheckBoxFor(model => model.waterMarkFlag, new { @class = "iCheck-helper" })
+                        @Html.ValidationMessageFor(model => model.waterMarkFlag, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-md-2">وصف الصورة الرئيسية</label>
+                    <div class="col-sm-9">
+                        @Html.EditorFor(model => model.News.PictureCaption1, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.News.PictureCaption1, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <label class="control-label col-md-2">محتوي الخبر</label>
+                    <div class="col-md-10">
+                        @Html.TextAreaFor(model => model.News.Story, new { id = "editor1", name = "editor1", @class = "form-control" })
+                        @*<textarea cols="100" id="editor1" name="editor1" rows="10"></textarea>*@
+                        <script>
+                            CKEDITOR.replace('editor1', {
+                                extraPlugins: 'bidi,panelbutton,colorbutton,justify',
+                                // Setting default language direction to right-to-left.
+                                contentsLangDirection: 'rtl',
+                                height: 270,
+                                htmlEncodeOutput: false,
+                                filebrowserImageUploadUrl: '/CoreHandler/News/UploadImage',
+                                filebrowserUploadUrl: '/CoreHandler/News/UploadFiles'
+                            });
+                        </script>
+
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-md-2">البومات مرتبطة</label>
+                    <div class="col-sm-10">
+                        @Html.DropDownListFor(model => model.Albums, new SelectList(ViewBag.Albums, "Value", "Text"), new { id = "dropDown", multiple = "true", @class = "form-control search-select select2-hidden-accessible", @style = "height:auto;" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-md-2">الكلمات الدالة</label>
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(model => model.tags, new { id = "tags_1", @class = "form-control" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-md-2">ظهور الخبر</label>
+                    <div class="col-md-10">
+                        <div>
+                            @Html.CheckBoxFor(model => model.SliderNewsFlag, new { @class = "icheckbox_flat" })
+                            @Html.ValidationMessageFor(model => model.SliderNewsFlag, "", new { @class = "text-danger" })
+                            <label>
+                                سليدر
+                            </label>
+                        </div>
+                        <div>
+                            @Html.CheckBoxFor(model => model.Mo7taratNewsFlag, new { @class = "icheckbox_flat-grey" })
+                            @Html.ValidationMessageFor(model => model.Mo7taratNewsFlag, "", new { @class = "text-danger" })
+                            <label>
+                                @*مختارات*@
+                                سليدر امم افريقيا
+                            </label>
+                        </div>
+                        <div>
+                            @Html.CheckBoxFor(model => model.TickerNewsFlag, new { @class = "icheckbox_flat-red" })
+                            @Html.ValidationMessageFor(model => model.TickerNewsFlag, "", new { @class = "text-danger" })
+                            <label>
+                                شريط الاخبار
+                            </label>
+                        </div>
+                        <div>
+                            @Html.CheckBoxFor(model => model.SectionNewsFlag, new { @class = "icheckbox_flat-green" })
+                            @Html.ValidationMessageFor(model => model.SectionNewsFlag, "", new { @class = "text-danger" })
+                            <label>
+                                رئيسى باب
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.News.Notes, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-sm-9">
+                        @Html.TextAreaFor(model => model.News.Notes, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.News.Notes, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="نشر" class="btn btn-default" />
+                    </div>
+                </div>
+            }
+
+            @if (ViewBag.alert != null)
+            {
+                Html.RenderPartial("~/Areas/FrameWork/Views/Shared/_alertMessage.cshtml", (alertMessageVM)ViewBag.alert);
+            }
+
+        </div>
+
+
+    </div>
+</div>

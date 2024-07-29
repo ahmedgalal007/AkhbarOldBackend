@@ -1,0 +1,154 @@
+﻿@model CMS.Areas.Reports.Models.ReportsVM
+@using CMS.Areas.FrameWork.Controllers
+@using CMS.Areas.FrameWork.ViewModels
+
+
+@*Datetime Picker Script*@
+<script type="text/javascript">
+    $(function () {
+        $("#StartDate").datepicker({
+            timepicker: false,
+            // minDate: new Date(),
+            dateFormat: 'dd/mm/yy',
+        });
+        $("#EndDate").datepicker({
+            timepicker: false,
+           // minDate: new Date(),
+            dateFormat: 'dd/mm/yy'
+        });
+
+    });
+</script>
+
+
+
+
+<div class="panel panel-default" id="@Model.RelatedTarget">
+    <div class="panel-heading">
+        <i class="fa fa-external-link-square"></i>
+        @Session["CurrentService"].ToString()
+        <div class="panel-tools">
+            <a class="btn btn-xs btn-link panel-collapse collapses" href="#">
+            </a>
+            @*<a class="btn btn-xs btn-link panel-config" href="#panel-config" data-toggle="modal">
+                    <i class="fa fa-wrench"></i>
+                </a>*@
+            <a class="btn btn-xs btn-link panel-refresh" href="#">
+                <i class="fa fa-refresh"></i>
+            </a>
+            <a class="btn btn-xs btn-link panel-expand" href="#">
+                <i class="fa fa-resize-full"></i>
+            </a>
+            <a class="btn btn-xs btn-link panel-close" href="#">
+                <i class="fa fa-times"></i>
+            </a>
+        </div>
+    </div>
+
+    <div class="panel-body">
+        <div class="form-horizontal">
+
+
+            @using (Html.BeginForm("GetReport", "Report", new { area = "Reports" }, FormMethod.Post))
+            {
+               
+                @Html.HiddenFor(model => model.ReportName)
+                @Html.HiddenFor(model => model.ReportPath)
+
+
+                <div>
+
+                    <div style="width:40%;float:right;">
+                        <div class="form-group">
+                            <label class="col-md-3">من التاريخ</label>
+                            <div class="col-sm-9">
+
+                                @{Html.EnableClientValidation(false);}
+                                @Html.EditorFor(model => model.StartDate, new { @class = "form-control", @readonly = "readonly" })
+                                @Html.ValidationMessageFor(model => model.StartDate, "", new { @class = "text-danger" })
+                                @{ Html.EnableClientValidation(true);}
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div style="width:40%;float:right;">
+                        <div class="form-group">
+                            <label class="col-md-3">إلى التاريخ</label>
+                            <div class="col-sm-9">
+                                @{Html.EnableClientValidation(false);}
+                                @Html.EditorFor(model => model.EndDate, new { @class = "form-control", @readonly = "readonly" })
+                                @Html.ValidationMessageFor(model => model.EndDate, "", new { @class = "text-danger" })
+                                @{Html.EnableClientValidation(true);}
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div style="width:40%;float:right;">
+                        <div class="form-group">
+                            <label class="col-md-3">اسم المحرر</label>
+                            <div class="col-sm-9">
+                                @{Html.EnableClientValidation(false);}
+                                @Html.DropDownListFor(model => model.UserId, new SelectList(ViewBag.UsersID, "Value", "Text"), "--الكل--", new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.UserId, "", new { @class = "text-danger" })
+                                @{Html.EnableClientValidation(true);}
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                    <div style="width:40%;float:right;">
+                        <div class="form-group">
+                            <label class="col-md-3">اسم القسم</label>
+                            <div class="col-sm-9">
+                                @{Html.EnableClientValidation(false);}
+                                @Html.DropDownListFor(model => model.SectionId, new SelectList(ViewBag.SecID, "Value", "Text"), "--جميع الاقسام--", new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.SectionId, "", new { @class = "text-danger" })
+                                @{Html.EnableClientValidation(true);}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div style="float:right;width:20%;text-align:center;">
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-purple"><i class="clip-download"></i></button>
+                            <button data-toggle="dropdown" class="btn btn-purple dropdown-toggle"><span class="caret"></span></button>
+                            <ul class="dropdown-menu" role="menu">
+                                <li>
+                                    <input type="submit" name="submitButton" value="PDF" class="btn btn-link" />
+                                </li>
+                                <li>
+                                    <input type="submit" name="submitButton" value="Word" class="btn btn-link" />
+                                </li>
+                                <li>
+                                    <input type="submit" name="submitButton" value="Excel" class="btn btn-link" />
+                                </li>
+                                <li>
+                                    <input type="submit" name="submitButton" value="Image" class="btn btn-link" />
+                                </li>
+                                <li>
+                                    <input type="submit" name="submitButton" value="CSV" class="btn btn-link" />
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+
+                                    }
+
+
+            @if (ViewBag.alert != null)
+            {
+                Html.RenderPartial("~/Areas/FrameWork/Views/Shared/_alertMessage.cshtml", (alertMessageVM)ViewBag.alert);
+            }
+
+
+        </div>
+
+
+    </div>
+
+</div>

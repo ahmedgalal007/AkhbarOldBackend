@@ -1,0 +1,73 @@
+﻿@model CMS.Areas.AreaManagment.Models.ServiceVM
+@using CMS.Areas.FrameWork.Controllers
+
+@{
+    ViewBag.Title = "إضافة خدمة";
+}
+
+    <div class="panel panel-default" id="@Model.RelatedTarget" >
+        <div class="panel-heading">
+            <i class="fa fa-external-link-square"></i>
+            إضافة خدمة
+            <div class="panel-tools">
+                <a class="btn btn-xs btn-link panel-collapse collapses" href="#">
+                </a>
+                @*<a class="btn btn-xs btn-link panel-config" href="#panel-config" data-toggle="modal">
+                <i class="fa fa-wrench"></i>
+            </a>*@
+                <a class="btn btn-xs btn-link panel-refresh" href="#">
+                    <i class="fa fa-refresh"></i>
+                </a>
+                <a class="btn btn-xs btn-link panel-expand" href="#">
+                    <i class="fa fa-resize-full"></i>
+                </a>
+                <a class="btn btn-xs btn-link panel-close" href="#">
+                    <i class="fa fa-times"></i>
+                </a>
+            </div>
+        </div>
+        <div class="panel-body">
+            <div class="form-horizontal">
+
+                @using (Html.BeginForm("Create", "Service", new { area = "AreaManagment" }, FormMethod.Post))
+                {
+                    @Html.AntiForgeryToken()
+
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Service.ModuleId, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-5">
+                            @Html.DropDownListFor(model => model.Service.ModuleId, new SelectList(ViewBag.mod_ID, "Value", "Text"), new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.Service.ModuleId)
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Service.ServiceName, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Service.ServiceName, new { @class = "form-control" } )
+                            @Html.ValidationMessageFor(model => model.Service.ServiceName, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Service.ControllerName, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Service.ControllerName, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.Service.ControllerName, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-10">
+                                <input type="submit" value="إنشاء" class="btn btn-default" />
+                            </div>
+                        </div>
+                }
+
+                <div>
+                    @Html.ActionLink("العودة لصفحة الخدمات", "Index", "Service", new { area = "AreaManagment" }, null)
+                </div>
+
+             </div>
+        </div>
+    </div>

@@ -1,0 +1,61 @@
+﻿@using Akhbar.DBEntities
+@model IEnumerable<VUserPermissions>
+@using CMS.Areas.FrameWork.Controllers
+   
+<ul class="main-navigation-menu">
+  
+    @{bool firstloop = false;}
+    @foreach (var Module in Model.Select(e => new { ID = e.ModuleId, Name = e.ModuleName, MIcon=e.ModuleIcon, hide = e.ModuleHide }).Where(e => e.hide == false).Distinct().OrderBy(e => e.ID).ToList())
+    {
+        if (firstloop == false)
+        {
+
+            @Html.Raw("<li>")
+
+            firstloop = true;
+        }
+        else
+        {
+            @Html.Raw("<li >")
+        }
+
+
+
+        <a href="javascript:void(0)">
+
+            @if (Module.MIcon != "")
+            {   <i class="@Module.MIcon"></i>}
+            else
+            { <i class="clip-cog-2"></i>}
+
+            <span class="title">  @Module.Name </span><i class="icon-arrow"></i>
+            <span class="selected"></span>
+
+        </a>
+
+        <ul class="sub-menu">
+            @foreach (var Service in Model.Where(e => e.ModuleId == Module.ID).Select(e => new { ID = e.ServiceId, Name = e.ServiceName, Area = e.AreaName, Controller = e.ControllerName, Action=e.ActionName, SIcon = e.ServiceIcon , hide = e.ServiceHide }).Where(e => e.hide == false).Distinct().OrderBy(e => e.Name).ToList())
+            {
+
+                <li>
+                    <a href="@Url.Action(Service.Action, Service.Controller, new { area = Service.Area })">
+                        @if (Service.SIcon != "")
+                        {   <i class="@Service.SIcon"></i>}
+                        else
+                        { <i class="clip-cog-2"></i>}
+                        <span class="title"> @Service.Name </span>
+                    </a>
+                </li>
+            }
+        </ul>
+        @Html.Raw("</li>")
+
+    }
+
+
+       
+</ul>
+
+
+         
+       

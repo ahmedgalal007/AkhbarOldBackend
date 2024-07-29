@@ -1,0 +1,116 @@
+﻿@model CMS.Areas.CoreHandler.Models.NewsVM
+@using CMS.Areas.FrameWork.Controllers
+@using CMS.Areas.FrameWork.ViewModels
+@using PagedList.Mvc
+@{
+    ViewBag.Title = "اصدارات الخبر";
+}
+<!-- start: PAGE CONTENT -->
+
+<div class="panel panel-default" id="@Model.RelatedTarget">
+    <div class="panel-heading">
+        <i class="fa fa-external-link-square"></i>
+        اصدارات الخبر
+        <div class="panel-tools">
+            <a class="btn btn-xs btn-link panel-collapse collapses" href="#">
+            </a>
+            @*<a class="btn btn-xs btn-link panel-config" href="#panel-config" data-toggle="modal">
+                    <i class="fa fa-wrench"></i>
+                </a>*@
+            <a class="btn btn-xs btn-link panel-refresh" href="#">
+                <i class="fa fa-refresh"></i>
+            </a>
+            <a class="btn btn-xs btn-link panel-expand" href="#">
+                <i class="fa fa-resize-full"></i>
+            </a>
+            <a class="btn btn-xs btn-link panel-close" href="#">
+                <i class="fa fa-times"></i>
+            </a>
+        </div>
+    </div>
+    <div class="panel-body">
+
+
+     
+        <table class="table table-striped table-bordered table-hover table-full-width dataTable no-footer">
+            <tr>
+                <th>
+                    رقم الاصدار 
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.News.Title)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.News.MainSection.SecTitle)
+                </th>
+                <th>
+                    التعديل بواسطة               
+                 </th>
+                <th>
+                    وقت التعديل
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model.VLst)
+            {
+                <tr>             
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Version)
+                    </td>
+                    <td>
+                        @*<a target="_blank" href="http://akhbarelyom.com/news/NewDetails/@item.NewID/1/@(CMS.Areas.FrameWork.Controllers.BaseController.GetPureURL(item.Title))">
+                         @Html.DisplayFor(modelItem => item.Title)
+                        </a>*@
+                        @Html.DisplayFor(modelItem => item.Title)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.News_NewsVersions.MainSection.SecTitle)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.AdminUser_NewsVersions.FullName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.AddedDate)
+                    </td>
+                    <td>
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-purple"><i class="fa fa-wrench"></i></button>
+                            <button data-toggle="dropdown" class="btn btn-purple dropdown-toggle"><span class="caret"></span></button>
+                            @if (item.PublishDate != null)
+                            {
+                                if (!(item.PublishDate.Value.AddHours(24) <= DateTime.Now))
+                                {
+                                    <ul class="dropdown-menu" role="menu">
+                                        <li>
+                                            @Html.ActionLink("استعاده", "RestoreNewsVersion", "News", new { area = "CoreHandler", MNewsID = item.NewID, VNewsID = item.VersionId }, new { @class = "fa fa-pencil" })
+                                        </li>
+                                    </ul>
+                                }
+                            }
+                            else
+                            {
+                                <ul class="dropdown-menu" role="menu">
+                                    <li>
+                                        @Html.ActionLink("استعاده", "RestoreNewsVersion", "News", new { area = "CoreHandler", MNewsID = item.NewID, VNewsID = item.VersionId }, new { @class = "fa fa-pencil" })
+                                    </li>
+                                </ul>
+                            }
+                        </div>
+                    </td>
+                </tr>
+            }
+            @if (ViewBag.alert != null)
+            {
+                Html.RenderPartial("~/Areas/FrameWork/Views/Shared/_alertMessage.cshtml", (alertMessageVM)ViewBag.alert);
+            }
+        </table>
+        <div style="text-align:center;">
+            @* from extension method in CustomHTML Class *@
+            @*Page @(Model.lst.PageCount < Model.lst.PageNumber ? 0 : Model.lst.PageNumber) of @Model.lst.PageCount*@
+            @Html.PagedListPager(Model.VLst, page => Url.Action("NewsVersions", new { page }))
+        </div>
+    </div>
+</div>
+
+<!-- end: PAGE CONTENT-->

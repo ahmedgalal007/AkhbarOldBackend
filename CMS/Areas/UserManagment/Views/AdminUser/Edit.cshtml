@@ -1,0 +1,225 @@
+﻿@model CMS.Areas.UserManagment.Models.AdminUserVM
+@using CMS.Areas.FrameWork.Controllers
+@using CMS.Areas.FrameWork.ViewModels
+
+@{
+    ViewBag.Title = "تعديل المستخدم";
+}
+
+@Scripts.Render("/scripts/jquery.min.js")
+
+<script language="javascript" type="text/javascript">
+    $(function () {
+        $("#AdminUser_Image").change(function () {
+            $("#dvPreview").html("");
+         
+                if ($.browser.msie && parseFloat(jQuery.browser.version) <= 9.0) {
+                    $("#dvPreview").show();
+                    $("#dvPreview")[0].filters.item("DXImageTransform.Microsoft.AlphaImageLoader").src = $(this).val();
+                }
+                else {
+                    if (typeof (FileReader) != "undefined") {
+                        $("#dvPreview").show();
+                        $("#dvPreview").append("<img />");
+                        var reader = new FileReader();
+                        reader.onload = function (e) {
+                            $("#dvPreview img").attr("src", e.target.result);
+                            $("#dvPreview img").attr("class", "img-rounded");
+                            $("#dvPreview img").attr("width", "150");
+                            $("#dvPreview img").attr("height", "150");
+                        }
+                        reader.readAsDataURL($(this)[0].files[0]);
+                    } else {
+                        alert("هذا المتصفح لا يدعم تحميل الملفات");
+                    }
+                }
+         
+        });
+    });
+</script>
+
+
+<div class="panel panel-default" id="@Model.RelatedTarget">
+    <div class="panel-heading">
+        <i class="fa fa-external-link-square"></i>
+        تعديل المستخدم
+        <div class="panel-tools">
+            <a class="btn btn-xs btn-link panel-collapse collapses " href="#">
+            </a>
+            @*<a class="btn btn-xs btn-link panel-refresh" href="#">
+                    <i class="fa fa-refresh"></i>
+                </a>*@
+            @*<a class="btn btn-xs btn-link panel-expand" href="#">
+                    <i class="fa fa-resize-full"></i>
+                </a>*@
+
+        </div>
+    </div>
+    <div class="panel-body">
+
+
+        @using (Html.BeginForm("Edit", "AdminUser", new { area = "UserManagment" }, FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+            @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+            @if (Model.adminUser != null)
+            {
+                @Html.HiddenFor(model => model.adminUser.UserID)
+                @Html.HiddenFor(model => model.adminUser.Active)
+            }
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.adminUser.FullName, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-9">
+                    <label class="control-label col-md-2">@Model.adminUser.FullName</label>
+                    @Html.HiddenFor(model => model.adminUser.FullName)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.adminUser.UserPhoto, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-9">
+                    <input type="file" id="AdminUser_Image" name="AdminUser_Image" />
+                    @Html.HiddenFor(model => model.adminUser.UserPhoto)
+                    @Html.ValidationMessageFor(model => model.adminUser.UserPhoto, "", new { @class = "text-danger" })
+
+                    <div class="col-md-10">
+                        <div id="dvPreview" class="img-rounded">
+                            <img class="img-rounded" width="150" height="150" src="@ViewBag.UsersImgPath/@Model.adminUser.UserPhoto" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.adminUser.UserName, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-9">
+                    @Html.EditorFor(model => model.adminUser.UserName, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.adminUser.UserName, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.adminUser.Password, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-9">
+                    @Html.PasswordFor(model => model.adminUser.Password, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.adminUser.Password, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.adminUser.Telephone, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-sm-9">
+                    @Html.EditorFor(model => model.adminUser.Telephone, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.adminUser.Telephone, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.adminUser.UserEmail, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-sm-9">
+                    @Html.EditorFor(model => model.adminUser.UserEmail, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.adminUser.UserEmail, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.adminUser.UserFB, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-sm-9">
+                    @Html.EditorFor(model => model.adminUser.UserFB, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.adminUser.UserFB, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.adminUser.UserTwitter, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-sm-9">
+                    @Html.EditorFor(model => model.adminUser.UserTwitter, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.adminUser.UserTwitter, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.adminUser.BirthDay, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-sm-9">
+                    @Html.EditorFor(model => model.adminUser.BirthDay, new { @class = "form-control", @readonly = "readonly" })
+                    @Html.ValidationMessageFor(model => model.adminUser.BirthDay, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.adminUser.BirthPlace, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-sm-9">
+                    @Html.EditorFor(model => model.adminUser.BirthPlace, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.adminUser.BirthPlace, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.adminUser.Nationality, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-sm-9">
+                    @Html.DropDownListFor(model => model.adminUser.Nationality, new SelectList(ViewBag.Nationalities, "Value", "Text"), "--أختار الجنسية--", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.adminUser.Nationality, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.adminUser.NickName, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-sm-9">
+                    @Html.EditorFor(model => model.adminUser.NickName, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.adminUser.NickName, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.adminUser.EducationalQualification, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-sm-9">
+                    @Html.EditorFor(model => model.adminUser.EducationalQualification, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.adminUser.EducationalQualification, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.adminUser.AboutYourSelf, htmlAttributes: new { @class = "col-md-2 control-label" })
+                <div class="col-sm-9">
+                    @Html.TextAreaFor(model => model.adminUser.AboutYourSelf, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.adminUser.AboutYourSelf, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.adminUser.Active, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.CheckBoxFor(model => model.ActiveFlag, new { @class = "iCheck-helper" })
+                    @Html.ValidationMessageFor(model => model.ActiveFlag, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.adminUser.Type, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.CheckBoxFor(model => model.ManagerFlag, new { @class = "iCheck-helper" })
+                    @Html.ValidationMessageFor(model => model.ManagerFlag, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="تعديل" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+        }
+
+        @if (ViewBag.alert != null)
+            {
+                Html.RenderPartial("~/Areas/FrameWork/Views/Shared/_alertMessage.cshtml", (alertMessageVM)ViewBag.alert);
+            }
+
+        <div>
+            @Html.ActionLink("العودة لصفحة المستخدمين", "Index", "AdminUser", new { area = "UserManagment" }, null)
+        </div>
+
+
+    </div>
+</div>

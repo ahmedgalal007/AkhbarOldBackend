@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>The source code</title>
+  <link href="../resources/prettify/prettify.css" type="text/css" rel="stylesheet" />
+  <script type="text/javascript" src="../resources/prettify/prettify.js"></script>
+  <style type="text/css">
+    .highlight { display: block; background-color: #ddd; }
+  </style>
+  <script type="text/javascript">
+    function highlight() {
+      document.getElementById(location.hash.replace(/#/, "")).className = "highlight";
+    }
+  </script>
+</head>
+<body onload="prettyPrint(); highlight();">
+  <pre class="prettyprint lang-js"><span id='global-property-'>/**
+</span> * @license Copyright (c) 2003-2017, CKSource - Frederico Knabben. All rights reserved.
+ * For licensing, see LICENSE.md or http://ckeditor.com/license
+ */
+
+CKEDITOR.plugins.setLang( &#39;specialchar&#39;, &#39;az&#39;, {
+	euro: &#39;Avropa valyuta işarəsi&#39;,
+	lsquo: &#39;Sol tək dırnaq işarəsi&#39;,
+	rsquo: &#39;Sağ tək dırnaq işarəsi&#39;,
+	ldquo: &#39;Sol cüt dırnaq işarəsi&#39;,
+	rdquo: &#39;Sağ cüt dırnaq işarəsi&#39;,
+	ndash: &#39;Çıxma işarəsi&#39;,
+	mdash: &#39;Tire&#39;,
+	iexcl: &#39;Çevrilmiş nida işarəsi&#39;,
+	cent: &#39;Sent işarəsi&#39;,
+	pound: &#39;Funt sterlinq işarəsi&#39;,
+	curren: &#39;Valyuta işarəsi&#39;,
+	yen: &#39;İena işarəsi&#39;,
+	brvbar: &#39;Sınmış zolaq&#39;,
+	sect: &#39;Paraqraf işarəsi&#39;,
+	uml: &#39;Umlyaut&#39;,
+	copy: &#39;Müəllif hüquqları haqqında işarəsi&#39;,
+	ordf: &#39;Qadın sıra indikatoru (a)&#39;,
+	laquo: &#39;Sola göstərən cüt bucaqlı dırnaq&#39;,
+	not: &#39;QEYRİ işarəsi&#39;,
+	reg: &#39;Qeyd olunmuş işarəsi&#39;,
+	macr: &#39;Makron&#39;,
+	deg: &#39;Dərəcə işarəsi&#39;,
+	sup2: &#39;Yuxarı indeks 2&#39;,
+	sup3: &#39;Yuxarı indeks 3&#39;,
+	acute: &#39;Vurğu işarəsi&#39;,
+	micro: &#39;Mikro işarəsi&#39;,
+	para: &#39;Abzas işarəsi&#39;,
+	middot: &#39;Orta nöqtə&#39;,
+	cedil: &#39;Tsedilla işarəsi&#39;,
+	sup1: &#39;Yuxarı indeks 1&#39;,
+	ordm: &#39;Kişi say indikatoru (o)&#39;,
+	raquo: &#39;Sağa göstərən cüt bucaqlı dırnaq&#39;,
+	frac14: &#39;Dörddə bir hissə kəsri&#39;,
+	frac12: &#39;Bir yarım kəsri&#39;,
+	frac34: &#39;Dörddə üç hissə kəsri&#39;,
+	iquest: &#39;Çevrilmiş sual işarəsi&#39;,
+	Agrave: &#39;Soldan vurğu ilə A&#39;,
+	Aacute: &#39;Vurğu ilə A&#39;,
+	Acirc: &#39;Dam işarəsi ilə A&#39;,
+	Atilde: &#39;Tilda işarəsi ilə A&#39;,
+	Auml: &#39;Umlyaut ilə A&#39;,
+	Aring: &#39;Dairəli A&#39;,
+	AElig: &#39;Æ hərfi&#39;,
+	Ccedil: &#39;Tsedilla ilə C&#39;,
+	Egrave: &#39;Soldan vurğu ilə E&#39;,
+	Eacute: &#39;Vurğu ilə E&#39;,
+	Ecirc: &#39;Dam işarəsi ilə E&#39;,
+	Euml: &#39;Umlyaut ilə E&#39;,
+	Igrave: &#39;Soldan vurğu ilə I&#39;,
+	Iacute: &#39;Vurğu ilə I&#39;,
+	Icirc: &#39;Dam işarəsi ilə I&#39;,
+	Iuml: &#39;Umlyaut ilə I&#39;,
+	ETH: &#39;Eth latin hərfi&#39;,
+	Ntilde: &#39;Tilda işarəsi ilə N&#39;,
+	Ograve: &#39;Soldan vurğu ilə O&#39;,
+	Oacute: &#39;Vurğu ilə O&#39;,
+	Ocirc: &#39;Dam işarəsi ilə E&#39;,
+	Otilde: &#39;Tilda işarəsi ilə O&#39;,
+	Ouml: &#39;Umlyaut ilə O&#39;,
+	times: &#39;Vurma işarəsi&#39;,
+	Oslash: &#39;Üstxəttli O&#39;,
+	Ugrave: &#39;Soldan vurğu ilə U&#39;,
+	Uacute: &#39;Vurğu ilə U&#39;,
+	Ucirc: &#39;Dam işarəsi ilə U&#39;,
+	Uuml: &#39;Umlyaut ilə U&#39;,
+	Yacute: &#39;Vurğu ilə Y&#39;,
+	THORN: &#39;Thorn hərfi&#39;,
+	szlig: &#39;İti s kiçik hərfi&#39;,
+	agrave: &#39;Soldan vurğu ilə a&#39;,
+	aacute: &#39;Vurğu ilə a&#39;,
+	acirc: &#39;Dam işarəsi ilə a&#39;,
+	atilde: &#39;Tilda işarəsi ilə a&#39;,
+	auml: &#39;Umlyaut ilə a&#39;,
+	aring: &#39;Dairəli a&#39;,
+	aelig: &#39;æ hərfi&#39;,
+	ccedil: &#39;ç hərfi&#39;,
+	egrave: &#39;Soldan vurğu ilə e&#39;,
+	eacute: &#39;Vurğu ilə e&#39;,
+	ecirc: &#39;Dam işarəsi ilə e&#39;,
+	euml: &#39;Umlyaut ilə e&#39;,
+	igrave: &#39;Soldan vurğu ilə i&#39;,
+	iacute: &#39;Vurğu ilə i&#39;,
+	icirc: &#39;Dam işarəsi ilə i&#39;,
+	iuml: &#39;Umlyaut ilə i&#39;,
+	eth: &#39;eth kiçik hərfi&#39;,
+	ntilde: &#39;Tilda işarəsi ilə n&#39;,
+	ograve: &#39;Soldan vurğu ilə o&#39;,
+	oacute: &#39;Vurğu ilə o&#39;,
+	ocirc: &#39;Dam işarəsi ilə o&#39;,
+	otilde: &#39;Tilda işarəsi ilə o&#39;,
+	ouml: &#39;Umlyaut ilə o&#39;,
+	divide: &#39;Bölünmə işarəsi&#39;,
+	oslash: &#39;Üstxəttli o&#39;,
+	ugrave: &#39;Soldan vurğu ilə u&#39;,
+	uacute: &#39;Vurğu ilə u&#39;,
+	ucirc: &#39;Dam işarəsi ilə u&#39;,
+	uuml: &#39;Umlyaut ilə u&#39;,
+	yacute: &#39;Vurğu ilə y&#39;,
+	thorn: &#39;Thorn kiçik hərfi&#39;,
+	yuml: &#39;Umlyaut ilə y&#39;,
+	OElig: &#39;OE ligaturası&#39;,
+	oelig: &#39;oe ligaturası&#39;,
+	&#39;372&#39;: &#39;Dam işarəsi ilə W&#39;,
+	&#39;374&#39;: &#39;Dam işarəsi ilə Y&#39;,
+	&#39;373&#39;: &#39;Dam işarəsi ilə w&#39;,
+	&#39;375&#39;: &#39;Dam işarəsi ilə y&#39;,
+	sbquo: &#39;Aşağı dırnaq&#39;,
+	&#39;8219&#39;: &#39;Tək yuxarı çevrilmiş dırnaq&#39;,
+	bdquo: &#39;Aşağı cütlü dırnaqlar&#39;,
+	hellip: &#39;Üfüqi ellips&#39;,
+	trade: &#39;Əmtəə nişanı&#39;,
+	&#39;9658&#39;: &#39;Sağa göstərici&#39;,
+	bull: &#39;Marker&#39;,
+	rarr: &#39;Sağa istiqamətləndirən ox&#39;,
+	rArr: &#39;Sağa istiqamətləndirən cütlü ox&#39;,
+	hArr: &#39;Hərtərəfli ox&#39;,
+	diams: &#39;Qara kərpic&#39;,
+	asymp: &#39;Təxmini barabər&#39;
+} );
+</pre>
+</body>
+</html>

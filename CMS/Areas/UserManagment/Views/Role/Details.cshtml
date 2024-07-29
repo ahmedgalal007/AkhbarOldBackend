@@ -1,0 +1,45 @@
+﻿@model CMS.Areas.UserManagment.Models.RoleVM
+@using CMS.Areas.FrameWork.Controllers
+@{
+    ViewBag.Title = "تفاصيل المجموعة";
+}
+
+
+    <div class="panel panel-default" id="@Model.RelatedTarget">
+        <div class="panel-heading">
+            <i class="fa fa-external-link-square"></i>
+            تفاصيل المجموعة
+            <div class="panel-tools">
+                <a class="btn btn-xs btn-link panel-collapse collapses " href="#">
+                </a>
+                @*<a class="btn btn-xs btn-link panel-refresh" href="#">
+                        <i class="fa fa-refresh"></i>
+                    </a>*@
+                @*<a class="btn btn-xs btn-link panel-expand" href="#">
+                        <i class="fa fa-resize-full"></i>
+                    </a>*@
+
+            </div>
+        </div>
+        <div class="panel-body">
+            <div class="form-horizontal">
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Role.RoleName, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.DisplayFor(model => model.Role.RoleName, new { htmlAttributes = new { @class = "form-control" } })
+                    </div>
+                </div>
+
+
+            </div>
+
+            <div>
+                @Html.ActionLink("العودة لصفحة المجموعات", "Index", "Role", new { area = "UserManagment" }, null)
+            </div>
+
+</div>
+
+
+        </div>
+      

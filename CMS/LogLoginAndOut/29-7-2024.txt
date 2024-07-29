@@ -1,0 +1,14 @@
+User Machine Name: - UserIP:::1 - User operating system:Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36 - RemoteIP:::1 - Mac/Physical-Address:509A4CB3A4D0 - UserId:2  - Name:مدير النظام //  Has Logged in at: 12:28:53 ص
+----------------------------------------------------------
+User Machine Name: - UserIP:::1 - User operating system:Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36 - RemoteIP:::1 - Mac/Physical-Address:509A4CB3A4D0 - UserId:2  - Name:مدير النظام //  Has Logged in at: 12:46:24 ص
+----------------------------------------------------------
+User Machine Name:Admin - UserIP:::1 - User operating system:Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36 - RemoteIP:::1 - Mac/Physical-Address:509A4CB3A4D0 - UserId:563  - Name:Ahmed Galal Mohamed //  Has Logged in at: 12:50:37 ص
+----------------------------------------------------------
+User Machine Name: - UserIP:::1 - User operating system:Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36 - RemoteIP:::1 - Mac/Physical-Address:509A4CB3A4D0 - UserId:563  - Name:Ahmed Galal Mohamed //  Has Logged in at: 12:53:09 ص
+----------------------------------------------------------
+User Machine Name:Ahmed.Galal - UserIP:::1 - User operating system:Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36 - RemoteIP:::1 - Mac/Physical-Address:509A4CB3A4D0 - UserId:563  - Name:Ahmed Galal Mohamed //  Has Logged Off at: 12:53:35 ص
+----------------------------------------------------------
+User Machine Name: - UserIP:::1 - User operating system:Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36 - RemoteIP:::1 - Mac/Physical-Address:509A4CB3A4D0 - UserId:2  - Name:مدير النظام //  Has Logged in at: 12:53:44 ص
+----------------------------------------------------------
+User Machine Name: - UserIP:::1 - User operating system:Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36 - RemoteIP:::1 - Mac/Physical-Address:509A4CB3A4D0 - UserId:2  - Name:مدير النظام //  Has Logged in at: 12:58:22 ص
+----------------------------------------------------------

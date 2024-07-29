@@ -1,0 +1,135 @@
+﻿@model CMS.Areas.CoreHandler.Models.BlocksVM
+@using CMS.Areas.FrameWork.Controllers
+@using CMS.Areas.FrameWork.ViewModels
+
+@{
+    ViewBag.Title = "تغيير المحتوي الإعلانى";
+}
+
+    @*/* HTML Editor Script */*@
+    <script src="~/assets/plugins/ckeditor_sdk/vendor/ckeditor/ckeditor.js"></script>
+
+    @*Datetime Picker Script*@
+    <script>
+        $(function () {
+            $("#NewsBlocks_FromDate").datepicker({
+                timepicker: false,
+                minDate: new Date(),
+                dateFormat: 'dd/mm/yy'
+            });
+            $("#NewsBlocks_ToDate").datepicker({
+                timepicker: false,
+                minDate: new Date(),
+                dateFormat: 'dd/mm/yy'
+            });
+        });
+    </script>
+
+<div class="panel panel-default" id="@Model.RelatedTarget">
+    <div class="panel-heading">
+        <i class="fa fa-external-link-square"></i>
+        تغيير المحتوي الإعلانى
+        <div class="panel-tools">
+            <a class="btn btn-xs btn-link panel-collapse collapses" href="#">
+            </a>
+            @*<a class="btn btn-xs btn-link panel-config" href="#panel-config" data-toggle="modal">
+                    <i class="fa fa-wrench"></i>
+                </a>*@
+            <a class="btn btn-xs btn-link panel-refresh" href="#">
+                <i class="fa fa-refresh"></i>
+            </a>
+            <a class="btn btn-xs btn-link panel-expand" href="#">
+                <i class="fa fa-resize-full"></i>
+            </a>
+            <a class="btn btn-xs btn-link panel-close" href="#">
+                <i class="fa fa-times"></i>
+            </a>
+        </div>
+    </div>
+    <div class="panel-body">
+
+
+
+        @Html.AntiForgeryToken()
+
+
+        <div class="form-horizontal">
+
+            @using (Html.BeginForm("SaveBlockAds", "Blocks", new { area = "CoreHandler" }, FormMethod.Post))
+            {
+
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                if (Model.NewsBlocks != null)
+                {
+                    @Html.HiddenFor(model => model.NewsBlocks.BlockID)
+                    @Html.HiddenFor(model => model.NewsBlocks.ZoneID)
+                    @Html.HiddenFor(model => model.NewsBlocks.JournalID)
+                }
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.NewsBlocks.BlockName, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.NewsBlocks.BlockName, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.NewsBlocks.BlockName, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-md-2">محتوي المساحة الاعلانية</label>
+                    <div class="col-md-10">
+                        @Html.TextAreaFor(model => model.NewsBlocks.BlockText, new { id = "AdsEditor", name = "AdsEditor", @class = "form-control" })
+                        @*<textarea cols="100" id="AdsEditor" name="AdsEditor" rows="10"></textarea>*@
+                        <script>
+                            CKEDITOR.replace('AdsEditor', {
+                                extraPlugins: 'bidi,panelbutton,colorbutton,justify',
+                                // Setting default language direction to right-to-left.
+                                contentsLangDirection: 'rtl',
+                                height: 270,
+                                htmlEncodeOutput: false,
+                                filebrowserImageUploadUrl: '/CoreHandler/Blocks/UploadImage',
+                                filebrowserUploadUrl: '/CoreHandler/Blocks/UploadFiles'
+
+                            });
+                        </script>
+
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.NewsBlocks.FromDate, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.NewsBlocks.FromDate, new { @class = "form-control", @readonly = "readonly" })
+                        @Html.ValidationMessageFor(model => model.NewsBlocks.FromDate, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.NewsBlocks.ToDate, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.NewsBlocks.ToDate, new { @class = "form-control", @readonly = "readonly" })
+                        @Html.ValidationMessageFor(model => model.NewsBlocks.ToDate, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="تعديل" class="btn btn-default" />
+                    </div>
+                </div>
+            }
+
+            @if (ViewBag.alert != null)
+            {
+                Html.RenderPartial("~/Areas/FrameWork/Views/Shared/_alertMessage.cshtml", (alertMessageVM)ViewBag.alert);
+            }
+
+            <div>
+                @Html.ActionLink("العودة لصفحة المساحات الإعلانية", "Index", "Blocks", new { area = "CoreHandler" }, null)
+            </div>
+
+        </div>
+
+
+    </div>
+</div>

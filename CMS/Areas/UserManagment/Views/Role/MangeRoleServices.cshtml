@@ -1,0 +1,105 @@
+﻿@model CMS.Areas.UserManagment.Models.RoleVM
+@using CMS.Areas.FrameWork.Controllers
+
+@{
+    ViewBag.Title = "خدمات المجموعة";
+}
+
+<div class="panel panel-default" id="RoleServicesDiv">
+    <div class="panel-heading">
+        <i class="fa fa-external-link-square"></i>
+        خدمات المجموعة  : @Model.Role.RoleName
+        <div class="panel-tools">
+            <a class="btn btn-xs btn-link panel-collapse collapses" href="#">
+            </a>
+            @*<a class="btn btn-xs btn-link panel-config" href="#panel-config" data-toggle="modal">
+                    <i class="fa fa-wrench"></i>
+                </a>*@
+            <a class="btn btn-xs btn-link panel-refresh" href="#">
+                <i class="fa fa-refresh"></i>
+            </a>
+            <a class="btn btn-xs btn-link panel-expand" href="#">
+                <i class="fa fa-resize-full"></i>
+            </a>
+            <a class="btn btn-xs btn-link panel-close" href="#">
+                <i class="fa fa-times"></i>
+            </a>
+        </div>
+    </div>
+    <div class="panel-body">
+        <div>
+
+            @using (Ajax.BeginForm("AddToServices", "Role", "UserManagment", new AjaxOptions { InsertionMode = InsertionMode.ReplaceWith, HttpMethod = "POST", UpdateTargetId = "RoleServicesDiv" }, null))
+            {
+
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true)
+                @Html.HiddenFor(m => m.Role.NewID)
+                @Html.HiddenFor(m => m.Role.RoleName)
+              
+
+                <div style="width:60%;">
+                    <div style="width:30%;float:right;padding-left:10px;padding-bottom:5px;">
+                        @Html.DropDownListFor(model => model.RoleService.ServiceId, new SelectList(ViewBag.serviceID, "Value", "Text", 1), new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.RoleService.ServiceId)
+                    </div>
+                    <div>
+                        <input type="submit" value="إضافة" class="btn btn-primary" />
+                    </div>
+                </div>
+            }
+        </div>
+
+        <table class="table table-striped table-bordered table-hover table-full-width dataTable no-footer">
+            <tr>
+                <th>
+                    المجموعة
+                </th>
+                <th>
+                    الخدمة
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model.roleServiceLst)
+            {
+                if (@item.Service.ServiceHide == false)
+                {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Role.RoleName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Service.ServiceName)
+                    </td>
+                    <td>
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-purple"><i class="fa fa-wrench"></i></button>
+                            <button data-toggle="dropdown" class="btn btn-purple dropdown-toggle"><span class="caret"></span></button>
+                            <ul class="dropdown-menu" role="menu">
+
+                                <li>
+                                    @Ajax.CustomAjaxActionLink("حذف", "UserManagment", "Role", "DeleteFromServices",
+                        new RouteValueDictionary { { "vm.UserRole.ID", item.RoleId.ToString() },{ "vm.Role.NewID", Model.Role.NewID.ToString() },
+                                      { "vm.Role.RoleName", Model.Role.RoleName.ToString() },
+                                        { "vm.RoleService.ServiceId", item.ServiceId.ToString() } },
+                        new AjaxOptions { InsertionMode = InsertionMode.ReplaceWith, HttpMethod = "POST", UpdateTargetId = "RoleServicesDiv" }
+                        , new Dictionary<string, object> { { "class", "fa fa-trash-o" } })
+
+
+                                </li>
+
+                            </ul>
+                        </div>
+                    </td>
+                </tr>
+                }
+            }
+
+        </table>
+
+    </div>
+    <div>
+        @Html.ActionLink("العودة لصفحة المجموعات", "Index", "Role", new { area = "UserManagment" }, null)
+    </div>
+</div>

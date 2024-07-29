@@ -1,0 +1,66 @@
+﻿@model CMS.Areas.CoreHandler.Models.EditorsVM
+@using CMS.Areas.FrameWork.Controllers
+@{
+    ViewBag.Title = "تفاصيل الكاتب";
+}
+
+
+    <div class="panel panel-default" id="@Model.RelatedTarget">
+        <div class="panel-heading">
+            <i class="fa fa-external-link-square"></i>
+            تفاصيل الكاتب
+            <div class="panel-tools">
+                <a class="btn btn-xs btn-link panel-collapse collapses " href="#">
+                </a>
+                @*<a class="btn btn-xs btn-link panel-refresh" href="#">
+                        <i class="fa fa-refresh"></i>
+                    </a>*@
+                @*<a class="btn btn-xs btn-link panel-expand" href="#">
+                        <i class="fa fa-resize-full"></i>
+                    </a>*@
+
+            </div>
+        </div>
+        <div class="panel-body">
+            <div class="form-horizontal">
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.editor.EditorName, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.DisplayFor(model => model.editor.EditorName, new { htmlAttributes = new { @class = "form-control" } })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.editor.picture, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        <img class="img-rounded" width="150" height="150" src="@Model.editor.picture" />
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.editor.Section.SecTitle, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.DisplayFor(model => model.editor.Section.SecTitle)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.editor.ArticleName, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.DisplayFor(model => model.editor.ArticleName, new { htmlAttributes = new { @class = "form-control" } })
+                    </div>
+                </div>
+
+            </div>
+
+            <div>
+                @Html.ActionLink("العودة لصفحة الكتاب", "Index", "Editors", new { area = "CoreHandler" }, null)
+            </div>
+
+</div>
+
+
+        </div>
+      

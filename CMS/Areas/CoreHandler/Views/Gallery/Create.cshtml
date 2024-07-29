@@ -1,0 +1,171 @@
+﻿@model CMS.Areas.CoreHandler.Models.GalleryVM
+@using CMS.Areas.FrameWork.Controllers
+@{
+    ViewBag.Title = "إضافة الالبوم";
+}
+
+
+<div class="panel panel-default" id="@Model.RelatedTarget">
+
+    @Scripts.Render("~/assets/plugins/dropzone/downloads/dropzone.js")
+    @Styles.Render("~/assets/plugins/dropzone/downloads/css/dropzone.css")
+
+
+
+    <div class="panel-heading">
+        <i class="fa fa-external-link-square"></i>
+        إضافة الالبوم
+        <div class="panel-tools">
+            <a class="btn btn-xs btn-link panel-collapse collapses " href="#">
+            </a>
+            @*<a class="btn btn-xs btn-link panel-refresh" href="#">
+                    <i class="fa fa-refresh"></i>
+                </a>*@
+            @*<a class="btn btn-xs btn-link panel-expand" href="#">
+                    <i class="fa fa-resize-full"></i>
+                </a>*@
+
+        </div>
+    </div>
+    <div class="panel-body">
+        <div class="form-horizontal">
+
+            @using (Html.BeginForm("Create", "Gallery", new { area = "CoreHandler" }, FormMethod.Post, new { @id = "my-awesome-dropzone", @class = "dropzone", @enctype = "multipart/form-data" }))
+            {
+
+                @Html.AntiForgeryToken()
+
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                <div class="form-group" style="text-align:center;">
+                    <button type="submit" id="submit-all" class="btn btn-primary">إضافة</button>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Gallery.GalleryType, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-sm-9">
+                        @Html.DropDownListFor(model => model.Gallery.GalleryType, new SelectList(ViewBag.GalleryTypes, "Text", "Text"), new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.Gallery.GalleryType)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Gallery.Title, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-sm-9">
+                        @Html.EditorFor(model => model.Gallery.Title, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.Gallery.Title, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Gallery.Description, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-sm-9">
+                            @Html.TextAreaFor(model => model.Gallery.Description, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.Gallery.Description, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-md-2">الكلمات الدالة للالبوم</label>
+                        <div class="col-sm-9">
+                            @Html.EditorFor(model => model.Gallery.Keywords, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.Gallery.Keywords, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label class="control-label col-md-2">عناوين الصور</label>
+                        <div class="col-md-9">
+                            @Html.EditorFor(model => model.GalleryPicture.NewsPicture.PicCaption, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.GalleryPicture.NewsPicture.PicCaption, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-md-2">الكلمات الدالة للصور</label>
+                            <div class="col-md-9">
+                                @Html.EditorFor(model => model.GalleryPicture.NewsPicture.KeyWords, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.GalleryPicture.NewsPicture.KeyWords, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-md-2"> العلامة المائية</label>
+                            <div class="col-md-10">
+                                @Html.CheckBoxFor(model => model.waterMarkFlag, new { @class = "iCheck-helper" })
+                                @Html.ValidationMessageFor(model => model.waterMarkFlag, "", new { @class = "text-danger" })
+                                @Html.HiddenFor(model => model.waterMarkFlag)
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Gallery.IsHome, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-sm-9">
+                                @Html.CheckBoxFor(model => model.HomePageFlag, new { @class = "iCheck-helper" })
+                                @Html.ValidationMessageFor(model => model.HomePageFlag, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+
+                        <script>
+                            Dropzone.options.myAwesomeDropzone = {
+                               
+                                // The setting up of the dropzone
+                                init: function () {
+                                    var myDropzone = this;
+
+                                    // Here's the change from enyo's tutorial...
+
+                                    $("#submit-all").click(function (e) {
+                                        e.preventDefault();
+                                        e.stopPropagation();
+                                        myDropzone.processQueue();
+
+                                        this.on("error", function (file, response) {
+                                            // do stuff here.
+                                            alert("can't save image.");
+
+                                        });
+
+                                        //myDropzone.on("queuecomplete", function (file) {
+                                        //    // Called when all files in the queue finish uploading.
+                                        //    window.location = "{{ url_for('/CoreHandler/Gallery/Index.cshtml') }}";
+                                        //});
+
+                                    })
+                                }
+                            }
+    
+                        </script>
+
+                        <div class="fallback" style="margin-top:200px;">
+                            <!-- this is the fallback if JS isn't working -->
+                            <input name="file" type="file" multiple />
+                        </div>
+
+
+
+
+
+                        @*<div class="form-group">
+                                <div class="col-md-offset-2 col-md-10">
+                                    <input type="submit" value="إنشاء" class="btn btn-default" />
+                                </div>
+                            </div>*@
+
+            }
+
+            <div>
+                @Html.ActionLink("العودة لصفحة الالبومات", "Index", "Gallery", new { area = "CoreHandler" }, null)
+            </div>
+
+
+        </div>
+
+
+
+    </div>
+
+
+</div>

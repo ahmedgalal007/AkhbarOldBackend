@@ -1,0 +1,66 @@
+﻿
+@Scripts.Render("~/bundles/Jcrop")
+
+@Styles.Render("~/content/JcropStyle")
+
+    <!-- start: PAGE CONTENT -->
+    <div class="row">
+        <div class="col-sm-12">
+            <!-- start: DROPZONE PANEL -->
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <i class="fa fa-external-link-square"></i> Dropzone File Upload
+                    <div class="panel-tools">
+                        <a class="btn btn-xs btn-link panel-collapse collapses" href="#">
+                        </a>
+                        <a class="btn btn-xs btn-link panel-config" href="#panel-config" data-toggle="modal">
+                            <i class="fa fa-wrench"></i>
+                        </a>
+                        <a class="btn btn-xs btn-link panel-refresh" href="#">
+                            <i class="fa fa-refresh"></i>
+                        </a>
+                        <a class="btn btn-xs btn-link panel-expand" href="#">
+                            <i class="fa fa-resize-full"></i>
+                        </a>
+                        <a class="btn btn-xs btn-link panel-close" href="#">
+                            <i class="fa fa-times"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <script type="text/javascript">
+                      function cropImage() {
+            $.ajax({
+                url: '/Gallery/CropFile',
+                type: 'POST',
+               
+                success: function (data) {
+                    $("#cropme").attr("img").attr("src", data.photoPath + "?t=" + new Date().getTime())
+                        .show();
+                },
+                error: function (data) { }
+            });
+        }
+
+                    
+                 </script>
+
+                        <div class="simple-cropper-images">
+                            <h1>Simple Cropper</h1>
+                            <div class="cropme" style="width:200px; height: 200px;"></div>
+                            <div class="clear"></div>
+                            <button type="submit" onclick="cropImage();">Save</button>
+                            <script>
+        // Init Simple Cropper
+        $('.cropme').simpleCropper();
+                            </script>
+
+                        </div>
+
+
+                </div>
+            </div>
+            <!-- end: DROPZONE PANEL -->
+        </div>
+    </div>
+    <!-- end: PAGE CONTENT-->

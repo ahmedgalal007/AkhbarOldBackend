@@ -1,0 +1,87 @@
+﻿@model CMS.Areas.CoreHandler.Models.ProfileVM
+
+@{
+    ViewBag.Title = "حذف الملف";
+}
+
+
+<div class="panel panel-default" id="@Model.RelatedTarget">
+    <div class="panel-heading">
+        <i class="fa fa-external-link-square"></i>
+        حذف الملف
+        <div class="panel-tools">
+            <a class="btn btn-xs btn-link panel-collapse collapses " href="#">
+            </a>
+            @*<a class="btn btn-xs btn-link panel-refresh" href="#">
+                    <i class="fa fa-refresh"></i>
+                </a>*@
+            @*<a class="btn btn-xs btn-link panel-expand" href="#">
+                    <i class="fa fa-resize-full"></i>
+                </a>*@
+
+        </div>
+    </div>
+    <div class="panel-body">
+        <div class="form-horizontal">
+
+            @using (Html.BeginForm("Delete", "Profile", new { area = "CoreHandler", MProfileID = Model.Profile.ProfileId }, FormMethod.Post))
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="form-group">
+                    <label class="control-label col-md-2">عنوان الملف</label>
+                    <div class="col-md-10">
+                        @Html.DisplayFor(model => model.Profile.ProfName)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-md-2 control-label">صورة الملف</label>
+
+                    <div class="col-md-10">
+                        <img class="img-rounded" width="400" height="200" src="@ViewBag.RProfileImgPath/@Model.Profile.MainPictureName" />
+                    </div>
+                </div>
+
+                
+                <div class="form-group">
+                    <label class="control-label col-md-2">الكلمات الدالة</label>
+                    <div class="col-md-10">
+                        @Html.DisplayFor(model => model.Profile.Keyword)
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-2">وصف الملف</label>
+                    <div class="col-md-10">
+                        @Html.DisplayFor(model => model.Profile.Description)
+                    </div>
+                </div>
+
+                <div class="form-group ">
+                    <label class="control-label col-md-2"> إخفاء الملف</label>
+                    <div class="col-md-10">
+                        @Html.CheckBoxFor(model => model.SHide, new { @class = "iCheck-helper", @disabled = "disabled" })
+                    </div>
+                </div>
+
+
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="حذف" class="btn btn-default" />
+                    </div>
+                </div>
+
+
+            }
+
+            <div>
+
+                @Html.ActionLink("العودة لصفحة الملفات", "Index", "Profile", new { area = "CoreHandler" }, null)
+            </div>
+
+        </div>
+    </div>
+
+</div>
+

@@ -1,0 +1,61 @@
+﻿@model CMS.Areas.CoreHandler.Models.IssuesVM
+
+@{
+    ViewBag.Title = "حذف العدد";
+}
+
+
+    <div class="panel panel-default" id="@Model.RelatedTarget">
+        <div class="panel-heading">
+            <i class="fa fa-external-link-square"></i>
+            حذف العدد
+            <div class="panel-tools">
+                <a class="btn btn-xs btn-link panel-collapse collapses " href="#">
+                </a>
+                @*<a class="btn btn-xs btn-link panel-refresh" href="#">
+                        <i class="fa fa-refresh"></i>
+                    </a>*@
+                @*<a class="btn btn-xs btn-link panel-expand" href="#">
+                        <i class="fa fa-resize-full"></i>
+                    </a>*@
+
+            </div>
+        </div>
+        <div class="panel-body">
+            <div class="form-horizontal">
+
+                @using (Html.BeginForm("Delete", "Issues", new { area = "CoreHandler", MIssue = Model.issue.IssueID }, FormMethod.Post))
+                {
+                    @Html.AntiForgeryToken()
+
+                    <div class="form-group">
+                        <label class="control-label col-md-2">عنوان العدد</label>
+                        <div class="col-md-10">
+                            @Html.DisplayFor(model => model.issue.IssueTitle)
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-2">تاريخ العدد</label>
+                        <div class="col-md-10">
+                            @Html.DisplayFor(model => model.issue.IssueDate)
+                        </div>
+                    </div>
+                   
+                     <div class="form-group">
+                            <div class="col-md-offset-2 col-md-10">
+                                <input type="submit" value="حذف" class="btn btn-default" />
+                            </div>
+                        </div>
+
+
+                }
+
+                <div>
+
+                    @Html.ActionLink("العودة لصفحة الاعداد", "Index", "Issues", new { area = "CoreHandler" }, null)
+                </div>
+
+            </div>
+        </div>
+
+    </div>

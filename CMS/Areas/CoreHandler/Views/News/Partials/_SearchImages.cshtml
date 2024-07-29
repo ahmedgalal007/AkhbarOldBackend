@@ -1,0 +1,43 @@
+﻿@using CMS.Areas.FrameWork.Controllers
+
+<table class="table table-striped table-bordered table-hover table-full-width dataTable no-footer">
+    <tr>
+        <th>
+            الصورة
+        </th>
+
+        <th></th>
+
+    </tr>
+    @{
+        if (Model.SearchedImages != null)
+        {
+            foreach (var item in Model.SearchedImages)
+            {
+                <tr>
+                    <td>
+
+                        <img class="img-rounded" width="50" height="50" src="@ViewBag.RSmallImgPath/@item.PictureName" />
+
+                    </td>
+
+                    <td>
+                        @Ajax.CustomAjaxActionLink(" اختيار ", "CoreHandler", "News", "SetAsNewsPhoto",
+                       new RouteValueDictionary { { "PicID", item.PictureID.ToString() } , { "PicName", item.PictureName } }
+                      , new AjaxOptions
+                      {
+                          InsertionMode = InsertionMode.Replace,
+                          UpdateTargetId = "TargetImgDiv",
+                          OnComplete = "onAjaxComplete",
+                          OnSuccess = "CloseModal"
+                      }
+                      , new Dictionary<string, object> { { "class", "fa fa-upload" } })
+                     </td>
+                </tr>
+            }
+        }
+    }
+
+</table>
+
+

@@ -1,0 +1,133 @@
+﻿@model CMS.Areas.CoreHandler.Models.NewsVM
+@using CMS.Areas.FrameWork.Controllers
+@using CMS.Areas.FrameWork.ViewModels
+@using PagedList.Mvc
+@{
+    ViewBag.Title = " الاخبار المنشورة";
+}
+<!-- start: PAGE CONTENT -->
+
+<div class="panel panel-default" id="@Model.RelatedTarget">
+    <div class="panel-heading">
+        <i class="fa fa-external-link-square"></i>
+         الاخبار المنشورة
+        <div class="panel-tools">
+            <a class="btn btn-xs btn-link panel-collapse collapses" href="#">
+            </a>
+            @*<a class="btn btn-xs btn-link panel-config" href="#panel-config" data-toggle="modal">
+                    <i class="fa fa-wrench"></i>
+                </a>*@
+            <a class="btn btn-xs btn-link panel-refresh" href="#">
+                <i class="fa fa-refresh"></i>
+            </a>
+            <a class="btn btn-xs btn-link panel-expand" href="#">
+                <i class="fa fa-resize-full"></i>
+            </a>
+            <a class="btn btn-xs btn-link panel-close" href="#">
+                <i class="fa fa-times"></i>
+            </a>
+        </div>
+    </div>
+    <div class="panel-body">
+        <div>
+            @using (Html.BeginForm("PublishedIndex", "News", new { area = "CoreHandler" }, FormMethod.Get))
+            {
+                <div style="width:70%;">
+                    <div style="float:right; margin-bottom:5px;">
+                        @Html.EditorFor(model => model.SearchString)
+                    </div>
+                    <div style="float:right; margin-bottom:5px;margin-right:10px;">
+                        @Html.DropDownListFor(model => model.SecSearch, new SelectList(ViewBag.Sec_ID, "Value", "Text"), new { @class = "form-control" })
+                    </div>
+
+                    <div style="float:left;width:20%;">
+                        <input type="submit" value="بحث" />
+                    </div>
+                </div>
+            }
+           
+        <table class="table table-striped table-bordered table-hover table-full-width dataTable no-footer">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.News.Title)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.News.MainSection.SecTitle)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.News.PublishDate)
+                </th>
+                <th>الديسك</th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model.lst)
+            {
+                <tr>
+                    <td>
+                        <a target="_blank" href="http://akhbarelyom.com/news/NewDetails/@item.NewID/1/@(CMS.Areas.FrameWork.Controllers.BaseController.GetPureURL(item.Title))">
+                            @item.Title  (عدد المشاهدات : @item.Views)
+                        </a>
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.MainSection.SecTitle)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PublishDate)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.AdminUser_DeskUser.FullName)
+                    </td>
+
+                    <td>
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-purple"><i class="fa fa-wrench"></i></button>
+                            <button data-toggle="dropdown" class="btn btn-purple dropdown-toggle"><span class="caret"></span></button>
+                            <ul class="dropdown-menu" role="menu">
+                                @if (item.PublishDate != null)
+                                {
+                                    if (!(item.PublishDate.Value.AddHours(24) <= DateTime.Now))
+                                    {
+                                        <li>
+                                            @Html.ActionLink("تعديل", "EditPublishedNews", "News", new { area = "CoreHandler", MNewsID = item.NewID }, new { @class = "fa fa-pencil" })
+                                        </li>
+                                    }
+                                }
+                                else
+                                {
+                                    <li>
+                                        @Html.ActionLink("تعديل", "EditPublishedNews", "News", new { area = "CoreHandler", MNewsID = item.NewID }, new { @class = "fa fa-pencil" })
+                                    </li>
+
+                                }
+                                <li>
+                                    @Html.ActionLink("اصدارات الخبر", "NewsVersions", "News", new { area = "CoreHandler", MNewsID = item.NewID, CallerScreen = "NewsHandler" }, new { @class = "fa fa-reply-all" })
+                                </li>
+                            </ul>
+
+                        </div>
+
+                    </td>
+                </tr>
+            }
+            @if (ViewBag.alert != null)
+            {
+                Html.RenderPartial("~/Areas/FrameWork/Views/Shared/_alertMessage.cshtml", (alertMessageVM)ViewBag.alert);
+            }
+        </table>
+        <div style="text-align:center;">
+            @* from extension method in CustomHTML Class *@
+            @*Page @(Model.lst.PageCount < Model.lst.PageNumber ? 0 : Model.lst.PageNumber) of @Model.lst.PageCount*@
+            @Html.PagedListPager(Model.lst, page => Url.Action("PublishedIndex", new { page, searchStr = Model.SearchString, SecId = Model.SecSearch }))
+
+
+
+
+        </div>
+    </div>
+</div>
+</div>
+
+<!-- end: PAGE CONTENT-->
+  

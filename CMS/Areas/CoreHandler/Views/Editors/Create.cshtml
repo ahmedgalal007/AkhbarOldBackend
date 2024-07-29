@@ -1,0 +1,134 @@
+﻿@model CMS.Areas.CoreHandler.Models.EditorsVM
+@using CMS.Areas.FrameWork.Controllers
+
+@{
+    ViewBag.Title = "كاتب جديد";
+}
+
+@section HeadScript{
+
+<style type="text/css">
+        #dvPreview {
+            
+            display: none;
+        }
+    </style>
+
+@Scripts.Render("/scripts/jquery.min.js")
+
+<script language="javascript" type="text/javascript">
+$(function () {
+    $("#Editor_Image").change(function () {
+        $("#dvPreview").html("");
+       
+            if ($.browser.msie && parseFloat(jQuery.browser.version) <= 9.0) {
+                $("#dvPreview").show();
+                $("#dvPreview")[0].filters.item("DXImageTransform.Microsoft.AlphaImageLoader").src = $(this).val();
+            }
+            else {
+                if (typeof (FileReader) != "undefined") {
+                    $("#dvPreview").show();
+                    $("#dvPreview").append("<img />");
+                    var reader = new FileReader();
+                    reader.onload = function (e) {
+                        $("#dvPreview img").attr("src", e.target.result);
+                        $("#dvPreview img").attr("class", "img-rounded");
+                        $("#dvPreview img").attr("width", "150");
+                        $("#dvPreview img").attr("height", "150");
+                    }
+                    reader.readAsDataURL($(this)[0].files[0]);
+                } else {
+                    alert("هذا المتصفح لا يدعم تحميل الملفات");
+                }
+            }
+       
+    });
+});
+</script>
+
+    }
+
+    <div class="panel panel-default" id="@Model.RelatedTarget" >
+        <div class="panel-heading">
+            <i class="fa fa-external-link-square"></i>
+            إضافة كاتب
+            <div class="panel-tools">
+                <a class="btn btn-xs btn-link panel-collapse collapses" href="#">
+                </a>
+                @*<a class="btn btn-xs btn-link panel-config" href="#panel-config" data-toggle="modal">
+                <i class="fa fa-wrench"></i>
+            </a>*@
+                <a class="btn btn-xs btn-link panel-refresh" href="#">
+                    <i class="fa fa-refresh"></i>
+                </a>
+                <a class="btn btn-xs btn-link panel-expand" href="#">
+                    <i class="fa fa-resize-full"></i>
+                </a>
+                <a class="btn btn-xs btn-link panel-close" href="#">
+                    <i class="fa fa-times"></i>
+                </a>
+            </div>
+        </div>
+        <div class="panel-body">
+            <div class="form-horizontal">
+
+                @using (Html.BeginForm("Create", "Editors", new { area = "CoreHandler" }, FormMethod.Post, new { enctype = "multipart/form-data" }))
+                {
+                    @Html.AntiForgeryToken()
+
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.editor.EditorName, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.editor.EditorName, new { @class = "form-control" } )
+                            @Html.ValidationMessageFor(model => model.editor.EditorName, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.editor.picture, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                <input type="file" id="Editor_Image" name="Editor_Image" class="file-input file-input-new" />
+                                @Html.HiddenFor(model => model.editor.picture)
+                                @Html.ValidationMessageFor(model => model.editor.picture, "", new { @class = "text-danger" })
+                                <div class="col-md-10">
+                                    <div id="dvPreview" class="img-rounded">
+                                        </div>
+                                    </div>
+ 
+
+                            </div>
+                        </div>
+          
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.editor.SectionID, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.DropDownListFor(model => model.editor.SectionID, new SelectList(ViewBag.Sec_ID, "Value", "Text"), new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.editor.SectionID)
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.editor.ArticleName, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.editor.ArticleName,new { @class = "form-control"  })
+                                @Html.ValidationMessageFor(model => model.editor.ArticleName, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-10">
+                                <input type="submit" value="إنشاء" class="btn btn-default" />
+                            </div>
+                        </div>
+                }
+
+                <div>
+                    @Html.ActionLink("العودة لصفحة الكتاب", "Index", "Editors", new { area = "CoreHandler" }, null)
+                </div>
+
+             </div>
+        </div>
+    </div>

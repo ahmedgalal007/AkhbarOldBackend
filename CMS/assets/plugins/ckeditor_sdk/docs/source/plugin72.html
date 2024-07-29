@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>The source code</title>
+  <link href="../resources/prettify/prettify.css" type="text/css" rel="stylesheet" />
+  <script type="text/javascript" src="../resources/prettify/prettify.js"></script>
+  <style type="text/css">
+    .highlight { display: block; background-color: #ddd; }
+  </style>
+  <script type="text/javascript">
+    function highlight() {
+      document.getElementById(location.hash.replace(/#/, "")).className = "highlight";
+    }
+  </script>
+</head>
+<body onload="prettyPrint(); highlight();">
+  <pre class="prettyprint lang-js"><span id='global-property-'>/**
+</span> * @license Copyright (c) 2003-2017, CKSource - Frederico Knabben. All rights reserved.
+ * For licensing, see LICENSE.md or http://ckeditor.com/license
+ */
+
+( function() {
+	/* global confirm */
+
+	CKEDITOR.plugins.add( &#39;pastefromword&#39;, {
+		requires: &#39;clipboard&#39;,
+		// jscs:disable maximumLineLength
+		lang: &#39;af,ar,az,bg,bn,bs,ca,cs,cy,da,de,de-ch,el,en,en-au,en-ca,en-gb,eo,es,et,eu,fa,fi,fo,fr,fr-ca,gl,gu,he,hi,hr,hu,id,is,it,ja,ka,km,ko,ku,lt,lv,mk,mn,ms,nb,nl,no,oc,pl,pt,pt-br,ro,ru,si,sk,sl,sq,sr,sr-latn,sv,th,tr,tt,ug,uk,vi,zh,zh-cn&#39;, // %REMOVE_LINE_CORE%
+		// jscs:enable maximumLineLength
+		icons: &#39;pastefromword,pastefromword-rtl&#39;, // %REMOVE_LINE_CORE%
+		hidpi: true, // %REMOVE_LINE_CORE%
+		init: function( editor ) {
+			// Flag indicate this command is actually been asked instead of a generic pasting.
+			var forceFromWord = 0,
+				path = this.path;
+
+			editor.addCommand( &#39;pastefromword&#39;, {
+				// Snapshots are done manually by editable.insertXXX methods.
+				canUndo: false,
+				async: true,
+
+<span id='CKEDITOR-editor-commands-pastefromword-method-exec'>				/**
+</span>				 * The Paste from Word command. It will determine its pasted content from Word automatically if possible.
+				 *
+				 * At the time of writing it was working correctly only in Internet Explorer browsers, due to their
+				 * `paste` support in `document.execCommand`.
+				 *
+				 * @private
+				 * @param {CKEDITOR.editor} editor An instance of the editor where the command is being executed.
+				 * @param {Object} [data] The options object.
+				 * @param {Boolean/String} [data.notification=true] Content for a notification shown after an unsuccessful
+				 * paste attempt. If `false`, the notification will not be displayed. This parameter was added in 4.7.0.
+				 * @member CKEDITOR.editor.commands.pastefromword
+				 */
+				exec: function( editor, data ) {
+					forceFromWord = 1;
+					editor.execCommand( &#39;paste&#39;, {
+						type: &#39;html&#39;,
+						notification: data &amp;&amp; typeof data.notification !== &#39;undefined&#39; ? data.notification : true
+					} );
+				}
+			} );
+
+			// Register the toolbar button.
+			editor.ui.addButton &amp;&amp; editor.ui.addButton( &#39;PasteFromWord&#39;, {
+				label: editor.lang.pastefromword.toolbar,
+				command: &#39;pastefromword&#39;,
+				toolbar: &#39;clipboard,50&#39;
+			} );
+
+			// Features brought by this command beside the normal process:
+			// 1. No more bothering of user about the clean-up.
+			// 2. Perform the clean-up even if content is not from Microsoft Word.
+			// (e.g. from a Microsoft Word similar application.)
+			// 3. Listen with high priority (3), so clean up is done before content
+			// type sniffing (priority = 6).
+			editor.on( &#39;paste&#39;, function( evt ) {
+				var data = evt.data,
+					dataTransferHtml = CKEDITOR.plugins.clipboard.isCustomDataTypesSupported ?
+						data.dataTransfer.getData( &#39;text/html&#39;, true ) : null,
+					// Some commands fire paste event without setting dataTransfer property. In such case
+					// dataValue should be used.
+					mswordHtml = dataTransferHtml || data.dataValue,
+					pfwEvtData = { dataValue: mswordHtml },
+					officeMetaRegexp = /&lt;meta\s*name=(?:\&quot;|\&#39;)?generator(?:\&quot;|\&#39;)?\s*content=(?:\&quot;|\&#39;)?microsoft/gi,
+					wordRegexp = /(class=\&quot;?Mso|style=(?:\&quot;|\&#39;)[^\&quot;]*?\bmso\-|w:WordDocument|&lt;o:\w+&gt;|&lt;\/font&gt;)/,
+					isOfficeContent = officeMetaRegexp.test( mswordHtml ) || wordRegexp.test( mswordHtml );
+
+				if ( !mswordHtml || !( forceFromWord || isOfficeContent ) ) {
+					return;
+				}
+
+				// PFW might still get prevented, if it&#39;s not forced.
+				if ( editor.fire( &#39;pasteFromWord&#39;, pfwEvtData ) === false &amp;&amp; !forceFromWord ) {
+					return;
+				}
+
+				// Do not apply paste filter to data filtered by the Word filter (#13093).
+				data.dontFilter = true;
+
+				// If filter rules aren&#39;t loaded then cancel &#39;paste&#39; event,
+				// load them and when they&#39;ll get loaded fire new paste event
+				// for which data will be filtered in second execution of
+				// this listener.
+				var isLazyLoad = loadFilterRules( editor, path, function() {
+					// Event continuation with the original data.
+					if ( isLazyLoad ) {
+						editor.fire( &#39;paste&#39;, data );
+					} else if ( !editor.config.pasteFromWordPromptCleanup || ( forceFromWord || confirm( editor.lang.pastefromword.confirmCleanup ) ) ) {
+						pfwEvtData.dataValue = CKEDITOR.cleanWord( pfwEvtData.dataValue, editor );
+
+						editor.fire( &#39;afterPasteFromWord&#39;, pfwEvtData );
+
+						data.dataValue = pfwEvtData.dataValue;
+					}
+
+					// Reset forceFromWord.
+					forceFromWord = 0;
+				} );
+
+				// The cleanup rules are to be loaded, we should just cancel
+				// this event.
+				isLazyLoad &amp;&amp; evt.cancel();
+			}, null, null, 3 );
+		}
+
+	} );
+
+	function loadFilterRules( editor, path, callback ) {
+		var isLoaded = CKEDITOR.cleanWord;
+
+		if ( isLoaded )
+			callback();
+		else {
+			var filterFilePath = CKEDITOR.getUrl( editor.config.pasteFromWordCleanupFile || ( path + &#39;filter/default.js&#39; ) );
+
+			// Load with busy indicator.
+			CKEDITOR.scriptLoader.load( filterFilePath, callback, null, true );
+		}
+
+		return !isLoaded;
+	}
+} )();
+
+
+<span id='CKEDITOR-config-cfg-pasteFromWordPromptCleanup'>/**
+</span> * Whether to prompt the user about the clean up of content being pasted from Microsoft Word.
+ *
+ *		config.pasteFromWordPromptCleanup = true;
+ *
+ * @since 3.1
+ * @cfg {Boolean} [pasteFromWordPromptCleanup=false]
+ * @member CKEDITOR.config
+ */
+
+<span id='CKEDITOR-config-cfg-pasteFromWordCleanupFile'>/**
+</span> * The file that provides the Microsoft Word cleanup function for pasting operations.
+ *
+ * **Note:** This is a global configuration shared by all editor instances present
+ * on the page.
+ *
+ *		// Load from the &#39;pastefromword&#39; plugin &#39;filter&#39; sub folder (custom.js file) using a path relative to the CKEditor installation folder.
+ *		CKEDITOR.config.pasteFromWordCleanupFile = &#39;plugins/pastefromword/filter/custom.js&#39;;
+ *
+ *		// Load from the &#39;pastefromword&#39; plugin &#39;filter&#39; sub folder (custom.js file) using a full path (including the CKEditor installation folder).
+ *		CKEDITOR.config.pasteFromWordCleanupFile = &#39;/ckeditor/plugins/pastefromword/filter/custom.js&#39;;
+ *
+ *		// Load custom.js file from the &#39;customFilters&#39; folder (located in server&#39;s root) using the full URL.
+ *		CKEDITOR.config.pasteFromWordCleanupFile = &#39;http://my.example.com/customFilters/custom.js&#39;;
+ *
+ * @since 3.1
+ * @cfg {String} [pasteFromWordCleanupFile=&lt;plugin path&gt; + &#39;filter/default.js&#39;]
+ * @member CKEDITOR.config
+ */
+
+<span id='CKEDITOR-editor-event-pasteFromWord'>/**
+</span> * Fired when the pasted content was recognized as Microsoft Word content.
+ *
+ * This event is cancellable. If canceled, it will prevent Paste from Word processing.
+ *
+ * @since 4.6.0
+ * @event pasteFromWord
+ * @param data
+ * @param {String} data.dataValue Pasted content. Changes to this property will affect the pasted content.
+ * @member CKEDITOR.editor
+ */
+
+<span id='CKEDITOR-editor-event-afterPasteFromWord'>/**
+</span> * Fired after the Paste form Word filters have been applied.
+ *
+ * @since 4.6.0
+ * @event afterPasteFromWord
+ * @param data
+ * @param {String} data.dataValue Pasted content after processing. Changes to this property will affect the pasted content.
+ * @member CKEDITOR.editor
+ */
+</pre>
+</body>
+</html>

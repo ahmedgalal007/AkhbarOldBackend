@@ -1,0 +1,56 @@
+﻿@model CMS.Areas.CoreHandler.Models.BlocksVM
+@using CMS.Areas.FrameWork.Controllers
+@{
+    ViewBag.Title = "تفاصيل المساحة الإعلانية";
+}
+
+    <div class="panel panel-default" id="@Model.RelatedTarget">
+        <div class="panel-heading">
+            <i class="fa fa-external-link-square"></i>
+            تفاصيل المساحة الإعلانية
+            <div class="panel-tools">
+                <a class="btn btn-xs btn-link panel-collapse collapses " href="#">
+                </a>
+                @*<a class="btn btn-xs btn-link panel-refresh" href="#">
+                        <i class="fa fa-refresh"></i>
+                    </a>*@
+                @*<a class="btn btn-xs btn-link panel-expand" href="#">
+                        <i class="fa fa-resize-full"></i>
+                    </a>*@
+
+            </div>
+        </div>
+        <div class="panel-body">
+            <div class="form-horizontal">
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.blocksZone.ZoneName, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.DisplayFor(model => model.blocksZone.ZoneName, new { htmlAttributes = new { @class = "form-control" } })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.blocksZone.ZoneDescription, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.DisplayFor(model => model.blocksZone.ZoneDescription, new { htmlAttributes = new { @class = "form-control" } })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.blocksZone.AddedDate, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.DisplayFor(model => model.blocksZone.AddedDate, new { htmlAttributes = new { @class = "form-control" } })
+                    </div>
+                </div>
+              
+
+            </div>
+
+            <div>
+                @Html.ActionLink("العودة لصفحة المساحات الإعلانية", "Index", "Blocks", new { area = "CoreHandler" }, null)
+            </div>
+
+        </div>
+
+
+    </div>
+

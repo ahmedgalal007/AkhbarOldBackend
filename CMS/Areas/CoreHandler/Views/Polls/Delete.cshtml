@@ -1,0 +1,68 @@
+﻿@model CMS.Areas.CoreHandler.Models.PollsVM
+
+
+@{
+    ViewBag.Title = "حذف التصويت";
+}
+
+
+    <div class="panel panel-default" id="@Model.RelatedTarget" >
+        <div class="panel-heading">
+            <i class="fa fa-external-link-square"></i>
+            حذف التصويت
+            <div class="panel-tools">
+                <a class="btn btn-xs btn-link panel-collapse collapses " href="#">
+                </a>
+                @*<a class="btn btn-xs btn-link panel-refresh" href="#">
+                        <i class="fa fa-refresh"></i>
+                    </a>*@
+                @*<a class="btn btn-xs btn-link panel-expand" href="#">
+                        <i class="fa fa-resize-full"></i>
+                    </a>*@
+
+            </div>
+        </div>
+        <div class="panel-body">
+            <div class="form-horizontal">
+               @using (Html.BeginForm("Delete", "Polls", new { area = "CoreHandler" ,PollId=Model.Poll.PollID } ,FormMethod.Post))
+               {
+                    @Html.AntiForgeryToken()
+
+                    <div class="form-group">
+
+                        <div class="col-md-10">
+                            @Html.DisplayFor(model => model.Poll.PollBody)
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <div class="col-md-10">
+                            عدد التصويتات : @Html.DisplayFor(model => model.Poll.TotalVotes)
+                        </div>
+                    </div>
+
+                        
+                    
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-10">
+                                <input type="submit" value="حذف" class="btn btn-default" />
+                            </div>
+                        </div>
+                      
+
+                }
+
+
+               
+
+                <div>
+
+                    @Html.ActionLink("العودة لصفحة التصويتات", "Index", "Polls", new { area = "CoreHandler" }, null)
+                </div>
+
+            </div>
+        </div>
+
+    </div>

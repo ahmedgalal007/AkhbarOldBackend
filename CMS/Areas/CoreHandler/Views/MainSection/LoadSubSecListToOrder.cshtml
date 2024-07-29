@@ -1,0 +1,13 @@
+﻿
+@model CMS.Areas.CoreHandler.Models.NewsVM
+
+@foreach (var item in Model.ActiveSectionLst)
+{
+    <div class="ui-state-default">
+        <div class="list-item" id="@item.SectionID">
+            <div style="width:7%;float:right;"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span></div>
+            <div style="width:93%;float:left;">@item.SecTitle </div>
+            <div class="index"></div>
+        </div>
+    </div>
+}

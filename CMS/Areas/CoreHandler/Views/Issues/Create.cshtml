@@ -1,0 +1,77 @@
+﻿@model CMS.Areas.CoreHandler.Models.IssuesVM
+@using CMS.Areas.FrameWork.Controllers
+@{
+    ViewBag.Title = "إضافة العدد";
+}
+
+<script>
+        $(function () {
+            $("#issue_IssueDate").datepicker({
+                timepicker: false,
+                minDate: new Date(),
+                dateFormat: 'dd/mm/yy'
+            });
+        });
+</script>
+
+    <div class="panel panel-default"  id="@Model.RelatedTarget">
+        <div class="panel-heading">
+            <i class="fa fa-external-link-square"></i>
+            إضافة العدد
+            <div class="panel-tools">
+                <a class="btn btn-xs btn-link panel-collapse collapses " href="#">
+                </a>
+                @*<a class="btn btn-xs btn-link panel-refresh" href="#">
+                        <i class="fa fa-refresh"></i>
+                    </a>*@
+                @*<a class="btn btn-xs btn-link panel-expand" href="#">
+                        <i class="fa fa-resize-full"></i>
+                    </a>*@
+
+            </div>
+        </div>
+        <div class="panel-body">
+            <div class="form-horizontal">
+
+                @using (Html.BeginForm("Create", "Issues", new { area = "CoreHandler" }, FormMethod.Post))
+                {
+                    @Html.AntiForgeryToken()
+
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.issue.IssueTitle, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.issue.IssueTitle, new { @class = "form-control"  })
+                            @Html.ValidationMessageFor(model => model.issue.IssueTitle, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                 
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.issue.IssueDate, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.issue.IssueDate, new { @class = "form-control", @readonly = "readonly" })
+                            @Html.ValidationMessageFor(model => model.issue.IssueDate, "", new { @class = "text-danger", @readonly = "readonly" })
+                        </div>
+                    </div>
+
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-10">
+                                <input type="submit" value="إنشاء" class="btn btn-default" />
+                            </div>
+                        </div>
+                }
+
+                <div>
+                    @Html.ActionLink("العودة لصفحة الاعداد", "Index", "Issues", new { area = "CoreHandler" }, null)
+                </div>
+
+             
+            </div>
+
+
+        </div>
+    </div>
+
+
+  

@@ -1,0 +1,68 @@
+﻿@model CMS.Areas.CoreHandler.Models.GalleryTypeVM
+@using CMS.Areas.FrameWork.Controllers
+@using CMS.Areas.FrameWork.ViewModels
+
+@{
+    ViewBag.Title = "تعديل اسم نوع الالبوم";
+}
+
+
+    <div class="panel panel-default" id="@Model.RelatedTarget">
+        <div class="panel-heading">
+            <i class="fa fa-external-link-square"></i>
+            تعديل اسم نوع الالبوم
+            <div class="panel-tools">
+                <a class="btn btn-xs btn-link panel-collapse collapses " href="#">
+                </a>
+                @*<a class="btn btn-xs btn-link panel-refresh" href="#">
+                        <i class="fa fa-refresh"></i>
+                    </a>*@
+                @*<a class="btn btn-xs btn-link panel-expand" href="#">
+                        <i class="fa fa-resize-full"></i>
+                    </a>*@
+
+            </div>
+        </div>
+        <div class="panel-body">
+
+
+            @using (Html.BeginForm("Edit", "GalleryType", new { area = "CoreHandler" }, FormMethod.Post))
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="form-horizontal">
+
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                    @if (Model.GalleryType != null)
+                    {
+                    @Html.HiddenFor(model => model.GalleryType.GalleryTypeName)
+                    }
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.GalleryType.GalleryTypeName, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.GalleryType.GalleryTypeName,  new { @class = "form-control"  })
+                            @Html.ValidationMessageFor(model => model.GalleryType.GalleryTypeName, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="تعديل" class="btn btn-default" />
+                        </div>
+                    </div>
+                </div>
+            }
+            @if (ViewBag.alert != null)
+            {
+                Html.RenderPartial("~/Areas/FrameWork/Views/Shared/_alertMessage.cshtml", (alertMessageVM)ViewBag.alert);
+            }
+            <div>
+                @Html.ActionLink("العودة لصفحة انواع الالبومات", "Index", "GalleryType", new { area = "CoreHandler" }, null)
+            </div>
+
+
+        </div>
+    </div>

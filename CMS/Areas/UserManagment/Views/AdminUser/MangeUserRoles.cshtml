@@ -1,0 +1,113 @@
+﻿@model CMS.Areas.UserManagment.Models.AdminUserVM
+@using CMS.Areas.FrameWork.Controllers
+
+@{
+    ViewBag.Title = "صلاحيات المستخدم";
+}
+
+<div class="panel panel-default" id="UserPermissionsDiv">
+    <div class="panel-heading">
+        <i class="fa fa-external-link-square"></i>
+        صلاحيات المستخدم  : @Model.adminUser.FullName
+        <div class="panel-tools">
+            <a class="btn btn-xs btn-link panel-collapse collapses" href="#">
+            </a>
+            @*<a class="btn btn-xs btn-link panel-config" href="#panel-config" data-toggle="modal">
+                    <i class="fa fa-wrench"></i>
+                </a>*@
+            <a class="btn btn-xs btn-link panel-refresh" href="#">
+                <i class="fa fa-refresh"></i>
+            </a>
+            <a class="btn btn-xs btn-link panel-expand" href="#">
+                <i class="fa fa-resize-full"></i>
+            </a>
+            <a class="btn btn-xs btn-link panel-close" href="#">
+                <i class="fa fa-times"></i>
+            </a>
+        </div>
+    </div>
+    <div class="panel-body">
+        <div>
+
+            @using (Ajax.BeginForm("AddToRoles", "AdminUser", "UserManagment", new AjaxOptions { UpdateTargetId = "UserPermissionsDiv", InsertionMode = InsertionMode.ReplaceWith },null))
+            {
+           
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true)
+                @Html.HiddenFor(m => m.adminUser.UserID)
+                @Html.HiddenFor(m => m.adminUser.FullName)
+
+                <div style="width:90%;">
+                    <div style="width:30%;float:right;padding-left:10px;padding-bottom:5px;">
+                        @Html.DropDownListFor(model => model.UserRole.RoleId, new SelectList(ViewBag.roleID, "Value", "Text", 1), new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.UserRole.RoleId)
+                    </div>
+                    <div style="width:30%;float:right;padding-left:10px;padding-bottom:5px;">
+                        @Html.DropDownListFor(model => model.UserRole.SectionID, new SelectList(ViewBag.Sec_ID, "Value", "Text"), "--جميع الاقسام--", new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.UserRole.SectionID)
+                    </div>
+                    <div>
+                        <input type="submit" value="إضافة" class="btn btn-primary" />
+                    </div>
+                </div>
+            }
+        </div>
+
+        <table class="table table-striped table-bordered table-hover table-full-width dataTable no-footer">
+            <tr>
+                <th>
+                    المجموعة
+                </th>
+                <th>
+                    القسم
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model.userRolesLst)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Role.RoleName)
+                    </td>
+                    <td>
+                        @if(@item.SectionID == null || item.SectionID==0)
+                        {
+                       @: جميع الاقسام
+                        }
+                        else
+                        {
+                        @Html.DisplayFor(modelItem => item.section.SecTitle)
+                        }
+                    </td>
+                    <td>
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-purple"><i class="fa fa-wrench"></i></button>
+                            <button data-toggle="dropdown" class="btn btn-purple dropdown-toggle"><span class="caret"></span></button>
+                            <ul class="dropdown-menu" role="menu">
+
+                                <li>
+                                    @Ajax.CustomAjaxActionLink("حذف", "UserManagment", "AdminUser", "DeleteFromRoles",
+                                   new RouteValueDictionary { { "vm.UserRole.ID", item.ID.ToString() },
+                                       { "vm.UserRole.RoleId", item.RoleId.ToString() },
+                                        { "vm.UserRole.SectionID", item.SectionID.ToString() }
+                                       , { "vm.adminUser.UserID", Model.adminUser.UserID.ToString() }, { "vm.adminUser.FullName", Model.adminUser.FullName.ToString() } },
+                                   new AjaxOptions { InsertionMode = InsertionMode.ReplaceWith, HttpMethod = "POST", UpdateTargetId = "UserPermissionsDiv" }
+                                   , new Dictionary<string, object> { { "class", "fa fa-trash-o" } })
+
+
+                                </li>
+
+                            </ul>
+                        </div>
+                    </td>
+                </tr>
+            }
+
+        </table>
+
+    </div>
+    <div>
+        @Html.ActionLink("العودة لصفحة المستخدمين", "Index", "AdminUser", new { area = "UserManagment" }, null)
+    </div>
+</div>

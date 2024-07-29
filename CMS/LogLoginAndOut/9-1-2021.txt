@@ -1,0 +1,14 @@
+User Machine Name: - UserIP:::1 - User operating system:Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.88 Safari/537.36 - RemoteIP:::1 - Mac/Physical-Address:989096D901B6 - UserId:456  - Name:احمد حسن //  Has Logged in at: 12:50:31 م
+----------------------------------------------------------
+User Machine Name:احمد حسن - UserIP:::1 - User operating system:Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.88 Safari/537.36 - RemoteIP:::1 - Mac/Physical-Address:989096D901B6 - UserId:456  - Name:احمد حسن //  Has Logged in at: 01:41:33 م
+----------------------------------------------------------
+User Machine Name:احمد حسن - UserIP:::1 - User operating system:Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.88 Safari/537.36 - RemoteIP:::1 - Mac/Physical-Address:989096D901B6 - UserId:456  - Name:احمد حسن //  Has Logged in at: 02:31:29 م
+----------------------------------------------------------
+User Machine Name:احمد حسن - UserIP:::1 - User operating system:Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.88 Safari/537.36 - RemoteIP:::1 - Mac/Physical-Address:989096D901B6 - UserId:456  - Name:احمد حسن //  Has Logged in at: 02:31:41 م
+----------------------------------------------------------
+User Machine Name:احمد حسن - UserIP:::1 - User operating system:Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.88 Safari/537.36 - RemoteIP:::1 - Mac/Physical-Address:989096D901B6 - UserId:456  - Name:احمد حسن //  Has Logged in at: 03:16:28 م
+----------------------------------------------------------
+User Machine Name:احمد حسن - UserIP:::1 - User operating system:Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.88 Safari/537.36 - RemoteIP:::1 - Mac/Physical-Address:989096D901B6 - UserId:456  - Name:احمد حسن //  Has Logged in at: 03:22:26 م
+----------------------------------------------------------
+User Machine Name:احمد حسن - UserIP:::1 - User operating system:Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.88 Safari/537.36 - RemoteIP:::1 - Mac/Physical-Address:989096D901B6 - UserId:456  - Name:احمد حسن //  Has Logged in at: 03:24:37 م
+----------------------------------------------------------

@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>The source code</title>
+  <link href="../resources/prettify/prettify.css" type="text/css" rel="stylesheet" />
+  <script type="text/javascript" src="../resources/prettify/prettify.js"></script>
+  <style type="text/css">
+    .highlight { display: block; background-color: #ddd; }
+  </style>
+  <script type="text/javascript">
+    function highlight() {
+      document.getElementById(location.hash.replace(/#/, "")).className = "highlight";
+    }
+  </script>
+</head>
+<body onload="prettyPrint(); highlight();">
+  <pre class="prettyprint lang-js"><span id='global-property-'>/**
+</span> * @license Copyright (c) 2003-2017, CKSource - Frederico Knabben. All rights reserved.
+ * For licensing, see LICENSE.md or http://ckeditor.com/license
+ */
+
+CKEDITOR.plugins.setLang( &#39;specialchar&#39;, &#39;hr&#39;, {
+	euro: &#39;Euro znak&#39;,
+	lsquo: &#39;Lijevi jednostruki navodnik&#39;,
+	rsquo: &#39;Desni jednostruki navodnik&#39;,
+	ldquo: &#39;Lijevi dvostruki navodnik&#39;,
+	rdquo: &#39;Desni dvostruki navodnik&#39;,
+	ndash: &#39;En crtica&#39;,
+	mdash: &#39;Em crtica&#39;,
+	iexcl: &#39;Naopaki uskličnik&#39;,
+	cent: &#39;Cent znak&#39;,
+	pound: &#39;Funta znak&#39;,
+	curren: &#39;Znak valute&#39;,
+	yen: &#39;Yen znak&#39;,
+	brvbar: &#39;Potrgana prečka&#39;,
+	sect: &#39;Znak odjeljka&#39;,
+	uml: &#39;Prijeglasi&#39;,
+	copy: &#39;Copyright znak&#39;,
+	ordf: &#39;Ženska redna oznaka&#39;,
+	laquo: &#39;Lijevi dvostruki uglati navodnik&#39;,
+	not: &#39;Not znak&#39;,
+	reg: &#39;Registered znak&#39;,
+	macr: &#39;Crta iznad&#39;,
+	deg: &#39;Stupanj znak&#39;,
+	sup2: &#39;Eksponent 2&#39;,
+	sup3: &#39;Eksponent tri&#39;,
+	acute: &#39;Akcent&#39;,
+	micro: &#39;Mikro znak&#39;,
+	para: &#39;Znak paragrafa&#39;,
+	middot: &#39;Srednja točka&#39;,
+	cedil: &#39;Cedilla&#39;,
+	sup1: &#39;Eksponent 1&#39;,
+	ordm: &#39;Muška redna oznaka&#39;,
+	raquo: &#39;Desni dvostruku uglati navodnik&#39;,
+	frac14: &#39;Četvrtina&#39;,
+	frac12: &#39;Polovina&#39;,
+	frac34: &#39;Tri četvrtine&#39;,
+	iquest: &#39;Naopaki upitnik&#39;,
+	Agrave: &#39;Veliko latinsko slovo A s akcentom&#39;,
+	Aacute: &#39;Latinično veliko slovo A sa oštrim naglaskom&#39;,
+	Acirc: &#39;Latinično veliko slovo A sa circumflex&#39;,
+	Atilde: &#39;Latinično veliko slovo A sa tildom&#39;,
+	Auml: &#39;Latinično veliko slovo A sa diaeresis&#39;,
+	Aring: &#39;Latinično veliko slovo A sa gornjim prstenom&#39;,
+	AElig: &#39;Latinično veliko slovo Æ&#39;,
+	Ccedil: &#39;Veliko latinično slovo C sa cedilla&#39;,
+	Egrave: &#39;Veliko latinično slovo E sa akcentom&#39;,
+	Eacute: &#39;Veliko latinično slovo E sa  akcentom&#39;,
+	Ecirc: &#39;Veliko latinično slovo E sa circumflex&#39;,
+	Euml: &#39;Veliko latinično slovo E sa diaresis&#39;,
+	Igrave: &#39;Veliko latinično slovo I sa akcentom&#39;,
+	Iacute: &#39;Veliko latinično slovo I sa akcentom&#39;,
+	Icirc: &#39;Veliko latinično slovo I sa circumflex&#39;,
+	Iuml: &#39;Veliko latinično slovo I sa diaresis&#39;,
+	ETH: &#39;Veliko latinično slovo Eth&#39;,
+	Ntilde: &#39;Veliko latinično slovo N sa tildom&#39;,
+	Ograve: &#39;Veliko latinično slovo O sa akcentom&#39;,
+	Oacute: &#39;Veliko latinično slovo O sa akcentom&#39;,
+	Ocirc: &#39;Veliko latinično slovo O sa circumflex&#39;,
+	Otilde: &#39;Veliko latinično slovo O sa tildom&#39;,
+	Ouml: &#39;Veliko latinično slovo O sa diaresis&#39;,
+	times: &#39;Znak množenja&#39;,
+	Oslash: &#39;Veliko latinično slovo O sa crtom&#39;,
+	Ugrave: &#39;Veliko latinično slovo U sa akcentom&#39;,
+	Uacute: &#39;Veliko latinično slovo U sa akcentom&#39;,
+	Ucirc: &#39;Veliko latinično slovo U sa circumflex&#39;,
+	Uuml: &#39;Veliko latinično slovo U sa diaresis&#39;,
+	Yacute: &#39;Veliko latinično slovo Y sa akcentom&#39;,
+	THORN: &#39;Veliko latinično slovo Trn&#39;,
+	szlig: &#39;Malo latinično slovo oštro s&#39;,
+	agrave: &#39;Malo latinično slovo a sa akcentom&#39;,
+	aacute: &#39;Malo latinično slovo sa akcentom&#39;,
+	acirc: &#39;Malo latinično slovo a sa circumflex&#39;,
+	atilde: &#39;Malo latinično slovo a sa tildom&#39;,
+	auml: &#39;Malo latinično slovo a sa diaresis&#39;,
+	aring: &#39;Malo latinično slovo a sa gornjim prstenom&#39;,
+	aelig: &#39;Malo latinično slovo æ&#39;,
+	ccedil: &#39;Malo latinično slovo e sa cedilla&#39;,
+	egrave: &#39;Malo latinično slovo e sa akcentom&#39;,
+	eacute: &#39;Malo latinično slovo e sa akcentom&#39;,
+	ecirc: &#39;Malo latinično slovo e sa circumflex&#39;,
+	euml: &#39;Malo latinično slovo e sa diaresis&#39;,
+	igrave: &#39;Malo latinično slovo i sa akcentom&#39;,
+	iacute: &#39;Malo latinično slovo i sa akcentom&#39;,
+	icirc: &#39;Malo latinično slovo i sa circumflex&#39;,
+	iuml: &#39;Malo latinično slovo i sa diaresis&#39;,
+	eth: &#39;Malo latinično slovo eth&#39;,
+	ntilde: &#39;Malo latinično slovo n sa tildom&#39;,
+	ograve: &#39;Malo latinično slovo o sa akcentom&#39;,
+	oacute: &#39;Malo latinično slovo o sa akcentom&#39;,
+	ocirc: &#39;Malo latinično slovo o sa circumflex&#39;,
+	otilde: &#39;Malo latinično slovo o sa tildom&#39;,
+	ouml: &#39;Malo latinično slovo o sa diaresis&#39;,
+	divide: &#39;Znak dijeljenja&#39;,
+	oslash: &#39;Malo latinično slovo o sa crtom&#39;,
+	ugrave: &#39;Malo latinično slovo s akcentom&#39;,
+	uacute: &#39;Malo latinično slovo u sa akcentom&#39;,
+	ucirc: &#39;Malo latinično slovo sa circumflex&#39;,
+	uuml: &#39;Malo latinično slovo u sa diaresis&#39;,
+	yacute: &#39;Malo latinično slovo y s akcentom&#39;,
+	thorn: &#39;Malo latinično slovo Trn&#39;,
+	yuml: &#39;Malo latinično slovo y sa diaresis&#39;,
+	OElig: &#39;Veliko latinično slovo OE&#39;,
+	oelig: &#39;Malo latinično slovoe OE&#39;,
+	&#39;372&#39;: &#39;Veliko latinično slovo W sa circumflex&#39;,
+	&#39;374&#39;: &#39;Veliko latinično slovo Y sa circumflex&#39;,
+	&#39;373&#39;: &#39;Malo latinično slovo w sa circumflex&#39;,
+	&#39;375&#39;: &#39;Malo latinično slovo y sa circumflex&#39;,
+	sbquo: &#39;Jednostruki donji navodnik&#39;,
+	&#39;8219&#39;: &#39;Jednostruki gornji navodnik&#39;,
+	bdquo: &#39;Dvostruki donji navodnik&#39;,
+	hellip: &#39;Tri točkice&#39;,
+	trade: &#39;TM znak&#39;,
+	&#39;9658&#39;: &#39;Crni desni pokazivač&#39;,
+	bull: &#39;Bullet&#39;,
+	rarr: &#39;Desna strelica&#39;,
+	rArr: &#39;Desna dvostruka strelica&#39;,
+	hArr: &#39;Dvostruka strelica&#39;,
+	diams: &#39;Crni dijamant&#39;,
+	asymp: &#39;Približno&#39;
+} );
+</pre>
+</body>
+</html>

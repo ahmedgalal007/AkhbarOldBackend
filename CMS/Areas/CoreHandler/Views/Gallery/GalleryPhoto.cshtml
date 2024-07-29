@@ -1,0 +1,234 @@
+﻿@model CMS.Areas.CoreHandler.Models.GalleryVM
+@using CMS.Areas.FrameWork.Controllers
+
+@{
+    ViewBag.Title = "صور الالبوم";
+}
+
+
+@Scripts.Render("~/assets/plugins/dropzone/downloads/dropzone.js")
+@Styles.Render("~/assets/plugins/dropzone/downloads/css/dropzone.css")
+
+@*@Scripts.Render("~/bundles/dropzone")*@
+
+@*@Styles.Render("~/content/dropzoneStyle")*@
+
+<div class="panel panel-default" id="@Model.RelatedTarget">
+    <div class="panel-heading">
+        <i class="fa fa-external-link-square"></i>
+        صور الالبوم  : @ViewBag.GTitle
+        <div class="panel-tools">
+            <a class="btn btn-xs btn-link panel-collapse collapses" href="#">
+            </a>
+            @*<a class="btn btn-xs btn-link panel-config" href="#panel-config" data-toggle="modal">
+                    <i class="fa fa-wrench"></i>
+                </a>*@
+            <a class="btn btn-xs btn-link panel-refresh" href="#">
+                <i class="fa fa-refresh"></i>
+            </a>
+            <a class="btn btn-xs btn-link panel-expand" href="#">
+                <i class="fa fa-resize-full"></i>
+            </a>
+            <a class="btn btn-xs btn-link panel-close" href="#">
+                <i class="fa fa-times"></i>
+            </a>
+        </div>
+    </div>
+    <div class="panel-body">
+        <div class="form-horizontal">
+
+@using (Html.BeginForm("AddToGalleryPhotos", "Gallery", new { area = "CoreHandler" }, FormMethod.Post, new { @id = "my-awesome-dropzone" ,@class="dropzone", @enctype = "multipart/form-data" }))
+
+{
+
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
+        @Html.HiddenFor(m => m.Gallery.GalleryID)
+     
+        @Html.HiddenFor(m => m.Gallery.Title)
+        @Html.HiddenFor(m => m.Gallery.Description)
+        @Html.HiddenFor(m => m.Gallery.Keywords)
+
+        @Html.HiddenFor(m => m.Gallery.GDate)
+        @Html.HiddenFor(m => m.Gallery.MainPictureID)
+        @Html.HiddenFor(m => m.Gallery.IsHome)
+        @Html.HiddenFor(m => m.Gallery.GalleryType)
+        @Html.HiddenFor(m => m.Gallery.JournalID)
+        @Html.HiddenFor(m => m.Gallery.DisplayOrder)
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.GalleryPicture.NewsPicture.PicCaption, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.GalleryPicture.NewsPicture.PicCaption, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.GalleryPicture.NewsPicture.PicCaption, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.GalleryPicture.NewsPicture.KeyWords, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.GalleryPicture.NewsPicture.KeyWords, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.GalleryPicture.NewsPicture.KeyWords, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2"> العلامة المائية</label>
+            <div class="col-md-10">
+                @Html.CheckBoxFor(model => model.waterMarkFlag, new { @class = "iCheck-helper" })
+                @Html.ValidationMessageFor(model => model.waterMarkFlag, "", new { @class = "text-danger" })
+                @Html.HiddenFor(model => model.waterMarkFlag)
+            </div>
+        </div>
+
+
+        <script>
+            Dropzone.options.myAwesomeDropzone = {
+
+                // The setting up of the dropzone
+                init: function () {
+                    var myDropzone = this;
+
+                    // Here's the change from enyo's tutorial...
+
+                    $("#submit-all").click(function (e) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        myDropzone.processQueue();
+
+                        this.on("error", function (file, response) {
+                            // do stuff here.
+                            alert("can't save image.");
+
+                        });
+                    })
+                }
+            }
+    
+        </script>
+
+       
+                <div class="fallback">
+                    <!-- this is the fallback if JS isn't working -->
+                    <input name="file" type="file" multiple />
+                </div>
+
+
+            <div class="form-group" style="text-align:center;">
+                <button type="submit" id="submit-all" class="btn btn-primary">إضافة</button>
+            </div>
+
+                @*<div class="form-group">
+                        <label class = "control-label col-md-2">صور الالبوم</label>
+                        <div class="fallback">
+                            <input name="file" type="file" multiple />
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <div style="text-align:center;padding-right:20px; padding-bottom:20px;">
+                            <input type="submit" id="submitAll" onclick="" value="إضافة" class="btn btn-primary" />
+                        </div>
+                        </div>*@
+
+                }
+
+            </div>
+
+
+
+        <table class="table table-striped table-bordered table-hover table-full-width dataTable no-footer">
+            <tr>
+                <th>
+                    عنوان الصورة
+                </th>
+                <th>
+                    الكلمات الدالة للصورة
+                </th>
+                <th>
+                    صورة الالبوم الرئيسية
+                </th>
+                <th></th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model.galleryPictureLst)
+            {
+                <tr>
+                    <td>
+                        @if (item.NewsPicture != null)
+                        {
+                             @Html.DisplayFor(modelItem => item.NewsPicture.PicCaption)
+                        }
+                    </td>
+                    <td>
+                        @if (item.NewsPicture != null)
+                        {
+                            @Html.DisplayFor(modelItem => item.NewsPicture.KeyWords)
+                        }
+                    </td>
+                    <td>
+                      @if (item.NewsPicture != null)
+                      {
+                        if (Model.Gallery.MainPictureID == null)
+                        {
+                            @Html.CheckBox("MainGalleryPhoto", false, new { @class = "iCheck-helper", @disabled = "disabled" })
+                        }
+                        else
+                        {
+                            if (Model.Gallery.MainPictureID == item.PictureID)
+                            {
+                                @Html.CheckBox("MainGalleryPhoto", true, new { @class = "iCheck-helper", @disabled = "disabled" })
+                            }
+                            else
+                            {
+                                @Html.CheckBox("MainGalleryPhoto", false, new { @class = "iCheck-helper", @disabled = "disabled" })
+                            }
+                        }
+                      }
+                    </td>
+                    <td>
+                        @if (item.PictureID < 480400)
+                        {
+                        <img class="img-rounded" width="50" height="50" src="@ViewBag.RSmallImgPath/@item.NewsPicture.PictureName" />
+                        }
+                        else
+                        {
+                            <img class="img-rounded" width="50" height="50" src="@ViewBag.RGalleryImgPath/@Convert.ToDateTime(Model.Gallery.GDate).ToString("yyyyMMdd")/@item.NewsPicture.PictureName" />
+                        }
+                    </td>
+
+                    <td>
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-purple"><i class="fa fa-wrench"></i></button>
+                            <button data-toggle="dropdown" class="btn btn-purple dropdown-toggle"><span class="caret"></span></button>
+                            <ul class="dropdown-menu" role="menu">
+
+                                <li>
+
+                                    @Html.ActionLink("حذف", "DeleteFromGalleryPhotos", "Gallery", new { area = "CoreHandler", GalleryId = item.GalleryID, PictureId = item.PictureID }, new { @class = "fa fa-trash-o" })
+
+                                </li>
+                                <li>
+
+                                    @Html.ActionLink("الصورة الرئيسية", "SetAsMainGalleryPhoto", "Gallery", new { area = "CoreHandler", GalleryId = item.GalleryID, PictureId = item.PictureID }, new { @class = "fa fa-pencil" })
+
+                                </li>
+
+
+                            </ul>
+                        </div>
+                    </td>
+                </tr>
+            }
+
+        </table>
+
+    </div>
+</div>
+
+
+

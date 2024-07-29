@@ -1,0 +1,127 @@
+﻿@using CMS.Areas.FrameWork.Controllers
+@using CMS.Areas.FrameWork.ViewModels
+
+@{
+    ViewBag.Title = "ترتيب الاخبار بالصفحة الرئيسية";
+}
+
+@section HeadScript{
+
+    <style>
+        .ui-state-default {
+            height: 30px;
+            font-size: 15px;
+            margin: 5px;
+        }
+    </style>
+
+    <script>
+
+        $(function () {
+            $('#sortable').sortable();
+            $('button').on('click', function () {
+                var selectedsec = $("#selectedSectionID option:selected").val();
+                var ids = [];
+                $('.list-item').each(function (index, value) {
+                    var id = $(value).prop('id');
+                    ids.push(id);
+                });
+                $.post(
+                    '/CoreHandler/News/SaveHomePageNewsSort',
+                    { Ids: JSON.stringify(ids), secId: selectedsec }
+                );
+                //alert("تم الترتيب بنجاح");
+            })
+        });
+    </script>
+
+    <script>
+        $(function () {
+            $('#GetSectioNews').on('click', function () {
+                var valueofDropDown = $(this).val();
+                var selectedsec = $("#selectedSectionID option:selected").val();
+                var url = '/CoreHandler/News/LoadListToOrder?secId=' + selectedsec;
+                var dataToSend = { selectedValue: selectedsec }
+                $.ajax({
+                    method: "GET",
+                    cache: false,
+                    url: url,
+                    dataType: "HTML"
+
+                })
+                .done(function (response) { // jQuery 1.8 deprecates success() callback
+                            var div = $('#sortable');
+                            div.html('');
+                            div.html(response);
+                });
+            });
+        });
+    </script>
+}
+
+
+
+<div class="panel panel-default" id="@Model.RelatedTarget">
+    <div class="panel-heading">
+        <i class="fa fa-external-link-square"></i>
+        ترتيب الاخبار
+        <div class="panel-tools">
+            <a class="btn btn-xs btn-link panel-collapse collapses " href="#">
+            </a>
+            @*<a class="btn btn-xs btn-link panel-refresh" href="#">
+                    <i class="fa fa-refresh"></i>
+                </a>*@
+            @*<a class="btn btn-xs btn-link panel-expand" href="#">
+                    <i class="fa fa-resize-full"></i>
+                </a>*@
+
+        </div>
+    </div>
+    <div class="panel-body">
+
+        <div class="form-horizontal">
+
+            <div class="form-group">
+
+                <div class="col-md-9">
+
+
+                    <div style="width:60%;float:right; padding-left:10px;padding-right:20px;">
+                        @Html.DropDownList("selectedSectionID", new SelectList(ViewBag.Sec_ID, "Value", "Text"), new { @class = "form-control" })
+                    </div>
+                    <div style="width:20%;float:right;">
+                        <input type="button" id="GetSectioNews" value="عرض الاخبار" />
+                    </div>
+
+                    <div style="width:20%;float: left;padding-right: 20px;text-align: left;">
+                        <button class="btn btn-default">حفظ الترتيب</button>
+                    </div>
+                </div>
+
+
+                <div id="sortable" class="col-md-9">
+
+
+                    @Html.Action("LoadListToOrder", "News", new { area = "CoreHandler" })
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div>
+        
+            @{Html.RenderPartial("~/Areas/FrameWork/Views/Shared/_ajaxAlertMessage.cshtml"); }
+
+
+        </div>
+
+        <div>
+            @Html.ActionLink("العودة لصفحة إدخال الخبر", "Create", "News", new { area = "CoreHandler" }, null)
+        </div>
+
+    </div>
+
+
+</div>

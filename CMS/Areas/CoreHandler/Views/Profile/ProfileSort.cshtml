@@ -1,0 +1,107 @@
+﻿@model CMS.Areas.CoreHandler.Models.ProfileVM
+@using CMS.Areas.FrameWork.Controllers
+@using CMS.Areas.FrameWork.ViewModels
+
+@{
+    ViewBag.Title = "ترتيب الملفات";
+}
+
+
+@section HeadScript{
+
+    <style>
+        .ui-state-default {
+            height: 30px;
+            font-size: 15px;
+            margin: 5px;
+        }
+    </style>
+
+    <script>
+        $(function () {
+            $('#sortable').sortable();
+            $('button').on('click', function (e) {
+                var ids = [];
+                $('.list-item').each(function (index, value) {
+                    var id = $(value).prop('id');
+                    ids.push(id);
+                });
+                $.post(
+                    '/CoreHandler/Profile/SaveProfileSort',
+                    { Ids: JSON.stringify(ids) }
+                   );
+                //e.preventDefault();
+                //alert("تم الترتيب بنجاح");
+            })
+        });
+    </script>
+}
+
+<div class="panel panel-default" id="@Model.RelatedTarget">
+    <div class="panel-heading">
+        <i class="fa fa-external-link-square"></i>
+        ترتيب الملفات
+        <div class="panel-tools">
+            <a class="btn btn-xs btn-link panel-collapse collapses " href="#">
+            </a>
+            @*<a class="btn btn-xs btn-link panel-refresh" href="#">
+                    <i class="fa fa-refresh"></i>
+                </a>*@
+            @*<a class="btn btn-xs btn-link panel-expand" href="#">
+                    <i class="fa fa-resize-full"></i>
+                </a>*@
+
+        </div>
+    </div>
+    <div class="panel-body">
+
+        <div class="form-horizontal">
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+
+                    <button class="btn btn-default">حفظ الترتيب</button>
+
+                </div>
+            </div> 
+
+            <div class="form-group">
+
+                <div id="sortable" class="col-md-9">
+
+                    @foreach (var item in Model.orderedlst)
+                    {
+                        <div class="ui-state-default">
+                            <div class="list-item" id="@item.ProfileId">
+                                <div style="width:7%;float:right;margin-left: 2%;"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span></div>
+                                <div style="width:90%;float:left;">@item.ProfName</div>
+                                <div class="index"></div>
+                            </div>
+                        </div>
+                    }
+                </div>
+
+            </div>
+
+
+
+          
+
+
+        </div>
+
+
+        @{Html.RenderPartial("~/Areas/FrameWork/Views/Shared/_ajaxAlertMessage.cshtml"); }
+
+
+
+
+        <div>
+            @Html.ActionLink("العودة لصفحة الملفات", "Index", "Profile", new { area = "CoreHandler" }, null)
+        </div>
+
+    </div>
+
+
+</div>
+

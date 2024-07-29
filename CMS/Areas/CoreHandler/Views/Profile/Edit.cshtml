@@ -1,0 +1,182 @@
+﻿@model CMS.Areas.CoreHandler.Models.ProfileVM
+@using CMS.Areas.FrameWork.Controllers
+@using CMS.Areas.FrameWork.ViewModels
+@{
+    ViewBag.Title = "تعديل الملف";
+}
+@section HeadScript{
+    <meta charset="utf-8">
+    <meta name="robots" content="noindex, nofollow">
+
+    <style type="text/css">
+        .divHide {
+            display: none;
+        }
+    </style>
+
+    @Scripts.Render("/scripts/jquery.min.js")
+    <script src="~/assets/plugins/bootstrap/js/bootstrap.js"></script>
+
+    <script language="javascript" type="text/javascript">
+        function onAjaxComplete() {
+            $("#TargetImgDiv").removeClass("divHide");
+            $("#dvPreview").addClass("divHide");
+        }
+
+        $(function () {
+            //@@ sourceURL=someValue
+            $("#PMainPicture").change(function () {
+                debugger;
+                $("#dvPreview").html("");
+
+                if ($.browser.msie && parseFloat(jQuery.browser.version) <= 9.0) {
+                    $("#dvPreview").removeClass("divHide");
+                    $("#dvPreview")[0].filters.item("DXImageTransform.Microsoft.AlphaImageLoader").src = $(this).val();
+                }
+                else {
+                    if (typeof (FileReader) != "undefined") {
+                        $("#dvPreview").removeClass("divHide");
+                        $("#dvPreview").append("<img />");
+                        var reader = new FileReader();
+                        reader.onload = function (e) {
+                            $("#dvPreview img").attr("src", e.target.result);
+                            $("#dvPreview img").attr("class", "img-rounded");
+                            $("#dvPreview img").attr("width", "400");
+                            $("#dvPreview img").attr("height", "200");
+                        }
+                        $("#TargetImgDiv").addClass("divHide");
+                        reader.readAsDataURL($(this)[0].files[0]);
+                    } else {
+                        alert("هذا المتصفح لا يدعم تحميل الملفات");
+                    }
+                }
+
+            });
+        });
+    </script>
+}
+
+
+<div class="panel panel-default" id="@Model.RelatedTarget">
+    <div class="panel-heading">
+        <i class="fa fa-external-link-square"></i>
+        تعديل الملف
+        <div class="panel-tools">
+            <a class="btn btn-xs btn-link panel-collapse collapses " href="#">
+            </a>
+            @*<a class="btn btn-xs btn-link panel-refresh" href="#">
+                    <i class="fa fa-refresh"></i>
+                </a>*@
+            @*<a class="btn btn-xs btn-link panel-expand" href="#">
+                    <i class="fa fa-resize-full"></i>
+                </a>*@
+
+        </div>
+    </div>
+    <div class="panel-body">
+
+
+        @using (Html.BeginForm("Edit", "Profile", new { area = "CoreHandler" }, FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+            @if (Model.Profile != null)
+            {
+                @Html.HiddenFor(model => model.Profile.ProfileId)
+                @Html.HiddenFor(model => model.Profile.DisplayOrder)
+                @Html.HiddenFor(model => model.Profile.CreationDate)
+                @Html.HiddenFor(model => model.Profile.MainPictureName)             
+            }
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Profile.ProfName, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Profile.ProfName, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.Profile.ProfName, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-2 control-label">صورة الملف</label>
+
+                <div class="col-md-2">
+                    <input type="file" id="PMainPicture" name="PMainPicture" class="file-input file-input-new" />
+                    @*@Html.HiddenFor(model => model.News.NewsPicture1.PictureName)
+                @Html.ValidationMessageFor(model => model.News.NewsPicture1.PictureName, "", new { @class = "text-danger" })*@
+                    <div class="col-md-10">
+                        <div id="dvPreview">
+                            <img class="img-rounded" src="@ViewBag.RProfileImgPath/@Model.Profile.MainPictureName" />
+                        </div>
+                        <div id="TargetImgDiv" class="img-rounded">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.Profile.Keyword, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Profile.Keyword, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.Profile.Keyword, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.Profile.Description, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.TextAreaFor(model => model.Profile.Description, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.Profile.Description, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.Profile.Hide, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.CheckBoxFor(model => model.SHide, new { @class = "iCheck-helper" })
+                    @Html.ValidationMessageFor(model => model.SHide, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            @*<div class="form-group">
+            @Html.LabelFor(model => model.Profile.StartDate, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Profile.StartDate, new { @class = "iCheck-helper" })
+                @Html.ValidationMessageFor(model => model.Profile.StartDate, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Profile.EndDate, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Profile.EndDate, new { @class = "iCheck-helper" })
+                @Html.ValidationMessageFor(model => model.Profile.EndDate, "", new { @class = "text-danger" })
+            </div>
+        </div>*@
+
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="تعديل" class="btn btn-default" />
+                </div>
+            </div>
+
+        </div>
+        }
+        @if (ViewBag.alert != null)
+        {
+            Html.RenderPartial("~/Areas/FrameWork/Views/Shared/_alertMessage.cshtml", (alertMessageVM)ViewBag.alert);
+        }
+        <div>
+            @Html.ActionLink("العودة لصفحة الملفات", "Index", "Profile", new { area = "CoreHandler" }, null)
+        </div>
+
+
+    </div>
+
+
+</div>
+
+
+
+
+

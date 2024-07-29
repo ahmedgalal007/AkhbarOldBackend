@@ -1,0 +1,35 @@
+﻿/*.title-table td , th {
+	background-color:#CCC;
+	border:#999 1px solid;
+	text-align:center;
+	color:#333;
+	height:40px;
+}
+.data td {
+	border:#ccc 1px solid;
+	line-height:30px;
+	color:#333;
+	
+}
+.data td img {
+	margin-top:5px;
+	cursor:pointer;
+}*/
+
+fieldset
+{
+	border:1px solid  /*#6e6e6e*/#cecece;
+	padding:0 1.4em 1.4em 1.4em !important;
+	 margin: 0 0 1.5em 0 !important;
+}
+legend
+{
+	 
+    font-weight:  bold !important;
+    text-align: left !important;
+    width: inherit; /* Or auto */
+    padding: 0 10px; /* To give a bit of padding on the left and right */
+    border-bottom: none;
+    font-size:small;
+    color:#000000;
+}

@@ -1,0 +1,20 @@
+﻿<script type="text/javascript">
+
+                //$(document).ready(function () {
+                //    AjaxInit()
+                //});
+
+                $(document).ajaxComplete(function () {
+                    AjaxInit()
+                });
+
+                function AjaxInit() {
+                    $.toast({
+                        text: 'تم الترتيب بنجاح',
+                        showHideTransition: 'slide',
+                        icon: 'success'
+
+                    });
+                }
+
+</script>

@@ -1,0 +1,22 @@
+﻿@using CMS.Areas.FrameWork.Controllers
+@using CMS.Areas.FrameWork.ViewModels
+
+@{
+    ViewBag.Title = "Index";
+}
+<!-- start: PAGE CONTENT -->
+
+<h2 style="text-align:center;">
+    مرحبا بك : @ViewBag.UserName
+</h2>
+<br />
+<h3  style="text-align:center;">@ViewBag.DeskMessage</h3>
+
+@if (ViewBag.alert != null)
+{
+    Html.RenderPartial("~/Areas/FrameWork/Views/Shared/_alertMessage.cshtml", (alertMessageVM)ViewBag.alert);
+}
+
+
+
+<!-- end: PAGE CONTENT-->

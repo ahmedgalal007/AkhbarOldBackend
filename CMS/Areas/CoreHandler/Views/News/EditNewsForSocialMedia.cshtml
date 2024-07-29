@@ -1,0 +1,181 @@
+﻿@model CMS.Areas.CoreHandler.Models.NewsVM
+@using CMS.Areas.FrameWork.Controllers
+@using CMS.Areas.FrameWork.ViewModels
+@{
+    ViewBag.Title = "تعديل الخبر";
+}
+
+@section HeadScript{
+    <meta charset="utf-8">
+    <meta name="robots" content="noindex, nofollow">
+
+    @*/* Img Preview */*@
+
+    @Scripts.Render("/scripts/jquery.min.js")
+
+    <script language="javascript" type="text/javascript">
+        $(function () {
+            $("#PictureName1").change(function () {
+                $("#dvPreview").html("");
+             
+                    if ($.browser.msie && parseFloat(jQuery.browser.version) <= 9.0) {
+                        $("#dvPreview").show();
+                        $("#dvPreview")[0].filters.item("DXImageTransform.Microsoft.AlphaImageLoader").src = $(this).val();
+                    }
+                    else {
+                        if (typeof (FileReader) != "undefined") {
+                            $("#dvPreview").show();
+                            $("#dvPreview").append("<img />");
+                            var reader = new FileReader();
+                            reader.onload = function (e) {
+                                $("#dvPreview img").attr("src", e.target.result);
+                                $("#dvPreview img").attr("class", "img-rounded");
+                                $("#dvPreview img").attr("width", "300");
+                                $("#dvPreview img").attr("height", "300");
+                            }
+                            reader.readAsDataURL($(this)[0].files[0]);
+                        } else {
+                            alert("هذا المتصفح لا يدعم تحميل الملفات");
+                        }
+                    }
+              
+            });
+        });
+    </script>
+}
+
+
+<div class="panel panel-default" id="@Model.RelatedTarget">
+    <div class="panel-heading">
+        <i class="fa fa-external-link-square"></i>
+        تعديل الخبر
+        <div class="panel-tools">
+            <a class="btn btn-xs btn-link panel-collapse collapses " href="#">
+            </a>
+            @*<a class="btn btn-xs btn-link panel-refresh" href="#">
+                    <i class="fa fa-refresh"></i>
+                </a>*@
+            @*<a class="btn btn-xs btn-link panel-expand" href="#">
+                    <i class="fa fa-resize-full"></i>
+                </a>*@
+
+        </div>
+    </div>
+    <div class="panel-body">
+        <div class="form-horizontal">
+
+            @using (Html.BeginForm("EditNewsForSocialMedia", "News", new { area = "CoreHandler" }, FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                @Html.AntiForgeryToken()
+                @Html.HiddenFor(model => model.News.NewID)
+                @Html.HiddenFor(model => model.News.SectionID)
+                @Html.HiddenFor(model => model.News.SectionID)
+                @Html.HiddenFor(model => model.News.CategoryID)
+                @Html.HiddenFor(model => model.News.ParentID)
+                @Html.HiddenFor(model => model.News.NewsType)
+                @Html.HiddenFor(model => model.News.NewsSource)
+                @Html.HiddenFor(model => model.News.Title)
+                @Html.HiddenFor(model => model.News.SubTitle)
+                @Html.HiddenFor(model => model.News.Story)
+                @Html.HiddenFor(model => model.News.Brief)
+                @Html.HiddenFor(model => model.News.quote)
+                @Html.HiddenFor(model => model.News.Keywords)
+                @Html.HiddenFor(model => model.News.PictureID1)
+                @Html.HiddenFor(model => model.News.PictureID2)
+                @Html.HiddenFor(model => model.News.PictureCaption1)
+                @Html.HiddenFor(model => model.News.PictureCaption2)
+                @Html.HiddenFor(model => model.News.AddedDate)
+                @Html.HiddenFor(model => model.News.PublishDate)
+                @Html.HiddenFor(model => model.News.EditorID)
+                @Html.HiddenFor(model => model.News.ByLine)
+                @Html.HiddenFor(model => model.News.Approved)
+                @Html.HiddenFor(model => model.News.Views)
+                @Html.HiddenFor(model => model.News.NewStatus)
+                @Html.HiddenFor(model => model.News.BackEndNewId)
+                @Html.HiddenFor(model => model.News.AssignedTo)
+                @Html.HiddenFor(model => model.News.Creator)
+                @Html.HiddenFor(model => model.News.Notes)
+                @Html.HiddenFor(model => model.News.sEditorID)
+                @Html.HiddenFor(model => model.News.sDepartDirectorID)
+                @Html.HiddenFor(model => model.News.sDeskID)
+                @Html.HiddenFor(model => model.News.SDeskDate)
+                @Html.HiddenFor(model => model.News.sReviewerID)
+                @Html.HiddenFor(model => model.News.sUploaderID)
+                @Html.HiddenFor(model => model.News.JournalID)
+
+
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+               
+                <div class="form-group">
+                    @Html.LabelFor(model => model.News.Title, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-sm-9">
+                        @Html.DisplayFor(model => model.News.Title, new { @class = "form-control" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.News.SocialTitle, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-sm-9">
+                        @Html.EditorFor(model => model.News.SocialTitle, new { @class = "form-control" })
+                        <span id="titlecharsLeft"></span>
+                        <script>
+                        $(function () {
+                            $("#News_SocialTitle").keyup(function () {
+                                var charsLeft = $(this).attr("data-val-length-max") - $(this).val().length;
+                                $("#titlecharsLeft").text(" الاحرف المتبقية " + charsLeft + "- الاحرف المدخلة " + $(this).val().length);
+                            });
+                        });
+                        </script>
+                    </div>
+                </div>
+
+
+                    <div class="form-group">
+                        <label class="control-label col-md-2">الصورة </label>
+                        <div class="col-md-10">
+                            <input type="file" id="PictureName1" name="PictureName1" class="file-input file-input-new" />
+                            @*@Html.HiddenFor(model => model.News.NewsPicture1.PictureName)
+                                @Html.ValidationMessageFor(model => model.News.NewsPicture1.PictureName, "", new { @class = "text-danger" })*@
+                            <div class="col-md-10">
+                                <div id="dvPreview" class="img-rounded">
+                                    @if (Model.SocialPicture != null)
+                                    {
+                                       <img class="img-rounded" src="@ViewBag.RSocialPath/@Model.SocialPicture.PictureName" />
+                                    }
+                                    else
+                                    {
+                                        <img class="img-rounded" src="@ViewBag.RMeduimImgPath/@Model.News.NewsPicture.PictureName" />
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-md-2"> العلامة المائية</label>
+                        <div class="col-md-10">
+                            @Html.CheckBoxFor(model => model.waterMarkFlag, new { @class = "iCheck-helper" })
+                            @Html.ValidationMessageFor(model => model.waterMarkFlag, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                  
+
+                    
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="تعديل" class="btn btn-default" />
+                        </div>
+                    </div>
+            }
+
+            @if (ViewBag.alert != null)
+            {
+                Html.RenderPartial("~/Areas/FrameWork/Views/Shared/_alertMessage.cshtml", (alertMessageVM)ViewBag.alert);
+            }
+
+        </div>
+
+
+    </div>
+</div>

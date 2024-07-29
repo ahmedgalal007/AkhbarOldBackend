@@ -1,0 +1,96 @@
+﻿@model CMS.Areas.FrameWork.ViewModels.alertMessageVM
+@using CMS.Areas.FrameWork.ViewModels
+
+@if (Model != null)
+{
+
+    switch (Model.alertType)
+    {
+        case alertMessageVM.AlertType.Success:
+            @*<div class="alert alert-success fade in alert-message">
+                    <button data-dismiss="alert" class="close">
+                        &times;
+                    </button>
+                    <i class="fa fa-check-circle"></i>
+                    @Model.Message
+                </div>*@
+            <script type="text/javascript">
+                $(document).ready(function(){
+                    $.toast({                        
+                        text: '@Model.Message',
+                        showHideTransition: 'slide',
+                        icon: 'success'
+
+                    });
+                })
+            </script>
+            break;
+        case alertMessageVM.AlertType.Info:
+        @*<div class="alert alert-info fade in alert-message">
+                <button data-dismiss="alert" class="close">
+                    &times;
+                </button>
+                <i class="fa fa-info-circle"></i>
+                @Model.Message
+            </div>*@
+        <script type="text/javascript">
+            $(document).ready(function(){
+                $.toast({                    
+                    text: '@Model.Message',
+                    showHideTransition: 'slide',
+                    icon: 'info'
+                });
+            })
+        </script>
+            break;
+        case alertMessageVM.AlertType.Warning:
+        @*<div class="alert alert-warning fade in alert-message">
+                <button data-dismiss="alert" class="close">
+                    &times;
+                </button>
+                <i class="fa fa-exclamation-triangle"></i>
+                @Model.Message
+            </div>*@
+        <script type="text/javascript">
+            $(document).ready(function(){
+                $.toast({                    
+                    text: '@Model.Message',
+                    showHideTransition: 'slide',
+                    icon: 'warning'
+                });
+            })
+        </script>
+            break;
+        case alertMessageVM.AlertType.Error:
+        @*<div class="alert alert-danger fade in alert-message">
+                <button data-dismiss="alert" class="close">
+                    &times;
+                </button>
+                <i class="fa fa-times-circle"></i>
+                @Model.Message
+            </div>*@
+        <script type="text/javascript">
+            $(document).ready(function(){
+                $.toast({
+                    text: '@Model.Message',
+                    showHideTransition: 'slide',
+                    icon: 'error'
+                });
+            })
+        </script>
+            break;
+        default:
+            break;
+    }
+
+
+    @*if (Model.AutoCloseTime != null)
+        {
+            <script type="text/javascript">
+                $(document).ready(function()
+                {
+                    createAutoClosingAlert(".alert-message", @Model.AutoCloseTime.Value);
+                });
+            </script>
+        }*@
+}

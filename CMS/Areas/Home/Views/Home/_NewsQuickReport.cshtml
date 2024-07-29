@@ -1,0 +1,11 @@
+﻿
+@using Akhbar.DBEntities
+@model QuickNewsRptData
+@using CMS.Areas.FrameWork.Controllers
+
+<div class="footer-inner" style="width:100%; font-size: large;">
+    <p>تقرير الاخبار عن اخر 24 ساعة</p>
+    <p><span>( الاخبار المنشورة: @Model.PublishCount  )  -  
+    ( الاخبار الملغاة:  @Model.RejectedCount )  -  
+    ( الاخبار المؤجلة:  @Model.WaitingCount ) </span></p>
+</div>

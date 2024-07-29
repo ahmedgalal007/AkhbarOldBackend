@@ -1,0 +1,152 @@
+12:48:58 ص  User Machine Name:Admin - UserIP:::1 - User operating system:Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36 - RemoteIP:::1 - Mac/Physical-Address:509A4CB3A4D0 - UserId:2  - Name:مدير النظام // The Entity Name:AdminUser Added //
+UserID : 563  
+FullName : Ahmed Galal Mohamed  
+UserName : Ahmed.Galal  
+Password : Rfc2898DeriveBytes$50000$X+ViAgllhs4+tyKUXh4ZVg==$z3VHN/spuD5l2uISQi8VudoOVKbH0o4ic+Vp968OPo4=  
+Type : 1  
+LastLive :   
+Telephone :   
+UserPhoto :   
+UserEmail :   
+BirthDay :   
+BirthPlace :   
+UserTwitter :   
+UserFB :   
+Nationality :   
+EducationalQualification :   
+NickName :   
+AboutYourSelf :   
+Active : True  
+
+----------------------------------------------------------
+12:48:59 ص  User Machine Name:Admin - UserIP:::1 - User operating system:Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36 - RemoteIP:::1 - Mac/Physical-Address:509A4CB3A4D0 - UserId:2  - Name:مدير النظام // The Entity Name:ByLine Added //
+ByLineId : 765  
+ByLineName : Ahmed Galal Mohamed  
+Active : True  
+
+----------------------------------------------------------
+12:55:15 ص  User Machine Name:Admin - UserIP:::1 - User operating system:Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36 - RemoteIP:::1 - Mac/Physical-Address:509A4CB3A4D0 - UserId:2  - Name:مدير النظام // The Entity Name:AdminUser  - With:UserID= 2  Modified //
+UserID : 2  
+FullName : مدير النظام  
+UserName : Admin  
+Password : Rfc2898DeriveBytes$50000$+qkYcZOzC8BTTJEtclBVfQ==$+QJ2ENCMOMHWT1iry/RK7+tW8FFRTCJDVmex9i92WOU=  
+Type : 0  
+LastLive :   
+Telephone : 01122495684  
+UserPhoto : 20180101073227187.jpg  
+UserEmail : hebamusa2003@gmail.com  
+BirthDay : 06/06/1984 12:00:00 ص  
+BirthPlace : العجوزة  
+UserTwitter :   
+UserFB : heba_musa_2003@yahoo.com  
+Nationality : 2  
+EducationalQualification : كلية الحاسبات والمعلومات جامعة القاهرة  
+NickName : BOBBA  
+AboutYourSelf :   
+Active : True  
+
+----------------------------------------------------------
+12:59:11 ص  User Machine Name:Admin - UserIP:::1 - User operating system:Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36 - RemoteIP:::1 - Mac/Physical-Address:509A4CB3A4D0 - UserId:2  - Name:مدير النظام // The Entity Name:UserRole Added //
+RoleId : 1  
+AdminUserID : 563  
+SectionID : 0  
+ID : 2611  
+JournalID : 1  
+
+----------------------------------------------------------
+12:59:21 ص  User Machine Name:Admin - UserIP:::1 - User operating system:Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36 - RemoteIP:::1 - Mac/Physical-Address:509A4CB3A4D0 - UserId:2  - Name:مدير النظام // The Entity Name:UserRole Added //
+RoleId : 6  
+AdminUserID : 563  
+SectionID : 0  
+ID : 2612  
+JournalID : 1  
+
+----------------------------------------------------------
+12:59:25 ص  User Machine Name:Admin - UserIP:::1 - User operating system:Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36 - RemoteIP:::1 - Mac/Physical-Address:509A4CB3A4D0 - UserId:2  - Name:مدير النظام // The Entity Name:UserRole Added //
+RoleId : 8  
+AdminUserID : 563  
+SectionID : 0  
+ID : 2613  
+JournalID : 1  
+
+----------------------------------------------------------
+12:59:30 ص  User Machine Name:Admin - UserIP:::1 - User operating system:Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36 - RemoteIP:::1 - Mac/Physical-Address:509A4CB3A4D0 - UserId:2  - Name:مدير النظام // The Entity Name:UserRole Added //
+RoleId : 0  
+AdminUserID : 563  
+SectionID : 0  
+ID : 2614  
+JournalID : 1  
+
+----------------------------------------------------------
+12:59:37 ص  User Machine Name:Admin - UserIP:::1 - User operating system:Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36 - RemoteIP:::1 - Mac/Physical-Address:509A4CB3A4D0 - UserId:2  - Name:مدير النظام // The Entity Name:UserRole Added //
+RoleId : 112  
+AdminUserID : 563  
+SectionID : 0  
+ID : 2615  
+JournalID : 1  
+
+----------------------------------------------------------
+12:59:43 ص  User Machine Name:Admin - UserIP:::1 - User operating system:Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36 - RemoteIP:::1 - Mac/Physical-Address:509A4CB3A4D0 - UserId:2  - Name:مدير النظام // The Entity Name:UserRole Added //
+RoleId : 113  
+AdminUserID : 563  
+SectionID : 0  
+ID : 2616  
+JournalID : 1  
+
+----------------------------------------------------------
+12:59:55 ص  User Machine Name:Admin - UserIP:::1 - User operating system:Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36 - RemoteIP:::1 - Mac/Physical-Address:509A4CB3A4D0 - UserId:2  - Name:مدير النظام // The Entity Name:UserRole Added //
+RoleId : 115  
+AdminUserID : 563  
+SectionID : 0  
+ID : 2617  
+JournalID : 1  
+
+----------------------------------------------------------
+01:00:08 ص  User Machine Name:Admin - UserIP:::1 - User operating system:Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36 - RemoteIP:::1 - Mac/Physical-Address:509A4CB3A4D0 - UserId:2  - Name:مدير النظام // The Entity Name:UserRole Added //
+RoleId : 100  
+AdminUserID : 563  
+SectionID : 0  
+ID : 2618  
+JournalID : 1  
+
+----------------------------------------------------------
+01:00:12 ص  User Machine Name:Admin - UserIP:::1 - User operating system:Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36 - RemoteIP:::1 - Mac/Physical-Address:509A4CB3A4D0 - UserId:2  - Name:مدير النظام // The Entity Name:UserRole Added //
+RoleId : 102  
+AdminUserID : 563  
+SectionID : 0  
+ID : 2619  
+JournalID : 1  
+
+----------------------------------------------------------
+01:00:17 ص  User Machine Name:Admin - UserIP:::1 - User operating system:Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36 - RemoteIP:::1 - Mac/Physical-Address:509A4CB3A4D0 - UserId:2  - Name:مدير النظام // The Entity Name:UserRole Added //
+RoleId : 103  
+AdminUserID : 563  
+SectionID : 0  
+ID : 2620  
+JournalID : 1  
+
+----------------------------------------------------------
+01:00:23 ص  User Machine Name:Admin - UserIP:::1 - User operating system:Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36 - RemoteIP:::1 - Mac/Physical-Address:509A4CB3A4D0 - UserId:2  - Name:مدير النظام // The Entity Name:UserRole Added //
+RoleId : 104  
+AdminUserID : 563  
+SectionID : 0  
+ID : 2621  
+JournalID : 1  
+
+----------------------------------------------------------
+01:00:29 ص  User Machine Name:Admin - UserIP:::1 - User operating system:Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36 - RemoteIP:::1 - Mac/Physical-Address:509A4CB3A4D0 - UserId:2  - Name:مدير النظام // The Entity Name:UserRole Added //
+RoleId : 107  
+AdminUserID : 563  
+SectionID : 0  
+ID : 2622  
+JournalID : 1  
+
+----------------------------------------------------------
+01:00:34 ص  User Machine Name:Admin - UserIP:::1 - User operating system:Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36 - RemoteIP:::1 - Mac/Physical-Address:509A4CB3A4D0 - UserId:2  - Name:مدير النظام // The Entity Name:UserRole Added //
+RoleId : 109  
+AdminUserID : 563  
+SectionID : 0  
+ID : 2623  
+JournalID : 1  
+
+----------------------------------------------------------

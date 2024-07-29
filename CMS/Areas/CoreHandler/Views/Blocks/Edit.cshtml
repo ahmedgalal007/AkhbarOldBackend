@@ -1,0 +1,82 @@
+﻿@model CMS.Areas.CoreHandler.Models.BlocksVM
+@using CMS.Areas.FrameWork.Controllers
+@using CMS.Areas.FrameWork.ViewModels
+@{
+    ViewBag.Title = "تعديل المساحة الإعلانية";
+}
+
+
+<div class="panel panel-default" id="@Model.RelatedTarget">
+    <div class="panel-heading">
+        <i class="fa fa-external-link-square"></i>
+       تعديل المساحة الإعلانية
+        <div class="panel-tools">
+            <a class="btn btn-xs btn-link panel-collapse collapses " href="#">
+            </a>
+            @*<a class="btn btn-xs btn-link panel-refresh" href="#">
+                    <i class="fa fa-refresh"></i>
+                </a>*@
+            @*<a class="btn btn-xs btn-link panel-expand" href="#">
+                    <i class="fa fa-resize-full"></i>
+                </a>*@
+
+        </div>
+    </div>
+    <div class="panel-body">
+
+
+        @using (Html.BeginForm("Edit", "Blocks", new { area = "CoreHandler" }, FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-horizontal">
+
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                @if (Model.blocksZone != null)
+                {
+                    @Html.HiddenFor(model => model.blocksZone.ZoneID)
+                }
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.blocksZone.ZoneName, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.blocksZone.ZoneName, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.blocksZone.ZoneName, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.blocksZone.ZoneDescription, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.blocksZone.ZoneDescription, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.blocksZone.ZoneDescription, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="تعديل" class="btn btn-default" />
+                    </div>
+                </div>
+
+            </div>
+        }
+        @if (ViewBag.alert != null)
+            {
+                Html.RenderPartial("~/Areas/FrameWork/Views/Shared/_alertMessage.cshtml", (alertMessageVM)ViewBag.alert);
+            }
+        <div>
+            @Html.ActionLink("العودة لصفحة المساحات الإعلانية", "Index", "Blocks", new { area = "CoreHandler" }, null)
+        </div>
+
+
+    </div>
+
+
+</div>
+
+
+
+
+

@@ -1,0 +1,34 @@
+﻿@using Akhbar.DBEntities
+@model IEnumerable<TempDeskShift>
+@using CMS.Areas.FrameWork.Controllers
+
+
+<li class="dropdown">
+    <a data-toggle="dropdown" data-hover="dropdown" class="dropdown-toggle" data-close-others="true" href="#" aria-expanded="false">
+        <i class="clip-list-5"></i>
+        <span class="badge"> @Model.Count()</span>
+    </a>
+    <ul class="dropdown-menu todo" style="text-align:right;max-width:200px;max-height:200px;">
+        <li style="min-width:200px;">
+            <span class="dropdown-menu-title"> العدد الحالي بالديسك @Model.Count()</span>
+        </li>
+
+        <li>
+
+            <div class="drop-down-wrapper">
+                <ul>
+
+                    @foreach (var item in Model)
+                    {
+                        <li>
+                            <i class="clip-user-2"></i>
+                            <span class="message"> @item.AdminUser.FullName  </span>
+                        </li>
+                    }
+
+                </ul>
+            </div>
+
+        </li>
+    </ul>
+</li>

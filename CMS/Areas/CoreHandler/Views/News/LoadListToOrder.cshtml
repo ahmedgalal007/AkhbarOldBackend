@@ -1,0 +1,12 @@
+﻿@model CMS.Areas.CoreHandler.Models.NewsVM
+
+@foreach (var item in Model.NewsForSort)
+{
+    <div class="ui-state-default">
+        <div class="list-item" id="@item.NewID">
+            <div style="width:7%;float:right;"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span></div>
+            <div style="width:93%;float:left;">@item.Title (@item.PublishDate)</div>
+            <div class="index"></div>
+        </div>
+    </div>
+}

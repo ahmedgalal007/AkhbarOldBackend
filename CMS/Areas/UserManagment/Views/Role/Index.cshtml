@@ -1,0 +1,120 @@
+﻿@model CMS.Areas.UserManagment.Models.RoleVM
+@using CMS.Areas.FrameWork.Controllers
+@using CMS.Areas.FrameWork.ViewModels
+@using PagedList.Mvc
+@{
+    ViewBag.Title = "المجموعات";
+}
+<!-- start: PAGE CONTENT -->
+
+<div class="panel panel-default" id="@Model.RelatedTarget">
+    <div class="panel-heading">
+        <i class="fa fa-external-link-square"></i>
+        المجموعات
+        <div class="panel-tools">
+            <a class="btn btn-xs btn-link panel-collapse collapses" href="#">
+            </a>
+            @*<a class="btn btn-xs btn-link panel-config" href="#panel-config" data-toggle="modal">
+                    <i class="fa fa-wrench"></i>
+                </a>*@
+            <a class="btn btn-xs btn-link panel-refresh" href="#">
+                <i class="fa fa-refresh"></i>
+            </a>
+            <a class="btn btn-xs btn-link panel-expand" href="#">
+                <i class="fa fa-resize-full"></i>
+            </a>
+            <a class="btn btn-xs btn-link panel-close" href="#">
+                <i class="fa fa-times"></i>
+            </a>
+        </div>
+    </div>
+    <div class="panel-body">
+
+
+        <div>
+            <p style="float: right;padding-left: 30%;">
+                <a class="btn btn-primary" href="/UserManagment/Role/Create" data-toggle="modal"><i class="fa fa-plus"></i> إضافة مجموعة </a>
+            </p>
+
+            @using (Html.BeginForm("Index", "Role", new { area = "UserManagment" }, FormMethod.Post))
+            {
+                <p>
+                    @Html.TextBox("SearchString", null, new { @style = " width:50%; " })
+                    <input type="submit" value="بحث" />
+                </p>
+            }
+        </div>
+
+        <table class="table table-striped table-bordered table-hover table-full-width dataTable no-footer">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Role.RoleName)
+                </th>
+               
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model.lst)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.RoleName)
+                    </td>
+                  
+                    
+                    <td>
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-purple"><i class="fa fa-wrench"></i></button>
+                            <button data-toggle="dropdown" class="btn btn-purple dropdown-toggle"><span class="caret"></span></button>
+                            <ul class="dropdown-menu" role="menu">
+
+                                <li>
+                                    @Ajax.CustomAjaxActionLink("حذف", "UserManagment", "Role", "Delete",
+                                   new RouteValueDictionary { { "RoleID", item.NewID.ToString() } }, new AjaxOptions { UpdateTargetId = Model.RelatedTarget, InsertionMode = InsertionMode.ReplaceWith }
+                                   , new Dictionary<string, object> { { "class", "fa fa-trash-o" } })
+                                </li>
+
+                                <li>
+                                    @Ajax.CustomAjaxActionLink("تعديل", "UserManagment", "Role", "Edit",
+                                   new RouteValueDictionary { { "RoleID", item.NewID.ToString() } }, new AjaxOptions { UpdateTargetId = Model.RelatedTarget, InsertionMode = InsertionMode.ReplaceWith }
+                                   , new Dictionary<string, object> { { "class", "fa fa-pencil" } })
+                                </li>
+                                <li>
+                                    @Ajax.CustomAjaxActionLink("المهام الوظيفية", "UserManagment", "Role", "MangeRoleServices",
+                                   new RouteValueDictionary { { "vm.Role.NewID", item.NewID.ToString() }, { "vm.Role.RoleName", item.RoleName.ToString() } }, new AjaxOptions { UpdateTargetId = Model.RelatedTarget, InsertionMode = InsertionMode.ReplaceWith }
+                                   , new Dictionary<string, object> { { "class", "fa fa-pencil" } })
+                                </li>
+                                <li>
+                                    @Ajax.CustomAjaxActionLink("التفاصيل", "UserManagment", "Role", "Details",
+                                   new RouteValueDictionary { { "RoleID", item.NewID.ToString() } }, new AjaxOptions { UpdateTargetId = Model.RelatedTarget, InsertionMode = InsertionMode.ReplaceWith }
+                                   , new Dictionary<string, object> { { "class", "clip-note" } })
+                                </li>
+
+                               
+                            </ul>
+                        </div>
+                    </td>
+                </tr>
+
+
+            }
+
+            @if (ViewBag.alert != null)
+            {
+                Html.RenderPartial("~/Areas/FrameWork/Views/Shared/_alertMessage.cshtml", (alertMessageVM)ViewBag.alert);
+            }
+
+        </table>
+        <div style="text-align:center;">
+            @* from extension method in CustomHTML Class *@
+            @*Page @(Model.lst.PageCount < Model.lst.PageNumber ? 0 : Model.lst.PageNumber) of @Model.lst.PageCount*@
+            @Html.PagedListPager(Model.lst, page => Url.Action("Index", new { page, searchStr = Model.SearchString }))
+
+            @*@Html.CustomAjaxPagedListPager(Model.lst, Url)*@
+        </div>
+    </div>
+</div>
+
+
+
+<!-- end: PAGE CONTENT-->

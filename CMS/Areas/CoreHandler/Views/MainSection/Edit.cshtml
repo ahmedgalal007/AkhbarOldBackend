@@ -1,0 +1,129 @@
+﻿@model CMS.Areas.CoreHandler.Models.MainSectionVM
+@using CMS.Areas.FrameWork.Controllers
+@using CMS.Areas.FrameWork.ViewModels
+@{
+    ViewBag.Title = "تعديل الباب";
+}
+
+
+<div class="panel panel-default" id="@Model.RelatedTarget">
+    <div class="panel-heading">
+        <i class="fa fa-external-link-square"></i>
+        تعديل الباب
+        <div class="panel-tools">
+            <a class="btn btn-xs btn-link panel-collapse collapses " href="#">
+            </a>
+            @*<a class="btn btn-xs btn-link panel-refresh" href="#">
+                    <i class="fa fa-refresh"></i>
+                </a>*@
+            @*<a class="btn btn-xs btn-link panel-expand" href="#">
+                    <i class="fa fa-resize-full"></i>
+                </a>*@
+
+        </div>
+    </div>
+    <div class="panel-body">
+
+
+        @using (Html.BeginForm("Edit", "MainSection", new { area = "CoreHandler" }, FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-horizontal">
+
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                @if (Model.section != null)
+                {
+                    @Html.HiddenFor(model => model.section.SectionID)
+                    @Html.HiddenFor(model => model.section.DisplayOrder)
+                }
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.section.SecTitle, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.section.SecTitle, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.section.SecTitle, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.section.Keywords, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.section.Keywords, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.section.Keywords, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.section.Description, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.TextAreaFor(model => model.section.Description, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.section.Description, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <label class="control-label col-md-2">قسم فرعي</label>
+                    <div class="col-md-10">
+                        @Html.CheckBoxFor(model => model.SubSecFlag, new { @id = "childSecId", @class = "iCheck-helper" })
+                        @Html.ValidationMessageFor(model => model.SubSecFlag, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group" id="divParentSec" style="display:none;">
+                    <label class="control-label col-md-2">القسم الرئيسي</label>
+                    <div class="col-sm-10">
+                        @Html.DropDownListFor(model => model.section.ParentSectionID, new SelectList(ViewBag.Sec_ID, "Value", "Text"), "--أختار الباب--", new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.section.ParentSectionID, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.section.Hide, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.CheckBoxFor(model => model.SHide, new { @class = "iCheck-helper" })
+                        @Html.ValidationMessageFor(model => model.SHide, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.section.WeeklySection, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.CheckBoxFor(model => model.SWeeklySection, new { @class = "iCheck-helper" })
+                        @Html.ValidationMessageFor(model => model.SWeeklySection, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="تعديل" class="btn btn-default" />
+                    </div>
+                </div>
+
+            </div>
+        }
+        @if (ViewBag.alert != null)
+        {
+            Html.RenderPartial("~/Areas/FrameWork/Views/Shared/_alertMessage.cshtml", (alertMessageVM)ViewBag.alert);
+        }
+        <div>
+            @Html.ActionLink("العودة لصفحة الابواب", "Index", "MainSection", new { area = "CoreHandler" }, null)
+        </div>
+
+
+    </div>
+
+
+</div>
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#childSecId').change(function () {
+            if (this.checked)
+                $('#divParentSec').attr("style", "display:block");
+            else
+                $('#divParentSec').attr("style", "display:none");
+        });
+
+        $('#childSecId').change();
+    });
+</script>

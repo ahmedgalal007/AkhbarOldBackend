@@ -1,0 +1,108 @@
+﻿@model CMS.Areas.CoreHandler.Models.NewsVM
+@using CMS.Areas.FrameWork.Controllers
+@using CMS.Areas.FrameWork.ViewModels
+@using PagedList.Mvc
+@{
+    ViewBag.Title = "شريط الاخبار";
+}
+<!-- start: PAGE CONTENT -->
+
+<div class="panel panel-default" id="@Model.RelatedTarget">
+    <div class="panel-heading">
+        <i class="fa fa-external-link-square"></i>
+        شريط الاخبار
+        <div class="panel-tools">
+            <a class="btn btn-xs btn-link panel-collapse collapses" href="#">
+            </a>
+            @*<a class="btn btn-xs btn-link panel-config" href="#panel-config" data-toggle="modal">
+                    <i class="fa fa-wrench"></i>
+                </a>*@
+            <a class="btn btn-xs btn-link panel-refresh" href="#">
+                <i class="fa fa-refresh"></i>
+            </a>
+            <a class="btn btn-xs btn-link panel-expand" href="#">
+                <i class="fa fa-resize-full"></i>
+            </a>
+            <a class="btn btn-xs btn-link panel-close" href="#">
+                <i class="fa fa-times"></i>
+            </a>
+        </div>
+    </div>
+    <div class="panel-body">
+        <div class="form-horizontal">
+
+            @using (Html.BeginForm("AddToTicker", "News", new { area = "CoreHandler" }, FormMethod.Post))
+            {
+                @Html.AntiForgeryToken()
+
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                <table class="table table-striped table-bordered table-hover table-full-width dataTable no-footer">
+                    <tr>
+
+                        <th>
+                            العنوان
+                        </th>
+                        <th>
+                            القسم
+                        </th>
+                        <th>
+                            تاريخ النشر
+                        </th>
+                        <th>
+                            ضم لشريط الاخبار
+                        </th>
+                    </tr>
+
+                    
+                    @for (int i = 0; i < Model.Tickerlst.Count; i++)
+                 
+                    {
+                        @Html.HiddenFor(item => item.Tickerlst[i].NewID)
+                      
+                        @Html.HiddenFor(item => item.Tickerlst[i].JournalID)
+
+                        @Html.HiddenFor(item => item.Tickerlst[i].SectionId)
+
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(item => item.Tickerlst[i].Title)
+                                @Html.HiddenFor(item => item.Tickerlst[i].Title)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(item => item.Tickerlst[i].SecTitle)
+                                @Html.HiddenFor(item => item.Tickerlst[i].SecTitle)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(item => item.Tickerlst[i].Added_Date)
+                                @Html.HiddenFor(item => item.Tickerlst[i].Added_Date)
+                            </td>
+                            <td>
+                                @Html.CheckBoxFor(item => item.Tickerlst[i].IsTicker)
+                                @Html.ValidationMessageFor(item => item.Tickerlst[i].IsTicker, "", new { @class = "text-danger" })
+                                @Html.HiddenFor(item => item.Tickerlst[i].IsTicker)
+                            </td>
+
+                        </tr>
+                    }
+
+
+                </table>
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="ضم لشريط الاخبار" class="btn btn-default" />
+                    </div>
+                </div>
+            }
+            @if (ViewBag.alert != null)
+            {
+                Html.RenderPartial("~/Areas/FrameWork/Views/Shared/_alertMessage.cshtml", (alertMessageVM)ViewBag.alert);
+            }
+            <div>
+                @Html.ActionLink("العودة لاخبار شريط الاخبار", "NewsTicker", "News", new { area = "CoreHandler" }, null)
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- end: PAGE CONTENT-->

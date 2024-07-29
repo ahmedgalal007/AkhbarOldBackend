@@ -1,0 +1,66 @@
+﻿@model CMS.Areas.CoreHandler.Models.BlocksVM
+
+@{
+    ViewBag.Title = "حذف المساحة الإعلانية";
+}
+
+
+<div class="panel panel-default" id="@Model.RelatedTarget">
+    <div class="panel-heading">
+        <i class="fa fa-external-link-square"></i>
+        حذف المساحة الإعلانية
+        <div class="panel-tools">
+            <a class="btn btn-xs btn-link panel-collapse collapses " href="#">
+            </a>
+            @*<a class="btn btn-xs btn-link panel-refresh" href="#">
+                    <i class="fa fa-refresh"></i>
+                </a>*@
+            @*<a class="btn btn-xs btn-link panel-expand" href="#">
+                    <i class="fa fa-resize-full"></i>
+                </a>*@
+
+        </div>
+    </div>
+    <div class="panel-body">
+        <div class="form-horizontal">
+
+            @using (Html.BeginForm("Delete", "Blocks", new { area = "CoreHandler", ZoneID = Model.blocksZone.ZoneID }, FormMethod.Post))
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.blocksZone.ZoneName, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.DisplayFor(model => model.blocksZone.ZoneName)
+                    </div>
+                </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.blocksZone.ZoneDescription, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.DisplayFor(model => model.blocksZone.ZoneDescription)
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-2">تاريخ الإنشاء</label>
+                        <div class="col-md-10">
+                            @Html.DisplayFor(model => model.blocksZone.AddedDate)
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="حذف" class="btn btn-default" />
+                        </div>
+                    </div>
+
+            }
+
+            <div>
+
+                @Html.ActionLink("العودة لصفحة المساحات الإعلانية", "Index", "Blocks", new { area = "CoreHandler" }, null)
+            </div>
+
+        </div>
+    </div>
+
+</div>

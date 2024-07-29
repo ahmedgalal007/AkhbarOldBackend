@@ -1,0 +1,64 @@
+﻿@model CMS.Areas.CoreHandler.Models.NewsVM
+@using CMS.Areas.FrameWork.Controllers
+@using CMS.Areas.FrameWork.ViewModels
+
+<div id="TargetDiv">
+
+    <div class="modal-content">
+
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h3>بحث في صور الاخبار</h3>
+        </div>
+
+        <div class="modal-body">
+            @using (Ajax.CustomBeginForm("ImageArch", "News", "CoreHandler", null,
+               new AjaxOptions
+               {
+                   InsertionMode = InsertionMode.Replace,
+                   UpdateTargetId = "TargetDiv"
+               }, null))
+            {
+
+                <div style="float:right; margin-bottom:5px;">
+                    @Html.EditorFor(model => model.SearchString)
+                </div>
+                <div style="float:left;width:20%;">
+                    <input value="بحث" type="submit" />
+
+                </div>
+            }
+
+            @{Html.RenderPartial("~/Areas/CoreHandler/Views/News/Partials/_SearchImages.cshtml", Model);}
+
+
+        </div>
+
+
+        <div class="modal-footer">
+            <button type="button" data-dismiss="modal" class="btn">Close</button>
+        </div>
+    </div>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

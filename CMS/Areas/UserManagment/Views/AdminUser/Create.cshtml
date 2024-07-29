@@ -1,0 +1,147 @@
+﻿@model CMS.Areas.UserManagment.Models.AdminUserVM
+@using CMS.Areas.FrameWork.Controllers
+
+@{
+    ViewBag.Title = "إضافة مستخدم";
+}
+
+@section HeadScript{
+
+    <style type="text/css">
+        #dvPreview {
+            display: none;
+        }
+    </style>
+
+    @Scripts.Render("/scripts/jquery.min.js")
+
+    <script language="javascript" type="text/javascript">
+        $(function () {
+            $("#AdminUser_Image").change(function () {
+                $("#dvPreview").html("");
+            
+                    if ($.browser.msie && parseFloat(jQuery.browser.version) <= 9.0) {
+                        $("#dvPreview").show();
+                        $("#dvPreview")[0].filters.item("DXImageTransform.Microsoft.AlphaImageLoader").src = $(this).val();
+                    }
+                    else {
+                        if (typeof (FileReader) != "undefined") {
+                            $("#dvPreview").show();
+                            $("#dvPreview").append("<img />");
+                            var reader = new FileReader();
+                            reader.onload = function (e) {
+                                $("#dvPreview img").attr("src", e.target.result);
+                                $("#dvPreview img").attr("class", "img-rounded");
+                                $("#dvPreview img").attr("width", "150");
+                                $("#dvPreview img").attr("height", "150");
+                            }
+                            reader.readAsDataURL($(this)[0].files[0]);
+                        } else {
+                            alert("هذا المتصفح لا يدعم تحميل الملفات");
+                        }
+                    }
+              
+            });
+        });
+    </script>
+
+}
+
+<div class="panel panel-default" id="@Model.RelatedTarget">
+    <div class="panel-heading">
+        <i class="fa fa-external-link-square"></i>
+        إضافة مستخدم
+        <div class="panel-tools">
+            <a class="btn btn-xs btn-link panel-collapse collapses" href="#">
+            </a>
+            @*<a class="btn btn-xs btn-link panel-config" href="#panel-config" data-toggle="modal">
+                    <i class="fa fa-wrench"></i>
+                </a>*@
+            <a class="btn btn-xs btn-link panel-refresh" href="#">
+                <i class="fa fa-refresh"></i>
+            </a>
+            <a class="btn btn-xs btn-link panel-expand" href="#">
+                <i class="fa fa-resize-full"></i>
+            </a>
+            <a class="btn btn-xs btn-link panel-close" href="#">
+                <i class="fa fa-times"></i>
+            </a>
+        </div>
+    </div>
+    <div class="panel-body">
+        <div class="form-horizontal">
+
+            @using (Html.BeginForm("Create", "AdminUser", new { area = "UserManagment" }, FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                @Html.AntiForgeryToken()
+
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.adminUser.FullName, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.adminUser.FullName, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.adminUser.FullName, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.adminUser.UserPhoto, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        <input type="file" id="AdminUser_Image" name="AdminUser_Image" class="file-input file-input-new" />
+                        @Html.HiddenFor(model => model.adminUser.UserPhoto)
+                        @Html.ValidationMessageFor(model => model.adminUser.UserPhoto, "", new { @class = "text-danger" })
+
+                        <div class="col-md-10">
+                            <div id="dvPreview" class="img-rounded">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.adminUser.UserName, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.adminUser.UserName, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.adminUser.UserName, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.adminUser.Password, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.PasswordFor(model => model.adminUser.Password, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.adminUser.Password, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.adminUser.Active, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.CheckBoxFor(model => model.ActiveFlag, new { @class = "iCheck-helper" })
+                                @Html.ValidationMessageFor(model => model.ActiveFlag, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.adminUser.Type, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.CheckBoxFor(model => model.ManagerFlag, new { @class = "iCheck-helper" })
+                                @Html.ValidationMessageFor(model => model.ManagerFlag, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-10">
+                                <input type="submit" value="إنشاء" class="btn btn-default" />
+                            </div>
+                        </div>
+            }
+
+            <div>
+                @Html.ActionLink("العودة لصفحة المستخدمين", "Index", "AdminUser", new { area = "UserManagment" }, null)
+            </div>
+
+        </div>
+    </div>
+</div>

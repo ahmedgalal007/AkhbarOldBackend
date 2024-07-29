@@ -1,0 +1,70 @@
+﻿@model CMS.Areas.AreaManagment.Models.ServiceVM
+
+
+@{
+    ViewBag.Title = "حذف خدمة";
+}
+
+
+<div class="panel panel-default" id="@Model.RelatedTarget">
+    <div class="panel-heading">
+        <i class="fa fa-external-link-square"></i>
+        حذف خدمة
+        <div class="panel-tools">
+            <a class="btn btn-xs btn-link panel-collapse collapses " href="#">
+            </a>
+            @*<a class="btn btn-xs btn-link panel-refresh" href="#">
+                    <i class="fa fa-refresh"></i>
+                </a>*@
+            @*<a class="btn btn-xs btn-link panel-expand" href="#">
+                    <i class="fa fa-resize-full"></i>
+                </a>*@
+
+        </div>
+    </div>
+    <div class="panel-body">
+        <div class="form-horizontal">
+            @using (Html.BeginForm("Delete", "Service", new { area = "AreaManagment", ServiceID = Model.Service.ServiceId }, FormMethod.Post))
+            {
+                @Html.AntiForgeryToken()
+
+          
+
+                <div class="form-group">
+
+                    <div class="col-md-10">
+                        @Html.DisplayFor(model => model.Service.ServiceName)
+                    </div>
+                </div>
+
+                <div class="form-group">
+
+                    <div class="col-md-10">
+                        @Html.DisplayFor(model => model.Service.UMModule.ModuleName)
+                    </div>
+                </div>
+
+                <div class="form-group">
+
+                    <div class="col-md-10">
+                        @Html.DisplayFor(model => model.Service.ControllerName)
+                    </div>
+                </div>
+
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="حذف" class="btn btn-default" />
+                        </div>
+                    </div>
+
+            }
+
+            <div>
+
+                @Html.ActionLink("العودة لصفحة الخدمات", "Index", "Service", new { area = "AreaManagment" }, null)
+            </div>
+
+        </div>
+    </div>
+
+</div>

@@ -1,0 +1,95 @@
+﻿@model CMS.Areas.CoreHandler.Models.PollsVM
+@using CMS.Areas.FrameWork.Controllers
+
+@{
+    ViewBag.Title = "إختيارات التصويت";
+}
+
+<div class="panel panel-default" id="OptionsDiv">
+    <div class="panel-heading">
+        <i class="fa fa-external-link-square"></i>
+        إختيارات التصويت : @ViewBag.PollBody
+        <div class="panel-tools">
+            <a class="btn btn-xs btn-link panel-collapse collapses" href="#">
+            </a>
+            @*<a class="btn btn-xs btn-link panel-config" href="#panel-config" data-toggle="modal">
+                    <i class="fa fa-wrench"></i>
+                </a>*@
+            <a class="btn btn-xs btn-link panel-refresh" href="#">
+                <i class="fa fa-refresh"></i>
+            </a>
+            <a class="btn btn-xs btn-link panel-expand" href="#">
+                <i class="fa fa-resize-full"></i>
+            </a>
+            <a class="btn btn-xs btn-link panel-close" href="#">
+                <i class="fa fa-times"></i>
+            </a>
+        </div>
+    </div>
+    <div class="panel-body">
+        <div class="form-horizontal">
+
+            @using (Ajax.BeginForm("AddToPollOptions", "Polls", "CoreHandler", new AjaxOptions { UpdateTargetId = "OptionsDiv", InsertionMode = InsertionMode.ReplaceWith }, null))
+            {
+
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true)
+                @Html.HiddenFor(m => m.Poll.PollID)
+                @Html.HiddenFor(m => m.Poll.PollBody)
+
+                <div style="width:90%;">
+                    <div style="width:30%;float:right;padding-left:10px;padding-bottom:5px;">
+                        @Html.TextAreaFor(model => model.PollsOption.OptionBody, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.PollsOption.OptionBody)
+                    </div>
+                    <div>
+                        <input type="submit" value="إضافة" class="btn btn-primary" />
+                    </div>
+                </div>
+            }
+        </div>
+
+
+
+        <table class="table table-striped table-bordered table-hover table-full-width dataTable no-footer">
+            <tr>
+                <th>
+                    اسئله التصويت
+                </th>
+              
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model.pollsOptionLst)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.OptionBody)
+                    </td>
+                   
+                    <td>
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-purple"><i class="fa fa-wrench"></i></button>
+                            <button data-toggle="dropdown" class="btn btn-purple dropdown-toggle"><span class="caret"></span></button>
+                            <ul class="dropdown-menu" role="menu">
+
+                                <li>
+                                    @Ajax.CustomAjaxActionLink("حذف", "CoreHandler", "Polls", "DeleteFromPollOptions",
+                                   new RouteValueDictionary { { "vm.poll.PollID", item.PollID.ToString() },
+                                       { "vm.PollsOption.OptionID", item.OptionID.ToString() } },
+                                   new AjaxOptions { InsertionMode = InsertionMode.ReplaceWith, HttpMethod = "POST", UpdateTargetId = "OptionsDiv" }
+                                   , new Dictionary<string, object> { { "class", "fa fa-trash-o" } })
+
+
+                                </li>
+
+                            </ul>
+                        </div>
+                    </td>
+                </tr>
+            }
+
+        </table>
+
+    </div>
+</div>

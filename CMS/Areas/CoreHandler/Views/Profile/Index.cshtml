@@ -1,0 +1,104 @@
+﻿@model CMS.Areas.CoreHandler.Models.ProfileVM
+@using CMS.Areas.FrameWork.Controllers
+@using CMS.Areas.FrameWork.ViewModels
+@using PagedList.Mvc
+@{
+    ViewBag.Title = "الملفات";
+}
+<!-- start: PAGE CONTENT -->
+
+<div class="panel panel-default" id="@Model.RelatedTarget">
+    <div class="panel-heading">
+        <i class="fa fa-external-link-square"></i>
+        الملفات
+        <div class="panel-tools">
+            <a class="btn btn-xs btn-link panel-collapse collapses" href="#">
+            </a>
+            @*<a class="btn btn-xs btn-link panel-config" href="#panel-config" data-toggle="modal">
+                <i class="fa fa-wrench"></i>
+            </a>*@
+            <a class="btn btn-xs btn-link panel-refresh" href="#">
+                <i class="fa fa-refresh"></i>
+            </a>
+            <a class="btn btn-xs btn-link panel-expand" href="#">
+                <i class="fa fa-resize-full"></i>
+            </a>
+            <a class="btn btn-xs btn-link panel-close" href="#">
+                <i class="fa fa-times"></i>
+            </a>
+        </div>
+    </div>
+    <div class="panel-body">
+
+
+        <div>
+            <p style="float: right;padding-left: 30%;">
+                <a class="btn btn-primary" href="/CoreHandler/Profile/Create" data-toggle="modal"><i class="fa fa-plus"></i> إضافة ملف </a>
+            </p>
+
+            @using (Html.BeginForm("Index", "Profile", new { area = "CoreHandler" }, FormMethod.Get))
+            {
+                <div style="width:70%;">
+                    <div style="float:right;width:80%; margin-bottom:5px;">
+                        @Html.EditorFor(model => model.SearchString)
+                    </div>
+                    <div style="float:left;width:20%;">
+                        <input type="submit" value="بحث" />
+                    </div>
+                </div>
+            }
+        </div>
+
+        <table class="table table-striped table-bordered table-hover table-full-width dataTable no-footer">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Profile.ProfName)
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model.lst)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ProfName)
+                    </td>
+
+                    <td>
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-purple"><i class="fa fa-wrench"></i></button>
+                            <button data-toggle="dropdown" class="btn btn-purple dropdown-toggle"><span class="caret"></span></button>
+                            <ul class="dropdown-menu" role="menu">
+
+                                <li>
+                                    @Html.ActionLink("حذف", "Delete", "Profile", new { area = "CoreHandler", MProfileID = item.ProfileId }, new { @class = "fa fa-pencil" })
+                                </li>
+
+                                <li>
+                                    @Html.ActionLink("تعديل", "Edit", "Profile", new { area = "CoreHandler", MProfileID = item.ProfileId }, new { @class = "fa fa-pencil" })
+                                </li>
+
+                                <li>
+                                    @Html.ActionLink("التفاصيل", "Details", "Profile", new { area = "CoreHandler", MProfileID = item.ProfileId }, new { @class = "fa fa-pencil" })
+                                </li>
+
+
+                            </ul>
+                        </div>
+                    </td>
+                </tr>
+            }
+            @if (ViewBag.alert != null)
+            {
+                Html.RenderPartial("~/Areas/FrameWork/Views/Shared/_alertMessage.cshtml", (alertMessageVM)ViewBag.alert);
+            }
+        </table>
+        <div style="text-align:center;">
+            @* from extension method in CustomHTML Class *@
+            Page @(Model.lst.PageCount < Model.lst.PageNumber ? 0 : Model.lst.PageNumber) of @Model.lst.PageCount
+            @Html.PagedListPager(Model.lst, page => Url.Action("Index", new { page, searchStr = Model.SearchString }))
+        </div>
+    </div>
+</div>
+
+<!-- end: PAGE CONTENT-->

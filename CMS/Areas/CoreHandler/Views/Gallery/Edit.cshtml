@@ -1,0 +1,105 @@
+﻿@model CMS.Areas.CoreHandler.Models.GalleryVM
+@using CMS.Areas.FrameWork.Controllers
+@using CMS.Areas.FrameWork.ViewModels
+@{
+    ViewBag.Title = "تعديل الالبوم";
+}
+
+
+<div class="panel panel-default" id="@Model.RelatedTarget">
+    <div class="panel-heading">
+        <i class="fa fa-external-link-square"></i>
+        تعديل الالبوم
+        <div class="panel-tools">
+            <a class="btn btn-xs btn-link panel-collapse collapses " href="#">
+            </a>
+            @*<a class="btn btn-xs btn-link panel-refresh" href="#">
+                    <i class="fa fa-refresh"></i>
+                </a>*@
+            @*<a class="btn btn-xs btn-link panel-expand" href="#">
+                    <i class="fa fa-resize-full"></i>
+                </a>*@
+
+        </div>
+    </div>
+    <div class="panel-body">
+
+
+        @using (Html.BeginForm("Edit", "Gallery", new { area = "CoreHandler" }, FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-horizontal">
+
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+               
+                @if (Model.Gallery != null)
+                {
+                    @Html.HiddenFor(model => model.Gallery.GalleryID)
+                    @Html.HiddenFor(m => m.Gallery.GDate)
+                    @Html.HiddenFor(m => m.Gallery.JournalID)
+                    @Html.HiddenFor(m => m.Gallery.DisplayOrder)
+                }
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Gallery.GalleryType, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-5">
+                        @Html.DropDownListFor(model => model.Gallery.GalleryType, new SelectList(ViewBag.GalleryTypes, "Text", "Text"), new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.Gallery.GalleryType)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Gallery.Title, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Gallery.Title, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.Gallery.Title, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Gallery.Description, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-5">
+                        @Html.TextAreaFor(model => model.Gallery.Description, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.Gallery.Description, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Gallery.Keywords, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Gallery.Keywords, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.Gallery.Keywords, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Gallery.IsHome, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.CheckBoxFor(model => model.HomePageFlag, new { @class = "iCheck-helper" })
+                        @Html.ValidationMessageFor(model => model.HomePageFlag, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="تعديل" class="btn btn-default" />
+                    </div>
+                </div>
+
+            </div>
+        }
+        @if (ViewBag.alert != null)
+        {
+            Html.RenderPartial("~/Areas/FrameWork/Views/Shared/_alertMessage.cshtml", (alertMessageVM)ViewBag.alert);
+        }
+        <div>
+            @Html.ActionLink("العودة لصفحة الالبومات", "Index", "Gallery", new { area = "CoreHandler" }, null)
+        </div>
+
+
+    </div>
+
+
+</div>

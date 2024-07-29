@@ -1,0 +1,129 @@
+﻿@model CMS.Areas.CoreHandler.Models.NewsVM
+@using CMS.Areas.FrameWork.Controllers
+@using CMS.Areas.FrameWork.ViewModels
+@using PagedList.Mvc
+@{
+    ViewBag.Title = "تخصيص الاخبار للديسك";
+}
+<!-- start: PAGE CONTENT -->
+
+<div class="panel panel-default" id="@Model.RelatedTarget">
+
+    <div class="panel-heading">
+        <i class="fa fa-external-link-square"></i>
+        تخصيص الاخبار للديسك
+        <div class="panel-tools">
+            <a class="btn btn-xs btn-link panel-collapse collapses" href="#">
+            </a>
+            @*<a class="btn btn-xs btn-link panel-config" href="#panel-config" data-toggle="modal">
+                    <i class="fa fa-wrench"></i>
+                </a>*@
+            <a class="btn btn-xs btn-link panel-refresh" href="#">
+                <i class="fa fa-refresh"></i>
+            </a>
+            <a class="btn btn-xs btn-link panel-expand" href="#">
+                <i class="fa fa-resize-full"></i>
+            </a>
+            <a class="btn btn-xs btn-link panel-close" href="#">
+                <i class="fa fa-times"></i>
+            </a>
+        </div>
+    </div>
+    <div class="panel-body">
+
+        <div class="form-horizontal">
+            @using (Html.BeginForm("AddToDesk", "News", new { area = "CoreHandler" }, FormMethod.Post))
+            {
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="حفظ التخصيص" class="btn btn-default" />
+                    </div>
+
+                </div>
+                <table class="table table-striped table-bordered table-hover table-full-width dataTable no-footer">
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.News.Title)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.News.MainSection.SecTitle)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.News.NewStatus)
+                        </th>
+                        <th>
+                            تاريخ الاضافة
+                        </th>
+                        <th>
+                            الديسك الحالي          
+                         </th>
+                        <th>
+                            إعادة التخصيص للديسك
+                        </th>
+
+                    </tr>
+
+                    @for (int i = 0; i < Model.NewsForDeskLst.Count; i++)
+                    {
+                        @Html.HiddenFor(item => item.NewsForDeskLst[i].NewID)
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(item => item.NewsForDeskLst[i].Title)
+                                @*<a target="_blank" href="http://akhbarelyom.com/news/NewDetails/@Model.NewsForDeskLst[i].NewID/1/@(CMS.Areas.FrameWork.Controllers.BaseController.GetPureURL(@Model.NewsForDeskLst[i].Title)).html">
+                                    @Html.DisplayFor(item => item.NewsForDeskLst[i].Title)
+                                </a>*@
+                            </td>
+                            <td>
+                                @Html.DisplayFor(item => item.NewsForDeskLst[i].MainSection.SecTitle)
+                            </td>
+                            <td>
+                                @if (Model.NewsForDeskLst[i].NewStatus == 1)
+                                {
+                                    <label>محرر</label>
+                                }
+                                else if (Model.NewsForDeskLst[i].NewStatus == 9)
+                                {
+                                    <label>مؤجل</label>
+                                }
+                                else
+                                {
+                                    <label>الديسك</label>
+                                }
+                            </td>
+                            <td>
+                                @Html.DisplayFor(item => item.NewsForDeskLst[i].AddedDate)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(item => item.NewsForDeskLst[i].AdminUser_DeskUser.FullName)
+
+                            </td>
+                            <td>
+                                @*@Html.DropDownListFor(item => item.NewsForDeskLst[i].sDeskID, new SelectList(ViewBag.adminULst, "Value", "Text", Model.NewsForDeskLst[i].sDeskID), "-- الديسك --", new { @class = "form-control" })*@
+
+
+                                  @Html.DropDownListFor(item => item.NewsForDeskLst[i].sDeskID, new SelectList(ViewBag.adminULst, "Value", "Text"), "-- الديسك --", new { @class = "form-control" })
+   
+                            </td >
+
+
+                        </tr >
+                    }
+
+                </table>
+
+              
+            }
+            @if (ViewBag.alert != null)
+            {
+                Html.RenderPartial("~/Areas/FrameWork/Views/Shared/_alertMessage.cshtml", (alertMessageVM)ViewBag.alert);
+            }
+
+
+        </div>
+
+
+    </div>
+
+    <!-- end: PAGE CONTENT-->
+</div>

@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>The source code</title>
+  <link href="../resources/prettify/prettify.css" type="text/css" rel="stylesheet" />
+  <script type="text/javascript" src="../resources/prettify/prettify.js"></script>
+  <style type="text/css">
+    .highlight { display: block; background-color: #ddd; }
+  </style>
+  <script type="text/javascript">
+    function highlight() {
+      document.getElementById(location.hash.replace(/#/, "")).className = "highlight";
+    }
+  </script>
+</head>
+<body onload="prettyPrint(); highlight();">
+  <pre class="prettyprint lang-js"><span id='global-property-'>/**
+</span> * @license Copyright (c) 2003-2017, CKSource - Frederico Knabben. All rights reserved.
+ * For licensing, see LICENSE.md or http://ckeditor.com/license
+ */
+
+CKEDITOR.plugins.setLang( &#39;a11yhelp&#39;, &#39;hr&#39;, {
+	title: &#39;Upute dostupnosti&#39;,
+	contents: &#39;Sadržaj pomoći. Za zatvaranje pritisnite ESC.&#39;,
+	legend: [
+		{
+		name: &#39;Općenito&#39;,
+		items: [
+			{
+			name: &#39;Alatna traka&#39;,
+			legend: &#39;Pritisni ${toolbarFocus} za navigaciju do alatne trake. Pomicanje do prethodne ili sljedeće alatne grupe vrši se pomoću SHIFT+TAB i TAB. Pomicanje do prethodnog ili sljedećeg gumba u alatnoj traci vrši se pomoću lijeve i desne strelice kursora. Pritisnite SPACE ili ENTER za aktivaciju alatne trake.&#39;
+		},
+
+			{
+			name: &#39;Dijalog&#39;,
+			legend:
+				&#39;Unutar dijaloga, pritisnite TAB kako bi navigirali do sljedećeg elementa dijaloga, pritisnite SHIFT+TAB kako bi se pomaknuli do prethodnog elementa, pritisnite ENTER kako bi poslali dijalog, pritisnite ESC za gašenje dijaloga. Kada dijalog ima više kartica, listi kartica se može pristupiti pomoću ALT+F10 ili sa TAB. Kada je fokusirana lista kartica, pomaknite se naprijed ili nazad pomoću strelica LIJEVO ili DESNO.&#39; 
+		},
+
+			{
+			name: &#39;Kontekstni izbornik&#39;,
+			legend: &#39;Pritisnite ${contextMenu} ili APPLICATION tipku za otvaranje kontekstnog izbornika. Pomicanje se vrši TAB ili strelicom kursora prema dolje ili SHIFT+TAB ili strelica kursora prema gore. SPACE ili ENTER odabiru opciju izbornika. Otvorite podizbornik trenutne opcije sa  SPACE, ENTER ili desna strelica kursora. Povratak na prethodni izbornik vrši se sa ESC ili lijevom strelicom kursora. Zatvaranje se vrši pritiskom na tipku ESC.&#39;
+		},
+
+			{
+			name: &#39;Lista&#39;,
+			legend: &#39;Unutar list-boxa, pomicanje na sljedeću stavku vrši se sa TAB ili strelica kursora prema dolje. Na prethodnu sa SHIFT+TAB ili strelica prema gore. Pritiskom na SPACE ili ENTER odabire se stavka ili ESC za zatvaranje.&#39;
+		},
+
+			{
+			name: &#39;Traka putanje elemenata&#39;,
+			legend: &#39;Pritisnite ${elementsPathFocus} za navigaciju po putanji elemenata. Pritisnite TAB ili desnu strelicu kursora za pomicanje na sljedeći element ili SHIFT+TAB ili lijeva strelica kursora za pomicanje na prethodni element. Pritiskom na SPACE ili ENTER vrši se odabir elementa.&#39;
+		}
+		]
+	},
+		{
+		name: &#39;Naredbe&#39;,
+		items: [
+			{
+			name: &#39;Vrati naredbu&#39;,
+			legend: &#39;Pritisni ${undo}&#39;
+		},
+			{
+			name: &#39;Ponovi naredbu&#39;,
+			legend: &#39;Pritisni ${redo}&#39;
+		},
+			{
+			name: &#39;Bold naredba&#39;,
+			legend: &#39;Pritisni ${bold}&#39;
+		},
+			{
+			name: &#39;Italic naredba&#39;,
+			legend: &#39;Pritisni ${italic}&#39;
+		},
+			{
+			name: &#39;Underline naredba&#39;,
+			legend: &#39;Pritisni ${underline}&#39;
+		},
+			{
+			name: &#39;Link naredba&#39;,
+			legend: &#39;Pritisni ${link}&#39;
+		},
+			{
+			name: &#39;Smanji alatnu traku naredba&#39;,
+			legend: &#39;Pritisni ${toolbarCollapse}&#39;
+		},
+			{
+			name: &#39;Naredba za pristupi prethodnom prostoru fokusa&#39;,
+			legend: &#39;Pritisni ${accessPreviousSpace} za pristup najbližem nedostupnom razmaku prije kursora, npr.: dva spojena HR elementa. Ponovnim pritiskom dohvatiti će se sljedeći nedostupni razmak.&#39;
+		},
+			{
+			name: &#39;Naredba za pristup sljedećem prostoru fokusa&#39;,
+			legend: &#39;Pritisni ${accessNextSpace} za pristup najbližem nedostupnom razmaku nakon kursora, npr.: dva spojena HR elementa. Ponovnim pritiskom dohvatiti će se sljedeći nedostupni razmak.&#39;
+		},
+			{
+			name: &#39;Pomoć za dostupnost&#39;,
+			legend: &#39;Pritisni ${a11yHelp}&#39;
+		}
+		]
+	}
+	],
+	tab: &#39;Tab&#39;,
+	pause: &#39;Pause&#39;,
+	capslock: &#39;Caps Lock&#39;,
+	escape: &#39;Escape&#39;,
+	pageUp: &#39;Page Up&#39;,
+	pageDown: &#39;Page Down&#39;,
+	leftArrow: &#39;Lijev strelica&#39;,
+	upArrow: &#39;Strelica gore&#39;,
+	rightArrow: &#39;Desna strelica&#39;,
+	downArrow: &#39;Strelica dolje&#39;,
+	insert: &#39;Insert&#39;,
+	leftWindowKey: &#39;Lijeva Windows tipka&#39;,
+	rightWindowKey: &#39;Desna Windows tipka&#39;,
+	selectKey: &#39;Tipka Select&#39;,
+	numpad0: &#39;Numpad 0&#39;,
+	numpad1: &#39;Numpad 1&#39;,
+	numpad2: &#39;Numpad 2&#39;,
+	numpad3: &#39;Numpad 3&#39;,
+	numpad4: &#39;Numpad 4&#39;,
+	numpad5: &#39;Numpad 5&#39;,
+	numpad6: &#39;Numpad 6&#39;,
+	numpad7: &#39;Numpad 7&#39;,
+	numpad8: &#39;umpad 8&#39;,
+	numpad9: &#39;Numpad 9&#39;,
+	multiply: &#39;Množenje&#39;,
+	add: &#39;Zbrajanje&#39;,
+	subtract: &#39;Oduzimanje&#39;,
+	decimalPoint: &#39;Decimalna točka&#39;,
+	divide: &#39;Dijeljenje&#39;,
+	f1: &#39;F1&#39;,
+	f2: &#39;F2&#39;,
+	f3: &#39;F3&#39;,
+	f4: &#39;F4&#39;,
+	f5: &#39;F5&#39;,
+	f6: &#39;F6&#39;,
+	f7: &#39;F7&#39;,
+	f8: &#39;F8&#39;,
+	f9: &#39;F9&#39;,
+	f10: &#39;F10&#39;,
+	f11: &#39;F11&#39;,
+	f12: &#39;F12&#39;,
+	numLock: &#39;Num Lock&#39;,
+	scrollLock: &#39;Scroll Lock&#39;,
+	semiColon: &#39;Točka zarez&#39;,
+	equalSign: &#39;Jednako&#39;,
+	comma: &#39;Zarez&#39;,
+	dash: &#39;Crtica&#39;,
+	period: &#39;Točka&#39;,
+	forwardSlash: &#39;Kosa crta&#39;,
+	graveAccent: &#39;Akcent&#39;,
+	openBracket: &#39;Otvorena uglata zagrada&#39;,
+	backSlash: &#39;Obrnuta kosa crta&#39;,
+	closeBracket: &#39;Zatvorena uglata zagrada&#39;,
+	singleQuote: &#39;Jednostruki navodnik&#39;
+} );
+</pre>
+</body>
+</html>

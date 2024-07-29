@@ -1,0 +1,114 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <!--Project was exported from assembly: E:\Dot Net Projects\_Akhbar\Backend\CMSWebGate\CMS\bin\AkhbarDBBusiness.dll-->
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{11D5101C-63C5-4A98-8F9B-F6D8029EDBFE}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AssemblyName>AkhbarDBBusiness</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <ApplicationVersion>1.0.0.0</ApplicationVersion>
+    <FileAlignment>512</FileAlignment>
+    <RootNamespace>Akhbar.DBBusiness</RootNamespace>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AkhbarDBEntities">
+      <HintPath>lib\AkhbarDBEntities.dll</HintPath>
+    </Reference>
+    <Reference Include="BaseBusiness">
+      <HintPath>lib\BaseBusiness.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework">
+      <HintPath>lib\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="LinqKit">
+      <HintPath>lib\LinqKit.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList">
+      <HintPath>lib\PagedList.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Core" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AdminEditorBusiness.cs" />
+    <Compile Include="AdminLogBusiness.cs" />
+    <Compile Include="AdminUserBusiness.cs" />
+    <Compile Include="AttachmentBusiness.cs" />
+    <Compile Include="BlocksZoneBusiness.cs" />
+    <Compile Include="BusinessException.cs" />
+    <Compile Include="ByLineBusiness.cs" />
+    <Compile Include="ComicsofDayBusiness.cs" />
+    <Compile Include="NationalitesBusiness.cs" />
+    <Compile Include="EditorBusiness.cs" />
+    <Compile Include="EmployeeBusinesss.cs" />
+    <Compile Include="Filter.cs" />
+    <Compile Include="GalleryBusiness.cs" />
+    <Compile Include="News_BylineBusiness.cs" />
+    <Compile Include="ProfileBusiness.cs" />
+    <Compile Include="RoleServiceBusiness.cs" />
+    <Compile Include="TrendBusiness.cs" />
+    <Compile Include="TempDeskShiftBusiness.cs" />
+    <Compile Include="UMModulesBusiness.cs" />
+    <Compile Include="GalleryTypeBusiness.cs" />
+    <Compile Include="GalleryPictureBusiness.cs" />
+    <Compile Include="HomeMostCommentedBusiness.cs" />
+    <Compile Include="IssueBusiness.cs" />
+    <Compile Include="IssuesNewBusiness.cs" />
+    <Compile Include="IssuesTopNewBusiness.cs" />
+    <Compile Include="JournalBusiness.cs" />
+    <Compile Include="LinkedNewBusiness.cs" />
+    <Compile Include="MainSectionBusiness.cs" />
+    <Compile Include="NewsBlocksBusiness.cs" />
+    <Compile Include="NewsBusiness.cs" />
+    <Compile Include="NewsCategoryBusiness.cs" />
+    <Compile Include="NewsGalleryBusiness.cs" />
+    <Compile Include="NewsPictureBusiness.cs" />
+    <Compile Include="NewsPicturesCatBusiness.cs" />
+    <Compile Include="NewsPollBusiness.cs" />
+    <Compile Include="NewsSearchBusiness.cs" />
+    <Compile Include="NewsSectionBusiness.cs" />
+    <Compile Include="NewsTagBusiness.cs" />
+    <Compile Include="NewsTickerBusiness.cs" />
+    <Compile Include="NewsVersionBusiness.cs" />
+    <Compile Include="NewsViewBusiness.cs" />
+    <Compile Include="News_VideosBusiness.cs" />
+    <Compile Include="UMServicesBusiness.cs" />
+    <Compile Include="PictureofDayBusiness.cs" />
+    <Compile Include="PollsBusiness.cs" />
+    <Compile Include="PollsOptionBusiness.cs" />
+    <Compile Include="RelatedNewBusiness.cs" />
+    <Compile Include="ReviewerNewBusiness.cs" />
+    <Compile Include="RoleBusiness.cs" />
+    <Compile Include="SectionLatestNewBusiness.cs" />
+    <Compile Include="SesstionTextBusiness.cs" />
+    <Compile Include="TagBusiness.cs" />
+    <Compile Include="TopNewsBusiness.cs" />
+    <Compile Include="TraceTableBusiness.cs" />
+    <Compile Include="UserRoleBusiness.cs" />
+    <Compile Include="UsersOpinionBusiness.cs" />
+    <Compile Include="VersionTagBusiness.cs" />
+    <Compile Include="VideoFeedBusiness.cs" />
+    <Compile Include="AssemblyInfo.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
