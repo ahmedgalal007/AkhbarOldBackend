@@ -1,0 +1,141 @@
+﻿@model IEnumerable<AkhbarElyoum.Models.NewsDetails>
+@{
+    string JID = AkhbarElyoum.Controllers.HomeController.GetJournalID(HttpContext.Current.Request.Url.Host, int.Parse((HttpContext.Current.Request.QueryString["JournalID"] != null) ? HttpContext.Current.Request.QueryString["JournalID"].ToString() : "0"));
+    Layout = "../Shared/_Layout" + JID + ".cshtml";
+    string css = "";
+}
+@section Header{
+    @foreach (var item in Model)
+    {
+        <meta property="og:image" content="http://www.akhbarelyom.com/images/images/large/@item.PictureName1" />
+        <meta name="keywords" content="@item.Keywords" />
+        <meta name="Description" content="@item.Breif" />
+    }
+}
+
+@section home {
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                @foreach (var item in Model)
+                {
+                    <!-- start news -->
+              
+                    <div class="post-page">
+                        <ol class="breadcrumb">
+                            <li><a href="http://akhbarelyom.com">الرئيسية</a></li>
+                            <li><a href="/news/newssection/@item.SectionID/@JID/@(AkhbarElyoum.Controllers.HomeController.GetPureURL(item.SectionTitle)).html">@item.SectionTitle</a></li>
+                            <li class="active">@item.Title</li>
+                        </ol>
+                        <article>
+
+                        <div class="post-title">
+                            <h2>@item.SubTitle</h2>
+                            <h1>@item.Title</h1>
+                        </div>
+
+                        <div class="col-xs-12">
+                            <div class="post-details">
+                                <div class="row">
+                                    <div class="col-xs-6">
+                                        <div class="post-details-fild">
+                                           
+                                          <li class="tooltips" >@item.ByLine</li>
+                                            
+
+                                        </div>
+                                        <div class="post-details-fild">
+                                           
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-6">
+                                        <div class="post-details-fild">
+                                            <span class="fa fa-calendar-check-o"></span>
+                                            <p>@item.PublishDate</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                                                        
+
+                        <div class="col-xs-12">
+                            <figure class="post-first-pic">
+                                <img src="/images/images/large/@item.PictureName1" alt="@item.PictureCaption1" />
+
+                            </figure>
+                        </div>
+
+                        <div align="center" style=" margin: 5px auto 5px auto;" class="center-block col-xs-12">
+                           
+                           <!-- ads loc -->
+                          
+                           
+                        </div>
+
+                        <div class="post-title col-xs-12">
+                            <div class="addthis_inline_share_toolbox"></div>
+                        </div>
+
+                        <div class="col-xs-12">
+                            <div class="post-text">
+                                 <p>@Html.Raw(HttpUtility.HtmlDecode(item.Story))</p>
+                            </div>
+                        </div>
+
+                         <div class="clearfix"></div>
+                     
+
+                             @Html.Action("GetNewTags", "Tags", new { NID = @item.NewsID })
+
+                               
+                            
+                            
+
+                         <div class="clearfix"> <br /><br /> </div>
+
+                             @Html.Action("GetRelatedNewsList", "News", new { NID = @item.NewsID, secid = @item.SectionID })
+
+                             <div class="clearfix"> <br /><br /> </div>
+
+ <div class="news-section-2 articleTags">
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <div class="section-header-normal">
+                                        <a >
+                                            <span class="section-header-name">تعليقات الفيسبوك</span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-12">
+
+                                
+  	                                <div class="fb-comments fb_iframe_widget fb_iframe_widget_fluid" 
+                                    data-href="/news/newdetails/@item.NewsID/@JID/@(AkhbarElyoum.Controllers.HomeController.GetPureURL(item.Title)).html" data-numposts="50" width="100%" fb-xfbml-state="rendered">
+                                    <span style="height: 638px;">
+                                        <iframe id="f685e2e564e858" name="f561b955c0042c" scrolling="no" title="Facebook Social Plugin" class="fb_ltr fb_iframe_widget_lift" src="https://www.facebook.com/plugins/comments.php?api_key=1359824187410363&amp;channel_url=http%3A%2F%2Fstaticxx.facebook.com%2Fconnect%2Fxd_arbiter%2Fr%2F1FegrZjPbq3.js%3Fversion%3D42%23cb%3Df392c9699056b9c%26domain%3Dakhbarelyom.com%26origin%3Dhttp%253A%252F%252Fakhbarelyom.com%252Ff67b49ffcd045c%26relation%3Dparent.parent&amp;href=http%3A%2F%2F151.80.103.227%2F~akhbarelyom%2Fnews%2F651639%2F18-3-2017%2F%20%D8%A7%D9%84%D9%84%D8%AC%D9%86%D8%A9-%D8%A7%D9%84%D9%85%D8%B4%D8%B1%D9%81%D8%A9-%D8%B9%D9%84%D9%89-%D8%A7%D9%86%D8%AA%D8%AE%D8%A7%D8%A8%D8%A7%D8%AA-%C2%AB%D8%A7%D9%84%D8%B5%D8%AD%D9%81%D9%8A%D9%8A%D9%86%C2%BB-%D8%AA%D8%B9%D9%84%D9%86-%D8%A3%D8%B9%D8%AF%D8%A7%D8%AF-%D8%A3%D8%B5%D9%88%D8%A7%D8%AA-%D8%A7%D9%84%D9%85%D8%B1%D8%B4%D8%AD%D9%8A%D9%86-%D8%A7%D9%84%D9%81%D8%A7%D8%A6%D8%B2%D9%8A%D9%86&amp;locale=en_US&amp;numposts=50&amp;sdk=joey&amp;version=v2.8&amp;width=100%25" style="border: none; overflow: hidden; height: 638px; width: 100%;">
+                                        </iframe></span>
+                                    </div>
+                                
+
+
+                                </div>
+                            </div>
+                        </div>
+
+                            </article>
+                    </div>
+                      
+                    
+               
+              
+                }
+                <!-- End News -->
+            </div>
+            @Html.Action("GetSiteLeftSideServices", "Home", new { JournalID = JID })
+        </div>
+    </div>
+}
+<script async defer src="//platform.instagram.com/en_US/embeds.js"></script>

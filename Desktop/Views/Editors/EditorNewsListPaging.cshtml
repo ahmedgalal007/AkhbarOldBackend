@@ -1,0 +1,45 @@
+﻿@model IEnumerable<AkhbarElyoum.Models.NewsDetails>
+    @{int count = 0;
+        var cssclass = "";
+        Layout = "";
+    }
+    @foreach (var item in Model)
+    {
+
+        if (item.SectionID == 149 || item.SectionID == 150 || item.SectionID == 151 || item.SectionID == 156)
+        {
+            <div class="entry-block-small">
+                <div class="entry-image">
+                    <a class="img-link" href="/news/VideoDisplay/@item.NewsID/1/@(AkhbarElyoum.Controllers.HomeController.GetPureURL(item.Title))" title="@item.Title">
+                        <img class="img-responsive img-full" src="https://Images.akhbarelyom.com/images/images/small/@item.PictureName1" alt="@item.Title" />
+                    </a>
+                </div>
+                <div class="entry-content">
+                    <h4><a href="/news/newdetails/@item.NewsID/1/@(AkhbarElyoum.Controllers.HomeController.GetPureURL(item.Title))" title="@item.Title"> @item.Title</a></h4>
+                </div>
+            </div>
+        }
+        else
+        {
+            <div class="entry-block-small">
+                <div class="entry-image">
+                    <a class="img-link" href="/news/newdetails/@item.NewsID/1/@(AkhbarElyoum.Controllers.HomeController.GetPureURL(item.Title))" title="@item.Title">
+                        <img class="img-responsive img-full" src="https://Images.akhbarelyom.com/images/images/small/@item.PictureName1" alt="@item.Title" />
+                    </a>
+                </div>
+                <div class="entry-content">
+                    <h4><a href="/news/newdetails/@item.NewsID/1/@(AkhbarElyoum.Controllers.HomeController.GetPureURL(item.Title))" title="@item.Title"> @item.Title</a></h4>
+                </div>
+            </div>
+        }
+
+        count++;
+
+
+        if (count == Model.Count())
+        {
+            <p class="lastid" idx="@item.NewsID">
+            </p>
+        }
+
+    }

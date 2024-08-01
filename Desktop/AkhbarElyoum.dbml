@@ -1,0 +1,1565 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="webgate" Class="AkhbarElyoumDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Table Name="dbo.AdminEditors" Member="AdminEditors">
+    <Type Name="AdminEditor">
+      <Column Name="EditorID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="EditorName" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="Position" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="Email" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="Pic" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DisplayOrder" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Type" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.VideoFeeds" Member="VideoFeeds">
+    <Type Name="VideoFeed">
+      <Column Name="EntryID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Title" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
+      <Column Name="Brief" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="Link" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Type" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Thumb" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="TitleAR" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
+      <Column Name="BriefAR" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="TypeAR" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.AdminLog" Member="AdminLogs">
+    <Type Name="AdminLog">
+      <Column Name="LogID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="LogUserID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="LogDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="LogURL" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="LogRemoteAddress" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="LogServerName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="LogQueryString" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Association Name="AdminUser_AdminLog" Member="AdminUser" ThisKey="LogUserID" OtherKey="UserID" Type="AdminUser" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.AdminUsers" Member="AdminUsers">
+    <Type Name="AdminUser">
+      <Column Name="UserID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="FullName" Type="System.String" DbType="VarChar(400)" CanBeNull="true" />
+      <Column Name="UserName" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Password" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Type" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="LastLive" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="AdminUser_AdminLog" Member="AdminLogs" ThisKey="UserID" OtherKey="LogUserID" Type="AdminLog" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Attachments" Member="Attachments">
+    <Type Name="Attachment">
+      <Column Name="FileId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="NewID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Discription" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="FileName" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ComicsofDay" Member="ComicsofDays">
+    <Type Name="ComicsofDay">
+      <Column Name="PictureID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="PictureTitle" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="Date_Added" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Editors" Member="Editors">
+    <Type Name="Editor">
+      <Column Name="EditorID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="EditorName" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="DisplayOrder" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="JournalID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="picture" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="SectionID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ArticleName" Type="System.String" DbType="NChar(100)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Employees" Member="Employees">
+    <Type Name="Employee">
+      <Column Name="EmployeeID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="EmplyeeName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="displayorder" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Gallery" Member="Galleries">
+    <Type Name="Gallery">
+      <Column Name="GalleryID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Title" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Description" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+      <Column Name="Keywords" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="GDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="MainPictureID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="IsHome" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="GalleryType" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="JournalID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.GalleryPictures" Member="GalleryPictures">
+    <Type Name="GalleryPicture">
+      <Column Name="GalleryID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="PictureID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.HomeMostCommented" Member="HomeMostCommenteds">
+    <Type Name="HomeMostCommented">
+      <Column Name="NewID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Title" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="Comments" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Issues" Member="Issues">
+    <Type Name="Issue">
+      <Column Name="IssueID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="IssueTitle" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="IssueDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="IssueStatus" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="JournalID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Issue_IssuesNew" Member="IssuesNews" ThisKey="IssueID" OtherKey="IssueID" Type="IssuesNew" />
+    </Type>
+  </Table>
+  <Table Name="dbo.IssuesNews" Member="IssuesNews">
+    <Type Name="IssuesNew">
+      <Column Name="IssueID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="NewsID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Association Name="Issue_IssuesNew" Member="Issue" ThisKey="IssueID" OtherKey="IssueID" Type="Issue" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.IssuesTopNews" Member="IssuesTopNews">
+    <Type Name="IssuesTopNew">
+      <Column Name="NewsID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="IssueID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="DisplayOrder" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="TopType" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Journal" Member="Journals">
+    <Type Name="Journal">
+      <Column Name="JournalID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.LinkedNews" Member="LinkedNews">
+    <Type Name="LinkedNew">
+      <Column Name="NewID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="JournalID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="SectionId" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.News" Member="News">
+    <Type Name="New">
+      <Column Name="NewID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="SectionID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CategoryID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ParentID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="NewsType" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="NewsSource" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
+      <Column Name="Title" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="SubTitle" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="Story" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Brief" Type="System.String" DbType="VarChar(3000)" CanBeNull="true" />
+      <Column Name="quote" Type="System.String" DbType="VarChar(1000)" CanBeNull="true" />
+      <Column Name="Keywords" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="PictureID1" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PictureID2" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PictureCaption1" Type="System.String" DbType="VarChar(1000)" CanBeNull="true" />
+      <Column Name="PictureCaption2" Type="System.String" DbType="VarChar(1000)" CanBeNull="true" />
+      <Column Name="PublishDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="EditorID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ByLine" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
+      <Column Name="Approved" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
+      <Column Name="Views" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="NewStatus" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="BackEndNewId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="AssignedTo" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Creator" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Notes" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="sEditorID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="sDepartDirectorID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="sManagerEditorID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="sDeskID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="sReviewerID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="sUploaderID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="NewsID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="JournalID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.News_Videos" Member="News_Videos">
+    <Type Name="News_Video">
+      <Column Name="EntryID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="NewsID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="VideoID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.NewsBlocks" Member="NewsBlocks">
+    <Type Name="NewsBlock">
+      <Column Name="BlockID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="BlockName" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="BlockText" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="JournalID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.NewsCategories" Member="NewsCategories">
+    <Type Name="NewsCategory">
+      <Column Name="CatID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="DisplayOrder" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="NewsCategory_TopNew" Member="TopNews" ThisKey="CatID" OtherKey="CatID" Type="TopNew" />
+    </Type>
+  </Table>
+  <Table Name="dbo.NewsGalleries" Member="NewsGalleries">
+    <Type Name="NewsGallery">
+      <Column Name="NewsID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="GalleryID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.NewsGallery" Member="NewsGallery1s">
+    <Type Name="NewsGallery1">
+      <Column Name="NewID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="GalleryID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.NewsPictures" Member="NewsPictures">
+    <Type Name="NewsPicture">
+      <Column Name="PictureID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="PictureName" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="KeyWords" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="PicCaption" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="CatID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="added_date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Source" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
+      <Column Name="JournalID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.NewsPicturesCats" Member="NewsPicturesCats">
+    <Type Name="NewsPicturesCat">
+      <Column Name="CatID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="CatName" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.NewsPolls" Member="NewsPolls">
+    <Type Name="NewsPoll">
+      <Column Name="NewsID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="PollID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Association Name="Poll_NewsPoll" Member="Poll" ThisKey="PollID" OtherKey="PollID" Type="Poll" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.NewsSearch" Member="NewsSearches">
+    <Type Name="NewsSearch">
+      <Column Name="NewID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="title" Type="System.String" DbType="VarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="byline" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
+      <Column Name="brief" Type="System.String" DbType="VarChar(3000)" CanBeNull="true" />
+      <Column Name="SectionID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="title2" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="brief2" Type="System.String" DbType="VarChar(3000)" CanBeNull="true" />
+      <Column Name="byline2" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.NewsSections" Member="NewsSections">
+    <Type Name="NewsSection">
+      <Column Name="NewsID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="SectionID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Association Name="MainSection_NewsSection" Member="MainSection" ThisKey="SectionID" OtherKey="SectionID" Type="MainSection" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.NewsTags" Member="NewsTags">
+    <Type Name="NewsTag">
+      <Column Name="NewID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="TagID" Type="System.Int64" DbType="BigInt NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.NewsTicker" Member="NewsTickers">
+    <Type Name="NewsTicker">
+      <Column Name="NewID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Title" Type="System.String" DbType="VarChar(1000)" CanBeNull="true" />
+      <Column Name="NewsID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Added_Date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="JournalID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.NewsVersions" Member="NewsVersions">
+    <Type Name="NewsVersion">
+      <Column Name="VersionId" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="NewID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SectionID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CategoryID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ParentID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="NewsType" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="NewsSource" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" />
+      <Column Name="Title" Type="System.String" DbType="VarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="SubTitle" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="Story" Type="System.String" DbType="Text NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="Brief" Type="System.String" DbType="VarChar(3000)" CanBeNull="true" />
+      <Column Name="quote" Type="System.String" DbType="VarChar(1000)" CanBeNull="true" />
+      <Column Name="Keywords" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="PictureID1" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="PictureID2" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="PictureCaption1" Type="System.String" DbType="VarChar(1000)" CanBeNull="true" />
+      <Column Name="PictureCaption2" Type="System.String" DbType="VarChar(1000)" CanBeNull="true" />
+      <Column Name="PublishDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="EditorID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ByLine" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
+      <Column Name="AddedDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="AddedBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Version" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="JournalID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.NewsViews" Member="NewsViews">
+    <Type Name="NewsView">
+      <Column Name="NewID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Views" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.NewsViewsLog" Member="NewsViewsLogs">
+    <Type Name="NewsViewsLog">
+      <Column Name="NewsID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.PictureofDay" Member="PictureofDays">
+    <Type Name="PictureofDay">
+      <Column Name="PictureID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="PictureTitle" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="Date_Added" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Polls" Member="Polls">
+    <Type Name="Poll">
+      <Column Name="PollID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="SectionID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="PollBody" Type="System.String" DbType="VarChar(300)" CanBeNull="true" />
+      <Column Name="Added_Date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Activated" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
+      <Column Name="DateActivated" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="TotalVotes" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="JournalID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Poll_NewsPoll" Member="NewsPolls" ThisKey="PollID" OtherKey="PollID" Type="NewsPoll" />
+      <Association Name="Poll_PollsOption" Member="PollsOptions" ThisKey="PollID" OtherKey="PollID" Type="PollsOption" />
+    </Type>
+  </Table>
+  <Table Name="dbo.PollsOptions" Member="PollsOptions">
+    <Type Name="PollsOption">
+      <Column Name="OptionID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="PollID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="OptionBody" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Votes" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Poll_PollsOption" Member="Poll" ThisKey="PollID" OtherKey="PollID" Type="Poll" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.RelatedNews" Member="RelatedNews">
+    <Type Name="RelatedNew">
+      <Column Name="NewID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="RelatedId" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ReviewerNews" Member="ReviewerNews">
+    <Type Name="ReviewerNew">
+      <Column Name="ID" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="NewId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="UserId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Done" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="getNewDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Roles" Member="Roles">
+    <Type Name="Role">
+      <Column Name="NewID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="RoleName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="DisplayOrder" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.SectionLatestNews" Member="SectionLatestNews">
+    <Type Name="SectionLatestNew">
+      <Column Name="NewID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Title" Type="System.String" DbType="VarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="Brief" Type="System.String" DbType="VarChar(3000)" CanBeNull="true" />
+      <Column Name="PictureName" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="PictureCaption1" Type="System.String" DbType="VarChar(1000)" CanBeNull="true" />
+      <Column Name="PublishDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="SecTitle" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="WeeklySection" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.SesstionTexts" Member="SesstionTexts">
+    <Type Name="SesstionText">
+      <Column Name="NewID" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Story" Type="System.String" DbType="Text NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="SesstionDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Tags" Member="Tags">
+    <Type Name="Tag">
+      <Column Name="ID" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TopNews" Member="TopNews">
+    <Type Name="TopNew">
+      <Column Name="NewsID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="SecID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="CatID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="DisplayOrder" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="NewsCategory_TopNew" Member="NewsCategory" ThisKey="CatID" OtherKey="CatID" Type="NewsCategory" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TraceTable" Member="TraceTables">
+    <Type Name="TraceTable">
+      <Column Name="RowNumber" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="EventClass" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ApplicationName" Type="System.String" DbType="NVarChar(128)" CanBeNull="true" />
+      <Column Name="NTUserName" Type="System.String" DbType="NVarChar(128)" CanBeNull="true" />
+      <Column Name="LoginName" Type="System.String" DbType="NVarChar(128)" CanBeNull="true" />
+      <Column Name="CPU" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Reads" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="Writes" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="Duration" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="ClientProcessID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SPID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="StartTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="EndTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="BinaryData" Type="System.Data.Linq.Binary" DbType="Image" CanBeNull="true" UpdateCheck="Never" />
+    </Type>
+  </Table>
+  <Table Name="dbo.UserRoles" Member="UserRoles">
+    <Type Name="UserRole">
+      <Column Name="RoleId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="AdminUserID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SectionID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="JournalID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.UsersOpinions" Member="UsersOpinions">
+    <Type Name="UsersOpinion">
+      <Column Name="CommentID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="NewID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="UserID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="UserName" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Email" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Subject" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="messagebody" Type="System.String" DbType="VarChar(8000)" CanBeNull="true" />
+      <Column Name="messagedate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Approved" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" />
+      <Column Name="Views" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="IsDeleted" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
+      <Column Name="OperationalUser" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="UserIP" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="CloudIP" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.VersionTags" Member="VersionTags">
+    <Type Name="VersionTag">
+      <Column Name="VersionID" Type="System.Int64" DbType="BigInt NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="TagID" Type="System.Int64" DbType="BigInt NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.MainSections" Member="MainSections">
+    <Type Name="MainSection">
+      <Column Name="SectionID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="SecTitle" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Hide" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
+      <Column Name="WeeklySection" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
+      <Column Name="DisplayOrder" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="JournalID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Keywords" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="Description" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Association Name="MainSection_NewsSection" Member="NewsSections" ThisKey="SectionID" OtherKey="SectionID" Type="NewsSection" />
+    </Type>
+  </Table>
+  <Function Name="dbo.sp_SubmitPoll" Method="sp_SubmitPoll">
+    <Parameter Name="OptionID" Parameter="optionID" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.SP_GetMainSections" Method="SP_GetMainSections">
+    <Parameter Name="JournalID" Parameter="journalID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="WeeklySection" Parameter="weeklySection" Type="System.Int32" DbType="Int" />
+    <Parameter Name="hide" Type="System.Int32" DbType="Int" />
+    <Parameter Name="AdminUserID" Parameter="adminUserID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="SP_GetMainSectionsResult">
+      <Column Name="SectionID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="SecTitle" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Hide" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
+      <Column Name="WeeklySection" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
+      <Column Name="DisplayOrder" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="JournalID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.sp_GetEditorsList" Method="sp_GetEditorsList">
+    <Parameter Name="JournalID" Parameter="journalID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="sp_GetEditorsListResult">
+      <Column Name="EditorID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="EditorName" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="DisplayOrder" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="JournalID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="picture" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="SectionID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ArticleName" Type="System.String" DbType="NChar(100)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.GetHomeGalleries" Method="GetHomeGalleries">
+    <Parameter Name="JournalID" Parameter="journalID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="GetHomeGalleriesResult">
+      <Column Name="GalleryID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="title" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="description" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+      <Column Name="GDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Keywords" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="PictureName1" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.GetHomeGalleriesPictures" Method="GetHomeGalleriesPictures">
+    <Parameter Name="GalleryID" Parameter="galleryID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="JournalID" Parameter="journalID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="GetHomeGalleriesPicturesResult">
+      <Column Name="GalleryID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Title" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Description" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+      <Column Name="Keywords" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="GDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="MainPictureID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="IsHome" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="GalleryType" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="JournalID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PictureID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="PictureName" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="KeyWords1" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="PicCaption" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="CatID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="added_date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Source" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
+      <Column Name="JournalID1" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.GetNewsTags" Method="GetNewsTags">
+    <Parameter Name="NewID" Parameter="newID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="JournalID" Parameter="journalID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="GetNewsTagsResult">
+      <Column Name="ID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.sp_GetActivePoll" Method="sp_GetActivePoll">
+    <Parameter Name="SectionID" Parameter="sectionID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="JournalID" Parameter="journalID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="sp_GetActivePollResult">
+      <Column Name="PollID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="PollBody" Type="System.String" DbType="VarChar(300)" CanBeNull="true" />
+      <Column Name="OptionId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="OptionBody" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.sp_GetHomeLatestUnderSlide" Method="sp_GetHomeLatestUnderSlide">
+    <Parameter Name="JournalID" Parameter="journalID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="sp_GetHomeLatestUnderSlideResult">
+      <Column Name="NewID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Title" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="Views" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Brief" Type="System.String" DbType="VarChar(3000)" CanBeNull="true" />
+      <Column Name="PictureName" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.sp_GetHomeMostLatest" Method="sp_GetHomeMostLatest">
+    <Parameter Name="JournalID" Parameter="journalID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="sp_GetHomeMostLatestResult">
+      <Column Name="NewID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Title" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="Brief" Type="System.String" DbType="VarChar(3000)" CanBeNull="true" />
+      <Column Name="PictureName" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.sp_getPictureofDay" Method="sp_getPictureofDay">
+    <Parameter Name="JournalID" Parameter="journalID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="sp_getPictureofDayResult">
+      <Column Name="PictureID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="picturetitle" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="date_added" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="PictureName" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.sp_GetPolls" Method="sp_GetPolls">
+    <Parameter Name="JournalID" Parameter="journalID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="sp_GetPollsResult">
+      <Column Name="PollID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="SectionID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="PollBody" Type="System.String" DbType="VarChar(300)" CanBeNull="true" />
+      <Column Name="Added_Date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Activated" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
+      <Column Name="DateActivated" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="TotalVotes" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="JournalID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.sp_GetRelatedNews" Method="sp_GetRelatedNews">
+    <Parameter Name="NID" Parameter="nID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="JournalID" Parameter="journalID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="sp_GetRelatedNewsResult">
+      <Column Name="RelatedId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Title" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="Brief" Type="System.String" DbType="VarChar(3000)" CanBeNull="true" />
+      <Column Name="PublishDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="PictureID1" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PictureName" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="PictureCaption1" Type="System.String" DbType="VarChar(1000)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.sp_GetSectionLatestNews" Method="sp_GetSectionLatestNews">
+    <Parameter Name="SectionID" Parameter="sectionID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="JournalID" Parameter="journalID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="sp_GetSectionLatestNewsResult">
+      <Column Name="NewID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Title" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="PictureCaption1" Type="System.String" DbType="VarChar(1000)" CanBeNull="true" />
+      <Column Name="Story" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Brief" Type="System.String" DbType="VarChar(3000)" CanBeNull="true" />
+      <Column Name="PublishDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="SecTitle" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="WeeklySection" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
+      <Column Name="PictureName" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.sp_GetPollDetails" Method="sp_GetPollDetails">
+    <Parameter Name="PollID" Parameter="pollID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="sp_GetPollDetailsResult">
+      <Column Name="PollID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="PollBody" Type="System.String" DbType="VarChar(300)" CanBeNull="true" />
+      <Column Name="OptionId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="OptionBody" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Votes" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SectionID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="TotalVotes" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.SP_GetAllUsersOpinions" Method="SP_GetAllUsersOpinions">
+    <Parameter Name="NewID" Parameter="newID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="LastID" Parameter="lastID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="SP_GetAllUsersOpinionsResult">
+      <Column Name="CommentID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="NewID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="UserID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="UserName" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Email" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Subject" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="messagebody" Type="System.String" DbType="VarChar(8000)" CanBeNull="true" />
+      <Column Name="messagedate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Approved" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" />
+      <Column Name="Views" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="IsDeleted" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
+      <Column Name="OperationalUser" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="UserIP" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="CloudIP" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="Count" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.GetBlockText" Method="GetBlockText">
+    <Parameter Name="ZoneID" Parameter="zoneID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="JournalID" Parameter="journalID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="GetBlockTextResult">
+      <Column Name="BlockID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="BlockName" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="BlockText" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="JournalID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ZoneID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.sp_InsertUserOpinion" Method="sp_InsertUserOpinion">
+    <Parameter Name="UserName" Parameter="userName" Type="System.String" DbType="VarChar(100)" />
+    <Parameter Name="Email" Parameter="email" Type="System.String" DbType="VarChar(100)" />
+    <Parameter Name="subject" Type="System.String" DbType="VarChar(100)" />
+    <Parameter Name="NewsID" Parameter="newsID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="messagebody" Type="System.String" DbType="VarChar(8000)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.sp_GetSectionNews_paged" Method="sp_GetSectionNews_paged">
+    <Parameter Name="SectionID" Parameter="sectionID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="IssueID" Parameter="issueID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="LastID" Parameter="lastID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="sp_GetSectionNews_pagedResult">
+      <Column Name="NewID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Title" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="PictureCaption1" Type="System.String" DbType="VarChar(1000)" CanBeNull="true" />
+      <Column Name="Brief" Type="System.String" DbType="VarChar(3000)" CanBeNull="true" />
+      <Column Name="PublishDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="EditorID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CategoryID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PictureName" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Keywords" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="Description" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="SecTitle" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="WeeklySection" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
+      <Column Name="rownum" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.sp_GetEitorArticles_paged" Method="sp_GetEitorArticles_paged">
+    <Parameter Name="EditorID" Parameter="editorID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="IssueID" Parameter="issueID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="LastID" Parameter="lastID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="sp_GetEitorArticles_pagedResult">
+      <Column Name="NewID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Title" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="PictureCaption1" Type="System.String" DbType="VarChar(1000)" CanBeNull="true" />
+      <Column Name="Brief" Type="System.String" DbType="VarChar(3000)" CanBeNull="true" />
+      <Column Name="PublishDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="EditorID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CategoryID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PictureName" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="rownum" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="EditorName" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.sp_GetNewsGalleries" Method="sp_GetNewsGalleries">
+    <Parameter Name="NewID" Parameter="newID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="sp_GetNewsGalleriesResult">
+      <Column Name="GalleryID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Title" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Description" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+      <Column Name="Keywords" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="GDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="MainPictureID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="IsHome" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="GalleryType" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="JournalID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PictureName1" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.GetNewsAttachment" Method="GetNewsAttachment">
+    <Parameter Name="NewsID" Parameter="newsID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="GetNewsAttachmentResult">
+      <Column Name="FileId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="NewID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Discription" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="FileName" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.sp_GetSectionNews" Method="sp_GetSectionNews">
+    <Parameter Name="SectionID" Parameter="sectionID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="IssueID" Parameter="issueID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="sp_GetSectionNewsResult">
+      <Column Name="NewID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Title" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="PictureCaption1" Type="System.String" DbType="VarChar(1000)" CanBeNull="true" />
+      <Column Name="Brief" Type="System.String" DbType="NVarChar(3000)" CanBeNull="true" />
+      <Column Name="PublishDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="EditorID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CategoryID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="EditorName" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="SecTitle" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="WeeklySection" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
+      <Column Name="PictureName" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.News_SearchTop" Method="News_SearchTop">
+    <Parameter Name="Title" Parameter="title" Type="System.String" DbType="NVarChar(200)" />
+    <Parameter Name="LastID" Parameter="lastID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="JournalID" Parameter="journalID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="News_SearchTopResult">
+      <Column Name="NewID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Title" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="PictureName" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Brief" Type="System.String" DbType="NVarChar(3000)" CanBeNull="true" />
+      <Column Name="PublishDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.sp_getComicsofDay" Method="sp_getComicsofDay">
+    <Parameter Name="JournalID" Parameter="journalID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="sp_getComicsofDayResult">
+      <Column Name="Title" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="PictureID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="PictureName" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="KeyWords" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="PicCaption" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="CatID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="added_date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Source" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
+      <Column Name="JournalID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.UpdateViews" Method="UpdateViews">
+    <Parameter Name="NewID" Parameter="newID" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.sp_Misc" Method="sp_Misc">
+    <Parameter Name="JournalID" Parameter="journalID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="sp_MiscResult">
+      <Column Name="NewID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Title" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="PictureName" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="PictureCaption1" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="Brief" Type="System.String" DbType="NVarChar(3000)" CanBeNull="true" />
+      <Column Name="PublishDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="SectionID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="SecTitle" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="DisplayOrder" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.sp_GetEditors" Method="sp_GetEditors">
+    <Parameter Name="JournalID" Parameter="journalID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="sp_GetEditorsResult">
+      <Column Name="EditorID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="EditorName" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="DisplayOrder" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="JournalID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="picture" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="SectionID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ArticleName" Type="System.String" DbType="NChar(100)" CanBeNull="true" />
+      <Column Name="newid" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="subtitle" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.sp_GetHomeMostViewedNews" Method="sp_GetHomeMostViewedNews">
+    <Parameter Name="JournalID" Parameter="journalID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="sp_GetHomeMostViewedNewsResult">
+      <Column Name="NewID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Title" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="Views" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Brief" Type="System.String" DbType="NVarChar(3000)" CanBeNull="true" />
+      <Column Name="PictureName" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="editorid" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="categoryid" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.sp_GetHomeMostCommentedNews" Method="sp_GetHomeMostCommentedNews">
+    <Parameter Name="JournalID" Parameter="journalID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="sp_GetHomeMostCommentedNewsResult">
+      <Column Name="NewID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Title" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="commnets" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PictureName" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Brief" Type="System.String" DbType="NVarChar(3000)" CanBeNull="true" />
+      <Column Name="editorid" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="categoryid" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.sp_GetHomeMostLatestSection" Method="sp_GetHomeMostLatestSection">
+    <Parameter Name="SectionID" Parameter="sectionID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="JournalID" Parameter="journalID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="sp_GetHomeMostLatestSectionResult">
+      <Column Name="NewID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Title" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="Brief" Type="System.String" DbType="NVarChar(3000)" CanBeNull="true" />
+      <Column Name="PictureName" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="categoryid" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="editorid" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.sp_GetHomeMostViewedNewsSection" Method="sp_GetHomeMostViewedNewsSection">
+    <Parameter Name="SectionID" Parameter="sectionID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="JournalID" Parameter="journalID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="sp_GetHomeMostViewedNewsSectionResult">
+      <Column Name="NewID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Title" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="Views" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Brief" Type="System.String" DbType="NVarChar(3000)" CanBeNull="true" />
+      <Column Name="PictureName" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="categoryid" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="editorid" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.sp_GetHomeMostCommentedNewsSection" Method="sp_GetHomeMostCommentedNewsSection">
+    <Parameter Name="SectionID" Parameter="sectionID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="JournalID" Parameter="journalID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="sp_GetHomeMostCommentedNewsSectionResult">
+      <Column Name="NewID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Title" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="commnets" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PictureName" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Brief" Type="System.String" DbType="NVarChar(3000)" CanBeNull="true" />
+      <Column Name="categoryid" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="editorid" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.GetPrivateFilesNews" Method="GetPrivateFilesNews">
+    <ElementType Name="GetPrivateFilesNewsResult">
+      <Column Name="NewsID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Title" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="PictureCaption1" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="Brief" Type="System.String" DbType="NVarChar(3000)" CanBeNull="true" />
+      <Column Name="PublishDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="EditorID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CategoryID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PictureName" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="SecTitle" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="WeeklySection" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
+      <Column Name="sectionid" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.GetPrivateFilesSections" Method="GetPrivateFilesSections">
+    <ElementType Name="GetPrivateFilesSectionsResult">
+      <Column Name="sectionid" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="sectitle" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.sp_GetHomeLatestNews" Method="sp_GetHomeLatestNews">
+    <Parameter Name="JournalID" Parameter="journalID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="sp_GetHomeLatestNewsResult">
+      <Column Name="NewID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Title" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="PictureName" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="PictureCaption1" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="Brief" Type="System.String" DbType="NVarChar(3000)" CanBeNull="true" />
+      <Column Name="PublishDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="SectionID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="SecTitle" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="DisplayOrder" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="byline" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.sp_GetHomeLatestNewsIssues" Method="sp_GetHomeLatestNewsIssues">
+    <Parameter Name="JournalID" Parameter="journalID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="IssueDate" Parameter="issueDate" Type="System.DateTime" DbType="DateTime" />
+    <ElementType Name="sp_GetHomeLatestNewsIssuesResult">
+      <Column Name="NewID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="issueid" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Title" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="PictureName" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="PictureCaption1" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="Brief" Type="System.String" DbType="NVarChar(3000)" CanBeNull="true" />
+      <Column Name="PublishDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="SectionID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="SecTitle" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="DisplayOrder" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.EitorsArticles_paged" Method="EitorsArticles_paged">
+    <Parameter Name="journalid" Type="System.Int32" DbType="Int" />
+    <Parameter Name="LastID" Parameter="lastID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="EitorsArticles_pagedResult">
+      <Column Name="NewID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Title" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="PictureCaption1" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="Brief" Type="System.String" DbType="NVarChar(3000)" CanBeNull="true" />
+      <Column Name="PublishDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="EditorID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CategoryID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PictureName" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="rownum" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="EditorName" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.sectionsSitemap" Method="sectionsSitemap">
+    <ElementType Name="sectionsSitemapResult">
+      <Column Name="sectionid" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="sectitle" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.news_Sitemap" Method="news_Sitemap">
+    <ElementType Name="news_SitemapResult">
+      <Column Name="newid" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Title" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.TodayStar" Method="TodayStar">
+    <Parameter Name="JournalID" Parameter="journalID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="TodayStarResult">
+      <Column Name="NewID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="SectionID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CategoryID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ParentID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="NewsType" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="NewsSource" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
+      <Column Name="Title" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="SubTitle" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="Story" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Brief" Type="System.String" DbType="NVarChar(3000)" CanBeNull="true" />
+      <Column Name="quote" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="Keywords" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="PictureID1" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PictureID2" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PictureCaption1" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="PictureCaption2" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="PublishDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="EditorID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ByLine" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
+      <Column Name="Approved" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
+      <Column Name="Views" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="NewStatus" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="BackEndNewId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="AssignedTo" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Creator" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Notes" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="sEditorID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="sDepartDirectorID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="sManagerEditorID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="sDeskID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="sReviewerID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="sUploaderID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="NewsID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="JournalID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="picturename" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="editorname" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.Karekater" Method="Karekater">
+    <Parameter Name="newid" Type="System.Int32" DbType="Int" />
+    <ElementType Name="KarekaterResult">
+      <Column Name="NewID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="SectionID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CategoryID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ParentID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="NewsType" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="NewsSource" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
+      <Column Name="Title" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="SubTitle" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="Story" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Brief" Type="System.String" DbType="NVarChar(3000)" CanBeNull="true" />
+      <Column Name="quote" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="Keywords" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="PictureID1" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PictureID2" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PictureCaption1" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="PictureCaption2" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="PublishDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="EditorID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ByLine" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
+      <Column Name="Approved" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
+      <Column Name="Views" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="NewStatus" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="BackEndNewId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="AssignedTo" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Creator" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Notes" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="sEditorID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="sDepartDirectorID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="sManagerEditorID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="sDeskID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="sReviewerID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="sUploaderID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="NewsID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="JournalID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="elrsam" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="karekater" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="elrsampicture" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.karekaters" Method="karekaters">
+    <Parameter Name="editorid" Type="System.Int32" DbType="Int" />
+    <Parameter Name="lastid" Type="System.Int32" DbType="Int" />
+    <ElementType Name="karekatersResult">
+      <Column Name="NewID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="SectionID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CategoryID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ParentID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="NewsType" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="NewsSource" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
+      <Column Name="Title" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="SubTitle" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="Story" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Brief" Type="System.String" DbType="NVarChar(3000)" CanBeNull="true" />
+      <Column Name="quote" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="Keywords" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="PictureID1" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PictureID2" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PictureCaption1" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="PictureCaption2" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="PublishDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="EditorID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ByLine" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
+      <Column Name="Approved" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
+      <Column Name="Views" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="NewStatus" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="BackEndNewId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="AssignedTo" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Creator" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Notes" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="sEditorID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="sDepartDirectorID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="sManagerEditorID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="sDeskID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="sReviewerID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="sUploaderID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="NewsID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="JournalID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="elrsam" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="karekater" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="elrsampicture" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.photoalbums" Method="photoalbums">
+    <Parameter Name="lastid" Type="System.Int32" DbType="Int" />
+    <ElementType Name="photoalbumsResult">
+      <Column Name="NewID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="SectionID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CategoryID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ParentID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="NewsType" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="NewsSource" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
+      <Column Name="Title" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="SubTitle" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="Story" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Brief" Type="System.String" DbType="NVarChar(3000)" CanBeNull="true" />
+      <Column Name="quote" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="Keywords" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="PictureID1" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PictureID2" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PictureCaption1" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="PictureCaption2" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="PublishDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="EditorID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ByLine" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
+      <Column Name="Approved" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
+      <Column Name="Views" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="NewStatus" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="BackEndNewId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="AssignedTo" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Creator" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Notes" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="sEditorID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="sDepartDirectorID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="sManagerEditorID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="sDeskID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="sReviewerID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="sUploaderID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="NewsID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="JournalID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="mainpic" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.adlbum" Method="adlbum">
+    <Parameter Name="newid" Type="System.Int32" DbType="Int" />
+    <ElementType Name="adlbumResult">
+      <Column Name="nid" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="picturename" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="piccaption" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="title" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.specific_section" Method="specific_section">
+    <Parameter Name="journalid" Type="System.Int32" DbType="Int" />
+    <Parameter Name="sectionid" Type="System.Int32" DbType="Int" />
+    <ElementType Name="specific_sectionResult">
+      <Column Name="NewID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="newTitle" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="Brief" Type="System.String" DbType="NVarChar(3000)" CanBeNull="true" />
+      <Column Name="nsec" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="sectionid" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="sectitle" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="picturename" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.sp_GetHomeLatestNewsforcars" Method="sp_GetHomeLatestNewsforcars">
+    <Parameter Name="journalid" Type="System.Int32" DbType="Int" />
+    <ElementType Name="sp_GetHomeLatestNewsforcarsResult">
+      <Column Name="NewID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="newTitle" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="Brief" Type="System.String" DbType="NVarChar(3000)" CanBeNull="true" />
+      <Column Name="nsec" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="sectionid" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="sectitle" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="picturename" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.Secdetails" Method="Secdetails">
+    <Parameter Name="secid" Type="System.Int32" DbType="Int" />
+    <ElementType Name="SecdetailsResult">
+      <Column Name="NewID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="SectionID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CategoryID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ParentID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="NewsType" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="NewsSource" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
+      <Column Name="Title" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="SubTitle" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="Story" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Brief" Type="System.String" DbType="NVarChar(3000)" CanBeNull="true" />
+      <Column Name="quote" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="Keywords" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="PictureID1" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PictureID2" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PictureCaption1" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="PictureCaption2" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="PublishDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="EditorID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ByLine" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
+      <Column Name="Approved" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
+      <Column Name="Views" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="NewStatus" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="BackEndNewId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="AssignedTo" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Creator" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Notes" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="sEditorID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="sDepartDirectorID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="sManagerEditorID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="sDeskID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="sReviewerID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="sUploaderID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="NewsID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="JournalID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="sectitle" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="picturename" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.Get_PollsList_Paged" Method="Get_PollsList_Paged">
+    <Parameter Name="LastID" Parameter="lastID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="Get_PollsList_PagedResult">
+      <Column Name="PollID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="PollBody" Type="System.String" DbType="VarChar(300)" CanBeNull="true" />
+      <Column Name="OptionId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="OptionBody" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Votes" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SectionID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="TotalVotes" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.GEtSpecifiedPoll" Method="GEtSpecifiedPoll">
+    <Parameter Name="pollID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="GEtSpecifiedPollResult">
+      <Column Name="PollID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="PollBody" Type="System.String" DbType="VarChar(300)" CanBeNull="true" />
+      <Column Name="OptionId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="OptionBody" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Votes" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SectionID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="TotalVotes" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.Painters" Method="Painters">
+    <ElementType Name="PaintersResult">
+      <Column Name="GalleryID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Title" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Description" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+      <Column Name="Keywords" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="GDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="MainPictureID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="IsHome" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="GalleryType" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="JournalID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DisplayOrder" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.Allpics_ofpainters" Method="Allpics_ofpainters">
+    <Parameter Name="galleryid" Type="System.Int32" DbType="Int" />
+    <Parameter Name="lastid" Type="System.Int32" DbType="Int" />
+    <ElementType Name="Allpics_ofpaintersResult">
+      <Column Name="Galleryid" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="painter" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Pictureid" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="picturename" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="piccaption" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="added_date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.Newsofsamesec" Method="Newsofsamesec">
+    <Parameter Name="NID" Parameter="nID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="secid" Type="System.Int32" DbType="Int" />
+    <ElementType Name="NewsofsamesecResult">
+      <Column Name="newid" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Title" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="Brief" Type="System.String" DbType="NVarChar(3000)" CanBeNull="true" />
+      <Column Name="PublishDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="PictureID1" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PictureName" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="PictureCaption1" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.sp_GetGallerySectionNews_paged" Method="sp_GetGallerySectionNews_paged">
+    <Parameter Name="LastID" Parameter="lastID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="JournalID" Parameter="journalID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="sp_GetGallerySectionNews_pagedResult">
+      <Column Name="GalleryID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="title" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="description" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+      <Column Name="GDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Keywords" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="PictureName1" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="rownum" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.sp_GetGalleryTopNews" Method="sp_GetGalleryTopNews">
+    <Parameter Name="JournalID" Parameter="journalID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="sp_GetGalleryTopNewsResult">
+      <Column Name="GalleryID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="title" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="description" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+      <Column Name="GDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Keywords" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="PictureName1" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.sp_NewsView" Method="sp_NewsView">
+    <Parameter Name="NewsID" Parameter="newsID" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.sp_GetNewsDetails" Method="sp_GetNewsDetails">
+    <Parameter Name="NewID" Parameter="newID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="sp_GetNewsDetailsResult">
+      <Column Name="NewID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="SectionID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CategoryID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ParentID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="NewsType" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="NewsSource" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
+      <Column Name="Title" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="SubTitle" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="Story" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Brief" Type="System.String" DbType="NVarChar(3000)" CanBeNull="true" />
+      <Column Name="quote" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="Keywords" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="PictureID1" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PictureID2" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PictureCaption1" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="PictureCaption2" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="PublishDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="EditorID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ByLine" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
+      <Column Name="Approved" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
+      <Column Name="Views" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="NewStatus" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="BackEndNewId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="AssignedTo" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Creator" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Notes" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="sEditorID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="sDepartDirectorID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="sManagerEditorID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="sDeskID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="sReviewerID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="sUploaderID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="NewsID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="JournalID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SocialTitle" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="SocialPictureId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SocialPictureCaption" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="SocialEditorID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SDeskDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="AddedDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="SecTitle" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="WeeklySection" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
+      <Column Name="PictureName1" Type="System.String" DbType="VarChar(1000)" CanBeNull="true" />
+      <Column Name="SocialPictureName" Type="System.String" DbType="VarChar(1000)" CanBeNull="true" />
+      <Column Name="EditorName" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="IssueID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.sp_GetTicker" Method="sp_GetTicker">
+    <Parameter Name="JournalID" Parameter="journalID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="sp_GetTickerResult">
+      <Column Name="Title" Type="System.String" DbType="VarChar(1000)" CanBeNull="true" />
+      <Column Name="NewsID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Added_Date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="JournalID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SectionId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SecTitle" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.sp_Misc1" Method="sp_Misc1">
+    <Parameter Name="JournalID" Parameter="journalID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="sp_Misc1Result">
+      <Column Name="NewID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Title" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="PictureCaption1" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="Brief" Type="System.String" DbType="NVarChar(3000)" CanBeNull="true" />
+      <Column Name="PublishDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="PictureName" Type="System.String" DbType="VarChar(1000)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.sp_GetHomeVideos" Method="sp_GetHomeVideos">
+    <ElementType Name="sp_GetHomeVideosResult">
+      <Column Name="NewID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Title" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="Story" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="PictureCaption1" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="Brief" Type="System.String" DbType="NVarChar(3000)" CanBeNull="true" />
+      <Column Name="PublishDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="EditorID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CategoryID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PictureName" Type="System.String" DbType="VarChar(1000)" CanBeNull="true" />
+      <Column Name="SecTitle" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="WeeklySection" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.sp_GetTagsNews_paged" Method="sp_GetTagsNews_paged">
+    <Parameter Name="TagID" Parameter="tagID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="IssueID" Parameter="issueID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="LastID" Parameter="lastID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="sp_GetTagsNews_pagedResult">
+      <Column Name="NewID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Title" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="PictureCaption1" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="Brief" Type="System.String" DbType="NVarChar(3000)" CanBeNull="true" />
+      <Column Name="PublishDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="EditorID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CategoryID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PictureName" Type="System.String" DbType="VarChar(1000)" CanBeNull="true" />
+      <Column Name="name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="SectionTitle" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="rownum" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="TagId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.sp_GetMostViewedNewsInside" Method="sp_GetMostViewedNewsInside">
+    <Parameter Name="JournalID" Parameter="journalID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="sp_GetMostViewedNewsInsideResult">
+      <Column Name="NewID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Title" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="Brief" Type="System.String" DbType="NVarChar(3000)" CanBeNull="true" />
+      <Column Name="PictureName" Type="System.String" DbType="VarChar(1000)" CanBeNull="true" />
+      <Column Name="EditorID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CategoryID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Views" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.sp_GetNewsLeftSideServices" Method="sp_GetNewsLeftSideServices">
+    <Parameter Name="SectionID" Parameter="sectionID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="sp_GetNewsLeftSideServicesResult">
+      <Column Name="NewID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Title" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="Brief" Type="System.String" DbType="NVarChar(3000)" CanBeNull="true" />
+      <Column Name="PublishDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="EditorID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CategoryID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Keywords" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="Description" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="SecTitle" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="WeeklySection" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.newsSitemapOfSpecificDay" Method="newsSitemapOfSpecificDay">
+    <Parameter Name="startDate" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="endDate" Type="System.DateTime" DbType="DateTime" />
+    <ElementType Name="newsSitemapOfSpecificDayResult">
+      <Column Name="newid" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Title" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="PublishDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="PictureCaption1" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="PictureName1" Type="System.String" DbType="VarChar(1000)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.GetMissedNewsImages" Method="GetMissedNewsImages">
+    <ElementType Name="GetMissedNewsImagesResult">
+      <Column Name="PictureID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="PictureName" Type="System.String" DbType="VarChar(1000) NOT NULL" CanBeNull="false" />
+      <Column Name="added_date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.GetMissedGalleryImages" Method="GetMissedGalleryImages">
+    <ElementType Name="GetMissedGalleryImagesResult">
+      <Column Name="PictureID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="PictureName" Type="System.String" DbType="VarChar(1000) NOT NULL" CanBeNull="false" />
+      <Column Name="GDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.sp_GetByLineNews_paged" Method="sp_GetByLineNews_paged">
+    <Parameter Name="EditorID" Parameter="editorID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="IssueID" Parameter="issueID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="LastID" Parameter="lastID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="sp_GetByLineNews_pagedResult">
+      <Column Name="NewID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Title" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="PictureCaption1" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="Brief" Type="System.String" DbType="NVarChar(3000)" CanBeNull="true" />
+      <Column Name="PublishDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="EditorID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CategoryID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PictureName" Type="System.String" DbType="VarChar(1000)" CanBeNull="true" />
+      <Column Name="SectionTitle" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="ByLineId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ByLineName" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="rownum" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="EditorID1" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.sp_GetAllBylines_paged" Method="sp_GetAllBylines_paged">
+    <Parameter Name="LastID" Parameter="lastID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="sp_GetAllBylines_pagedResult">
+      <Column Name="UserID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="FullName" Type="System.String" DbType="VarChar(400) NOT NULL" CanBeNull="false" />
+      <Column Name="UserPhoto" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="DisplayOrder" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ByLineId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="rownum" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.sp_GetNewsByLines" Method="sp_GetNewsByLines">
+    <Parameter Name="NewID" Parameter="newID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="JournalID" Parameter="journalID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="sp_GetNewsByLinesResult">
+      <Column Name="ByLineId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ByLineName" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="editorType" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.sp_GetSectionID1" Method="sp_GetSectionID1">
+    <Parameter Name="SectionID1" Parameter="sectionID1" Type="System.Int32" DbType="Int" />
+    <ElementType Name="sp_GetSectionID1Result">
+      <Column Name="NewID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Title" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="PictureCaption1" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="Story" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Brief" Type="System.String" DbType="NVarChar(3000)" CanBeNull="true" />
+      <Column Name="PublishDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="SecTitle" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="WeeklySection" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
+      <Column Name="PictureName" Type="System.String" DbType="VarChar(1000)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.sp_GetSectionNews_RSS" Method="sp_GetSectionNews_RSS">
+    <Parameter Name="SectionID" Parameter="sectionID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="IssueID" Parameter="issueID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="LastID" Parameter="lastID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="sp_GetSectionNews_RSSResult">
+      <Column Name="NewID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Title" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="Story" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="PictureCaption1" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="Brief" Type="System.String" DbType="NVarChar(3000)" CanBeNull="true" />
+      <Column Name="PublishDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="EditorID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CategoryID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PictureName" Type="System.String" DbType="VarChar(1000)" CanBeNull="true" />
+      <Column Name="Keywords" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="Description" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="SecTitle" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="WeeklySection" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
+      <Column Name="rownum" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.sp_GetSectionTopNews" Method="sp_GetSectionTopNews">
+    <Parameter Name="SectionID" Parameter="sectionID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="IssueID" Parameter="issueID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="sp_GetSectionTopNewsResult">
+      <Column Name="NewsID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Title" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="PictureCaption1" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="Brief" Type="System.String" DbType="NVarChar(3000)" CanBeNull="true" />
+      <Column Name="PublishDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="EditorID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CategoryID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PictureName" Type="System.String" DbType="VarChar(1000)" CanBeNull="true" />
+      <Column Name="SecTitle" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="WeeklySection" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
+      <Column Name="ByLine" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
+      <Column Name="SubTitle" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.sp_GetHomeTopStories" Method="sp_GetHomeTopStories">
+    <Parameter Name="JournalID" Parameter="journalID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="sp_GetHomeTopStoriesResult">
+      <Column Name="NewID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Title" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="Brief" Type="System.String" DbType="NVarChar(3000)" CanBeNull="true" />
+      <Column Name="PublishDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="PictureID1" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PictureName" Type="System.String" DbType="VarChar(1000)" CanBeNull="true" />
+      <Column Name="PictureCaption1" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="SecTitle" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="MagazineNikeName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="MagazineName" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="MagazineLogo" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.sp_SportsHomeTopStories" Method="sp_SportsHomeTopStories">
+    <Parameter Name="JournalID" Parameter="journalID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="sp_SportsHomeTopStoriesResult">
+      <Column Name="NewID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Title" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="Brief" Type="System.String" DbType="NVarChar(3000)" CanBeNull="true" />
+      <Column Name="PublishDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="PictureID1" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PictureName" Type="System.String" DbType="VarChar(1000)" CanBeNull="true" />
+      <Column Name="PictureCaption1" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="SecTitle" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="MagazineNikeName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="MagazineName" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="MagazineLogo" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+</Database>

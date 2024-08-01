@@ -1,9 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<RptDataSource xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Name="NewsDS">
+<RptDataSource xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Name="NewsDS">
   <ConnectionProperties>
     <Extension>SQL</Extension>
-    <ConnectString>Data Source=.;Initial Catalog=webgate</ConnectString>
-    <IntegratedSecurity>true</IntegratedSecurity>
+    <ConnectString>Data Source=(localdb)\mssqllocaldb;Initial Catalog=webgate</ConnectString>
   </ConnectionProperties>
   <DataSourceID>27ae858d-8243-482e-9f41-f51714d1cad5</DataSourceID>
 </RptDataSource>

@@ -175,7 +175,8 @@ namespace CMS.Areas.Reports.Controllers
 
             ReportExporter.Export(
                 "ReportExecutionServiceSoap" /* name of the WCF endpoint from Web.config */,
-                new NetworkCredential("report_service", "r1nZ4#`4!16=Vlh"),     //("ttt","123")
+                // new NetworkCredential("report_service", "r1nZ4#`4!16=Vlh"),     //("ttt","123")
+                new NetworkCredential("NT SERVICE\\SQLServerReportingServices", "Sico007_"),     //("ttt","123")
                 vm.ReportPath,
                 parameters.ToArray(),
                 outPutFormat,

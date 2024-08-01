@@ -1,0 +1,39 @@
+﻿@model IEnumerable<AkhbarElyoum.Models.Pictures>
+@{string JID = AkhbarElyoum.Controllers.HomeController.GetJournalID(HttpContext.Current.Request.Url.Host, int.Parse((HttpContext.Current.Request.QueryString["JournalID"] != null) ? HttpContext.Current.Request.QueryString["JournalID"].ToString() : "0"));}
+@if(JID == "6") {
+					<div class="td left-side">
+						<div class="tr border-radius box-border top-space">
+							<div class="tr box-title border-radius-top-left border-radius-top-right"><a href="#">كاريكاتير</a></div>
+							<div class="content border-radius-bottom-left border-radius-bottom-right">
+								<a href="/images/6/sarcasm.png" class="highslide" onclick="return hs.expand(this)"><img src="/images/6/sarcasm.png"  id="sarcasm" alt="" title="Click to enlarge" /></a>
+							</div>
+						</div>
+					</div>
+} else {
+<div class="files new-height-comc" style="margin-top: 20.75px; height: 344px;">
+    <div class="newTitle-red">
+        <h4>
+            كاريكاتير اليوم</h4>
+    </div>
+    <div class="div-files new-mar-top">
+   @* <a href="/images/funny.jpg">
+                <img src="https://Images.akhbarelyom.com/images/images/small/@item.PictureName" class="highslide" onclick="return hs.expand(this)" width="300" height="297" />
+                <img src="/images/funny.jpg" class="highslide" onclick="return hs.expand(this)" width="300" height="297" />
+            </a>
+            <a href="/images/funny.jpg" class="highslide" onclick="return hs.expand(this)">
+                    <img src="/images/funny.jpg" title="Click to enlarge" />
+                </a>*@
+        @foreach (var item in Model)
+        {
+            @*<a href="/images/funny.jpg">
+                <img src="https://Images.akhbarelyom.com/images/images/small/@item.PictureName" class="highslide" onclick="return hs.expand(this)" width="300" height="297" />
+                <img src="/images/funny.jpg" class="highslide" onclick="return hs.expand(this)" width="300" height="297" />
+            </a>*@
+            <a href="https://Images.akhbarelyom.com/images/images/large/@item.PictureName" class="highslide" onclick="return hs.expand(this)">
+                    <img style="height:294px;max-width:297px;" src="https://Images.akhbarelyom.com/images/images/large/@item.PictureName" title="Click to enlarge" />
+                </a>
+        }
+    </div>
+    @Html.Action("Painters","News")
+</div>
+}

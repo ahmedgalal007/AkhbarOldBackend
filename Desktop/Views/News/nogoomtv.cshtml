@@ -1,0 +1,86 @@
+﻿@model IEnumerable<AkhbarElyoum.Models.NewsDetails>
+<!--jqury taps JS-->
+@{
+    string JID = "3";
+    Layout = "../Shared/_Layout" + JID + ".cshtml";    
+  
+}
+<style>
+    .nogom-container
+    {
+        width: 630px;
+        margin: 50px auto;
+        background-color: #d1d1d1;
+        height: 100%;
+    }
+    .nogom-vid-wrapper
+    {
+        border-radius: 5px;
+        float: right;
+        height: 150px;
+        margin: 0 7px 0 8px;
+        overflow: hidden;
+        width: 195px;
+    }
+    .video-img
+    {
+        border-radius: 5px;
+    }
+</style>
+<div class="onePostErea">
+    <!-- start onePostErea -->
+    <!-- start lftSide -->
+    @*<div class="onePostEreaLft">
+        <div class="adv2 drop-shadow lifted">
+            <!-- start adv2 -->
+            <div class="adv-code drop-shadow lifted">
+                <a href="#">
+                @Html.Action("GetBlockTextList", "Blocks", new { BlockID = 27, JournalID = JID })
+            </div>
+        </div>
+        <div class="adv2 drop-shadow lifted" style="margin-top: 17.75px;">
+            <!-- start adv2 -->
+            <div class="adv-code">
+                @Html.Action("GetBlockTextList", "Blocks", new { BlockID = 25, JournalID = JID })
+            </div>
+        </div>
+        <!-- end adv2 -->
+        <!-- start shareUs -->
+        <!-- start shareUs -->
+        <!-- start news -->
+        @Html.Action("GetEditorsList", "Editors")
+        <!-- end news -->
+        <!-- end small adv -->
+        <div class="adv2 drop-shadow lifted" style="margin-top: 17.75px;">
+            <!-- start adv2 -->
+            <div class="adv-code drop-shadow lifted">
+                @Html.Action("GetBlockTextList", "Blocks", new { BlockID = 28, JournalID = JID })
+            </div>
+        </div>
+        <!-- end adv2 -->
+        <div class="adv2" style="margin-top: 17.75px;">
+            <!-- start adv2 -->
+            <div class="adv-code drop-shadow lifted">
+                @Html.Action("GetBlockTextList", "Blocks", new { BlockID = 29, JournalID = JID })
+            </div>
+        </div>
+    </div>*@
+    <div class="onePostEreaRit">
+        <div class="nogom-container">
+            <div class="nog-title">
+                <h5>
+                    نجوم tv</h5>
+            </div>
+            @foreach (var item in Model)
+            {
+                <div class="capty-image">
+                    <!--change your link here -->
+                    <a onclick="return false;" target="blank" class="newsBox152 lightbox" href="@item.Story">
+                        <img alt="" src="https://new.akhbarelyom.com/images/vedio1.png" class="vedionumbersEditor" />
+                    </a>
+                </div>
+
+            }
+        </div>
+    </div>
+</div>

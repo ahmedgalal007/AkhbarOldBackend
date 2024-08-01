@@ -1,0 +1,29 @@
+﻿@model IEnumerable<AkhbarElyoum.Models.Sections>
+@using AkhbarElyoum.Models;
+@{
+  string JID = AkhbarElyoum.Controllers.HomeController.GetJournalID(HttpContext.Current.Request.Url.Host, int.Parse((HttpContext.Current.Request.QueryString["JournalID"] != null) ? HttpContext.Current.Request.QueryString["JournalID"].ToString() : "0"));
+}
+
+<nav class="navbar  mm-menu mm-offcanvas mm-right mm-front mm-rtl mm-current mm-opened"
+        id="menu">
+    
+    <div class="mm-panels">
+   
+        <ul class="nav navbar-nav mm-listview">
+
+@foreach (var item in Model)
+{
+
+  
+    <li><a href="/news/newssection/@item.SectionID/@JID/@(AkhbarElyoum.Controllers.HomeController.GetPureURL(item.SectionName))" title="@item.SectionID" class="persianGreen" >@item.SectionName</a></li>
+
+}
+
+
+
+        </ul>
+     </div>  
+
+ 
+    </nav>
+

@@ -1,0 +1,206 @@
+﻿
+@{
+    string JID = AkhbarElyoum.Controllers.HomeController.GetJournalID(HttpContext.Current.Request.Url.Host, int.Parse((HttpContext.Current.Request.QueryString["JournalID"] != null) ? HttpContext.Current.Request.QueryString["JournalID"].ToString() : "0"));
+    Layout = "../Shared/_LayoutInner.cshtml";
+    int count = 0;
+    string SecID = ViewContext.RouteData.Values["ID"].ToString();
+}
+
+@section Meta{
+
+  <title>@ViewBag.Title| بوابة أخبار اليوم الإلكترونية</title>
+
+    <meta name="description" content="بوابة اخبار اليوم تقدم احدث واهم اخبار مصر على مدار اليوم مع تغطيات مصورة صور الاحداث وفيديوهات حصريه لها اولا باول كما نقدم اهم اخبار الرياضة والفن والاقتصاد والحوادث" />
+    <meta name="keywords" content="بوابه اخبار اليوم الإلكترونية, جريدة, الكترونية, أخبار ,اخبار, مصر, اليوم السابع, المصرى اليوم, القاهرة اليوم, الاخبار,الحوادث, اقتصاد, رياضة,فيديوهات, @ViewBag.Title" />
+    <meta property="og:title" content="@ViewBag.Title| بوابة أخبار اليوم الإلكترونية">
+
+}
+
+
+@section home{
+    <style type="text/css">
+        .showMore {
+            background: rgba(252, 135, 82, 1);
+            border-radius: 5px 5px 5px 5px;
+            color: #FFFFFF;
+            cursor: pointer;
+            direction: rtl;
+            display: block;
+            height: 30px;
+            margin: 10px auto;
+            width: 100%;
+        }
+    </style>
+    <script type="text/javascript">
+
+        var isenabled = true;
+        var page = -1;
+        if ($(".lastid:last").attr("idx")) {
+            page = $(".lastid:last").attr("idx").toString();
+        }
+        else {
+            $('.showMore').hide();
+            $('.no-more-data').show();
+        }
+        var GetSection = function () {
+            page = $(".lastid:last").attr("idx").toString();
+            if (page != -1) {
+                $.ajax({
+                    type: "GET",
+                    url: '/Galleries/GallerySectionPaged?LastID=' + page + '&JournalID=' + @JID + '',
+                    contentType: "html/text",
+                    dataType: "html",
+                    cache: false,
+                    success: function (msg) {
+                        var container = $("#NewsSectionPaging");
+                        if (msg.trim() !== "") {
+                            container.append(msg);
+                        } else {
+                            $('.showMore').hide();
+                            $('.no-more-data').show();
+                        }
+                        var isenabled = true;
+                    }
+                });
+            }
+        }
+        $(document).ready(function () {
+            //console.log("Init complete.");
+            // create a long list of items
+            var container = $("#NewsSectionPaging");
+            var pagenumber = 0;
+            if ($(".lastid:last").attr("idx")) {
+                page = $(".lastid:last").attr("idx").toString();
+            }
+            else {
+                $('.showMore').hide();
+                $('.no-more-data').show();
+            }
+            var appendToList = function (msg) {
+                container.append(msg);
+            }
+            container.bind("infinite-scroll", function (args) {
+                if ($(".lastid:last").attr("idx")) {
+                    page = $(".lastid:last").attr("idx").toString();
+                }
+                else {
+                    $('.showMore').hide();
+                    $('.no-more-data').show();
+                }
+                if (page != -1) {
+                    $.ajax({
+                        type: "GET",
+                        url: '/Galleries/GallerySectionPaged?LastID=' + page + '&JournalID=' + @JID + '',
+                        contentType: "html/text",
+                        dataType: "html",
+                        cache: false,
+                        success: function (msg) {
+                            if (msg.trim() !== "") {
+                                container.append(msg);
+                            } else {
+                                $('.showMore').hide();
+                                $('.no-more-data').show();
+                            }
+                            pagenumber++;
+                            isenabled = true;
+                        }
+                    });
+                }
+            });
+
+        });
+    </script>
+
+
+
+    <section class="module">
+        <div class="container">
+            <div class="">
+
+                <div class="col-md-8">
+                    @foreach (var item in Model)
+                    {
+
+                        if (count == 0)
+                        {
+                                <h2>
+                                   <a href="/Galleries/GallerySection/157/@JID/@(AkhbarElyoum.Controllers.HomeController.GetPureURL(@ViewBag.Title))"  title="@ViewBag.Title"  class="HomeSecTitle">@ViewBag.Title </a>
+                                </h2>
+                        }
+
+                        if (count == 0)
+                        {
+                            <div class="entry-block-full">
+
+
+                                <div class="image-full">
+                                    <a href="/Galleries/Album/@item.GalleryID/1/@(AkhbarElyoum.Controllers.HomeController.GetPureURL(item.Title))" title="@item.Title">
+                                        <img src="https://images.akhbarelyom.com/images/images/GalleryImages/@item.GDate.ToString("yyyyMMdd")/@item.MainPicture" alt="@item.Title"/>
+                                    </a>
+                                </div>
+                                <div class="content">
+                                    <div class="title-left title-style04 underline04">
+                                        <h3><a href="/Galleries/Album/@item.GalleryID/1/@(AkhbarElyoum.Controllers.HomeController.GetPureURL(item.Title))"  title="@item.Title">@item.Title</a></h3>
+                                    </div>  
+                                </div>
+                            </div>
+                        }
+
+                        if (count == 1)
+                        {
+                            ViewContext.Writer.Write("<div class=\"article\" id=\"NewsSectionPaging\">");
+                            count++;
+                        }
+                        if (count > 1)
+                        {
+                            <div class="entry-block-small">
+                                <div class="entry-image">
+                                    <a class="img-link" href="/Galleries/Album/@item.GalleryID/1/@(AkhbarElyoum.Controllers.HomeController.GetPureURL(item.Title))"  title="@item.Title">
+                                        <img class="img-responsive img-full" src="https://images.akhbarelyom.com/images/images/GalleryImages/@item.GDate.ToString("yyyyMMdd")/@item.MainPicture" alt="@item.Title"/>
+                                    </a>
+                                </div>
+                                <div class="entry-content">
+                                    <h4><a href="/Galleries/Album/@item.GalleryID/1/@(AkhbarElyoum.Controllers.HomeController.GetPureURL(item.Title))" title="@item.Title" > @item.Title</a></h4>
+                                </div>
+                            </div>
+                        }
+
+
+                        if (count == Model.Count)
+                        {
+                            <p class="lastid" idx="@item.GalleryID">
+                            </p>
+                            ViewContext.Writer.Write("</div>");
+                        }
+
+                        count++;
+                    }
+
+                    @if (Model.Count > 0)
+                    {
+
+                        <div class="no-more-data" style="display: none;">
+                            <p>
+                                لا يوجد المزيد من البيانات.
+                            </p>
+                        </div>
+
+                        <div class="more-btn" style="width:100%;float:right;">
+                            <input name="" id="" onclick="GetSection();" class="btn btn-default" type="submit" value="اقرأ المزيد" />
+                            <div class="GalleryID" style="display: none;">157</div>
+                        </div>
+                    }
+                </div>
+
+
+                    @Html.Action("GetSiteLeftSideServicesInner", "Home", new { JournalID = JID })
+
+
+
+
+
+
+            </div>
+        </div>
+    </section>
+}

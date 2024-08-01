@@ -1,0 +1,71 @@
+﻿@model IEnumerable<AkhbarElyoum.Models.NewsDetails>
+<!--jqury taps JS-->
+@{
+    string JID = "3";
+    Layout = "../Shared/_Layout" + JID + ".cshtml";
+    ViewBag.Title = "مجلة اخبار النجوم"; 
+  
+}
+<style>
+    .magazine-container
+    {
+        background-color: #D1D1D1;
+        height: 100%;
+        margin: 50px auto;
+        width: 630px;
+    }
+    .mag-con
+    {
+        float: left;
+        height: 408px;
+        margin-bottom: 10px;
+        margin-left: 10px;
+        overflow: hidden;
+        width: 302px;
+    }
+</style>
+<div class="onePostErea">
+    <!-- start onePostErea -->
+    <!-- start lftSide -->
+                <div class="onePostEreaLft">
+        <div class="adv2 drop-shadow lifted">
+            <!-- start adv2 -->
+            <div class="adv-code drop-shadow lifted">
+                <a href="#">
+                @Html.Action("GetBlockTextList", "Blocks", new { BlockID = 27, JournalID = JID })
+                </a>
+            </div>
+        </div>
+     
+      
+ 
+        <div class="adv2 drop-shadow lifted" style="margin-top: 17.75px;">
+            <!-- start adv2 -->
+            <div class="adv-code drop-shadow lifted">
+                @Html.Action("GetBlockTextList", "Blocks", new { BlockID = 28, JournalID = JID })
+            </div>
+        </div>
+        <!-- end adv2 -->
+        <div class="adv2" style="margin-top: 17.75px;">
+            <!-- start adv2 -->
+            <div class="adv-code drop-shadow lifted">
+                @Html.Action("GetBlockTextList", "Blocks", new { BlockID = 29, JournalID = JID })
+            </div>
+        </div>
+        <!-- end adv2 -->
+    </div>
+    <div class="onePostEreaRit">
+        <div class="magazine-container">
+            <div class="nog-title">
+                <h5>
+                    مجلة اخبارالنجوم</h5>
+            </div>
+            @foreach (var item in Model)
+            {
+                <div class="mag-con">
+                    <img src="https://Images.akhbarelyom.com/images/images/large/@item.PictureName1" /></div>
+
+            }
+        </div>
+    </div>
+</div>

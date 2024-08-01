@@ -1,0 +1,85 @@
+﻿@model IEnumerable<AkhbarElyoum.Models.Pictures>
+@{
+    string JID = AkhbarElyoum.Controllers.HomeController.GetJournalID(HttpContext.Current.Request.Url.Host, int.Parse((HttpContext.Current.Request.QueryString["JournalID"] != null) ? HttpContext.Current.Request.QueryString["JournalID"].ToString() : "0"));
+    Layout = "../Shared/_LayoutInner.cshtml";
+    int count = 0;
+    int count1 = 0;
+}
+
+@section Meta{
+
+    @foreach (var item in Model)
+    {
+        if (count == 0)
+        {
+            <title>@item.AlbumTitle | بوابة أخبار اليوم الإلكترونية</title>
+            <meta name="description" content="@item.AlbumDescription" />
+            <meta name="keywords" content="بوابة أخبار اليوم الإلكترونية| @item.AlbumTitle" />
+
+            <meta property="og:image" content="/images/images/large/@item.PictureName" />
+            <meta name="keywords" content="@item.AlbumTitle" />
+            <meta name="Description" content="@item.AlbumDescription" />
+
+        <!-- Schema.org markup for Google+ -->
+            <meta itemprop="name" content="@item.AlbumDescription">
+            <meta itemprop="description" content="@item.AlbumDescription">
+            <meta itemprop="image" content="/images/images/large/@item.PictureName">
+
+        <!-- Twitter Card data -->
+            @*<meta name="twitter:site" content="@publisher_handle">*@
+            <meta name="twitter:title" content="@item.AlbumTitle">
+            <meta name="twitter:description" content="@item.AlbumDescription">
+            @*<meta name="twitter:creator" content="@author_handle">*@
+        <!-- Twitter summary card with large image must be at least 280x150px -->
+            <meta name="twitter:image:src" content="/images/images/large/@item.PictureName">
+
+        <!-- Open Graph data -->
+            <meta property="og:title" content="@item.AlbumTitle" />
+            <meta property="og:type" content="article" />
+            <meta property="og:image" content="/images/images/large/@item.PictureName" />
+            <meta property="og:description" content="@item.AlbumDescription" />
+            <meta property="og:site_name" content="http://akhbarelyom.com/" />
+            <meta property="article:published_time" content="2009-09-17T05:59:00+01:00" />
+            <meta property="article:modified_time" content="2009-09-16T19:08:47+01:00" />
+            <meta property="article:section" content="Article Section" />
+            <meta property="article:tag" content="@item.AlbumTitle" />
+        }
+        count++;
+    }
+}
+
+@section home{
+
+
+                      <div class="news news-gallery news-post-gallery">
+                          <ul>
+                              @foreach (var item in Model)
+                              {
+                                  <li>
+                                      <div class="rollover-thumbnail">
+
+
+
+                                          <a href="/images/images/Large/@item.PictureName" rel="lightbox" data-lightbox="rollover" title="@item.PictureCaption">
+
+
+                                              <span class="rollover"></span>
+                                              <img src="/images/images/Small/@item.PictureName" alt="@item.PictureCaption">
+                                          </a>
+
+                                      </div>
+                                  </li>
+
+                              }
+                          </ul>
+                      </div>
+}
+
+
+
+
+
+
+
+
+

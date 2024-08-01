@@ -1,0 +1,8 @@
+﻿@model IEnumerable<AkhbarElyoum.Models.Block>
+@{
+    Layout = "";
+}
+@foreach (var item in @Model)
+{
+    @Html.Raw(HttpUtility.HtmlDecode(item.BlockText))
+}

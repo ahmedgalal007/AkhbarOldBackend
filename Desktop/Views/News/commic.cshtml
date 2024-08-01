@@ -1,0 +1,215 @@
+﻿@model IEnumerable<AkhbarElyoum.Models.NewsDetails>
+@{
+    string JID = AkhbarElyoum.Controllers.HomeController.GetJournalID(HttpContext.Current.Request.Url.Host, int.Parse((HttpContext.Current.Request.QueryString["JournalID"] != null) ? HttpContext.Current.Request.QueryString["JournalID"].ToString() : "0"));
+    Layout = "../Shared/_LayoutInner.cshtml";
+    ViewBag.Title = "كاريكتير";
+   
+   
+}
+<style>
+    *
+    {
+        margin: 0;
+        padding: 0;
+        border: 0;
+        outline: 0;
+    }
+    .main-page
+    {
+        width: 631px;
+
+    }
+    .page-head
+    {
+        height: 68px;
+        width: 631px;
+    }
+    .page-data
+    {
+        float: right;
+    }
+    .img-div
+    {
+        float: right;
+    }
+    .topic-img
+    {
+        margin-top: 10px;
+    }
+    .new-share
+    {
+		clear: right;
+		float: right;
+		height: 28px;
+		margin-top: 25px;
+		width: 630px;
+    }
+    a.btn-more
+    {
+        float: left;
+    }
+    .share-now
+    {
+        float: right;
+        height: 28px;
+        width: 241px;
+    }
+    .share-now > p
+    {
+        font-family: arial;
+        font-size: 19px;
+        text-align: right;
+    }
+    .title-pic
+    {
+        color: #363636;
+        font-size: 27px;
+        margin-right: 9px;
+        text-align: right;
+    }
+    .title-name
+    {
+        color: #B1371F;
+        font-family: arial;
+        font-size: 23px;
+        margin-right: 9px;
+    }
+</style>
+<link rel="stylesheet" type="text/css" href="/css/@JID/taps/style.css" />
+<script src="/js/jquery-easing.1.2.js" type='text/javascript'></script>
+<script src="/js/jquery-easing-compatibility.1.2.js" type='text/javascript'></script>
+<script src="/js/coda-slider.1.1.1.js" type='text/javascript'></script>
+<script type='text/javascript'>
+    $(function () {
+        //$("#blogSlider").codaSlider();
+    });
+</script>
+@foreach (var item in Model)
+{
+
+    <div class="onePostErea">
+        <div class="onePostEreaLft newwidth2">
+            <div class="adv2 drop-shadow lifted">
+                <!-- start adv2 -->
+                <div class="adv-code drop-shadow lifted">
+                    @Html.Action("GetBlockTextList", "Blocks", new { BlockID = 23, JournalID = JID })
+                </div>
+            </div>
+            <div class="adv2 drop-shadow lifted" style="margin-top: 17.75px;">
+                <!-- start adv2 -->
+                <div class="adv-code">
+                    @Html.Action("GetBlockTextList", "Blocks", new { BlockID = 25, JournalID = JID })
+                </div>
+            </div>
+            <!-- end adv2 -->
+            <!-- start shareUs -->
+            @*<div id="shareUs"  style="margin-top:18px;">
+                    <div class="shareBg">
+                        <div style="float:right;float: right;height: 80px;width: 82px;">
+                        <p id="shareTitle">شارك <br />معـنا</p>
+                            <ul>
+                                <li><a href="#" class="word"></a></li>
+                                <li><a href="#" class="im"></a></li>
+                                <li><a href="#" class="video"></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>*@
+            <!-- start shareUs -->
+            <!-- start news -->
+            @Html.Action("GetEditorsList", "Editors", new { JournalID = JID })
+            <!-- end news -->
+            @Html.Action("GetRelatedNewsListInside", "News", new { NID = @item.NewsID, JournalID = JID })
+            <div class="adv2" style="margin-top: 7.75px;">
+                <!-- start adv2 -->
+                <div class="adv-code drop-shadow lifted">
+                    @Html.Action("GetBlockTextList", "Blocks", new { BlockID = 62, JournalID = JID })
+                </div>
+            </div>
+           @* <div class=" big-box drop-shadow lifted newheightBwabaA">
+                <div class="lftBoxNews" style="height: 329px; overflow: hidden;">
+                    <div id="blogSlider">
+                        <div class="innerWrap">
+
+
+                            <div class="panelContainer">
+                                <div class="panel" title="الأكثر قراءة">
+                                    @Html.Action("GetHomeMostViewedSectionList", "News", new { SectionID = @Model.First().SectionID, JournalID = JID })
+                                </div>
+                                <div class="panel" title="الأحدث">
+                                    @Html.Action("GetHomeLatestSectionList", "News", new { SectionID = @Model.First().SectionID, JournalID = JID })
+                                </div>
+                                <div class="panel" title="الأكثر تعليقا">
+                                    @Html.Action("GetHomeMostCommentedSectionList", "News", new { SectionID = @Model.First().SectionID, JournalID = JID })
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>*@
+            <!-- end adv2 -->
+            <div class="advBlock drop-shadow lifted nMargin" style="margin-top: 17.75px;">
+                <!-- start small adv -->
+                <div class="nweImageAdvs">
+                    @Html.Action("GetBlockTextList", "Blocks", new { BlockID = 24, JournalID = JID })
+                </div>
+            </div>
+            <!-- end adv2 -->
+        </div>
+        <div class="onePostEreaRit">
+            <!-- start block1Rit -->
+            <div class="block1Rit">
+                <div class="postTopicWrapper drop-shadow lifted">
+                    <div class="main-page">
+                        <div class="page-head">
+                            <div class="img-div">
+                                <img src="https://Images.akhbarelyom.com/images/images/small/@item.PictureName2" alt="@item.EditorName" width="77" height="67" /></div>
+                            <div class="page-data">
+                                <p class="title-pic">
+                                    ريشة</p>
+                                <p class="title-name">
+                                  @item.EditorName</p>
+                            </div>
+                        </div>
+                        <div class="topic-img">
+                           <a href="">
+                             <img src="https://Images.akhbarelyom.com/images/images/large/@item.PictureName1" alt="@item.Title" width="631" alt="" title="" />
+                           </a> 
+                        </div>					
+                        <div class="new-share">
+                            <a class="btn-more" href="/news/karekaters/@item.EditorID">
+                                <img src="/img/more.png" width="134" height="28" /></a>
+                            <div class="social-media">
+                                <div class="share-now">
+                                    <p>
+                                        أنشر الكاريكاتير</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                @Html.Partial("~/Views/Comments/Create.cshtml", new AkhbarElyoum.Models.Comments { })
+                @Html.Action("Comments", "Comments", new { NID = @item.NewsID })
+                @*<iframe width="0" scrolling="no" height="0" frameborder="0" src="/News/UpdateViews?ID=@item.NewsID&_V=@(DateTime.Now.Minute.ToString()+DateTime.Now.Second.ToString()+DateTime.Now.Millisecond.ToString()+Guid.NewGuid().ToString().Substring(0,7))">*@
+               @* @Html.Action("UpdateViews", "News", new { ID = @item.NewsID, _V = DateTime.Now.Minute.ToString() + DateTime.Now.Second.ToString() + DateTime.Now.Millisecond.ToString() + Guid.NewGuid().ToString().Substring(0, 7) })*@
+            </div>
+        </div>
+    </div>
+   
+
+}
+<script>
+    var test = $(".SecID").text();
+    $('.menuItem[titles|=' + test + '] span').addClass('jquerySelected');
+    $('.footer_menu-wrapper[titles|=' + test + '] span').addClass('jquerySelected');
+</script>
+<!-- Place this tag after the last +1 button tag. -->
+<script type="text/javascript">
+    (function () {
+        var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+        po.src = 'https://apis.google.com/js/plusone.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+    })();
+</script>
+} 

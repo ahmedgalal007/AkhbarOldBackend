@@ -1,0 +1,16 @@
+﻿@model IEnumerable<AkhbarElyoum.Models.Gallery>
+@{
+    Layout = "";
+    string JID = AkhbarElyoum.Controllers.HomeController.GetJournalID(HttpContext.Current.Request.Url.Host, int.Parse((HttpContext.Current.Request.QueryString["JournalID"] != null) ? HttpContext.Current.Request.QueryString["JournalID"].ToString() : "0"));
+}
+@if (Model.Count() > 0)
+{
+
+
+    foreach (var item in Model)
+    {
+        @Html.Action("GalleryImages", "Galleries", new { GalleryID = @item.GalleryID, JournalID = JID })
+
+    }
+
+}

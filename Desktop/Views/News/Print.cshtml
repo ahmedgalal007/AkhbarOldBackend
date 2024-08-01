@@ -1,0 +1,138 @@
+﻿@model IEnumerable<AkhbarElyoum.Models.NewsDetails>
+@{
+    Layout = null;
+    ViewBag.Title = "طباعة-" + Model.FirstOrDefault().Title;
+
+}
+@foreach (var item in Model)
+{
+
+
+    <html>
+    <head>
+		<link href="~/images/Fav-icon-yom.ico" rel="shortcut icon" type="image/x-icon" />
+        <title>طباعة-@Model.FirstOrDefault().Title</title>
+
+    </head>
+    <body>
+        <div id="print">
+            <div id="top_print">
+                <img style="float:right;" src="~/images/logo.png">
+                <h1 style="color:#B1371F;">
+                    @item.SecTitle
+                </h1>
+            </div>
+            <!--top_print-->
+            <div id="info_print" style="clear:right;text-align:right;direction:rtl;">
+                <h1 style="color:#B1371F;">
+                    @item.Title
+                </h1>
+                <h2>
+                    @item.PublishDate
+                </h2>
+                @{if (item.ByLine != "")
+                {<h3 class="writeBy">كتب:@item.ByLine</h3>}}
+                <p>
+                    @Html.Raw(HttpUtility.HtmlDecode(item.Story))
+                </p>
+            </div>
+            <!--info_print-->
+            <div id="footer_print">
+                <p>
+                    2007 &copy; جميع حقوق النشر محفوظة لـبوابة اخبار ايوم و يحظر نشر أو توزيع أو طبع أى
+                    مادة دون إذن مسبق من الموقع
+                </p>
+            </div>
+            <!--footer_print-->
+            <div id="entry_Print">
+
+                <button style="border:none;background:none;font-size:23px;color:#FFF;" onclick="printing();">أطبع</button>
+                <!--entry_Print-->
+            </div>
+        </div>
+    </body>
+
+
+</html>
+}
+
+<script type="text/javascript">
+
+    function printing() {
+
+        window.print();
+    }
+
+    //ok
+</script>
+<style>
+    #top_print h1 {
+        color: #333333;
+        float: right;
+        font-family: Arial,Helvetica,sans-serif;
+        font-size: 30px;
+        margin-top: 40px;
+    }
+
+    #info_print p {
+        color: #333333;
+        font-family: Arial,Helvetica,sans-serif;
+        font-size: 18px;
+        margin-top: 10px;
+    }
+
+    #info_print {
+        border-bottom: 1px solid #CCCCCC;
+        margin-top: 10px;
+        width: 100%;
+    }
+
+        #info_print h2 {
+            color: #333333;
+            font-family: Arial,Helvetica,sans-serif;
+            font-size: 18px;
+            margin-top: 5px;
+        }
+
+        #info_print h1 {
+            color: #333333;
+            font-family: Arial,Helvetica,sans-serif;
+            font-size: 25px;
+        }
+
+    #footer_print p {
+        color: #666666;
+        font-family: Arial,Helvetica,sans-serif;
+        font-size: 12px;
+        text-align: right;
+        margin: auto;
+    }
+
+    #footer_print {
+        margin-top: 10px;
+        width: 100%;
+    }
+
+    #entry_Print a:link {
+        color: #FFFFFF;
+        text-decoration: none;
+    }
+
+    #entry_Print {
+        background-color: #CC0033;
+        border: 2px solid #CCCCCC;
+        color: #FFFFFF;
+        float: left;
+        font-family: Arial,Helvetica,sans-serif;
+        font-size: 30px;
+        height: 30px;
+        padding: 5px;
+        width: 50px;
+    }
+
+    #top_print {
+        border-bottom: 1px solid #CCCCCC;
+        height: 138px;
+        width: 100%;
+    }
+</style>

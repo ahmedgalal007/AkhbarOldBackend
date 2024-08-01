@@ -1,0 +1,68 @@
+﻿@model IEnumerable<AkhbarElyoum.Models.Sections>
+@using AkhbarElyoum.Models;
+@{int count = 0;
+    string JID = AkhbarElyoum.Controllers.HomeController.GetJournalID(HttpContext.Current.Request.Url.Host, int.Parse((HttpContext.Current.Request.QueryString["JournalID"] != null) ? HttpContext.Current.Request.QueryString["JournalID"].ToString() : "0"));
+}
+
+<!--========== BEGIN .DROPDOWN ==========-->
+
+@foreach (var item in Model)
+{
+
+    if (count == 0)
+    {
+        <li class="active"><a href="https://akhbarelyom.com" title="الرئيسية" >
+		الرئيسية
+		</a></li>
+    }
+
+    count++;
+
+    if (ViewBag.Loc != "sidenav")
+    {
+        if (count <= 6)
+        {
+
+            <li>
+                <a href="/news/newssection/@item.SectionID/@JID/@(AkhbarElyoum.Controllers.HomeController.GetPureURL(item.SectionName))" title="@item.SectionName">@item.SectionName</a>
+            </li>
+        }
+
+      
+        if (count == 7)
+        {
+            @:<li class="dropdown">
+                @: <a href="#" class="dropdown-toggle" data-toggle="dropdown">المزيد</a>
+                @: <ul class="dropdown-menu">
+        }
+        if (count > 6)
+        {
+
+            <li>
+                @if (item.SectionID == 157)
+                {
+                    <a href="/Galleries/GallerySection/@item.SectionID/@JID/@(AkhbarElyoum.Controllers.HomeController.GetPureURL(item.SectionName))" title="@item.SectionName">@item.SectionName</a>
+                }
+                else
+                {
+                    <a href="/news/newssection/@item.SectionID/@JID/@(AkhbarElyoum.Controllers.HomeController.GetPureURL(item.SectionName))" title="@item.SectionName">@item.SectionName</a>
+                }
+            </li>
+        }
+        if (item == Model.Last())
+        {
+            @:</ul>
+            @:</li>
+        }
+    }
+
+
+    else
+    {
+        <li>
+            <a  href="/news/newssection/@item.SectionID/@JID/@(AkhbarElyoum.Controllers.HomeController.GetPureURL(item.SectionName))" title="@item.SectionName">@item.SectionName</a>
+        </li>
+    }
+
+}
+<!--========== END .DROPDOWN ==========-->

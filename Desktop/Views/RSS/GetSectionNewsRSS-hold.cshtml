@@ -1,0 +1,59 @@
+﻿@model IEnumerable<AkhbarElyoum.Models.NewsDetails>
+@{
+    string JID = AkhbarElyoum.Controllers.HomeController.GetJournalID(HttpContext.Current.Request.Url.Host, int.Parse((HttpContext.Current.Request.QueryString["JournalID"] != null) ? HttpContext.Current.Request.QueryString["JournalID"].ToString() : "0"));
+    string SubDomain = AkhbarElyoum.Controllers.HomeController.GetSubDomain(int.Parse(JID));
+    Layout = null;
+    string SecID = "";
+    if (Request.QueryString["SectionID"] != null)
+    {
+        SecID = Request.QueryString["SectionID"].ToString();
+    }
+    Response.ContentType = "text/xml";
+@*@Html.Raw(string.Format("<link><a href=\"/news/newdetails/{0}/{1}/@(AkhbarElyoum.Controllers.HomeController.GetPureURL({2}}))\" class=\"boxH3new bo3 dirStyle\">{2}</a></link>", item.NewsID, JID, item.Title))*@
+@*@Html.Raw(string.Format("<link>/news/newdetails/{0}/{1}/@(AkhbarElyoum.Controllers.HomeController.GetPureURL({2}}))</link>", item.NewsID, JID, item.Title))*@
+}@Html.Raw("<?xml version=\"1.0\" encoding=\"UTF-8\" ?>")
+@Html.Raw("<rss version=\"2.0\">")
+@Html.Raw("<channel>")
+@if (Model.Count() > 0)
+{
+    if (SecID != "-1")
+    {
+        @Html.Raw(string.Format("<title><![CDATA[{0}]]></title>", Model.First().SecTitle))
+    }
+    else
+    {
+        @Html.Raw(string.Format("<title><![CDATA[{0}]]></title>", "كل الأخبار"))
+    }
+    @Html.Raw(string.Format("<link><![CDATA[جميع الحقوق محفوظة لمؤسسة أخبار اليوم 1954 - 2012]]></link>", Model.First().SectionID, JID))  
+}
+@Html.Raw("<language><![CDATA[ar]]></language>")
+@Html.Raw("<copyright>جميع الحقوق محفوظة لمؤسسة أخبار اليوم 1954 - 2012</copyright>")
+@Html.Raw("<description></description>")
+@Html.Raw("<category><![CDATA[" + SubDomain + "]]></category>")
+@Html.Raw("<generator></generator>")
+@Html.Raw("<image>")
+@if (Model.Count() > 0)
+{
+    if (SecID != "-1")
+    {@Html.Raw(string.Format("<title><![CDATA[{0}]]></title>", Model.First().SecTitle));}
+    else
+    {@Html.Raw(string.Format("<title><![CDATA[{0}]]></title>", "كل الأخبار"));}
+}
+@Html.Raw("<link><![CDATA[https://" + SubDomain + "/</link>]]></link>")
+@Html.Raw("<url><![CDATA[https://" + SubDomain + "/images/centerlogo.png]]></url>")
+@Html.Raw("<width>100</width>")
+@Html.Raw("<height>29</height>")
+@Html.Raw("</image>")
+@foreach (var item in Model)
+{
+    @Html.Raw("<item>");
+    @Html.Raw(string.Format("<title><![CDATA[{0}]]></title>", @item.Title));
+    @Html.Raw(string.Format("<link><![CDATA[https://" + SubDomain + "/news/newdetails/{0}/{1}/{2}]]></link>", @item.NewsID, @JID, AkhbarElyoum.Controllers.HomeController.GetPureURL(item.Title)));
+    @Html.Raw(string.Format("<description><![CDATA[{0}]]></description>", @item.Breif.Replace("<br>", "")));
+    @Html.Raw(string.Format("<pubDate>{0}</pubDate>", @item.PublishDate));
+    @Html.Raw(string.Format("<guid><![CDATA[https://" + SubDomain + "/news/newdetails/{0}/{1}/{2}]]></guid>", @item.NewsID, @JID, AkhbarElyoum.Controllers.HomeController.GetPureURL(item.Title)));
+    @Html.Raw(string.Format("<enclosure url=\"https://akhbarelyom.com//images/images/large/{0}\" length=\"5000\" type=\"image/jpge\"/>", @item.PictureName1));
+    @Html.Raw("</item>");
+}
+@Html.Raw("</channel>")
+@Html.Raw("</rss>")

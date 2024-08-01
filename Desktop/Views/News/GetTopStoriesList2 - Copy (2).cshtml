@@ -1,0 +1,93 @@
+﻿	@model List<AkhbarElyoum.Models.NewsDetails>
+    @{
+        string JID = AkhbarElyoum.Controllers.HomeController.GetJournalID(HttpContext.Current.Request.Url.Host, int.Parse((HttpContext.Current.Request.QueryString["JournalID"] != null) ? HttpContext.Current.Request.QueryString["JournalID"].ToString() : "0"));
+        int counter = 0;
+    }
+
+
+    <section class="module" id="Slider_sport">
+	
+		<div class="container">
+		<div class="row center">
+            <div class="col-md-12 center">
+
+            <h2>
+			<img src="img/header/tamema30.png">
+                        <a href="/news/newssection/@item.SectionID/@JID/@(AkhbarElyoum.Controllers.HomeController.GetPureURL(item.SecTitle))" title="@item.SecTitle" class="HomeSecTitle" style="color: #2d8cff;">كلاسيك</a>
+            </h2>
+
+            </div>
+</div>
+            @{
+
+                counter = 0;
+            }
+        <div class="row">
+            @foreach (var item in @Model)
+            {
+
+
+
+
+                if (counter == 0)
+                {
+
+                    ViewContext.Writer.Write("<div class=\"col-md-12 col-sm-12 col-xs-12 slider-thum\">");
+                }
+
+
+
+                if (counter >= 0 && counter < 4)
+                {
+            <div class="col-md-3 col-sm-12 col-xs-12 slider-thum">
+                <div class="container-full bottom-text full-photo col-sm-half">
+                    <div class="SliderBlock">
+                        <div class="entry-media">
+                            <a href="https://akhbarelyom.com/news/newdetails/@item.NewsID/@JID/@(AkhbarElyoum.Controllers.HomeController.GetPureURL(item.Title))" title="@item.Title">
+                                <img class="image" src="https://Images.akhbarelyom.com/images/images/small/@item.PictureName1" alt="@item.Title" />
+                            </a>
+                        </div>
+                        <div class="content">
+                            <h2 class="SliderTitle2" style="background: #093010 !important;">
+                                <a href="https://akhbarelyom.com/news/newdetails/@item.NewsID/@JID/@(AkhbarElyoum.Controllers.HomeController.GetPureURL(item.Title))" title="@item.Title">@item.Title </a>
+                            </h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                }
+
+
+
+
+
+
+
+                counter++;
+
+            }
+
+        </div>
+
+
+    </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

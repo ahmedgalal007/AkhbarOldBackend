@@ -1,0 +1,37 @@
+﻿@model IEnumerable<AkhbarElyoum.Models.Gallery>
+
+@{
+    string JID = AkhbarElyoum.Controllers.HomeController.GetJournalID(HttpContext.Current.Request.Url.Host, int.Parse((HttpContext.Current.Request.QueryString["JournalID"] != null) ? HttpContext.Current.Request.QueryString["JournalID"].ToString() : "0"));
+}
+
+
+<div class="section-topstory">
+    <div class="section-carousel-gp">
+        <div id="section-carouselNextBtn" class="topstoryNextBtnM">
+            <span class="fa fa-arrow-left"></span>
+        </div>
+        <div id="section-carouselPrevBtn" class="topstoryPrevBtnM">
+            <span class="fa fa-arrow-right"></span>
+        </div>
+        <div id="section-topstory" class="owl-carousel">
+            @foreach (var item in Model)
+            {
+
+                      
+                <div class="item">
+                    <a href="/Galleries/GalleryImages/@item.GalleryID/1/@(AkhbarElyoum.Controllers.HomeController.GetPureURL(item.Title))" title="@item.Title" class="topstory-block">
+                        <img src="https://Images.akhbarelyom.com/images/images/large/@item.MainPicture"  alt="@item.Title" class="img-responsive">
+                        <div class="topstory-text">
+                            <span>@item.Title</span>
+                        </div>
+                    </a>
+                </div>
+
+
+            }
+        </div>
+    </div>
+</div>
+
+
+  

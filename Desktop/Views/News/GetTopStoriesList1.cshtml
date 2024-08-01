@@ -1,0 +1,168 @@
+﻿	@model List<AkhbarElyoum.Models.NewsDetails>
+    @{
+        string JID = AkhbarElyoum.Controllers.HomeController.GetJournalID(HttpContext.Current.Request.Url.Host, int.Parse((HttpContext.Current.Request.QueryString["JournalID"] != null) ? HttpContext.Current.Request.QueryString["JournalID"].ToString() : "0"));
+        int counter = 0;
+    }
+
+
+
+<section class="module" id="Slider">
+    <div class="container">
+
+
+        @foreach (var item in @Model)
+            {
+               
+
+                if (counter == 0)
+                {
+                <div class="col-md-6 main-slide">
+                    <div class="container-full bottom-text full-photo">
+                        <div class="SliderBlock">
+                            <div class="entry-media">
+                                <a href="/news/newdetails/@item.NewsID/@JID/@(AkhbarElyoum.Controllers.HomeController.GetPureURL(item.Title))" title="@item.Title" >
+                                 <img class="image" src="https://Images.akhbarelyom.com/images/images/large/@item.PictureName1" alt="@item.Title" />
+                                </a>
+                            </div>
+                            <div class="content">
+                                <h2 class="BigSliderTitle">
+                                    <a href="/news/newdetails/@item.NewsID/@JID/@(AkhbarElyoum.Controllers.HomeController.GetPureURL(item.Title))" title="@item.Title">
+                                        <img src="@item.MagazineLogo" width="64" style="border-radius:25px;" />
+                                        @item.Title
+                                    </a>
+                                </h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+
+
+            if (counter == 0)
+            {
+
+                ViewContext.Writer.Write("<div class=\"col-md-2 col-sm-4 col-xs-12 slider-thum\">");
+            }
+
+
+
+            if (counter > 0 && counter < 3)
+            {
+              
+            <div class="container-full bottom-text full-photo col-sm-half">
+                <div class="SliderBlock">
+                    <div class="entry-media">
+                        <a href="/news/newdetails/@item.NewsID/@JID/@(AkhbarElyoum.Controllers.HomeController.GetPureURL(item.Title))" title="@item.Title" >
+                            <img class="image" src="https://Images.akhbarelyom.com/images/images/small/@item.PictureName1" alt="@item.Title" />
+                            </a>
+                     </div>
+                    <div class="content">
+                        <h2 class="SliderTitle2">
+                        <a href="/news/newdetails/@item.NewsID/@JID/@(AkhbarElyoum.Controllers.HomeController.GetPureURL(item.Title))" title="@item.Title" >@item.Title </a></h2>
+                    </div>
+                </div>
+            </div>
+            }
+
+            if (counter == 2)
+            {
+
+                ViewContext.Writer.Write(" </div>");
+
+            }
+
+            if (counter == 3)
+            {
+
+                ViewContext.Writer.Write("<div class=\"col-md-2 col-sm-4 col-xs-12 slider-thum\">");
+            }
+
+
+
+            if (counter > 2 && counter < 5)
+            {
+                <div class="container-full bottom-text full-photo col-sm-half">
+                    <div class="SliderBlock">
+                        <div class="entry-media">
+                            <a href="/news/newdetails/@item.NewsID/@JID/@(AkhbarElyoum.Controllers.HomeController.GetPureURL(item.Title))" title="@item.Title" >
+                                <img class="image" src="https://Images.akhbarelyom.com/images/images/small/@item.PictureName1" alt="@item.Title" /></a>
+</div>
+                        <div class="content">
+                            <h2 class="SliderTitle2"><a href="/news/newdetails/@item.NewsID/@JID/@(AkhbarElyoum.Controllers.HomeController.GetPureURL(item.Title))"  title="@item.Title">@item.Title </a></h2>
+                        </div>
+                    </div>
+                </div>
+            }
+
+            if (counter == 4)
+            {
+
+                ViewContext.Writer.Write(" </div>");
+
+            }
+
+            if (counter == 5)
+            {
+
+                ViewContext.Writer.Write("<div class=\"col-md-2 col-sm-4 col-xs-12 slider-thum\">");
+            }
+
+
+
+
+            if (counter > 4 && counter < 7)
+            {
+                <div class="container-full bottom-text full-photo col-sm-half">
+                    <div class="SliderBlock">
+                        <div class="entry-media">
+                            <a href="/news/newdetails/@item.NewsID/@JID/@(AkhbarElyoum.Controllers.HomeController.GetPureURL(item.Title))" title="@item.Title" >
+                                <img class="image" src="https://Images.akhbarelyom.com/images/images/small/@item.PictureName1" alt="@item.Title" /></a>
+</div>
+                        <div class="content">
+                            <h2 class="SliderTitle2"><a href="/news/newdetails/@item.NewsID/@JID/@(AkhbarElyoum.Controllers.HomeController.GetPureURL(item.Title))"  title="@item.Title">@item.Title </a></h2>
+                        </div>
+                    </div>
+                </div>
+            }
+
+            if (counter == 6)
+            {
+
+                ViewContext.Writer.Write("</div>");
+
+            }
+
+
+
+
+
+
+            counter++;
+
+        }
+
+		
+		
+
+    </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

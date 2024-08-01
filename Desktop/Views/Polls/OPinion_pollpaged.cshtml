@@ -1,0 +1,172 @@
+﻿@model IEnumerable<AkhbarElyoum.Models.Polls>
+@{bool flg = true; int PollID = 0; var Chkid = 0; int counter = 0; Layout = null;}
+<script type="text/javascript" src="@Url.Content("/js/jquery.cookie.js")"></script>
+<div class="r_content">
+  
+    @foreach (var item in Model)
+    {
+        if (@item.PollID == Chkid)
+        {
+            flg = false;
+        }
+        else
+        {
+            flg = true;
+            if (Model.Count() > 0 && counter != 0)
+            {
+                <div id="more_opinion_poll">
+                    <ul>
+                        <li><input id="BtnCheckAll" type="button" value="النتائج" class="ResultsView vote_btn" name="Button" onclick="checkall(@Chkid)" /></li>
+                        <li><input type="button" class="ResultsView vote_btn" value="التصويت " onclick="submitpoll(@Chkid);"></li>
+                    </ul>
+                </div>
+                @* <button class="ResultsView vote_btn" name="Button" value="Results">
+                    النتائج</button>*@
+
+                ViewContext.Writer.Write("</ul>");
+                ViewContext.Writer.Write("</div>");
+                ViewContext.Writer.Write("</div>");
+                <script>
+//alert($.cookie('Cookie'+@PollID+''));  //gets the value....
+
+                    if ($.cookie('Cookie'+@PollID+'') == null) { //Check to see if a cookie with name of "query" exists
+                    }
+                    else {
+                        $.ajax({
+                            type: "GET",
+                            url: '/Polls/GetPollResults?PollID=' + @PollID + '',
+                            contentType: "html/text",
+                            dataType: "html",
+                            cache: false,
+                            success: function (msg) {
+                                $(".div" + @PollID).html(msg);
+                            }
+                        });
+                    }
+
+                </script>
+            }
+            if (Model.Count() <= 0)
+            {
+                <div class="nopoll">
+                    لا يوجد استطلاع رأى.
+                </div>
+            }
+
+        }
+        { Chkid = @item.PollID; }
+
+        if (flg)
+        {
+            ViewContext.Writer.Write("<div class=\"div" + (@item.PollID) + "\" id='opinion_poll'>");
+            ViewContext.Writer.Write("<div id='in_opinion_poll'>");
+            <div id="question_opinion_poll">
+                <h2>
+                    @item.PollName
+                </h2>
+            </div>
+            PollID = item.PollID;
+
+        }
+        if (flg == true)
+        {
+            ViewContext.Writer.Write("<ul class='in_choices'>");
+        }
+        <li>
+            <h3>
+                <input type="radio" name="@item.PollName" value="@item.OptionID" name="rdoPoll" onchange="setValue(@item.OptionID);" id="rdoPoll0" />&nbsp;&nbsp;@item.OptionName
+            </h3>
+
+        </li>
+
+        flg = false;
+        counter++;
+        if (counter == Model.Count())
+        {
+            <div id="more_opinion_poll">
+                <ul>
+                    <li><input id="BtnCheckAll" type="button" value="النتائج" class="ResultsView vote_btn" name="Button" onclick="checkall(@PollID)" /></li>
+                    <li><input type="button" class="ResultsView vote_btn" value="التصويت " onclick="submitpoll(@PollID);"></li>
+                </ul>
+            </div>
+            @* <button class="ResultsView vote_btn" name="Button" value="Results">
+                النتائج</button>*@
+
+            ViewContext.Writer.Write("</ul>");
+            ViewContext.Writer.Write("</div>");
+            ViewContext.Writer.Write("</div>");
+            <script>
+//alert($.cookie('Cookie'+@PollID+''));  //gets the value....
+
+                if ($.cookie('Cookie'+@PollID+'') == null) { //Check to see if a cookie with name of "query" exists
+                }
+                else {
+                    $.ajax({
+                        type: "GET",
+                        url: '/Polls/GetPollResults?PollID=' + @PollID + '',
+                        contentType: "html/text",
+                        dataType: "html",
+                        cache: false,
+                        success: function (msg) {
+                            $(".div" + @PollID).html(msg);
+                        }
+                    });
+                }
+
+            </script>
+
+        }
+
+
+    }
+
+    <input name="option" id="option" type="hidden" value="" />
+</div>
+<script type="text/javascript" async src="/js/jquery.cookie.js"></script>
+<script type="text/javascript"  src="/js/querystring-0.9.0-min.js"></script>
+
+<script type="text/javascript">
+
+    function checkall(PollID) {
+
+
+        $.ajax({
+            type: "GET",
+            url: '/Polls/GetPollResultss_opinionpoll?PollID=' + PollID + '',
+            contentType: "html/text",
+            dataType: "html",
+            cache: false,
+            success: function (msg) {
+                $(".div" + PollID).html(msg);
+            }
+        });
+    }
+    function submitpoll(PollID) {
+
+
+        var optionid = '';
+        optionid = $('#option').val();
+
+        if (optionid != '' && $.cookie('Cookie' + PollID + '') == null) {
+            $.ajax({
+                type: "GET",
+                url: '/Polls/SubmitPoll1?PollID=' + PollID + '&OptionID=' + optionid + '',
+                contentType: "html/text",
+                dataType: "html",
+                cache: false,
+                success: function (msg) {
+
+                    $(".div" + PollID).html(msg);
+                    $.cookie('Cookie' + PollID + '', '1', { expires: 1 });
+                }
+            });
+        }
+
+    }
+    function setValue(option) {
+
+        $('#option').val(option);
+
+    }
+
+</script>

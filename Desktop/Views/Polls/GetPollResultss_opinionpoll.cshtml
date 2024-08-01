@@ -1,0 +1,51 @@
+﻿@model IEnumerable<AkhbarElyoum.Models.Polls>
+@{
+    ViewBag.Title = "GetPollResultss_opinionpoll";
+    var pollID = Model.FirstOrDefault().PollID;
+}
+
+@{bool flg = true;
+Layout = "";
+}
+
+@foreach (var item in Model)
+{
+
+    if (flg)
+    {
+        <h4 class="boxH3" style="margin-top:18px;">@item.PollName</h4>
+    }
+    <div class="pollsArray">
+        <p class="degree">@item.OptionName</p>
+        <div class="chart">
+            <img src="/images/charts.jpg" width="@item.TotalPixel" height="20" />
+        </div>
+        <span class="evaluation">@item.Total.ToString()%</span>
+    </div>
+    flg = false;
+
+}
+
+<input id="BtnCheckAll" type="button" value="الرجوع" style="margin-top: 3px;
+    clear: both !important;
+    display: block;
+    margin: 0 auto !important;" class="ResultsView vote_btn" name="Button" onclick="checkall1(this)" />
+<script type="text/javascript">
+
+    function checkall1(BtnCheckAll) {
+
+        $.ajax({
+            type: "GET",
+            url: '/Polls/GetPollList_opinionpoll?pollID=' + @pollID + '',
+            contentType: "html/text",
+            dataType: "html",
+            cache: false,
+            success: function (msg) {
+
+                $(".div" + @pollID).html(msg);
+            }
+        });
+    };
+
+
+</script>

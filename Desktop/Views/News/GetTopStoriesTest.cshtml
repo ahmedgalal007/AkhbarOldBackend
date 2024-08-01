@@ -1,0 +1,73 @@
+@model List<AkhbarElyoum.Models.NewsDetails>
+@{
+    bool flg = true;
+    string JID = AkhbarElyoum.Controllers.HomeController.GetJournalID(HttpContext.Current.Request.Url.Host, int.Parse((HttpContext.Current.Request.QueryString["JournalID"] != null) ? HttpContext.Current.Request.QueryString["JournalID"].ToString() : "0"));
+       Layout = "../Shared/_LayoutInner.cshtml";
+}
+@section Header{
+   <meta name="keywords" content="ÇÎÈÇÑ ,ÌÑíÏÉ ÇÎÈÇÑ Çáíæã,ÃÎÈÇÑ Çáíæã,ÇáÇÎÈÇÑ,ÇÎÈÇÑ,ÇÎÈÇÑ Çáíæã Çáíãä,ÇÎÈÇÑ Çáíæã ÇáÓæÏÇäíÉ,ÇáÃÎÈÇÑ,ÕÍíÝÉ ÇÎÈÇÑ Çáíæã,ÂÎÑ ÇáÇÎÈÇÑ,Çåã ÇáÇÎÈÇÑ,ÇáÞÇåÑÉ Çáíæã,ÇáãÕÑí Çáíæã,ãÕÑ Çáíæã ,al akhbar,ÇáÇÎÈÇÑ Çáíæã,ÎÈÇÑ Çáíæã,ÌÑíÏÉ ÇáÇÎÈÇÑ,ÇÎÈÇÑÇáíæã,ÇáãÕÑí Çáíæã,ÕÍíÝÉ ÇÎÈÇÑ Çáíæã ÇáÓæÏÇä,ÇÎÈÇÑ Çáíæã íæÊíæÈ,ÇáãÕÑì Çáíæã,ÇÎÈÇÑ ãÕÑ Çáíæã,al-akhbar,ÇÎÑ ÇÎÈÇÑ  Çáíæã,ÕÍíÝÉ ÇÎÈÇÑ Çáíæã Çáíãä,akhbar el yom,ÇÎÈÇÑ ãÕÑ,ÃÎÈÇÑ,ÇÎÑ ÇÎÈÇÑ Çáíæã,ÌÑíÏÉ ÇáãÕÑì Çáíæã,ÌÑíÏÉ ÃÎÈÇÑ Çáíæã,ÏÇÑ ÇÎÈÇÑ Çáíæã,ÇÎÈÇÑ Çáíæã ÇáÓæÏÇä,ÇÎÑ ÇáÇÎÈÇÑ Çáíæã,ÌÑíÏÉ ÇÎÈÇÑ Çáíæã ÇáãÕÑíÉ,almasry alyoum,ÌÑíÏÉ ÇáãÕÑí Çáíæã,akhbar alyoum,ÌÑíÏÉ ÇÎÈÇÑ Çáíæã ãÕÑ,akhbar al youm,akhbar el youm,ÇÎÈÇÑ Çáíæã ÇáãÕÑíÉ,ÈæÇÈÉ ÇÎÈÇÑ Çáíæã,Çáíæã,ÇáÇÎÈÇÑ ÇáãÕÑíÉ,ÇÎÈÇÑ Çáíãä,,ÌÑíÏå ÇáÇÎÈÇÑ,Çáíãä Çáíæã,ãÕÑ,ÇÎÈÇÑ Çáíæã ÇáÓæÏÇäíå,el akhbar,al masry al youm,ÇÎÈÇ,akhbar,elakhbar,ÌÑíÏÉ ÇáÃÎÈÇÑ,ÇÎÈÇÑ ÕÍíÝÉ Çáíæã,hbofhv,ÕÍíÝÉ ÇÎÈÇÑ Çáíæã ÇáÓæÏÇäíÉ,ÌÑíÏÉ ÇáÃÎÈÇÑ ÇáãÕÑíÉ,ÃÎÈÇÑ ãÕÑ,ÌÑíÏå ÃÎÈÇÑ Çáíæã,akhbarelyom,ÔÈßÉ ÇÎÈÇÑ Çáíæã,almasryalyoum,ÇáÇÎÈÇÑ ÇáíæãíÉ,ÌÑíÏÉ ÇáÇÎÈÇÑ ÇáãÕÑíÉ,www.alakhbar.com,ÇÎÈÇÑ Çáíæã Ýí Çáíãä,ÇáãÕÑì,akhbar elyoum,ÇÎÑ ÇÎÈÇÑ ãÕÑ,ÇáÎÈÑ Çáíæã,ÇáÇÎÈÇÑ ÇáãÕÑíÉ Çáíæã,hgofhv,áÇÎÈÇÑ,ÇÎÈÇÑ ÇáãÕÑí Çáíæã,al-akhbar.com,www.elakhbar.org.eg,akhbar elyuom,akbar,al-akhbar newspaper egypt,al akhbar newspaper,alakhbar,ÇÎÈÇÑ ÓæÑíÇ,www.elakhbar.org,www.al-akhbar.com,ÇÎÈÇÑãÕÑ,áãÕÑì Çáíæã,ÃÎÈÇÑ Çáíæã Çáíãä,akhbar al youm newspaper,yom,ÇáÇÎÈÇÑ ÇáãÕÑíå,alakhbar news paper,ÃÎÈÇÑ ãÕÑ Çáíæã,ÓæÑíÇ,ÌÑíÏÉ ÇÎÈÇÑ ÇáãÕÑíÉ,ÇÍÏÇË ÓæÑíÇ,ÇÎÈÇÑ ÇáãÕÑì Çáíæã, ÍæÇÏË,ÇÎÈÇÑ ÇáÑíÇÖÉ,ÇÎÈÇÑ ÇáÑíÇÖå,ÇÎÈÇÑ ÇáÍæÇÏË,ÇÎÈÇÑ ÇáÒãÇáß,ÇÎÈÇÑ ÚÇÌáÉ,ÇÎÈÇÑ ÇáÝäÇäíä,ÇÎÈÇÑ ÇáÇåáì,ÇÎÈÇÑ ÇáäÌæã,ÇÎÈÇÑ ÇáÑíÇÖÉ ÇáãÕÑíÉ,ÇÎÈÇÑ ãÈÇÑß,ÇÎÈÇÑ ÇáØÞÓ,ÇÎÈÇÑ ÇáÝä,ÇÎÈÇÑ ÇáÇåáí, ÇÎÈÇÑ ãÍãÏ ÍÓäí ãÈÇÑß,äíãÇÑ,ßÃÓ ÇáÚÇáã 2014,ãæäÏíÇá ÇáÈÑÇÒíá 2014,ãÈÇÑÇÉ ÇáÈÑÇÒíá,ãÈÇÑÇÉ ÇäÌáÊÑÇ,ãÈÇÑÇÉ åæáäÏÇ,ãÈÇÑÇÉ åæáäÏÇ æÇÓÈÇäíÇ,ãÈÇÑÇÉ ÇÓÈÇäíÇ æåæáäÏÇ,ÇåÏÇÝ ãÈÇÑÇíÇÊ ßÃÓ ÇáÚÇáã 2014,ãÈÇÑÇÉ ÇáÈÑÇÒíá æÇáãßÓíß,ãÈÇÑÇÉ ÇÓÊÑÇáíÇ æåæáäÏÇ,ãÈÇÑÇÉ åæáäÏÇ æÇÓÊÑÇáíÇ,ãÈÇÑÇÉ ÇáßÇãíÑæä æßÑæÇÊíÇ,ãÈÇÑÇÉ ÇÓÈÇäíÇ æÊÔíáì,ãÈÇÑÇÉ ÊÔíáì æÇÓÈÇäíÇ,ÇÓÑÚ åÏÝ Ýì ãæäÏíÇá 2014,ãæäÏíÇá 2014 áÍÙÉ ÈáÍÙÉ,ÊÑÏÏÇÊ ßÃÓ ÇáÚÇáã 2014,ÈË ãÈÇÔÑ áßÃÓ ÇáÚÇáã 2014,ÈË ãÈÇÔÑ áãÈÇÑíÇÊ ßÃÓ ÇáÚÇáã,ÔÇåÏ ãÈÇÔÑ ßÃÓ ÇáÚÇáã 2014,ÊÑÏÏÇÊ ÇáÞäæÇÊ ÇáäÇÞáÉ áßÃÓ ÇáÚÇáã 2014,ÔÇåÏ ÇåÏÇÝ ßÃÓ ÇáÚÇáã 2014" />
+   <meta name="description"  content="ÈæÇÈÉ ÃÎÈÇÑíÉ ÔÇãáÉ ÊäÔÑ Ãåã ÇáÇÎÈÇÑ Ýì ãÕÑ æÇáÔÑÞ ÇáÇæÓØ æÇáÚÇáã Úáì ãÏÇÑ ÇáÓÇÚÉ æãÞÇáÇÊ áÃßÈÑ ÇáßÊÇÈ æßá ãÇ íÊÚáÞ ÈÅÕÏÇÑÇÊ ãÄÓÓÉ ÃÎÈÇÑ Çáíæã ÇáíæãíÉæÇáÇÓÈæÚíÉ æÇáÔåÑíÉ" />
+}
+@section home {
+
+
+
+<script src="/PowerSlider/pgwslider.min.js" type="text/javascript"></script>
+<link href="/PowerSlider/pgwslider.css" rel="stylesheet" type="text/css" />
+
+    <div class="container">
+            <div class="row">
+            <div class="col-md-8">
+ <div class="news-section-2" >
+<div class="row">
+
+<ul class="pgwSlider">
+
+             
+       <li>
+        <a href="https://www.nyc.gov" >
+            <img src="https://static.pgwjs.com/img/pg/slider/montreal.jpg" alt="" data-large-src="https://static.pgwjs.com/img/pg/slider/montreal.jpg"  />
+	    <span style="display: block; text-align: center;">New York, NY, USA</span>
+        </a>
+    </li>
+   
+    <li>
+        <a href="https://www.nyc.gov" >
+            <img src="https://static.pgwjs.com/img/pg/slider/shanghai.jpg" alt="" data-large-src="https://static.pgwjs.com/img/pg/slider/shanghai.jpg"  />
+	    <span style="display: block; text-align: center;">New York, NY, USA</span>
+        </a>
+    </li>
+    <li>
+        <a href="https://www.nyc.gov" >
+            <img src="https://static.pgwjs.com/img/pg/slider/shanghai.jpg" alt="" data-large-src="https://static.pgwjs.com/img/pg/slider/shanghai.jpg"  />
+	    <span style="display: block; text-align: center;">New York, NY, USA</span>
+        </a>
+    </li>
+      <li>
+        <a href="https://www.nyc.gov" >
+            <img src="https://static.pgwjs.com/img/pg/slider/shanghai.jpg" alt="" data-large-src="https://static.pgwjs.com/img/pg/slider/shanghai.jpg"  />
+	    <span style="display: block; text-align: center;">New York, NY, USA</span>
+        </a>
+    </li>
+</ul>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('.pgwSlider').pgwSlider();
+    });
+</script>
+</div>
+
+
+</div>
+</div>
+
+<div class="col-md-4" >
+
+<img style="margin-top: 20px" src="/img/adv.jpg" alt="" />
+
+</div>
+
+</div>
+</div>
+}

@@ -1,0 +1,26 @@
+﻿@model IEnumerable<AkhbarElyoum.Models.Polls>
+@{bool flg = true;
+	string JID = AkhbarElyoum.Controllers.HomeController.GetJournalID(HttpContext.Current.Request.Url.Host, int.Parse((HttpContext.Current.Request.QueryString["JournalID"] != null) ? HttpContext.Current.Request.QueryString["JournalID"].ToString() : "0"));
+  Layout = "";
+}
+
+@foreach (var item in Model)
+{
+	
+    if (flg) {
+    <h3>@item.PollName</h3>
+    } 
+    <div class="pollsArray">
+    <p class="degree">@item.OptionName</p>
+    <div class="chart">
+    @if(JID == "6") {
+		<img src="/images/charts-1.jpg" width="@item.TotalPixel" height="7" />
+	} else {
+		<img src="/images/charts.jpg" width="@item.TotalPixel" height="7" />
+	}    
+    </div>
+    <span class="evaluation">@item.Total.ToString()%</span>
+    </div>
+    flg = false;
+    
+}

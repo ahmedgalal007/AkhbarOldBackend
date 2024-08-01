@@ -1,0 +1,66 @@
+﻿@model IEnumerable<AkhbarElyoum.Models.NewsDetails>
+@{int count = 0; string cssclass = ""; string JID = AkhbarElyoum.Controllers.HomeController.GetJournalID(HttpContext.Current.Request.Url.Host, int.Parse((HttpContext.Current.Request.QueryString["JournalID"] != null) ? HttpContext.Current.Request.QueryString["JournalID"].ToString() : "0"));
+
+
+  bool flg = true;
+  
+}
+@if (Model.Count() > 0)
+{
+    
+if (Model.FirstOrDefault().NewsID > 1)
+{
+        <div class="block1Rit">
+        <div class="newBoxnewsContent" style="margin-right: 4px;">
+            <div class="acc-menu2" style="margin: 0px auto;">
+                @foreach (var item in Model)
+                {
+                    if (flg)
+                    {
+                    <div class="rightHeadNewsTitle">
+                        <a class="aSectionTitle" href="/news/newssection/@item.SectionID/@JID/@(AkhbarElyoum.Controllers.HomeController.GetPureURL(item.SectionTitle))">@item.SectionTitle</a>
+                    </div>
+                    <div class="headNews">
+                       	<a  href="/news/newdetails/@item.NewsID/@JID/@(AkhbarElyoum.Controllers.HomeController.GetPureURL(item.Title))" class="headNewsTitle123"> 
+                            <h3 class="boxH3">@item.Title</h3>
+                            <p class="titePostDISC headNewsBrief">
+                                @item.Breif</p>
+                        </a>
+                        <div class="imgPost">
+                            <a href="/news/newdetails/@item.NewsID/@JID/@(AkhbarElyoum.Controllers.HomeController.GetPureURL(item.Title))">
+                                <img src="https://Images.akhbarelyom.com/images/images/large/@item.PictureName1" class="newimageSS" id="hoverImg" alt="@item.Title" /></a>
+                        </div>
+                    </div>
+                        flg = false;
+
+                    }
+                    else
+                    {
+                        if (count < 3 && count > 0)
+                        {
+                    <div class="newboxnewsnew">
+                        <div class="secPostImg">
+                            <a href="/news/newdetails/@item.NewsID/@JID/@(AkhbarElyoum.Controllers.HomeController.GetPureURL(item.Title))">
+                                <img src="https://Images.akhbarelyom.com/images/images/small/@item.PictureName1"/></a>
+                        </div>
+                        <div class="dataDboX">
+                            <a href="/news/newdetails/@item.NewsID/@JID/@(AkhbarElyoum.Controllers.HomeController.GetPureURL(item.Title))">
+                                <p class="titePostN">
+                                    @item.Title</p>
+                            </a>
+                            <p class="titePostDISC">
+                                @item.Breif</p>
+                        </div>
+                    </div>
+                    <hr class="borderLeftSection"></hr>
+                        }
+                    }
+                    count++;
+                }
+            </div>
+        </div>
+    </div>
+    
+}
+   
+}

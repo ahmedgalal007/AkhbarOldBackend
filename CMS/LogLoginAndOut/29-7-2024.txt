@@ -34,3 +34,5 @@ User Machine Name: - UserIP:::1 - User operating system:Mozilla/5.0 (Windows NT 
 ----------------------------------------------------------
 User Machine Name: - UserIP:::1 - User operating system:Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36 - RemoteIP:::1 - Mac/Physical-Address:509A4CB3A4D0 - UserId:2  - Name:مدير النظام //  Has Logged in at: 06:22:42 م
 ----------------------------------------------------------
+User Machine Name: - UserIP:::1 - User operating system:Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36 - RemoteIP:::1 - Mac/Physical-Address:509A4CB3A4D0 - UserId:2  - Name:مدير النظام //  Has Logged in at: 11:48:44 م
+----------------------------------------------------------

@@ -1,0 +1,29 @@
+﻿@model IEnumerable<AkhbarElyoum.Models.Gallery>
+@{Layout = null;}
+
+<div class="lftBoxNews new-hei" style="margin-top: 20px; margin-bottom: 19px; width: 308px;
+    overflow: hidden;">
+    <div class="lftBoxTitle">
+      <h4>الرسامون</h4>
+    </div>
+    <ul class="vertical-ticker Ullist">
+        @foreach (var item in Model)
+        {
+            <li>
+                <div class="newboxH3">
+                    <!-- start articles -->
+                    <div class="imgThum">
+                        <a href="/news/painter?ID=@item.GalleryID">
+                            <img src="/images/images/painter/small/painter@(item.GalleryID).jpg" width="76" height="51" class="thumI" />
+                        </a>
+                    </div>
+                  
+                    <a href="/news/painter?ID=@item.GalleryID" class="prg3"> 
+                        <p class="prg2">@item.Title</p>
+                    </a>
+                </div>
+                <!-- end articles -->
+            </li>
+        }
+    </ul>
+</div>

@@ -1,0 +1,27 @@
+﻿@model IEnumerable<AkhbarElyoum.Models.Comments>
+@{
+    Layout = "";
+}
+@foreach (var item in Model)
+{
+    <div class="commentWrapper">
+                    	<div class="comHeader">
+                        	<div class="comCounter">
+                            	<p style="text-align:center;">@item.Count</p>
+                            </div>
+                            <h3 class="boxH3nn comh3">@item.Subject</h3>
+                            <h3 class="boxH3nn1 comhBy">بواسطة : @item.UserName</h3>
+                            <span class="postDate postCom">@item.messagedate</span>
+                        </div>
+                        <p class="supject comment more">@item.messagebody</p>
+                        
+                        <div class="rateDiv">
+                        	<p class="rate">تقييم</p>
+                            <div class="rateValu">
+                            	<img src="/images/rate.png" width="62" height="10" />
+                                @*@Html.Action("GetNewsRating", "NewsRating", new { CommentID = @item.CommentID });*@
+                            </div>
+                        </div></div> <p class="lastid" idx="@item.CommentID"></p>
+                                   
+}
+

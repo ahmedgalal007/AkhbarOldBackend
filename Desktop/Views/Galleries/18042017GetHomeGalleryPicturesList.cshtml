@@ -1,0 +1,90 @@
+﻿@model IEnumerable<AkhbarElyoum.Models.Pictures>
+@{
+    string JID = AkhbarElyoum.Controllers.HomeController.GetJournalID(HttpContext.Current.Request.Url.Host, int.Parse((HttpContext.Current.Request.QueryString["JournalID"] != null) ? HttpContext.Current.Request.QueryString["JournalID"].ToString() : "0"));
+    Layout = "../Shared/_Layout1.cshtml";
+    int count = 0;
+    int count1 = 0;
+}
+
+@section Header{
+    @foreach (var item in Model)
+    {
+        if (count == 0)
+        {
+        <meta property="og:image" content="https://www.akhbarelyom.com/images/images/large/@item.AlbumTitle" />
+        <meta name="keywords" content="@item.AlbumTitle" />
+        <meta name="Description" content="@item.AlbumDescription" />
+        }
+        count++;
+    }
+    
+}
+
+@section home{
+
+
+    <!-- start gallery -->
+    <div class="container">
+        <div class="row">
+
+        
+
+
+            <div class="col-md-8 section-news" >
+                <div class="news-section-3">
+               
+                
+
+                    @foreach (var item in Model)
+                    {
+                        if (count1 == 0)
+                        {
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="section-header-normal">
+                                    <a href="/Galleries/GallerySection/157/@JID/@(AkhbarElyoum.Controllers.HomeController.GetPureURL(item.AlbumTitle))">
+                                        <span class="section-header-name">ألبومات الصور</span> <i class="fa fa-ellipsis-h fa-2x">
+                                        </i></a>
+                                </div>
+                            </div>
+                        </div>
+   
+    
+                            ViewContext.Writer.Write("  <div class=\"section-carousel\" style=\"padding-top: 20px;\"> " +
+                                                     " <div id=\"post-arrow-l\" class=\"sidebar-arrow-l\"> " +
+                                                         " <span class=\"fa fa-arrow-left\"></span> " +
+                                                      "</div>" +
+                                                      "<div id=\"post-arrow-r\" class=\"sidebar-arrow-r\">" +
+                                                          "<span class=\"fa fa-arrow-right\"></span> " +
+                                                      "</div>" +
+                                                      "<div id=\"post-carousel\" class=\"owl-carousel\">");
+
+
+                        }
+                                   
+                        <div class="item">
+                            <div class="post-carousel-item">
+                                <img src="https://Images.akhbarelyom.com/images/images/large/@item.PictureName" alt="@item.PictureCaption" class="img-responsive"/>
+                            </div>
+                        </div>
+                           
+                        count1++;
+
+                        if (count1 == Model.Count())
+                        {
+                            ViewContext.Writer.Write(" </div>  </div>");
+                        }
+                    }
+                </div>
+            </div>
+
+
+            @Html.Action("GetSiteLeftSideServices", "Home", new { JournalID = JID })
+        </div>
+    </div>
+<!-- start gallery -->
+
+
+}
+
+

@@ -1,0 +1,942 @@
+﻿@using System.Web.Mvc.html;
+<!doctype html>
+<html>
+<head>
+    @*
+        <!-- Google Tag Manager -->
+        <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-W3TZL2S');</script>
+
+        <!-- End Google Tag Manager -->
+    *@
+    @*
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-2FKKR3BH3S"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+
+          gtag('config', 'G-2FKKR3BH3S');
+        </script>
+    *@
+
+
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <!-- Google  new Analytics  for linking with opera news-->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-2FKKR3BH3S"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-2FKKR3BH3S');
+    </script>
+
+    <!-- Google  new Analytics  for linking with opera news-->
+
+    <meta charset="utf-8" />
+    <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+    <!--<link rel="canonical"  id="canonicalUrl" href="https://akhbarelyom.com" />-->
+    <meta property="og:locale" content="ar_AR" />
+    <meta property="og:site_name" content="بوابة اخبار اليوم" />
+
+    <!-- Start Amp -->
+    <!--<link rel="canonical"  id="canonicalUrl" href="https://m.akhbarelyom.com" />-->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name=viewport content="initial-scale=1, maximum-scale=1,user-scalable=no, width=device-width">
+    <!-- End Amp -->
+
+
+    @RenderSection("Meta", required: false)
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="/img/favicon2.ico" type="image/x-icon" />
+    <!-- Stylesheets -->
+
+    @Styles.Render("~/Content/css")
+
+    <meta name="abstract" content="وتتفرد بوابة أخبار اليوم بإصدارات عديدة لأقدم وأوسع الصحف المصرية والعربية انتشارًا وهي الأخبار اليومي و«أخبار اليوم» الأسبوعية، ومجلة «آخر ساعة»، و«أخبار الحوادث» التي تهتم بمتابعة أخبار الجريمة ، وجريدة و«أخبار النجوم» لمتابعة أخبار وقضايا النجوم في مجال السينما والدراما والتليفزيون والغناء والأوبرا، وجريدة «أخبار الأدب» وتهتم بالفكر والثقافة في مصر والعالم وحياة رموز الفكر والمبدعين" />
+
+    <!-- Begin Meta Hossam -->
+    <meta name="note" content=",ترفع شعار, الخبر الدقيق الموثوق منه دار أخبار اليوم " />
+    <meta name="subject" content="بوابة أخبار اليوم نافذة على صحافة الديجيتال" />
+    <meta name="identifier-URL" content="https://akhbarelyom.com" />
+    <meta name="linkage" content="https://akhbarelyom.com" />
+    <meta name="creation_date" content="10-Nov-2000" />
+    <meta name="revisit-after" content="24 hours" />
+    <meta name="distribution" content="global" />
+
+    <meta http-equiv="Expires" content="3">
+    <!--<meta name="Expires" content="0" />-->
+    <meta name="classification" content="All" />
+    <meta name="author" content="akhbarelyom" />
+    <meta name="robots" content="all" />
+    <meta name="googlebot" content="NOODP" />
+    <meta name="SLURP" content="NOODP" />
+    <meta name="MSNBOT" content="NOODP" />
+    <meta name="owner" content="https://akhbarelyom.com" />
+    <meta name="copyright" content="akhbarelyom.com" />
+    <meta name="rating" content="general" />
+    <meta name="web_author" content="https://akhbarelyom.com" />
+    <meta http-equiv="Cache-control" content="public">
+
+    <meta name="MSSmartTagsPreventParsing" content="true" />
+    <meta name="operator" content="akhbarelyom" />
+    <meta name="contactOrganization" content="https://akhbarelyom.com" />
+    <meta name="contactStreetAddress1" content="6-elsshafh-st" />
+    <meta name="contactCity" content="cairo" />
+    <meta name="contactCountry" content="Egypt" />
+    <meta name="contactPhoneNumber" content="[+202] 5807000 - 25782900 - 25782800" />
+    <meta name="contactNetworkAddress" content="https://akhbarelyom.com" />
+    <!-- Start Bing Validation Meta Hossam -->
+    <meta name="msvalidate.01" content="46A3D7658EC0908C4496866972503E97" />
+
+    <!-- End Meta Hossam -->
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="robots" content="index, follow">
+    <meta name="application-name" content="AkhbarElYoum">
+    <meta name="msapplication-starturl" content="https://akhbarelyom.com">
+    <meta name="msapplication-tooltip" content="AkhbarElYoum, News top Web site">
+    <meta http-equiv="pragma" content="no-cache">
+    <meta name="DC.Creator" content="Developed By Heba Musa">
+
+    @*<meta property="fb:admins" content="673660309">
+        <meta property="fb:admins" content="100005916190038">
+        <meta property="fb:admins" content="100003103857623">
+        <meta property="fb:admins" content="1059715518">
+        <meta property="fb:admins" content="100001463153490">
+        <meta property="fb:app_id" content="100001463153490">*@
+
+
+    <!-- Mobile Metas -->
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta http-equiv="cleartype" content="on" />
+    <meta name="MobileOptimized" content="320" />
+    <meta name="HandheldFriendly" content="True" />
+
+
+    <!-- SEO Bing + yandex -->
+    <meta name="msvalidate.01" content="5E339357EB4A861FE9D78C790988D3D2" />
+    <meta name="yandex-verification" content="814a1e855157ceff" />
+
+
+    <!-- Start Header Slider code -->
+    <link rel="stylesheet" type="text/css" href="https://akhbarelyom.com/css/banner_styles21.css" media="all" />
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+    <script type="text/javascript" src="https://akhbarelyom.com/js/jquery.flexslider-min.js"></script>
+    <script type="text/javascript" charset="utf-8">
+        var $ = jQuery.noConflict();
+        $(window).load(function () {
+            $('.flexslider').flexslider({
+                animation: "fade"
+            });
+
+            $(function () {
+                $('.show_menu').click(function () {
+                    $('.menu').fadeIn();
+                    $('.show_menu').fadeOut();
+                    $('.hide_menu').fadeIn();
+                });
+                $('.hide_menu').click(function () {
+                    $('.menu').fadeOut();
+                    $('.show_menu').fadeIn();
+                    $('.hide_menu').fadeOut();
+                });
+            });
+        });
+    </script>
+    <script src="https://akhbarelyom.com/js/respond.min.js"></script>
+
+    <!-- End Header Slider code -->
+    <!-- Start Alexa Certify Javascript -->
+    <script type="text/javascript">
+        _atrk_opts = { atrk_acct: "eWTvh1acBa00qZ", domain: "akhbarelyom.com", dynamic: true };
+        (function () { var as = document.createElement('script'); as.type = 'text/javascript'; as.async = true; as.src = "https://certify-js.alexametrics.com/atrk.js"; var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(as, s); })();
+    </script>
+    <noscript><img src="https://certify.alexametrics.com/atrk.gif?account=eWTvh1acBa00qZ" style="display:none" height="1" width="1" alt="" /></noscript>
+    <!-- End Alexa Certify Javascript -->
+
+
+    <script src="/js/jquery-3.1.1.min.js"></script>
+
+    <script src="/js/jquery.validate.min.js"></script>
+
+
+    <!--Start DFP Ads -->
+
+    <script async='async' src='https://www.googletagservices.com/tag/js/gpt.js'></script>
+    <script>
+        var googletag = googletag || {};
+        googletag.cmd = googletag.cmd || [];
+    </script>
+    @*
+            <script>
+                googletag.cmd.push(function () {
+
+                    googletag.defineSlot('/21675648325/PORTAL_LSB_160X600_NEWSPAGE', [120, 600], 'div-gpt-ad-1561709419316-0').addService(googletag.pubads());
+                    googletag.defineSlot('/21675648325/PORTAL_RSB_160X600_NEWSPAGE', [120, 600], 'div-gpt-ad-1561709474577-0').addService(googletag.pubads());
+
+
+                    googletag.defineSlot('/21675648325/PORTAL_LEADERBOARD_728X90', [728, 90], 'div-gpt-ad-1515485521497-0').addService(googletag.pubads());
+                    googletag.defineSlot('/21675648325/PORTAL_LEADERBOARD_728X90_NEWSPAGE', [728, 90], 'div-gpt-ad-1515485521497-1').addService(googletag.pubads());
+                    googletag.defineSlot('/21675648325/PORTAL_LSB_160x600', [160, 600], 'div-gpt-ad-1515485521497-2').addService(googletag.pubads());
+                    googletag.defineSlot('/21675648325/PORTAL_RSB_160X600', [160, 600], 'div-gpt-ad-1515485521497-3').addService(googletag.pubads());
+
+                    googletag.defineSlot('/21675648325/PORTAL_SIDEPAR_300X600', [300, 600], 'div-gpt-ad-1517986678965-0').addService(googletag.pubads());
+
+                    googletag.defineSlot('/21675648325/PORTAL_SIDEBAR_275X550', [275, 550], 'div-gpt-ad-1522142743130-0').addService(googletag.pubads());
+                    googletag.defineSlot('/21675648325/Alex_Germany_hospital_desktop', [300, 359], 'div-gpt-ad-1577631617419-0').addService(googletag.pubads());
+
+                    googletag.defineSlot('/21675648325/PORTAL_300X168_SIDEBAR', [300, 250], 'div-gpt-ad-1540156590818-0').addService(googletag.pubads());
+                    googletag.defineSlot('/21675648325/PORTAL_CONNECTADS_300X250', [300.0, 250.0], 'div-gpt-ad-1528385702536-0').addService(googletag.pubads());
+                    googletag.defineSlot('/21675648325/Portal300x600', [300, 600], 'div-gpt-ad-1547847468380-0').addService(googletag.pubads());
+                    googletag.defineSlot('/21675648325/PORTAL_SIDEBAR_300X250_2', [300, 250], 'div-gpt-ad-1556806032067-0').addService(googletag.pubads());
+
+                    googletag.defineSlot('/21675648325/PortalHalf300x600', [300, 600], 'div-gpt-ad-1550656064805-0').addService(googletag.pubads());
+
+                    googletag.defineSlot('/21675648325/PORTAL_SIDEBAR_300x250', [300, 250], 'div-gpt-ad-1552416360852-0').addService(googletag.pubads());
+                    googletag.defineSlot('/21675648325/PORTAL_A5BAR_MORTABETA', [290, 435], 'div-gpt-ad-1575265777283-0').addService(googletag.pubads());
+                    googletag.defineSlot('/21675648325/PORTAL_BESIDE_EL_FAN_HOMEPAGE', [290, 423], 'div-gpt-ad-1575266861623-0').addService(googletag.pubads());
+                    googletag.defineSlot('/21675648325/PORTAL_HOMEPAGE_DESKTOP_BEFORE_FAN', [728, 90], 'div-gpt-ad-1575266368148-0').addService(googletag.pubads());
+
+                    googletag.defineSlot('/21675648325/PORTAL_MOBILE_BILLBORD_290X50', [290, 50], 'div-gpt-ad-1557223008512-0').addService(googletag.pubads());
+                    googletag.defineSlot('/21675648325/ENI_728_90', [728, 90], 'div-gpt-ad-1549209315282-0').addService(googletag.pubads());
+                    googletag.defineSlot('/21675648325/Portal_600x250_undercontent_newspage_desktop', [600, 250], 'div-gpt-ad-1566407732731-0').addService(googletag.pubads());
+                    googletag.defineSlot('/21675648325/Portal_300x250_desktop_sidebar', [300, 250], 'div-gpt-ad-1567242139139-0').addService(googletag.pubads());
+                    googletag.defineSlot('/21675648325/PORTAL_ETAA_600X250', [600, 250], 'div-gpt-ad-1573337638818-0').addService(googletag.pubads());
+                    googletag.defineSlot('/21675648325/ghabour_300x250_desktop', [300, 250], 'div-gpt-ad-1573339503657-0').addService(googletag.pubads());
+                    googletag.defineSlot('/21675648325/portal_LS_160x600_article', [160, 600], 'div-gpt-ad-1578496576305-0').addService(googletag.pubads());
+                    googletag.defineSlot('/21675648325/portal_RS_article_160x600', [160, 600], 'div-gpt-ad-1578496986216-0').addService(googletag.pubads());
+
+
+
+
+                    //bank rabi afrike
+                    googletag.defineSlot('/21675648325/portal_home_728x90_2020_newspage', [728, 90], 'div-gpt-ad-1583255785826-0').addService(googletag.pubads());
+                    //skoda
+                    googletag.defineSlot('/21675648325/skoda', [416, 250], 'div-gpt-ad-1583181459369-0').addService(googletag.pubads());
+                    //gamed alamk
+                    googletag.defineSlot('/21675648325/portal_300x250_sidebar_5', [300, 250], 'div-gpt-ad-1583252098333-0').addService(googletag.pubads());
+
+
+
+                    googletag.pubads().enableSingleRequest();
+                    googletag.enableServices();
+                });
+            </script>
+            <!-- End DFP Ads -->
+            <!-- start DFP Ads -->
+
+            <script async src="https://securepubads.g.doubleclick.net/tag/js/gpt.js"></script>
+            <script>
+                window.googletag = window.googletag || { cmd: [] };
+                googletag.cmd.push(function () {
+
+
+                    //al-wekala 4-2020
+                    googletag.defineSlot('/233509614/Akhbarelyom.com/728X90', [[728, 90], [336, 280]], 'div-gpt-ad-1585669669096-0').addService(googletag.pubads());
+                    googletag.defineSlot('/233509614/Akhbarelyom.com/336X280', [336, 280], 'div-gpt-ad-1585669627162-0').addService(googletag.pubads());
+                    googletag.defineSlot('/233509614/Akhbarelyom.com/300X250', [300, 250], 'div-gpt-ad-1585669610081-0').addService(googletag.pubads());
+                    googletag.defineSlot('/233509614/Akhbarelyom.com/Outstream_Smart', [1, 1], 'div-gpt-ad-1585669714325-0').addService(googletag.pubads());
+
+                    //HP 2-4-2020
+                    googletag.defineSlot('/21675648325/portal_290x250_HP', [290, 250], 'div-gpt-ad-1585816199408-0').addService(googletag.pubads());
+
+                    googletag.pubads().enableSingleRequest();
+                    googletag.enableServices();
+                });
+            </script>
+
+            <!-- End DFP Ads -->
+
+
+            <!-- New - Google Analytics -->
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-WS3Q2CBBQQ"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+
+          gtag('config', 'G-WS3Q2CBBQQ');
+        </script>
+
+
+    *@
+    @Html.Action("GetBlockTextList", "Blocks", new { BlockID = 149, JournalID = 1 })
+
+    <!-- اعلان استفتاء  -->
+    <!-- Header Tag Code -->
+    <script data-cfasync='false' type='text/javascript'>
+        /*<![CDATA[*/
+        (function (a, c, s, u) { 'Insticator' in a || (a.Insticator = { ad: { loadAd: function (b) { Insticator.ad.q.push(b) }, q: [] }, helper: {}, embed: {}, version: "4.0", q: [], load: function (t, o) { Insticator.q.push({ t: t, o: o }) } }); var b = c.createElement(s); b.src = u; b.async = !0; var d = c.getElementsByTagName(s)[0]; d.parentNode.insertBefore(b, d) })(window, document, 'script', '//d3lcz8vpax4lo2.cloudfront.net/ads-code/7718b410-7dbf-44d1-b774-49d987227e88.js');
+        /*]]>*/
+    </script>
+    <!-- End Header Tag Code -->
+    <!-- /اعلان استفتاء  -->
+    <!-- start popUp Ads   -->
+    @*  <link href="/js/PopUp/swc.css" rel="stylesheet" type="text/css" />
+        <script src="/js/PopUp/swc.js" type="text/javascript"></script>*@
+    <!-- End popUp Ads CSS  -->
+    @*
+        <!-- Start sticky Video code -->
+
+
+           <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+           <link rel="stylesheet" href="https://akhbarelyom.com/css/StyleStickyVideo.css">
+           <script src="https://akhbarelyom.com/js/ScriptStickyVideo3.js"></script>
+
+
+          <!-- End sticky Video code -->
+    *@
+
+
+    @RenderSection("Header", required: false)
+
+
+    <link rel="alternate" href="https://akhbarelyom.com" hreflang="ar" />
+    @RenderSection("OrganizationSchema", required: false)
+    @RenderSection("ArticleSchema", required: false)
+
+</head>
+
+
+<body>
+    <!--<img src="https://akhbarelyom.com/img/mourning.png" style="top: 0;z-index: 99999;position: absolute;">-->
+    <!-- Google Tag Manager (noscript) -->
+    <!-- <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W3TZL2S"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript> -->
+    <!-- End Google Tag Manager (noscript) -->
+
+    @{
+        string JID = AkhbarElyoum.Controllers.HomeController.GetJournalID(HttpContext.Current.Request.Url.Host, int.Parse((HttpContext.Current.Request.QueryString["JournalID"] != null) ? HttpContext.Current.Request.QueryString["JournalID"].ToString() : "0"));
+    }
+
+    <noscript>
+        <img src="https://d5nxst8fruw4z.cloudfront.net/atrk.gif?account=eWTvh1acBa00qZ" style="display: none"
+             height="1" width="1" alt="" />
+    </noscript>
+
+    <script>
+        (function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s); js.id = id;
+            js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.8&appId=1359824187410363";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));</script>
+    <!--End fixed-ads-->
+    <!--========== BEGIN #accessibility ==========-->
+    <!--========== End #accessibility ==========-->
+    @*<div id="pageloader">
+            <div class="loader-item">
+                <img src="~/img/load.gif" alt='loader' />
+            </div>
+        </div>*@
+
+    <!--========== BEGIN #WRAPPER ==========-->
+
+
+
+    <div id="wrapper" data-color="red">
+        <!--========== BEGIN #HEADER ==========-->
+        <header id="header">
+            @*Top Strip*@
+            @*<div class="main-menu" style="margin-bottom: 5px;background-color:white">
+
+                    <div class="container">
+                        <div class="col-xs-12">
+
+                            <div class="pull-right header-right" style="padding-top: 10px;">
+                                <span class="header-date" style="color:#ffffff;">
+                                    القاهرة:  @DateTime.Now.ToString("dddd، dd MMMM yyyy hh:mm tt", System.Globalization.CultureInfo.GetCultureInfo("ar-eg"))
+                                </span>
+
+                            </div>
+
+                            <div class="share-icons pull-left">
+                                <ul class="sidebar-social-icons">
+                                    <li> <a href="https://akhbarelyom.com/Landing/index.aspx" target="_blank" class="youtube" style="background-color: #d5d4da;border-radius:50%">pdf</a> </li>
+                                    <li> <a href="https://www.facebook.com/AkhbarElYom" target="_blank" class="facebook" style="background-color: #d5d4da;border-radius:50%"><i class="fa fa-facebook"></i></a> </li>
+
+                                    <!--<li> <a href="https://akhbarelyom.com/RSS/GetSectionRSS?JournalID=1" target="_blank" class="rss"><i class="fa fa-rss"></i></a> </li>-->
+
+                                    <li> <a href="https://nabd.com/akhbarelyom" target="_blank" class="twitter" style="background-color: #d5d4da;border-radius:50%">نبض</a> </li>
+
+                                    <li> <a href="https://twitter.com/akhbarelyom" target="_blank" class="twitter" style="background-color: #d5d4da;border-radius:50%"><i class="fa fa-twitter"></i></a> </li>
+                                    <li> <a href="https://www.instagram.com/akhbarelyom/" target="_blank" class="instagram" style="color: #FFF;background-color: #d5d4da;border-radius:50%"><i class="fa fa-instagram"></i></a> </li>
+                                    <li> <a href="https://www.youtube.com/user/akhbarelyoumtv" target="_blank" class="youtube" style="background-color: #d5d4da;border-radius:50%"><i class="fa fa-youtube"></i></a> </li>
+                                    <li> <a href="https://t.me/akhbarelyomGate" target="_blank" class="twitter" style="background-color: #d5d4da;border-radius:50%"><img src="https://i.pinimg.com/originals/ef/7c/97/ef7c975516770e2bed85dc1786b0e213.jpg" style="border-radius:50%" width=40></a> </li>
+
+
+
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>*@
+
+            @*End Top Strip*@
+
+
+
+
+
+            <div class="container">
+                <div class="header-disc">
+                    <!-- Begin .header-logo -->
+                    <div class="header-logo" style="padding-right: 11% !important;">
+                        <a href="https://akhbarelyom.com">
+                            @Html.Action("GetBlockTextList", "Blocks", new { BlockID = 15, JournalID = 1 })
+
+                            @*<img src="https://akhbarelyom.com/img/header/logo-new.png" alt="أخبار اليوم">*@
+                            @*<img src="https://akhbarelyom.com/Images/octobar.png" alt="أخبار اليوم" style="width: 80%;float: none;">*@
+                            @*<img src="/img/header/LOGO778.gif" alt="أخبار اليوم">*@
+
+                        </a>
+                    </div>
+                    <!-- End .header-logo -->
+
+                    <div class="pull-right header-right" style="margin-top:34px;margin-left: 10px;margin-right: 20 px;font-family: Traditional Arabic;font-weight: bolder;">
+                        <br>
+                        <h2 class="header-boss">
+                            <a href="https://akhbarelyom.com/Editors/EditorNews/388/1/%D8%A3%D8%AD%D9%85%D8%AF-%D8%AC%D9%84%D8%A7%D9%84" style="font-family: 'DroidKufi', sans-serif;"> رئيس مجلس الإدارة : أحمد جلال</a>
+                        </h2>
+                        <h2 class="header-sub-boss">
+                            <a href="https://akhbarelyom.com/Editors/EditorNews/336/1/%D9%85%D8%AD%D9%85%D8%AF-%D8%A7%D9%84%D8%A8%D9%87%D9%86%D8%B3%D8%A7%D9%88%D9%8A" style="font-family: 'DroidKufi', sans-serif;"> رئيس التحرير : محمد البهنساوي</a>
+
+                        </h2>
+                    </div>
+
+                    <div class="pull-left header-right" style="text-align: center;">
+                        <div style="
+    text-align: left !important;
+" clss="col-xs-8">
+                            <div class="share-icons pull-left">
+                                <ul class="sidebar-social-icons">
+                                    <li> <a href="https://akhbarelyom.com/Landing/index.aspx" target="_blank" class="youtube" style="background-color: #d5d4da;border-radius:50%">pdf</a> </li>
+                                    <li> <a href="https://www.facebook.com/AkhbarElYom" target="_blank" class="facebook" style="background-color: #d5d4da;border-radius:50%"><i class="fa fa-facebook"></i></a> </li>
+
+                                    <li> <a href="https://nabd.com/akhbarelyom" target="_blank" class="twitter" style="background-color: #d5d4da;border-radius:50%">نبض</a> </li>
+                                    <li> <a href="https://twitter.com/akhbarelyom" target="_blank" class="twitter" style="background-color: #d5d4da;border-radius:50%"><i class="fa fa-twitter"></i></a> </li>
+                                    <li> <a href="https://www.instagram.com/akhbarelyom/" target="_blank" class="instagram" style="color: #FFF;background-color: #d5d4da;border-radius:50%"><i class="fa fa-instagram"></i></a> </li>
+                                    <li> <a href="https://www.youtube.com/user/akhbarelyoumtv" target="_blank" class="youtube" style="background-color: #d5d4da;border-radius:50%"><i class="fa fa-youtube"></i></a> </li>
+                                    <li> <a href="https://t.me/akhbarelyomGate" target="_blank" class="twitter" style="background-color: #d5d4da;border-radius:50%"><img src="https://i.pinimg.com/originals/ef/7c/97/ef7c975516770e2bed85dc1786b0e213.jpg" style="border-radius:50%" width="40"></a> </li>
+                                </ul>
+                            </div>
+                        </div>
+                        @*<a href="https://aaib.com/" target="_blank"><img src="https://Images.akhbarelyom.com/UP/20221116153623866.jpg" style=" padding-top: 10px;padding-bottom:10px;width:255px;"></a>*@
+                        <br><span class="header-date" style="color:##d5d4da;">
+
+                            القاهرة:  @DateTime.Now.ToString("dddd، dd MMMM yyyy hh:mm tt", System.Globalization.CultureInfo.GetCultureInfo("ar-eg"))
+
+
+                        </span>
+                    </div>
+
+
+
+
+
+
+                </div>
+
+
+            </div>
+            <!--========== BEGIN .NAVBAR #MOBILE-NAV ==========-->
+            <nav class="navbar navbar-default" id="mobile-nav">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" id="sidenav-toggle">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <div class="sidenav-header-logo">
+                        <a href="https://akhbarelyom.com">
+                            @*<img src="https://akhbarelyom.com/Images/octobar.png" alt="أخبار اليوم">*@
+                            @*<img src="https://akhbarelyom.com/img/header/logo-new.png" alt="أخبار اليوم">	*@
+                            @Html.Action("GetBlockTextList", "Blocks", new { BlockID = 15, JournalID = 1 })
+                            @*<img src="/img/header/LOGO778.gif" alt="أخبار اليوم">*@
+
+                        </a>
+                    </div>
+                </div>
+                <div class="sidenav" data-sidenav data-sidenav-toggle="#sidenav-toggle">
+                    <button type="button" class="navbar-toggle active" data-toggle="collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <div class="sidenav-brand">
+                        <div class="sidenav-header-logo">
+                            <a href="#">
+                                @* <img src="/img/header/logo-new.png" alt="أخبار اليوم">*@
+                                <img src="https://akhbarelyom.com/Images/banner/police2020.png" alt="أخبار اليوم">
+                                @*<img src="/img/header/LOGO778.gif" alt="أخبار اليوم">*@
+                            </a>
+                        </div>
+                    </div>
+                    <ul class="sidenav-menu">
+
+                        @Html.Action("GetSectionsList", "News", new { JournalID = JID, Location = "sidenav" })
+
+                    </ul>
+                </div>
+            </nav>
+            <!--========== END .NAVBAR #MOBILE-NAV ==========-->
+            <!-- End .container -->
+            <!--========== BEGIN .NAVBAR #FIXED-NAVBAR ==========-->
+            <div class="navbar" id="fixed-navbar">
+                <!--========== BEGIN MAIN-MENU .NAVBAR-COLLAPSE COLLAPSE #FIXED-NAVBAR-TOOGLE ==========-->
+                <div class="main-menu nav navbar-collapse collapse" id="fixed-navbar-toggle" style="border-top: 3px solid #be916e;">
+
+                    <!--========== BEGIN .CONTAINER ==========-->
+                    <div class="container">
+                        <div class="col-xs-12">
+                            <!-- Begin .nav navbar-nav -->
+                            <ul class="nav navbar-nav">
+
+                                @* @Html.Action("GetSectionsList", "News", new { JournalID = JID, Location = "dropdown" })*@
+
+
+
+                                <li class="active">
+                                    <a href="https://akhbarelyom.com" title="الرئيسية" style="background-color: #be916e;">
+                                        الرئيسية
+                                    </a>
+                                </li>
+
+                                <li class="dropdown">
+                                    <a href="/news/newssection/1/1/أخبار-مصر" class="dropdown-toggle" d0ata-toggle="dropdown">مصر</a>
+                                    <ul class="dropdown-menu">
+                                        <li>
+                                            <a href="/news/newssection/1/1/أخبار-مصر" title="أخبار مصر">أخبار مصر</a>
+                                        </li>
+                                        <li>
+                                            <a href="/news/newssection/33/1/محافظات" title="محافظات">محافظات</a>
+                                        </li>
+
+                                    </ul>
+                                </li>
+
+                                <li class="dropdown">
+                                    <a href="/news/newssection/35/1/عالم" class="dropdown-toggle" da0ta-toggle="dropdown">عربي ودولي</a>
+                                    <ul class="dropdown-menu">
+
+                                        <li>
+                                            <a href="/news/newssection/192/1/عرب" title="عرب">عرب</a>
+                                        </li>
+
+                                        <li>
+                                            <a href="/news/newssection/35/1/عالم" title="عالم">عالم</a>
+                                        </li>
+
+                                        <li>
+                                            <a href="/news/newssection/194/1/أفريقيا" title="أفريقيا">أفريقيا</a>
+                                        </li>
+
+                                    </ul>
+                                </li>
+
+                                <li class="dropdown">
+                                    <a href="/news/newssection/10/1/اقتصاد" class="dropdown-toggle" dat0a-toggle="dropdown">اقتصاد</a>
+                                    <ul class="dropdown-menu">
+
+
+                                        <li>
+                                            <a href="/news/newssection/172/1/بنوك-وشركات" title="بنوك وشركات">بنوك وشركات</a>
+                                        </li>
+
+                                        <li>
+                                            <a href="/news/newssection/173/1/سياحة-وسفر" title="سياحة وسفر">سياحة وسفر</a>
+                                        </li>
+
+                                        <li>
+                                            <a href="/news/newssection/117/1/أخبار-السيارات" title="أخبار السيارات">أخبار السيارات</a>
+                                        </li>
+                                        <li>
+                                            <a href="/news/newssection/203/1/عقارات" title="عقارات">عقارات</a>
+                                        </li>
+                                        <li>
+                                            <a href="/news/newssection/193/1/طاقة" title="طاقة">طاقة</a>
+                                        </li>
+
+                                    </ul>
+                                </li>
+
+
+                                <li>
+                                    <a href="/news/newssection/160/1/حوارات-وتحقيقات" title="حوارات وتحقيقات"> تحقيقات</a>
+                                </li>
+
+
+                                <li>
+                                    <a href="/news/newssection/23/1/أخبار-الرياضة">أخبار الرياضة</a>
+                                    <!--<ul class="dropdown-menu">
+
+                                        <li>
+                                            <a href="/news/newssection/187/1/الدوري-المصري" title="الدوري المصري">الدوري المصري</a>
+                                        </li>
+                                        <li>
+                                            <a href="/news/newssection/195/1/الدوري-الإنجليزي" title="الدوري الإنجليزي">الدوري الإنجليزي</a>
+                                        </li>
+                                        <li>
+                                            <a href="/news/newssection/196/1/الدوري-الأسباني" title="الدوري الأسباني">الدوري الأسباني</a>
+                                        </li>
+                                        <li>
+                                            <a href="/news/newssection/197/1/الدوري-الإيطالي" title="الدوري الإيطالي">الدوري الإيطالي</a>
+                                        </li>
+                                        <li>
+                                            <a href="/news/newssection/198/1/الدوري-الألماني" title="الدوري الألماني">الدوري الألماني</a>
+                                        </li>
+                                        <li>
+                                            <a href="/news/newssection/199/1/رياضات أخرى" title="رياضات أخرى">رياضات أخرى</a>
+                                        </li>
+
+
+                                    </ul>-->
+                                </li>
+
+                                <li>
+                                    <a href="/news/newssection/11/1/أخبار-الحوادث" title="أخبار الحوادث">أخبار الحوادث</a>
+                                </li>
+                                <li>
+                                    <a href="/news/newssection/36/1/فن-وثقافة" title="فن وثقافة">فن وثقافة</a>
+                                </li>
+
+                                <li class="dropdown">
+                                    <a href="/news/newssection/8/1/منوعات" class="dropdown-toggle" data-togg0le="dropdown">منوعات</a>
+                                    <ul class="dropdown-menu">
+
+                                        <li>
+                                            <a href="/news/newssection/170/1/حكايات" title="حكايات">حكايات</a>
+                                        </li>
+                                        <li>
+                                            <a href="/news/newssection/191/1/كلاسيك" title="كلاسيك">كلاسيك</a>
+                                        </li>
+                                        <li>
+                                            <a href="/news/newssection/32/1/المرأة-والطفل" title="المرأة والطفل">المرأة والطفل</a>
+                                        </li>
+                                        <li>
+                                            <a href="/news/newssection/13/1/اخبار مديكال" title="اخبار مديكال"> اخبار مديكال</a>
+                                        </li>
+                                        <li>
+                                            <a href="/news/newssection/159/1/مجتمع" title="مجتمع">مجتمع</a>
+                                        </li>
+                                        <li>
+                                            <a href="/news/newssection/189/1/كاريكاتير" title="كاريكاتير">كاريكاتير</a>
+                                        </li>
+
+                                    </ul>
+                                </li>
+
+
+                                <li class="dropdown">
+                                    <a href="/news/newssection/155/1/علوم-وتكنولوجيا" class="dropdown-toggle" data-t0oggle="dropdown">علوم وتكنولوجيا</a>
+                                    <ul class="dropdown-menu">
+
+                                        <li>
+                                            <a href="/news/newssection/202/1/اتصالات" title="اتصالات">اتصالات</a>
+                                        </li>
+                                        <li>
+                                            <a href="/news/newssection/204/1/الفضاء" title="الفضاء">الفضاء</a>
+                                        </li>
+                                        <li>
+                                            <a href="/news/newssection/200/1/سلاح" title="سلاح">سلاح</a>
+                                        </li>
+                                        <li>
+                                            <a href="/news/newssection/201/1/العاب-وتطبيقات" title="العاب وتطبيقات">العاب وتطبيقات</a>
+                                        </li>
+                                    </ul>
+                                </li>
+
+
+
+
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">المزيد</a>
+                                    <ul class="dropdown-menu">
+                                        <li>
+                                            <a href="/news/newssection/156/1/T.Vاخبار-اليوم" title="T.Vاخبار اليوم">T.Vاخبار اليوم</a>
+                                        </li>
+                                        <li>
+                                            <a href="/news/newssection/37/1/توك-شو" title="توك شو">توك شو</a>
+                                        </li>
+                                        <li>
+                                            <a href="/news/newssection/207/1/آخر-ساعة" title="آخر ساعة">آخر ساعة</a>
+                                        </li>
+                                        <li>
+                                            <a href="/news/newssection/190/1/أخبار-الأدب" title="أخبار الأدب">أخبار الأدب</a>
+                                        </li>
+                                        <li>
+                                            <a href="/news/newssection/168/1/إنفوجراف" title="إنفوجراف">إنفوجراف</a>
+                                        </li>
+                                        @*<li>
+                                                <a href="/news/newssection/165/1/صحافة-مواطن" title="صحافة مواطن">صحافة مواطن</a>
+                                            </li>	*@
+                                        <li>
+                                            <a href="/news/newssection/205/1/أخبار-الصين" title="أخبار الصين">أخبار الصين</a>
+                                        </li>
+                                        @*<li>
+                                                <a href="/news/newssection/206/1/تويت-بوك" title="تويت بوك">تويت بوك</a>
+                                            </li>*@
+                                        <li>
+                                            <a href="/news/newssection/210/1/فى-خدمتك" title="في خدمتك ">في خدمتك</a>
+                                        </li>
+                                    </ul>
+                                </li>
+
+
+
+                            </ul>
+                            <!--========== END .NAV NAVBAR-NAV ==========-->
+                            @*@Html.Action("GetShareLinks", "Home", new { URL = "", Position = "Top" })*@
+
+
+
+                        </div>
+                    </div>
+                    <!--========== END .CONTAINER ==========-->
+
+
+                </div>
+
+
+
+                <div class="fixed-ads visible-lg">
+                    <div class="fixed-ads-right">
+
+                        <div style='height:600px; width:160px;'>
+
+                            <div id="inner_desk_right_banner" style="margin-top: -90px;">
+                                <script>
+                                    googletag.cmd.push(function () { googletag.display('inner_desk_right_banner'); });
+                                </script>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="fixed-ads-left">
+
+                        <div style='height:600px; width:160px;'>
+
+                            <div id="inner_desk_left_banner" style="margin-top: -90px;">
+                                <script>
+                                    googletag.cmd.push(function () { googletag.display('inner_desk_left_banner'); });
+                                </script>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+
+
+            </div>
+
+        </header>
+
+        <!--========== END #HEADER ==========-->
+        <!--========== BEGIN #MAIN-SECTION ==========-->
+        <section id="main-section">
+
+
+            <!-- Start AdPlace -->
+
+            <section class="module" id="globeAd1">
+                <div class="container">
+                    <div class="nohighlight">
+                    </div>
+                    <div align="center">
+                        <div class="desktop-add">
+                            @Html.Action("GetBlockTextList", "Blocks", new { BlockID = 27, JournalID = 1 })
+
+                            @*
+                                <!-- /21675648325/PORTAL_LEADERBOARD_728X90_NEWSPAGE -->
+                                   <div id='div-gpt-ad-1515485521497-1' style='height:90px; width:728px;'>
+                                   <script>
+                                   googletag.cmd.push(function() { googletag.display('div-gpt-ad-1515485521497-1'); });
+                                   </script>
+                                   </div>
+                            *@
+
+
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- End AdPlace -->
+            <!--========== BEGIN .BREAKING-NEWS ==========-->
+            <!-- Begin .outer -->
+            <div class="outer-ribbon">
+                <div class="container">
+
+                    <div class="col-md-8 col-sm-8 col-xs-12">
+                        <div class="news-ticker-bg">
+                            <div class="breaking-ribbon">
+                                <h4>أخر الأخبار</h4>
+                            </div>
+                            <!-- Begin .newsticker -->
+                            <div class="newsticker">
+                                @Html.Action("tiker", "News", new { JournalID = JID })
+
+                                <div class="navi">
+                                    <button class="up">
+                                        <i class="fa fa-caret-left"></i>
+                                    </button>
+                                    <button class="down">
+                                        <i class="fa fa-caret-right"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <!-- End .newsticker -->
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-4 col-xs-12">
+                        <div class="search">
+                            <div class="input-group">
+
+                                <!-- Begin Search Scripts -->
+                                <script type="text/javascript">
+                                    $(document).ready(function () {
+                                        $("#searchform").validate({
+                                            messages: {
+                                                query: { required: "" }
+                                            }
+                                        });
+                                    });
+
+                                    $(document).ready(function () {
+                                        var abc = document.getElementById('searchsubmit');
+                                        abc.onclick = (function () {
+                                            document.forms[0].submit();
+                                        });
+                                    });
+
+                                    (function () {
+                                        var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+                                        po.src = 'https://apis.google.com/js/plusone.js';
+                                        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+                                    })();
+
+
+
+                                    function removeValue(id, text) {
+                                        if (document.getElementById(id).value == text) {
+                                            document.getElementById(id).value = "";
+                                        }
+                                    }
+                                    function putValue(id, text) {
+                                        if (document.getElementById(id).value == "") {
+                                            document.getElementById(id).value = text;
+                                        }
+                                    }
+
+                                </script>
+
+
+                                <!-- End Search Scripts -->
+
+                                @using (Html.BeginForm("Search", "News", new { JournalID = JID }, FormMethod.Get, new { id = "searchform" }))
+                                {
+                                    @Html.ValidationSummary(true)
+
+                                    <input type="hidden" value="@JID" name="JournalID" />
+                                    <input type="text" class="form-control" value="" required name="query" id="s-field" onfocus="removeValue('s-field','')"
+                                           onblur="putValue('s-field','')" />
+                                    <span class="input-group-btn">
+                                        <button class="btn btn-default search-btn" id="searchsubmit" type="submit" value="بحث">بحث</button>
+                                    </span>
+                                }
+
+
+                            </div>
+                            <!-- /input-group -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- End .outer -->
+
+
+
+            @RenderSection("home", required: false)
+
+
+            <!--PopUp Ads-->
+            @* <div id="boxes">
+                    <div style="top: 50%; left: 50%; display: none;" id="dialog" class="window">
+                        <div id="san">
+                            <a href="#" class="close agree"><img src="/js/PopUp/close-icon.png" width="25" style="float:right; margin-right: -25px; margin-top: -20px;"></a>
+                            <a href="https://akhbarelyom.com/news/newdetails/2671648/1/بعد-قليل-تدشين-النسخة-الجديدة-لـ-بوابة-أخبار-اليوم">
+                                <img width="100%" src="/Images/banner/popupmobasher.gif">
+
+                            </a>
+                        </div>
+                    </div>
+                </div>*@
+            <!--End PopUp Ads-->
+
+
+        </section>
+
+        @*@Html.Action("GetFooterBlock", "Home", new { JournalID = JID })
+
+            @Html.Action("GetSectionsListFooter", "News", new { JournalID = JID })*@
+
+
+
+
+        <!--========== BEGIN #COPYRIGHTS==========-->
+        <div id="copyrights">
+            <!-- Begin.container -->
+            <div class="container">
+                <!-- Begin.copyright -->
+                <div class="copyright">
+
+                    <h1 class="HeaderPage1">
+                        <a style="color: #c2c2c2;" href="/Home/WhoWeAre/عن-مؤسسة-اخبار-اليوم">© الحقوق محفوظة لمؤسسة أخبار اليوم 1944 - 2023 </a>
+                    </h1>
+                    <h5 class="CopyRightTag">
+                        <a style="color: #c2c2c2;" href="/Home/Responsibility/اتصل-بنا">اتصل بنا</a>
+                    </h5>
+
+                    <h5 class="CopyRightTag">
+                        <a href="/Home/whoweare" style="color: #c2c2c2;">من نحن</a>
+                    </h5>
+
+                    <h5 class="CopyRightTag">
+                        <a href="/Privacy.html" style="color: #c2c2c2;"> سياسة الخصوصية</a>
+                    </h5>
+                    <h5 class="CopyRightTag">
+                        <a style="color: #c2c2c2;" href="/Home/Advertising/للإعلان"> للإعلان </a>
+                    </h5>
+
+                </div>
+            </div>
+        </div>
+
+
+
+        <!--========== END #WRAPPER ==========-->
+        <!-- External JavaScripts -->
+
+        @Scripts.Render("~/bundles/js")
+        @*
+            <div class="wrappersticky">
+
+                    <iframe id="ytplayer" width="100%" height="auto" src="https://www.youtube.com/embed/daJgDACKIbM?autoplay=1" frameborder="0" allow="autoplay" allowfullscreen></iframe>
+
+            </div>
+        *@
+</body>
+</html>

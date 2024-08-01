@@ -1,0 +1,34 @@
+﻿@model IEnumerable<AkhbarElyoum.Models.Gallery>
+@{int count = 0;
+  string JID = AkhbarElyoum.Controllers.HomeController.GetJournalID(HttpContext.Current.Request.Url.Host, int.Parse((HttpContext.Current.Request.QueryString["JournalID"] != null) ? HttpContext.Current.Request.QueryString["JournalID"].ToString() : "0"));
+
+}
+@foreach (var item in Model)
+{
+    <div class="entry-block-small">
+        <div class="entry-image">
+            <a class="img-link" href="/Galleries/Album/@item.GalleryID/1/@(AkhbarElyoum.Controllers.HomeController.GetPureURL(item.Title))"  title="@item.Title">
+                @if( (@item.GDate.Value.Year == 2017 && @item.GDate.Value.Month<=12 && @item.GDate.Value.Day <21) || (@item.GDate.Value.Year < 2017 ))
+                {
+                     <img class="img-responsive img-full" src="https://Images.akhbarelyom.com/images/images/large/@item.MainPicture" alt="@item.Title"/>
+                }
+                else
+                {
+					<img class="img-responsive img-full" src="https://images.akhbarelyom.com/images/images/GalleryImages/@item.GDate.Value.ToString("yyyyMMdd")/@item.MainPicture" alt="@item.Title"/>
+                }
+            </a>
+        </div>
+        <div class="entry-content">
+            <h4><a href="/Galleries/Album/@item.GalleryID/1/@(AkhbarElyoum.Controllers.HomeController.GetPureURL(item.Title))" title="@item.Title"> @item.Title</a></h4>
+        </div>
+    </div>
+           
+    count++;
+
+    if (count == Model.Count())
+    {
+    <p class="lastid" idx="@item.GalleryID">
+    </p>
+    }
+
+}

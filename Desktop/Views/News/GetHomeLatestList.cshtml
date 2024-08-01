@@ -1,0 +1,17 @@
+﻿@model IEnumerable<AkhbarElyoum.Models.NewsDetails>
+
+@{string JID = AkhbarElyoum.Controllers.HomeController.GetJournalID(HttpContext.Current.Request.Url.Host, int.Parse((HttpContext.Current.Request.QueryString["JournalID"] != null) ? HttpContext.Current.Request.QueryString["JournalID"].ToString() : "0"));}
+<div class="wrapper">
+
+@foreach (var item in Model)
+{
+    
+    <div class="newboxH3"><!-- start articles -->
+                        	<div class="imgThum">
+                            	<img src="https://Images.akhbarelyom.com/images/images/small/@item.PictureName1" width="76" height="51" class="thumI" />
+                            </div>
+                                <a href="/news/newdetails/@item.NewsID/@JID/@(AkhbarElyoum.Controllers.HomeController.GetPureURL(item.Title))" class="newsTitle2 dirStyle">@item.Title</a>
+                         <a href="/news/newdetails/@item.NewsID/@JID/@(AkhbarElyoum.Controllers.HomeController.GetPureURL(item.Title))" class="moreBtn">المزيد</a>
+                        </div><!-- end articles -->
+}
+</div>

@@ -1,0 +1,1016 @@
+﻿<style type="text/css">
+.fbConnectWidgetTopmost {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    border-color: #FFFFFF !important;
+    border-image: none;
+    border-style: none !important;
+    border-width: 0px !important;
+    overflow: hidden;
+    padding: 0;
+    position: relative;
+}
+</style>
+
+@model IEnumerable<AkhbarElyoum.Models.NewsDetails>
+@{bool flg = true; int count = 0; string JID = AkhbarElyoum.Controllers.HomeController.GetJournalID(HttpContext.Current.Request.Url.Host, int.Parse((HttpContext.Current.Request.QueryString["JournalID"] != null) ? HttpContext.Current.Request.QueryString["JournalID"].ToString() : "0"));}
+<div class="block1">
+    <!-- start block1 -->
+    <!-- start block1Rit -->
+    <div class="block1Rit">
+        <div class="newBoxnews" style="position: relative;">
+            <!-- start newBoxnews -->
+            <div class="newBoxnewsContent" style="margin-right: 4px;">
+                <div class="acc-menu2" style="margin: 0px auto;">
+                    @foreach (var item in Model.Where(a => a.DisplayOrder == 1))
+                    {
+                        if (flg)
+                        {
+                        <div class="rightHeadNewsTitle">
+                            <a class="aSectionTitle" href="/News/newssection?SecID=@item.SectionID&JournalID=@JID">@item.SecTitle</a>
+                        </div>
+                        <div class="headNews">
+                            <a href="/news/newdetails?ID=@item.NewsID&JournalID=@JID">
+                                <h3 class="boxH3">@item.Title</h3>
+                            </a>
+                            <div class="imgPost">
+                                <a href="/news/newdetails?ID=@item.NewsID&JournalID=@JID"><img src="https://Images.akhbarelyom.com/images/images/large/@item.PictureName1" class="newimageSS" id="hoverImg" alt="@item.Breif" /></a>
+                            </div>
+                        </div>
+                            flg = false;
+                        }
+                        else
+                        {
+                            if (count < 3)
+                            {
+                        <div class="newboxnewsnew">
+                            <div class="secPostImg">
+                                <a href="/news/newdetails?ID=@item.NewsID&JournalID=@JID">
+                                    <img src="https://Images.akhbarelyom.com/images/images/small/@item.PictureName1"></a>
+                            </div>
+                            <div class="dataDboX"><a href="/news/newdetails?ID=@item.NewsID&JournalID=@JID">
+                                <p class="titePostN">
+                                    @item.Title</p></a>
+                                <p class="titePostDISC">
+                                    @item.Breif</p>
+                            </div>
+                        </div>
+                            }
+                        }
+                        count++;
+                    }
+                </div>
+            </div>
+            <hr class="borderLeftSection" />
+            @{flg = true; count = 0;}
+            <div class="newBoxnewsContent">
+                <div class="acc-menu2 aim" style="margin: 0px auto;">
+                    @foreach (var item in Model.Where(a => a.DisplayOrder == 2))
+                    {
+                        if (flg)
+                        {
+                        <div class="leftHeadNewsTitle">
+                            <a class="aSectionTitle" href="/News/newssection?SecID=@item.SectionID&JournalID=@JID">@item.SecTitle</a>
+                        </div>
+                        <div class="headNews">
+                            <a href="/news/newdetails?ID=@item.NewsID&JournalID=@JID">
+                                <h3 class="boxH3">@item.Title</h3>
+                            </a>
+                            <div class="imgPost secondimgpost">
+                                <a href="/news/newdetails?ID=@item.NewsID&JournalID=@JID"><img src="https://Images.akhbarelyom.com/images/images/large/@item.PictureName1" class="newimageSS" id="hoverImg" alt="@item.Breif" /></a>
+                            </div>
+                        </div>
+                            flg = false;
+                        }
+                        else
+                        {
+                            if (count < 3)
+                            {
+                        <div class="newboxnewsnew">
+                            <div class="secPostImg lftBox">
+                                <a href="/news/newdetails?ID=@item.NewsID&JournalID=@JID">
+                                    <img src="https://Images.akhbarelyom.com/images/images/small/@item.PictureName1"></a>
+                            </div>
+                            <div class="dataDboX"><a href="/news/newdetails?ID=@item.NewsID&JournalID=@JID">
+                                <p class="titePostN">
+                                    @item.Title</p></a>
+                                <p class="titePostDISC">
+                                    @item.Breif</p>
+                            </div>
+                        </div>
+                            }
+                        }
+                        count++;
+                    }
+                </div>
+            </div>
+        </div>
+        @{flg = true; count = 0;}
+        <div class="newBoxnews" style="position: relative;">
+            <!-- start newBoxnews -->
+            <div class="newBoxnewsContent" style="margin-right: 4px;">
+                <div class="acc-menu2 aim" style="margin: 0px auto;">
+                    @foreach (var item in Model.Where(a => a.DisplayOrder == 3))
+                    {
+                        if (flg)
+                        {
+                        <div class="rightHeadNewsTitle">
+                            <a class="aSectionTitle" href="/News/newssection?SecID=@item.SectionID&JournalID=@JID">@item.SecTitle</a>
+                        </div>
+                        <div class="headNews">
+                            <a href="/news/newdetails?ID=@item.NewsID&JournalID=@JID">
+                                <h3 class="boxH3">@item.Title</h3>
+                            </a>
+                            <div class="imgPost">
+                                <a href="/news/newdetails?ID=@item.NewsID&JournalID=@JID"><img src="https://Images.akhbarelyom.com/images/images/large/@item.PictureName1" class="newimageSS" id="hoverImg" alt="@item.Breif" /></a>
+                            </div>
+                        </div>
+                            flg = false;
+                        }
+                        else
+                        {
+                            if (count < 3)
+                            {
+                        <div class="newboxnewsnew">
+                            <div class="secPostImg">
+                                <a href="/news/newdetails?ID=@item.NewsID&JournalID=@JID">
+                                    <img src="https://Images.akhbarelyom.com/images/images/small/@item.PictureName1"></a>
+                            </div>
+                            <div class="dataDboX"><a href="/news/newdetails?ID=@item.NewsID&JournalID=@JID">
+                                <p class="titePostN">
+                                    @item.Title</p></a>
+                                <p class="titePostDISC">
+                                    @item.Breif</p>
+                            </div>
+                        </div>
+                            }
+                        }
+                        count++;
+                    }
+                </div>
+            </div>
+            <hr class="borderLeftSection" />
+            @{flg = true; count = 0;}
+            <div class="newBoxnewsContent">
+                <div class="acc-menu2 aim" style="margin: 0px auto;">
+                    @foreach (var item in Model.Where(a => a.DisplayOrder == 4))
+                    {
+                        if (flg)
+                        {
+                        <div class="leftHeadNewsTitle">
+                            <a class="aSectionTitle" href="/News/newssection?SecID=@item.SectionID&JournalID=@JID">@item.SecTitle</a>
+                        </div>
+                        <div class="headNews">
+                            <a href="/news/newdetails?ID=@item.NewsID&JournalID=@JID">
+                                <h3 class="boxH3">@item.Title</h3>
+                            </a>
+                            <div class="imgPost secondimgpost">
+                                <a href="/news/newdetails?ID=@item.NewsID&JournalID=@JID"><img src="https://Images.akhbarelyom.com/images/images/large/@item.PictureName1" class="newimageSS" id="hoverImg" alt="@item.Breif" /></a>
+                            </div>
+                        </div>
+                            flg = false;
+                        }
+                        else
+                        {
+                            if (count < 3)
+                            {
+                        <div class="newboxnewsnew">
+                            <div class="secPostImg lftBox">
+                                <a href="/news/newdetails?ID=@item.NewsID&JournalID=@JID">
+                                    <img src="https://Images.akhbarelyom.com/images/images/small/@item.PictureName1"></a>
+                            </div>
+                            <div class="dataDboX"><a href="/news/newdetails?ID=@item.NewsID&JournalID=@JID">
+                                <p class="titePostN">
+                                    @item.Title</p></a>
+                                <p class="titePostDISC">
+                                    @item.Breif</p>
+                            </div>
+                        </div>
+                            }
+                        }
+                        count++;
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="block1Lft">
+        <div class="lftBoxNews" style="height: 329px; overflow: hidden;">
+            <div id="blogSlider">
+                <div class="innerWrap">
+                    <div class="panelContainer">
+                        <div class="panel" title="الأكثر تعليقا">
+                            @Html.Action("GetHomeMostCommentedList", "News", new { JournalID = JID })
+                        </div>
+                        <div class="panel" title="الأحدث">
+                            @Html.Action("GetHomeLatestList", "News", new { JournalID = JID })
+                        </div>
+                        <div class="panel" title="الأكثر قراءة">
+                            @Html.Action("GetHomeMostViewedList", "News", new { JournalID = JID })
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        @Html.Action("GetEditorsList", "Editors", new { JournalID = JID })
+        <div class="voteingBox">
+            <div class="newTitle-red">
+                <h4 class="vh4">
+                    استطلاع الرأى</h4>
+                <div class="polldiv">
+                    @Html.Action("GetPollList", "Polls", new { JournalID = JID })</div>
+            </div>
+        </div>
+    </div>
+    <!-- end block1Lft -->
+</div>
+<div class="news" style="float: left; margin-bottom: 15.75px;">
+    <div class="nwesBg11">
+        <div class="nnnnnn">
+            <div class="nnbg">
+                <h4>
+                    أخبار اليوم T.V</h4>
+            </div>
+        </div>
+        <a href="#" class="newsBox152">
+            <h4 class="newsTitle11">
+                واشنطن تحاول إقناع الفلسطينيين بعدم..</h4>
+            <div class="newsImage146">
+            </div>
+        </a><a href="#" class="newsBox152">
+            <h4 class="newsTitle11">
+                واشنطن تحاول إقناع الفلسطينيين بعدم..</h4>
+            <div class="newsImage146">
+            </div>
+        </a><a href="#" class="newsBox152">
+            <h4 class="newsTitle11">
+                واشنطن تحاول إقناع الفلسطينيين بعدم..</h4>
+            <div class="newsImage146">
+            </div>
+        </a><a href="#" class="newsBox152">
+            <h4 class="newsTitle11">
+                واشنطن تحاول إقناع الفلسطينيين بعدم..</h4>
+            <div class="newsImage146">
+            </div>
+        </a><a href="#" class="newsBox152">
+            <h4 class="newsTitle11">
+                واشنطن تحاول إقناع الفلسطينيين بعدم..</h4>
+            <div class="newsImage146">
+            </div>
+        </a><a href="#" class="newsBox152">
+            <h4 class="newsTitle11">
+                واشنطن تحاول إقناع الفلسطينيين بعدم..</h4>
+            <div class="newsImage146">
+            </div>
+        </a>
+    </div>
+</div>
+<div class="block1">
+    <!-- start block1 -->
+    <!-- start block1Rit -->
+    @{flg = true; count = 0;}
+    <div class="block1Rit">
+        <div class="newBoxnews" style="position: relative;">
+            <!-- start newBoxnews -->
+            <div class="newBoxnewsContent" style="margin-right: 4px;">
+                <div class="acc-menu2 aim" style="margin: 0px auto;">
+                    @foreach (var item in Model.Where(a => a.DisplayOrder == 5))
+                    {
+                        if (flg)
+                        {
+                        <div class="rightHeadNewsTitle">
+                            <a class="aSectionTitle" href="/News/newssection?SecID=@item.SectionID&JournalID=@JID">@item.SecTitle</a>
+                        </div>
+                        <div class="headNews">
+                            <a href="/news/newdetails?ID=@item.NewsID&JournalID=@JID">
+                                <h3 class="boxH3">@item.Title</h3>
+                            </a>
+                            <div class="imgPost">
+                                <a href="/news/newdetails?ID=@item.NewsID&JournalID=@JID"><img src="https://Images.akhbarelyom.com/images/images/large/@item.PictureName1" class="newimageSS" id="hoverImg" alt="@item.Breif" /></a>
+                            </div>
+                        </div>
+                            flg = false;
+                        }
+                        else
+                        {
+                            if (count < 3)
+                            {
+                        <div class="newboxnewsnew">
+                            <div class="secPostImg">
+                                <a href="/news/newdetails?ID=@item.NewsID&JournalID=@JID">
+                                    <img src="https://Images.akhbarelyom.com/images/images/small/@item.PictureName1"></a>
+                            </div>
+                            <div class="dataDboX"><a href="/news/newdetails?ID=@item.NewsID&JournalID=@JID">
+                                <p class="titePostN">
+                                    @item.Title</p></a>
+                                <p class="titePostDISC">
+                                    @item.Breif</p>
+                            </div>
+                        </div>
+                            }
+                        }
+                        count++;
+                    }
+                </div>
+            </div>
+            <hr class="borderLeftSection" />
+            @{flg = true; count = 0;}
+            <div class="newBoxnewsContent">
+                <div class="acc-menu2 aim" style="margin: 0px auto;">
+                    @foreach (var item in Model.Where(a => a.DisplayOrder == 6))
+                    {
+                        if (flg)
+                        {
+                        <div class="leftHeadNewsTitle">
+                            <a class="aSectionTitle" href="/News/newssection?SecID=@item.SectionID&JournalID=@JID">@item.SecTitle</a>
+                        </div>
+                        <div class="headNews">
+                            <a href="/news/newdetails?ID=@item.NewsID&JournalID=@JID">
+                                <h3 class="boxH3">@item.Title</h3>
+                            </a>
+                            <div class="imgPost secondimgpost">
+                                <a href="/news/newdetails?ID=@item.NewsID&JournalID=@JID"><img src="https://Images.akhbarelyom.com/images/images/large/@item.PictureName1" class="newimageSS" id="hoverImg" alt="@item.Breif" /></a>
+                            </div>
+                        </div>
+                            flg = false;
+                        }
+                        else
+                        {
+                            if (count < 3)
+                            {
+                        <div class="newboxnewsnew">
+                            <div class="secPostImg lftBox">
+                                <a href="/news/newdetails?ID=@item.NewsID&JournalID=@JID">
+                                    <img src="https://Images.akhbarelyom.com/images/images/small/@item.PictureName1"></a>
+                            </div>
+                            <div class="dataDboX"><a href="/news/newdetails?ID=@item.NewsID&JournalID=@JID">
+                                <p class="titePostN">
+                                    @item.Title</p></a>
+                                <p class="titePostDISC">
+                                    @item.Breif</p>
+                            </div>
+                        </div>
+                            }
+                        }
+                        count++;
+                    }
+                </div>
+            </div>
+        </div>
+        @{flg = true; count = 0;}
+        <div class="newBoxnews" style="position: relative;">
+            <!-- start newBoxnews -->
+            <div class="newBoxnewsContent" style="margin-right: 4px;">
+                <div class="acc-menu2 aim" style="margin: 0px auto;">
+                    @foreach (var item in Model.Where(a => a.DisplayOrder == 7))
+                    {
+                        if (flg)
+                        {
+                        <div class="rightHeadNewsTitle">
+                            <a class="aSectionTitle" href="/News/newssection?SecID=@item.SectionID&JournalID=@JID">@item.SecTitle</a>
+                        </div>
+                        <div class="headNews">
+                            <a href="/news/newdetails?ID=@item.NewsID&JournalID=@JID">
+                                <h3 class="boxH3">@item.Title</h3>
+                            </a>
+                            <div class="imgPost">
+                                <a href="/news/newdetails?ID=@item.NewsID&JournalID=@JID"><img src="https://Images.akhbarelyom.com/images/images/large/@item.PictureName1" class="newimageSS" id="hoverImg" alt="@item.Breif" /></a>
+                            </div>
+                        </div>
+                            flg = false;
+                        }
+                        else
+                        {
+                            if (count < 3)
+                            {
+                        <div class="newboxnewsnew">
+                            <div class="secPostImg">
+                                <a href="/news/newdetails?ID=@item.NewsID&JournalID=@JID">
+                                    <img src="https://Images.akhbarelyom.com/images/images/small/@item.PictureName1"></a>
+                            </div>
+                            <div class="dataDboX"><a href="/news/newdetails?ID=@item.NewsID&JournalID=@JID">
+                                <p class="titePostN">
+                                    @item.Title</p></a>
+                                <p class="titePostDISC">
+                                    @item.Breif</p>
+                            </div>
+                        </div>
+                            }
+                        }
+                        count++;
+                    }
+                </div>
+            </div>
+            <hr class="borderLeftSection" />
+            @{flg = true; count = 0;}
+            <div class="newBoxnewsContent">
+                <div class="acc-menu2 aim" style="margin: 0px auto;">
+                    @foreach (var item in Model.Where(a => a.DisplayOrder == 8))
+                    {
+                        if (flg)
+                        {
+                        <div class="leftHeadNewsTitle">
+                            <a class="aSectionTitle" href="/News/newssection?SecID=@item.SectionID&JournalID=@JID">@item.SecTitle</a>
+                        </div>
+                        <div class="headNews">
+                            <a href="/news/newdetails?ID=@item.NewsID&JournalID=@JID">
+                                <h3 class="boxH3">@item.Title</h3>
+                            </a>
+                            <div class="imgPost secondimgpost">
+                                <a href="/news/newdetails?ID=@item.NewsID&JournalID=@JID"><img src="https://Images.akhbarelyom.com/images/images/large/@item.PictureName1" class="newimageSS" id="hoverImg" alt="@item.Breif" /></a>
+                            </div>
+                        </div>
+                            flg = false;
+                        }
+                        else
+                        {
+                            if (count < 3)
+                            {
+                        <div class="newboxnewsnew">
+                            <div class="secPostImg lftBox">
+                                <a href="/news/newdetails?ID=@item.NewsID&JournalID=@JID">
+                                    <img src="https://Images.akhbarelyom.com/images/images/small/@item.PictureName1"></a>
+                            </div>
+                            <div class="dataDboX"><a href="/news/newdetails?ID=@item.NewsID&JournalID=@JID">
+                                <p class="titePostN">
+                                    @item.Title</p></a>
+                                <p class="titePostDISC">
+                                    @item.Breif</p>
+                            </div>
+                        </div>
+                            }
+                        }
+                        count++;
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end block1Rit -->
+    <!-- start block1Lft -->
+    <div class="block1Lft">
+        <div class="files">
+            <div class="newTitle-red">
+                <h4 class="vh4">
+                    ملفات</h4>
+            </div>
+            <div class="div-files">
+                @Html.Action("GetBlockTextList", "Blocks", new { BlockID = 6, JournalID = JID })
+            </div>
+        </div>
+        <div class="advBlock" style="margin-top: 22.50px;">
+            <div class="nweImageAdvs">
+                @Html.Action("GetBlockTextList", "Blocks", new { BlockID = 3, JournalID = JID })
+            </div>
+        </div>
+        <div class="advBlock">
+            <!-- start small adv -->
+            <div class="nweImageAdvs">
+                @Html.Action("GetBlockTextList", "Blocks", new { BlockID = 3, JournalID = JID })
+            </div>
+        </div>
+        <!-- end small adv -->
+        <div class="adv2" style="margin-top: 7.75px;">
+            <!-- start adv2 -->
+            <div class="adv-code">
+                @Html.Action("GetBlockTextList", "Blocks", new { BlockID = 4, JournalID = JID })
+            </div>
+        </div>
+        <!-- end adv2 -->
+        <div class="advBlock" style="margin-top: 7.75px;">
+            <!-- start small adv -->
+            <div class="nweImageAdvs">
+                 @Html.Action("GetBlockTextList", "Blocks", new { BlockID = 3, JournalID = JID })
+            </div>
+        </div>
+        <!-- end small adv -->
+    </div>
+    <!-- end block1Lft -->
+</div>
+<!-- end block1 -->
+@Html.Action("GetHomeGalleryList", "Galleries")
+<div class="block1">
+    <!-- start block1 -->
+    <!-- start block1Rit -->
+    @{flg = true; count = 0;}
+    <div class="block1Rit">
+        <div class="newBoxnews" style="position: relative;">
+            <!-- start newBoxnews -->
+            <div class="newBoxnewsContent" style="margin-right: 4px;">
+                <div class="acc-menu2 aim" style="margin: 0px auto;">
+                    @foreach (var item in Model.Where(a => a.DisplayOrder == 9))
+                    {
+                        if (flg)
+                        {
+                        <div class="rightHeadNewsTitle">
+                            <a class="aSectionTitle" href="/News/newssection?SecID=@item.SectionID&JournalID=@JID">@item.SecTitle</a>
+                        </div>
+                        <div class="headNews">
+                            <a href="/news/newdetails?ID=@item.NewsID&JournalID=@JID">
+                                <h3 class="boxH3">@item.Title</h3>
+                            </a>
+                            <div class="imgPost">
+                                <a href="/news/newdetails?ID=@item.NewsID&JournalID=@JID"><img src="https://Images.akhbarelyom.com/images/images/large/@item.PictureName1" class="newimageSS" id="hoverImg" alt="@item.Breif" /></a>
+                            </div>
+                        </div>
+                            flg = false;
+                        }
+                        else
+                        {
+                            if (count < 3)
+                            {
+                        <div class="newboxnewsnew">
+                            <div class="secPostImg">
+                                <a href="/news/newdetails?ID=@item.NewsID&JournalID=@JID">
+                                    <img src="https://Images.akhbarelyom.com/images/images/small/@item.PictureName1"></a>
+                            </div>
+                            <div class="dataDboX"><a href="/news/newdetails?ID=@item.NewsID&JournalID=@JID">
+                                <p class="titePostN">
+                                    @item.Title</p></a>
+                                <p class="titePostDISC">
+                                    @item.Breif</p>
+                            </div>
+                        </div>
+                            }
+                        }
+                        count++;
+                    }
+                </div>
+            </div>
+            <hr class="borderLeftSection" />
+            @{flg = true; count = 0;}
+            <div class="newBoxnewsContent">
+                <div class="acc-menu2 aim" style="margin: 0px auto;">
+                    @foreach (var item in Model.Where(a => a.DisplayOrder == 10))
+                    {
+                        if (flg)
+                        {
+                        <div class="leftHeadNewsTitle">
+                            <a class="aSectionTitle" href="/News/newssection?SecID=@item.SectionID&JournalID=@JID">@item.SecTitle</a>
+                        </div>
+                        <div class="headNews">
+                            <a href="/news/newdetails?ID=@item.NewsID&JournalID=@JID">
+                                <h3 class="boxH3">@item.Title</h3>
+                            </a>
+                            <div class="imgPost secondimgpost">
+                                <a href="/news/newdetails?ID=@item.NewsID&JournalID=@JID"><img src="https://Images.akhbarelyom.com/images/images/large/@item.PictureName1" class="newimageSS" id="hoverImg" alt="@item.Breif" /></a>
+                            </div>
+                        </div>
+                            flg = false;
+                        }
+                        else
+                        {
+                            if (count < 3)
+                            {
+                        <div class="newboxnewsnew">
+                            <div class="secPostImg lftBox">
+                                <a href="/news/newdetails?ID=@item.NewsID&JournalID=@JID">
+                                    <img src="https://Images.akhbarelyom.com/images/images/small/@item.PictureName1"></a>
+                            </div>
+                            <div class="dataDboX"><a href="/news/newdetails?ID=@item.NewsID&JournalID=@JID">
+                                <p class="titePostN">
+                                    @item.Title</p></a>
+                                <p class="titePostDISC">
+                                    @item.Breif</p>
+                            </div>
+                        </div>
+                            }
+                        }
+                        count++;
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end block1Rit -->
+    <!-- start block1Lft -->
+    <div class="block1Lft">
+        <div class="adv2">
+            <!-- start adv2 -->
+            <div class="adv-code">
+                @Html.Action("GetBlockTextList", "Blocks", new { BlockID = 2, JournalID = JID })
+            </div>
+        </div>
+        <!-- end adv2 -->
+        <div class="advBlock" style="margin-top: 7.75px;">
+            <!-- start small adv -->
+            <div class="nweImageAdvs">
+                @Html.Action("GetBlockTextList", "Blocks", new { BlockID = 3, JournalID = JID })
+            </div>
+        </div>
+        <!-- end small adv -->
+        <div class="advBlock" style="margin-top: 7.75px;">
+            <!-- start small adv -->
+            <div class="nweImageAdvs">
+                @Html.Action("GetBlockTextList", "Blocks", new { BlockID = 3, JournalID = JID })
+            </div>
+        </div>
+        <!-- end small adv -->
+    </div>
+    <!-- end block1Lft -->
+</div>
+<!-- end block1 -->
+<div class="block1">
+    <!-- start block1 -->
+    <!-- start block1Rit -->
+    @{flg = true; count = 0;}
+    <div class="block1Rit">
+        <div class="newBoxnews" style="position: relative;">
+            <!-- start newBoxnews -->
+            <div class="newBoxnewsContent" style="margin-right: 4px;">
+                <div class="acc-menu2 aim" style="margin: 0px auto;">
+                    @foreach (var item in Model.Where(a => a.DisplayOrder == 11))
+                    {
+                        if (flg)
+                        {
+                        <div class="rightHeadNewsTitle">
+                            <a class="aSectionTitle" href="/News/newssection?SecID=@item.SectionID&JournalID=@JID">@item.SecTitle</a>
+                        </div>
+                        <div class="headNews">
+                            <a href="/news/newdetails?ID=@item.NewsID&JournalID=@JID">
+                                <h3 class="boxH3">@item.Title</h3>
+                            </a>
+                            <div class="imgPost">
+                                <a href="/news/newdetails?ID=@item.NewsID&JournalID=@JID"><img src="https://Images.akhbarelyom.com/images/images/large/@item.PictureName1" class="newimageSS" id="hoverImg" alt="@item.Breif" /></a>
+                            </div>
+                        </div>
+                            flg = false;
+                        }
+                        else
+                        {
+                            if (count < 3)
+                            {
+                        <div class="newboxnewsnew">
+                            <div class="secPostImg">
+                                <a href="/news/newdetails?ID=@item.NewsID&JournalID=@JID">
+                                    <img src="https://Images.akhbarelyom.com/images/images/small/@item.PictureName1"></a>
+                            </div>
+                            <div class="dataDboX"><a href="/news/newdetails?ID=@item.NewsID&JournalID=@JID">
+                                <p class="titePostN">
+                                    @item.Title</p></a>
+                                <p class="titePostDISC">
+                                    @item.Breif</p>
+                            </div>
+                        </div>
+                            }
+                        }
+                        count++;
+                    }
+                </div>
+            </div>
+            <hr class="borderLeftSection" />
+            @{flg = true; count = 0;}
+            <div class="newBoxnewsContent">
+                <div class="acc-menu2 aim" style="margin: 0px auto;">
+                    @foreach (var item in Model.Where(a => a.DisplayOrder == 12))
+                    {
+                        if (flg)
+                        {
+                        <div class="leftHeadNewsTitle">
+                            <a class="aSectionTitle" href="/News/newssection?SecID=@item.SectionID&JournalID=@JID">@item.SecTitle</a>
+                        </div>
+                        <div class="headNews">
+                            <a href="/news/newdetails?ID=@item.NewsID&JournalID=@JID">
+                                <h3 class="boxH3">@item.Title</h3>
+                            </a>
+                            <div class="imgPost secondimgpost">
+                                <a href="/news/newdetails?ID=@item.NewsID&JournalID=@JID"><img src="https://Images.akhbarelyom.com/images/images/large/@item.PictureName1" class="newimageSS" id="hoverImg" alt="@item.Breif" /></a>
+                            </div>
+                        </div>
+                            flg = false;
+                        }
+                        else
+                        {
+                            if (count < 3)
+                            {
+                        <div class="newboxnewsnew">
+                            <div class="secPostImg lftBox">
+                                <a href="/news/newdetails?ID=@item.NewsID&JournalID=@JID">
+                                    <img src="https://Images.akhbarelyom.com/images/images/small/@item.PictureName1"></a>
+                            </div>
+                            <div class="dataDboX"><a href="/news/newdetails?ID=@item.NewsID&JournalID=@JID">
+                                <p class="titePostN">
+                                    @item.Title</p></a>
+                                <p class="titePostDISC">
+                                    @item.Breif</p>
+                            </div>
+                        </div>
+                            }
+                        }
+                        count++;
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end block1Rit -->
+    <!-- start block1Lft -->
+    <div class="block1Lft">
+        @Html.Action("GetPictureofDayList", "Galleries", new { JournalID = @JID })
+        <div class="advBlock" style="margin-top: 18.50px;">
+            <div class="nweImageAdvs">
+                 @Html.Action("GetBlockTextList", "Blocks", new { BlockID = 3, JournalID = JID })
+            </div>
+        </div>
+    </div>
+    <!-- end block1Lft -->
+</div>
+<!-- end block1 -->
+<!-- start miscellaneous -->
+<div class="news" style="float: left; margin-bottom: 15.75px;">
+    <div class="nwesBg">
+        <div class="nnnnnn">
+            <div class="nnbg">
+                <h4>
+                    منوعات</h4>
+            </div>
+        </div>
+        <a href="#" class="newsBox152">
+            <h4 class="newsTitle">
+                واشنطن تحاول إقناع الفلسطينيين بعدم..</h4>
+            <div class="newsImage146">
+            </div>
+        </a><a href="#" class="newsBox152">
+            <h4 class="newsTitle">
+                واشنطن تحاول إقناع الفلسطينيين بعدم..</h4>
+            <div class="newsImage146">
+            </div>
+        </a><a href="#" class="newsBox152">
+            <h4 class="newsTitle">
+                واشنطن تحاول إقناع الفلسطينيين بعدم..</h4>
+            <div class="newsImage146">
+            </div>
+        </a><a href="#" class="newsBox152">
+            <h4 class="newsTitle">
+                واشنطن تحاول إقناع الفلسطينيين بعدم..</h4>
+            <div class="newsImage146">
+            </div>
+        </a><a href="#" class="newsBox152">
+            <h4 class="newsTitle">
+                واشنطن تحاول إقناع الفلسطينيين بعدم..</h4>
+            <div class="newsImage146">
+            </div>
+        </a><a href="#" class="newsBox152">
+            <h4 class="newsTitle">
+                واشنطن تحاول إقناع الفلسطينيين بعدم..</h4>
+            <div class="newsImage146">
+            </div>
+        </a>
+    </div>
+</div>
+<!-- end miscellaneous -->
+<div class="adv3960" style="float: left;">
+    <div class="advBackground">
+        <div class="advvvv">
+            @Html.Action("GetBlockTextList", "Blocks", new { BlockID = 1, JournalID = JID })
+        </div>
+    </div>
+</div>
+<div class="block1">
+    <!-- start block1 -->
+    <!-- start block1Rit -->
+    @{flg = true; count = 0;}
+    <div class="block1Rit">
+        <div class="newBoxnews" style="position: relative;">
+            <!-- start newBoxnews -->
+            <div class="newBoxnewsContent" style="margin-right: 4px;">
+                <div class="acc-menu2 aim" style="margin: 0px auto;">
+                    @foreach (var item in Model.Where(a => a.DisplayOrder == 13))
+                    {
+                        if (flg)
+                        {
+                        <div class="rightHeadNewsTitle">
+                            <a class="aSectionTitle" href="/News/newssection?SecID=@item.SectionID&JournalID=@JID">@item.SecTitle</a>
+                        </div>
+                        <div class="headNews">
+                            <a href="/news/newdetails?ID=@item.NewsID&JournalID=@JID">
+                                <h3 class="boxH3">@item.Title</h3>
+                            </a>
+                            <div class="imgPost">
+                                <a href="/news/newdetails?ID=@item.NewsID&JournalID=@JID"><img src="https://Images.akhbarelyom.com/images/images/large/@item.PictureName1" class="newimageSS" id="hoverImg" alt="@item.Breif" /></a>
+                            </div>
+                        </div>
+                            flg = false;
+                        }
+                        else
+                        {
+                            if (count < 3)
+                            {
+                        <div class="newboxnewsnew">
+                            <div class="secPostImg">
+                                <a href="/news/newdetails?ID=@item.NewsID&JournalID=@JID">
+                                    <img src="https://Images.akhbarelyom.com/images/images/small/@item.PictureName1"></a>
+                            </div>
+                            <div class="dataDboX"><a href="/news/newdetails?ID=@item.NewsID&JournalID=@JID">
+                                <p class="titePostN">
+                                    @item.Title</p></a>
+                                <p class="titePostDISC">
+                                    @item.Breif</p>
+                            </div>
+                        </div>
+                            }
+                        }
+                        count++;
+                    }
+                </div>
+            </div>
+            <hr class="borderLeftSection" />
+            @{flg = true; count = 0;}
+            <div class="newBoxnewsContent">
+                <div class="acc-menu2 aim" style="margin: 0px auto;">
+                    @foreach (var item in Model.Where(a => a.DisplayOrder == 14))
+                    {
+                        if (flg)
+                        {
+                        <div class="leftHeadNewsTitle">
+                            <a class="aSectionTitle" href="/News/newssection?SecID=@item.SectionID&JournalID=@JID">@item.SecTitle</a>
+                        </div>
+                        <div class="headNews">
+                            <a href="/news/newdetails?ID=@item.NewsID&JournalID=@JID">
+                                <h3 class="boxH3">@item.Title</h3>
+                            </a>
+                            <div class="imgPost secondimgpost">
+                                <a href="/news/newdetails?ID=@item.NewsID&JournalID=@JID"><img src="https://Images.akhbarelyom.com/images/images/large/@item.PictureName1" class="newimageSS" id="hoverImg" alt="@item.Breif" /></a>
+                            </div>
+                        </div>
+                            flg = false;
+                        }
+                        else
+                        {
+                            if (count < 3)
+                            {
+                        <div class="newboxnewsnew">
+                            <div class="secPostImg lftBox">
+                                <a href="/news/newdetails?ID=@item.NewsID&JournalID=@JID">
+                                    <img src="https://Images.akhbarelyom.com/images/images/small/@item.PictureName1"></a>
+                            </div>
+                            <div class="dataDboX"><a href="/news/newdetails?ID=@item.NewsID&JournalID=@JID">
+                                <p class="titePostN">
+                                    @item.Title</p></a>
+                                <p class="titePostDISC">
+                                    @item.Breif</p>
+                            </div>
+                        </div>
+                            }
+                        }
+                        count++;
+                    }
+                </div>
+            </div>
+        </div>
+        @{flg = true; count = 0;}
+        <div class="newBoxnews" style="position: relative;">
+            <!-- start newBoxnews -->
+            <div class="newBoxnewsContent" style="margin-right: 4px;">
+                <div class="acc-menu2 aim" style="margin: 0px auto;">
+                    @foreach (var item in Model.Where(a => a.DisplayOrder == 15))
+                    {
+                        if (flg)
+                        {
+                        <div class="rightHeadNewsTitle">
+                            <a class="aSectionTitle" href="/News/newssection?SecID=@item.SectionID&JournalID=@JID">@item.SecTitle</a>
+                        </div>
+                        <div class="headNews">
+                            <a href="/news/newdetails?ID=@item.NewsID&JournalID=@JID">
+                                <h3 class="boxH3">@item.Title</h3>
+                            </a>
+                            <div class="imgPost">
+                                <a href="/news/newdetails?ID=@item.NewsID&JournalID=@JID"><img src="https://Images.akhbarelyom.com/images/images/large/@item.PictureName1" class="newimageSS" id="hoverImg" alt="@item.Breif" /></a>
+                            </div>
+                        </div>
+                            flg = false;
+                        }
+                        else
+                        {
+                            if (count < 3)
+                            {
+                        <div class="newboxnewsnew">
+                            <div class="secPostImg">
+                                <a href="/news/newdetails?ID=@item.NewsID&JournalID=@JID">
+                                    <img src="https://Images.akhbarelyom.com/images/images/small/@item.PictureName1"></a>
+                            </div>
+                            <div class="dataDboX"><a href="/news/newdetails?ID=@item.NewsID&JournalID=@JID">
+                                <p class="titePostN">
+                                    @item.Title</p></a>
+                                <p class="titePostDISC">
+                                    @item.Breif</p>
+                            </div>
+                        </div>
+                            }
+                        }
+                        count++;
+                    }
+                </div>
+            </div>
+            <hr class="borderLeftSection" />
+            @{flg = true; count = 0;}
+            <div class="newBoxnewsContent">
+                <div class="acc-menu2 aim" style="margin: 0px auto;">
+                    @foreach (var item in Model.Where(a => a.DisplayOrder == 16))
+                    {
+                        if (flg)
+                        {
+                        <div class="leftHeadNewsTitle">
+                            <a class="aSectionTitle" href="/News/newssection?SecID=@item.SectionID&JournalID=@JID">@item.SecTitle</a>
+                        </div>
+                        <div class="headNews">
+                            <a href="/news/newdetails?ID=@item.NewsID&JournalID=@JID">
+                                <h3 class="boxH3">@item.Title</h3>
+                            </a>
+                            <div class="imgPost secondimgpost">
+                                <a href="/news/newdetails?ID=@item.NewsID&JournalID=@JID"><img src="https://Images.akhbarelyom.com/images/images/large/@item.PictureName1" class="newimageSS" id="hoverImg" alt="@item.Breif" /></a>
+                            </div>
+                        </div>
+                            flg = false;
+                        }
+                        else
+                        {
+                            if (count < 3)
+                            {
+                        <div class="newboxnewsnew">
+                            <div class="secPostImg lftBox">
+                                <a href="/news/newdetails?ID=@item.NewsID&JournalID=@JID">
+                                    <img src="https://Images.akhbarelyom.com/images/images/small/@item.PictureName1"></a>
+                            </div>
+                            <div class="dataDboX"><a href="/news/newdetails?ID=@item.NewsID&JournalID=@JID">
+                                <p class="titePostN">
+                                    @item.Title</p></a>
+                                <p class="titePostDISC">
+                                    @item.Breif</p>
+                            </div>
+                        </div>
+                            }
+                        }
+                        count++;
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end block1Rit -->
+    <!-- start block1Lft -->
+    <div class="block1Lft">
+        <div class="adv2">
+            <!-- start adv2 -->
+            <div class="adv-code">
+                <a href="#">
+                    @Html.Action("GetBlockTextList", "Blocks", new { BlockID = 4, JournalID = JID })
+            </div>
+        </div>
+        <!-- end adv2 -->
+        @Html.Action("GetComicsofDayList", "Galleries")
+         <div class="files facebookLiquid" style="height: 282px; margin-top: 17.75px;">
+            <div class="newTitle-red">
+                <h4 class="vh4">
+                    تابعنا علي الفيس بوك</h4>
+            </div>
+            <div class="div-files">
+                <div class="fb-like-box" data-href="https://www.facebook.com/Alakhbargate" data-width="299" data-show-faces="true" data-stream="false" data-border-color="ffffff" data-header="false"></div>
+
+
+            </div>
+        </div>
+    </div>
+    <!-- end block1Lft -->
+</div>
+@*<script type="text/javascript">
+    $(document).ready(function () {
+        jQuery('.acc-menu2').AccordionImageMenu({
+            'border': 5,
+            'openItem': 0,
+            'color': '#ffffff',
+            'duration': 950,
+            'position': 'vertical',
+            'openDim': 170,
+            'closeDim': 100,
+            'effect': 'easeOutBack',
+            'width': 300
+        });
+
+    });
+</script>*@
+<script>
+    $(document).ready(function () {
+        //$('.acc-menu2 span.title').jTruncate();
+        $('.acc-menu2 span.title').jTruncate({
+            length: 40,
+            minTrail: 0,
+            moreText: "",
+            lessText: "",
+            ellipsisText: "...",
+            moreAni: "fast",
+            lessAni: 2000
+        });
+        $('.acc-menu2 span.details').jTruncate({
+            length: 100,
+            minTrail: 0,
+            moreText: "",
+            lessText: "",
+            ellipsisText: "...",
+            moreAni: "fast",
+            lessAni: 2000
+        });
+    });
+</script>

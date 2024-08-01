@@ -1,0 +1,29 @@
+﻿@model IEnumerable<AkhbarElyoum.Models.Editors>
+
+<div class="post-meta-author">
+
+    <i class="fa fa-user"></i>
+
+        @foreach (var item in Model)
+        {
+        <a href="/Editors/EditorNews/@item.EditorID/1/@(AkhbarElyoum.Controllers.HomeController.GetPureURL(item.EditorName))" title="@item.EditorName">
+            @if (item == Model.Last())
+            {
+            <h5>@item.EditorName</h5>
+            }
+            else
+            {
+                <h5>@item.EditorName - </h5>
+            }
+        </a>
+        }
+    
+    
+
+
+
+</div>
+
+
+
+

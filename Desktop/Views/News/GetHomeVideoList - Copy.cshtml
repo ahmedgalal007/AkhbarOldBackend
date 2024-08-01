@@ -1,0 +1,88 @@
+﻿@model IEnumerable<AkhbarElyoum.Models.NewsDetails>
+@{string JID = AkhbarElyoum.Controllers.HomeController.GetJournalID(HttpContext.Current.Request.Url.Host, int.Parse((HttpContext.Current.Request.QueryString["JournalID"] != null) ? HttpContext.Current.Request.QueryString["JournalID"].ToString() : "0"));}
+@{int counter = 0;}
+
+
+
+<section class="module" id="tv">
+    <div class="container">
+        <div class="nohighlight">
+
+            <h2>
+                <a href="/news/newssection/156/1/@(AkhbarElyoum.Controllers.HomeController.GetPureURL("فيديوهات بوابة أخبار اليوم الإلكترونية"))"   title="فيديوهات بوابة أخبار اليوم الإلكترونية" class="HomeSecTitle">أخبار اليوم T.V</a>
+            </h2>
+
+
+            @foreach (var item in @Model)
+            {
+
+
+                if (counter == 0)
+                {
+                    <div class="col-md-9 col-sm-9">
+                        <div class="entry-block-full">
+                            <div class="image-full">
+                                <a href="/news/VideoDisplay/@item.NewsID/@JID/@(AkhbarElyoum.Controllers.HomeController.GetPureURL(item.Title))"   title="@item.Title">
+                                    <img src="https://Images.akhbarelyom.com/images/images/medium/@item.PictureName1" alt="@item.Title"/>
+                                </a>
+                            </div>
+                            <div class="content">
+                                <div class="title-left title-style04 underline04">
+                                    <h3><a href="/news/VideoDisplay/@item.NewsID/@JID/@(AkhbarElyoum.Controllers.HomeController.GetPureURL(item.Title))"   title="@item.Title">@item.Title</a></h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+
+
+                if (counter == 0)
+                {
+
+                    ViewContext.Writer.Write("<div class=\"col-md-3 col-sm-3\">");
+                    ViewContext.Writer.Write("<div class=\"video-sidebar\">");
+                }
+
+
+
+                if (counter > 0 && counter < 3)
+                {
+                        <!-- Begin .sidebar-block -->
+                    <div class="sidebar-block">
+                        <div class="video-container">
+                            <div class="item-image">
+
+                                <a class="img-link" href="/news/VideoDisplay/@item.NewsID/@JID/@(AkhbarElyoum.Controllers.HomeController.GetPureURL(item.Title))"   title="@item.Title">
+                                    <img class="img-responsive img-full" src="https://Images.akhbarelyom.com/images/images/small/@item.PictureName1" alt="@item.Title"><span class="play-icon"></span>
+                                </a>
+
+                                <div class="mt-65">
+                                    <h4>
+                                        <a href="/news/VideoDisplay/@item.NewsID/@JID/@(AkhbarElyoum.Controllers.HomeController.GetPureURL(item.Title))" class="video-link"   title="@item.Title">@item.Title</a>
+                                    </h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+
+                if (counter == 3)
+                {
+
+                    ViewContext.Writer.Write(" </div> </div>");
+
+                }
+                counter++;
+
+            }
+
+        </div>
+    </div>
+</section>
+
+
+
+
+
+
+

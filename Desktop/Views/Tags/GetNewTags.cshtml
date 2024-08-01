@@ -1,0 +1,23 @@
+﻿@model IEnumerable<AkhbarElyoum.Models.Tags>
+@{
+    string JID = AkhbarElyoum.Controllers.HomeController.GetJournalID(HttpContext.Current.Request.Url.Host, int.Parse((HttpContext.Current.Request.QueryString["JournalID"] != null) ? HttpContext.Current.Request.QueryString["JournalID"].ToString() : "0"));
+
+}
+
+<div class="post-tags">
+
+    <span class="post-tags_title">الكلمات الدالة :</span>
+
+    @foreach (var item in Model)
+    {
+        <a class="post-tags_link" href="/Tags/NewsTagList/@item.TagID/@JID/@(AkhbarElyoum.Controllers.HomeController.GetPureURL(item.TagName))" >
+          <h6>  @item.TagName </h6>
+        </a>
+    }
+
+
+</div>
+
+
+
+

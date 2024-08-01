@@ -1,0 +1,149 @@
+﻿@model IEnumerable<AkhbarElyoum.Models.Sections>
+@using AkhbarElyoum.Models;
+
+@{int count = 0;
+    string JID = AkhbarElyoum.Controllers.HomeController.GetJournalID(HttpContext.Current.Request.Url.Host, int.Parse((HttpContext.Current.Request.QueryString["JournalID"] != null) ? HttpContext.Current.Request.QueryString["JournalID"].ToString() : "0"));
+}
+
+
+<footer id="footer">
+    <!-- Begin .parallax -->
+    <div class="container">
+        <div class="row no-gutter">
+
+            <div class="footer-post">
+
+                @foreach (var item in Model)
+                {
+                    if (count == 0)
+                    {
+                        ViewContext.Writer.Write(" <ul>");
+                        ViewContext.Writer.Write("<li class=\"col-md-2 col-sm-6 col-xs-6\">");
+                        ViewContext.Writer.Write("<div class=\"item\">");
+                    }
+
+                    count++;
+
+                    if (count > 0 && count < 8)
+                    {
+                        <div class="item-content">
+                            <h4 class="ellipsis">
+                                <a href="/news/newssection/@item.SectionID/@JID/@(AkhbarElyoum.Controllers.HomeController.GetPureURL(item.SectionName))"  title="@item.SectionName">@item.SectionName</a>
+                            </h4>
+                        </div>
+
+
+                    }
+
+
+                    if (count == 7)
+                    {
+                        ViewContext.Writer.Write("</div></li>");
+                        ViewContext.Writer.Write("<li class=\"col-md-2 col-sm-6 col-xs-6\">");
+                        ViewContext.Writer.Write("<div class=\"item\">");
+                    }
+
+                    if (count > 7 && count < 15)
+                    {
+                        <div class="item-content">
+                            <h4 class="ellipsis">
+                                <a href="/news/newssection/@item.SectionID/@JID/@(AkhbarElyoum.Controllers.HomeController.GetPureURL(item.SectionName))"  title="@item.SectionName">@item.SectionName</a>
+                            </h4>
+                        </div>
+
+
+                    }
+
+                    if (count == 14)
+                    {
+                        ViewContext.Writer.Write("</div></li>");
+                        ViewContext.Writer.Write("<li class=\"col-md-2 col-sm-6 col-xs-6\">");
+                        ViewContext.Writer.Write("<div class=\"item\">");
+                    }
+
+                    if (count > 15 && count < 23)
+                    {
+                        <div class="item-content">
+                            <h4 class="ellipsis">
+                                <a href="/news/newssection/@item.SectionID/@JID/@(AkhbarElyoum.Controllers.HomeController.GetPureURL(item.SectionName))" title="@item.SectionName">@item.SectionName</a>
+                            </h4>
+                        </div>
+
+
+                    }
+
+                    if (count == 22)
+                    {
+                        ViewContext.Writer.Write("</div></li>");
+                        ViewContext.Writer.Write("<li class=\"col-md-2 col-sm-6 col-xs-6\">");
+                        ViewContext.Writer.Write("<div class=\"item\">");
+                    }
+
+                    if (count > 22)
+                    {
+                        <div class="item-content">
+                            <h4 class="ellipsis">
+							
+							
+							@if (item.SectionID == 157)
+                {
+								<a href="/Galleries/GallerySection/@item.SectionID/@JID/@(AkhbarElyoum.Controllers.HomeController.GetPureURL(item.SectionName))" title="@item.SectionName">@item.SectionName</a>
+                }else{
+                                <a href="/news/newssection/@item.SectionID/@JID/@(AkhbarElyoum.Controllers.HomeController.GetPureURL(item.SectionName))" title="@item.SectionName">@item.SectionName</a>
+						}
+
+						
+                            </h4>
+                        </div>
+
+                    }
+
+
+                    if (@item == Model.Last())
+                    {
+
+                        ViewContext.Writer.Write("</div></li><li class=\"col-md-4 col-sm-6 col-xs-6 text-left footer-logo\">");
+                        ViewContext.Writer.Write("<img alt = \"بوابة اخبار اليوم\" src=\"/img/Footerlogo.png\" />");
+                        ViewContext.Writer.Write("</li></ul>");
+                    }
+
+
+                }
+
+
+
+            </div>
+        </div>
+    </div>
+    <!-- End.parallax -->
+</footer>
+
+
+
+
+
+
+
+<!--========== BEGIN #COPYRIGHTS==========-->
+<div id="copyrights">
+    <!-- Begin.container -->
+    <div class="container">
+        <!-- Begin.copyright -->
+        <div class="copyright">
+
+            <h1 class="HeaderPage1">
+                <a  href="/Home/WhoWeAre/عن-مؤسسة-اخبار-اليوم">© الحقوق محفوظة لمؤسسة أخبار اليوم 1944 - 2018 </a>
+            </h1>
+            <h5 class="CopyRightTag">
+                <a  href="/Home/Responsibility/اتصل-بنا">اتصل بنا</a>
+            </h5>
+            <h5 class="CopyRightTag">
+                <a  href="/Home/Privacy/سياسة-الخصوصية"> سياسة الخصوصية</a>
+            </h5>
+            <h5 class="CopyRightTag">
+                <a  href="/Home/Advertising/للإعلان"> للإعلان </a>
+            </h5>
+
+        </div>
+    </div>
+</div>

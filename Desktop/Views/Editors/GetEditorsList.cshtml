@@ -1,0 +1,58 @@
+
+@{int count = 0;string JID = AkhbarElyoum.Controllers.HomeController.GetJournalID(HttpContext.Current.Request.Url.Host, int.Parse((HttpContext.Current.Request.QueryString["JournalID"] != null) ? HttpContext.Current.Request.QueryString["JournalID"].ToString() : "0"));}
+
+
+ 
+<div class="row">
+    <div class="col-xs-12">
+        <div class="section-header-normal">
+             <a href="/News/Articles/@JID/«·„ﬁ«·« "><span class="section-header-name">
+                ﬂ «» «·«Œ»«—</span> <i class="fa fa-ellipsis-h fa-2x"></i></a>
+        </div>
+    </div>
+</div>
+
+   
+   
+
+<div class="section-carousel-gp">
+     <div id="section-carouselNextBtn-Article" class="topstoryNextBtnM">
+        <span class="fa fa-arrow-left"></span>
+    </div>
+    <div id="section-carouselPrevBtn-Article" class="topstoryPrevBtnM">
+        <span class="fa fa-arrow-right"></span>
+    </div>
+    
+        
+    <div id="section-carousel-Article" class="owl-carousel">
+
+        @foreach (var item in Model)
+        {                   
+            <div class="item">
+
+             <a href="/news/ArticleSectionList/@item.EditorID/@JID/@(AkhbarElyoum.Controllers.HomeController.GetPureURL(item.EditorName))" title="@item.ArticleName" class="topstory-block">
+                    <img alt="@item.EditorName" src="https://Images.akhbarelyom.com/images/images/small/editor@(item.EditorID).jpg" class="img-responsive"/>
+                    <div class="topstory-text">
+                        <span>@item.ArticleName</span>
+                    </div>
+                </a>
+              
+            </div>
+        }
+    </div>
+        
+    
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+

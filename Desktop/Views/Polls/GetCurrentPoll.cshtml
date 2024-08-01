@@ -1,0 +1,68 @@
+﻿@*
+
+
+
+<div class="poll-section hidden-sm hidden-xs">
+      <div class="row">
+          <div class="col-xs-12">
+              <div class="section-header-normal">
+                  <a href="#">
+                      <span class="section-header-name">استطلاع الرأي</span>
+                      <i class="fa fa-ellipsis-h fa-2x"></i>
+                  </a>
+              </div>
+          </div>
+      </div>
+      <div class="poll-bg"  data-poll="<?= $poll['poll_id']; ?>">
+          <div class="adpt_errors" >
+          </div>
+          <div class="poll-row">
+              <h4 class="text-center"><?= $poll['title']; ?></h4>
+          </div>
+          <div class="pollhtmlcontent">
+          <?php foreach ($poll['options'] as $option) { ?>
+              <div class="poll-row">
+                  <div class="poll-option">
+                      <input type="radio" name="voting" value="<?= $option['option_id']; ?>">
+                      <span><?php echo $option['title']; ?>  <!---(<?php echo $option['votes']; ?>)---></span>
+                  </div>
+                  <div class="progress margin-top2">
+                      <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: <?= $option['percentage']; ?>%;">
+                        <?= $option['percentage']; ?>%
+                      </div>
+                  </div>
+              </div>
+          <?php } ?>
+          </div>
+          <div class="poll-row margin-top2">
+              <a id="dovote" type="button" class="vote-poll" onclick="addvote(event);">تصويت</a>
+          </div>
+      </div>
+  </div>
+
+  
+<script>
+    function addvote(event) {
+        event.preventDefault();
+        var optionid = $(".poll-bg input[type='radio']:checked").val();
+        console.log('the option id is : ' + optionid);
+        var pollid = $('.poll-bg').attr('data-poll');
+        console.log('the poll id is : ' + pollid);
+        var str = { 'option_id': optionid, 'poll_id': pollid };
+        $.post('<?=base_url()?>admin/poll/vote', str, function (response) {
+            var jsonObj = $.parseJSON(response);
+            if (jsonObj.fail == false) {
+                $.post('<?=base_url()?>admin/poll/newpollvalue', str, function (responsedata) {
+                    $('.pollhtmlcontent').html(responsedata);
+                });
+            } else {
+                $('.adpt_errors').html(jsonObj.error_messages).hide().slideDown();
+            }
+        });
+    };
+</script>
+
+
+
+
+*@

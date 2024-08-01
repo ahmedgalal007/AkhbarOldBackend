@@ -1,0 +1,37 @@
+﻿@model IEnumerable<AkhbarElyoum.Models.NewsDetails>
+@{int count = 0;string JID = AkhbarElyoum.Controllers.HomeController.GetJournalID(HttpContext.Current.Request.Url.Host, int.Parse((HttpContext.Current.Request.QueryString["JournalID"] != null) ? HttpContext.Current.Request.QueryString["JournalID"].ToString() : "0"));}
+
+
+  <div class="most-section hidden-sm hidden-xs">
+      <div class="row">
+          <div class="col-xs-12">
+              <div class="section-header-normal">
+                  <a href="#">
+                      <span class="section-header-name">الاكثر قراءة</span>
+                      <i class="fa fa-ellipsis-h fa-2x"></i>
+                  </a>
+              </div>
+          </div>
+      </div>
+     @foreach (var item in Model)
+     {
+          <div class="row">
+              <div class="col-xs-12">
+                  <div class="row">
+                      <a href="/news/newdetails/@item.NewsID/@JID/@(AkhbarElyoum.Controllers.HomeController.GetPureURL(item.Title)).html" class="news-section-4-block news-section-2-block">
+                          <div class="col-xs-6">
+                              <img src="/images/images/small/@item.PictureName1" alt="@item.Title" class="img-responsive">
+                          </div>
+                          <div class="col-xs-6">
+                              <span>@item.Title</span>
+                          </div>
+                      </a>
+                  </div>
+              </div>
+          </div>
+     }
+  </div>
+
+
+
+

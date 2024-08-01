@@ -1,0 +1,61 @@
+﻿@model IEnumerable<AkhbarElyoum.Models.Gallery>
+@{
+    string JID = AkhbarElyoum.Controllers.HomeController.GetJournalID(HttpContext.Current.Request.Url.Host, int.Parse((HttpContext.Current.Request.QueryString["JournalID"] != null) ? HttpContext.Current.Request.QueryString["JournalID"].ToString() : "0"));
+}
+<!-- start album & facebook -->
+
+<section class="module" id="Gallery">
+    <div class="container">
+        <div class="nohighlight">
+            <!--========== BEGIN .COL-MD-12 ==========-->
+            <div class="col-md-12">
+                <!--========== BEGIN .NEWS ==========-->
+                <div class="news">
+
+                    <h2>
+                        <a href="/Galleries/GallerySection/157/1/ألبومات-الصور" title="ألبومات الصور"  class="HomeSecTitle"> ألبومات الصور</a>
+                    </h2>
+
+                    <div class="row">
+
+                        @foreach (var item in Model)
+                        {
+
+                            <div class="col-md-3 col-sm-6 col-xs-6">
+                                <!-- Begin .container-half -->
+                                <div class="container-half container-half-custom">
+                                    <a href="/Galleries/Album/@item.GalleryID/1/@(AkhbarElyoum.Controllers.HomeController.GetPureURL(item.Title))" title="@item.Title" class="entry-media img-link">
+                                        <img class="image" src="https://images.akhbarelyom.com/images/images/GalleryImages/@item.GDate.Value.ToString("yyyyMMdd")/@item.MainPicture" alt="@item.Title" />
+                                    </a>
+                                    <div class="content">
+                                        <h4><a href="/Galleries/Album/@item.GalleryID/1/@(AkhbarElyoum.Controllers.HomeController.GetPureURL(item.Title))"  title="@item.Title">@item.Description</a></h4>
+                                    </div>
+                                </div>
+                                <!-- End .container- entry- -->
+                            </div>
+
+                        }
+
+
+                    </div>
+
+                </div>
+                <!--========== End .NEWS ==========-->
+            </div>
+            <!--========== End .COL-MD-12 ==========-->
+        </div>
+    </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- end photos album -->

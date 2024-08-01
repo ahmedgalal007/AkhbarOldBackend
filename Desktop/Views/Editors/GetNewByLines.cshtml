@@ -1,0 +1,95 @@
+﻿@model IEnumerable<AkhbarElyoum.Models.Editors>
+
+   @*public enum EditorType { Editor = 1, Photographer = 2, Infographer = 3, Videographer = 4 }*@
+
+
+    <div class="post-meta-author">
+
+        <i class="fa fa-user"></i>
+        @foreach (var item in Model.Where(a => a.ArticleName == "1"))
+        {
+                <a href="/Editors/EditorNews/@item.EditorID/1/@(AkhbarElyoum.Controllers.HomeController.GetPureURL(item.EditorName))" title="@item.EditorName">
+                    @if (item == Model.Last())
+                    {
+                        <h5>@item.EditorName</h5>
+                    }
+                    else
+                    {
+                        <h5>@item.EditorName - </h5>
+                    }
+                </a>
+
+        }
+
+    </div>
+
+
+
+    @if (Model.Where(a => a.ArticleName == "2").Count() > 0)
+    {
+    <div class="post-meta-author">
+        <i> تصوير : </i>
+        @foreach (var item in Model.Where(a => a.ArticleName == "2"))
+        {
+            <a href = "/Editors/EditorNews/@item.EditorID/1/@(AkhbarElyoum.Controllers.HomeController.GetPureURL(item.EditorName))" title="@item.EditorName">
+                @if (item == Model.Last())
+                {
+                    <h5>@item.EditorName</h5>
+                }
+                else
+                {
+                    <h5>@item.EditorName - </h5>
+                }
+            </a>
+        }
+
+    </div>
+
+    }
+
+
+    @if (Model.Where(a => a.ArticleName == "3").Count() > 0)
+    {
+    <div class="post-meta-author">
+        <i> إنفوجراف : </i>
+        @foreach (var item in Model.Where(a => a.ArticleName == "3"))
+        {
+        <a href="/Editors/EditorNews/@item.EditorID/1/@(AkhbarElyoum.Controllers.HomeController.GetPureURL(item.EditorName))" title="@item.EditorName">
+            @if (item == Model.Last())
+            {
+    <h5>@item.EditorName</h5>
+            }
+            else
+            {
+        <h5>@item.EditorName - </h5>
+            }
+        </a>
+        }
+
+    </div>
+    }
+
+
+@if (Model.Where(a => a.ArticleName == "4").Count() > 0)
+{
+    <div class="post-meta-author">
+        <i> فيديوجراف : </i>
+        @foreach (var item in Model.Where(a => a.ArticleName == "4"))
+        {
+        <a href = "/Editors/EditorNews/@item.EditorID/1/@(AkhbarElyoum.Controllers.HomeController.GetPureURL(item.EditorName))" title="@item.EditorName">
+            @if (item == Model.Last())
+            {
+    <h5>@item.EditorName</h5>
+            }
+            else
+            {
+        <h5>@item.EditorName - </h5>
+            }
+        </a>
+        }
+
+    </div>
+}
+
+
+

@@ -1,0 +1,75 @@
+﻿
+@model IEnumerable<AkhbarElyoum.Models.Sections>
+@{
+    string JID = AkhbarElyoum.Controllers.HomeController.GetJournalID(HttpContext.Current.Request.Url.Host, int.Parse((HttpContext.Current.Request.QueryString["JournalID"] != null) ? HttpContext.Current.Request.QueryString["JournalID"].ToString() : "0"));
+    Layout = "../Shared/_LayoutInner.cshtml";
+     
+    int count = 0;
+    ViewBag.Title = "Rss";
+
+}
+
+
+@section Meta{
+
+	<title>RSS | بوابة أخبار اليوم الإلكترونية</title>
+		<meta name="description" content="بوابة اخبار اليوم تقدم احدث واهم اخبار مصر على مدار اليوم مع تغطيات مصورة صور الاحداث وفيديوهات حصريه لها اولا باول كما نقدم اهم اخبار الرياضة والفن والاقتصاد والحوادث" />
+		<meta name="keywords" content="بوابة أخبار اليوم الإلكترونية| RSS" />
+	<meta property="og:title" content="بوابة أخبار اليوم الإلكترونية | RSS">
+}
+
+
+
+@section home{
+
+
+
+
+<div class="container">
+
+    <div class="row">
+
+        <div class="col-md-8 section-news">
+            <div class="news-section-2">
+                @foreach (var item in Model)
+                {
+
+                    if (count == 0)
+                    {
+           
+                    <div class="row">
+                        <h1>
+                            <div class="col-xs-12">
+                                <div class="section-header-normal">
+                                    <a href="/RSS/GetSectionRSS?JournalID=@JID">
+                                        <span class="section-header-name">RSS </span> <i class="fa-2x">
+                                        </i></a>
+                                </div>
+                            </div>
+                        </h1>
+                    </div>
+                    }
+                    
+                    
+                   <div style="width:100%; padding:50px;">
+                    <div style="width:30%;float:right;">
+                        @Html.DisplayFor(modelItem => item.SectionName)
+                    </div>
+                    <div  style="width:50%;float:left;">@Html.ActionLink("RSS", "GetSectionNewsRSS", new { JournalID = @JID, SectionID = @item.SectionID }, "RSS")
+                    </div>
+                </div>
+                    
+                    count++;
+  
+                }
+                      
+            </div>
+           
+        </div>
+
+         @Html.Action("GetSiteLeftSideServicesInner", "Home", new { JournalID = JID })
+    </div>
+</div>
+
+
+ }

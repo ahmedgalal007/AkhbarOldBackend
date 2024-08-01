@@ -1,0 +1,35 @@
+﻿@model IEnumerable<AkhbarElyoum.Models.Gallery>
+@{
+    string JID = AkhbarElyoum.Controllers.HomeController.GetJournalID(HttpContext.Current.Request.Url.Host, int.Parse((HttpContext.Current.Request.QueryString["JournalID"] != null) ? HttpContext.Current.Request.QueryString["JournalID"].ToString() : "0"));
+    Layout = null;
+    //"../Shared/_Layout" + JID + ".cshtml";
+    int count = 0;
+    var cssclass = "";
+    int? SectionID = 0;
+    string SecID = "0";
+    int galleryid = 0;
+    if (Model.Count() > 0)
+    {
+        ViewBag.Title = @Model.FirstOrDefault().Title;
+        galleryid = @Model.FirstOrDefault().GalleryID;
+    }
+
+}
+
+@foreach (var item in Model)
+{
+    <div class="ImgView">
+        <a href="https://Images.akhbarelyom.com/images/images/large/@item.Picturename" class="highslide" onclick="return hs.expand(this)">
+            <img style="height:294px;max-width:297px;" src="https://Images.akhbarelyom.com/images/images/large/@item.Picturename" title="Click to enlarge" />
+        </a>
+
+    </div>
+    count++;
+    if (count == Model.Count())
+    {
+        <p class="lastid" idx="@item.pictureid">
+        </p>
+        ViewContext.Writer.Write("</div>");
+    }
+
+}

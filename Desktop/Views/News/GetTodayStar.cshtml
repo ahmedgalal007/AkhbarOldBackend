@@ -1,0 +1,29 @@
+﻿@model IEnumerable<AkhbarElyoum.Models.NewsDetails>
+@{
+    string JID = AkhbarElyoum.Controllers.HomeController.GetJournalID(HttpContext.Current.Request.Url.Host, int.Parse((HttpContext.Current.Request.QueryString["JournalID"] != null) ? HttpContext.Current.Request.QueryString["JournalID"].ToString() : "0"));
+    Layout = null;
+}
+<div class="star2dayContainer">
+    <div id="pageContainer">
+        <h1>
+            <a href="https://sixrevisions.com/tutorials/javascript_tutorial/create-a-slick-and-accessible-slideshow-using-jquery/">
+                Slick Slideshow using jQuery</a></h1>
+        <!-- Slideshow HTML -->
+        <div id="slideshow">
+            <div id="slidesContainer">
+                @foreach (var item in Model)
+                {
+                    <div class="slide">
+                        <a href="/news/newdetails/@item.NewsID/@JID/@(AkhbarElyoum.Controllers.HomeController.GetPureURL(item.Title))">
+                            <h2>@item.Title</h2>
+                        </a>
+                        <p>
+                            <a href="/news/newdetails/@item.NewsID/@JID/@(AkhbarElyoum.Controllers.HomeController.GetPureURL(item.Title))">
+                                <img src="https://Images.akhbarelyom.com/images/images/small/@item.PictureName1" alt="@item.Title" width="215" height="145" /></a>@item.Breif</p>
+                    </div>
+                }
+            </div>
+        </div>
+        <!-- Slideshow HTML -->
+    </div>
+</div>

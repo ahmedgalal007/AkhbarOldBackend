@@ -1,0 +1,330 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 24, 24.5" name="AkhbarElyoum">
+  <DataContextMoniker Name="/AkhbarElyoumDataContext" />
+  <nestedChildShapes>
+    <classShape Id="c39c8880-bf62-4d8b-bfe5-07e4e65ced29" absoluteBounds="0.75, 8.75, 2, 2.1554996744791666">
+      <DataClassMoniker Name="/AkhbarElyoumDataContext/AdminEditor" />
+      <nestedChildShapes>
+        <elementListCompartment Id="dea13667-da61-423d-9311-b67373c562fe" absoluteBounds="0.765, 9.21, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="b96089e8-532b-4332-b4fe-ad6ce4a0ced6" absoluteBounds="3.75, 9.75, 2, 2.7324039713541666">
+      <DataClassMoniker Name="/AkhbarElyoumDataContext/VideoFeed" />
+      <nestedChildShapes>
+        <elementListCompartment Id="fa7e0c85-5af1-442d-9492-ae954b510da0" absoluteBounds="3.765, 10.21, 1.9700000000000002, 2.1724039713541665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="44097291-8cc4-4bea-8caf-f2ebeadaf0de" absoluteBounds="9.5, 6.875, 2, 2.1554996744791666">
+      <DataClassMoniker Name="/AkhbarElyoumDataContext/AdminLog" />
+      <nestedChildShapes>
+        <elementListCompartment Id="45a536f3-1de2-4b6c-959d-131b22831491" absoluteBounds="9.515, 7.335, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="d2b686f5-4ce2-4b4f-8eb1-0dd8e0c9d5f2" absoluteBounds="6.75, 7, 2, 1.9631982421874996">
+      <DataClassMoniker Name="/AkhbarElyoumDataContext/AdminUser" />
+      <nestedChildShapes>
+        <elementListCompartment Id="50b04c7d-e8b9-499e-8d59-a0086d310cef" absoluteBounds="6.765, 7.46, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="aa3a0aa4-23a1-4da6-b0db-a03aaae54bf8" absoluteBounds="6.75, 10.75, 2, 1.5785953776041666">
+      <DataClassMoniker Name="/AkhbarElyoumDataContext/Attachment" />
+      <nestedChildShapes>
+        <elementListCompartment Id="e1fe6739-5394-456a-bf1b-89b7d3932fe9" absoluteBounds="6.765, 11.21, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="d96f3004-288d-4081-95b1-ee1a21440042" absoluteBounds="9.75, 10.75, 2, 1.3862939453124987">
+      <DataClassMoniker Name="/AkhbarElyoumDataContext/ComicsofDay" />
+      <nestedChildShapes>
+        <elementListCompartment Id="82be0e9d-936f-4dd5-9fb9-758ad3ea683d" absoluteBounds="9.765, 11.21, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="0cc44e0c-b305-4714-87c8-cd9b38f891b1" absoluteBounds="12.75, 0.75, 2, 2.1554996744791666">
+      <DataClassMoniker Name="/AkhbarElyoumDataContext/Editor" />
+      <nestedChildShapes>
+        <elementListCompartment Id="1ec77ae9-51b3-42cd-9645-fb7bd53261aa" absoluteBounds="12.765, 1.21, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="f29b331b-b120-4ec9-a642-f70b0a6f3478" absoluteBounds="12.75, 3.25, 2, 1.3862939453125005">
+      <DataClassMoniker Name="/AkhbarElyoumDataContext/Employee" />
+      <nestedChildShapes>
+        <elementListCompartment Id="15c6c72d-8031-4708-8abc-81534303a8da" absoluteBounds="12.765, 3.71, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="4ae29eca-b323-40be-97c3-5be3ef853b95" absoluteBounds="12.75, 5.25, 2, 2.5401025390625005">
+      <DataClassMoniker Name="/AkhbarElyoumDataContext/Gallery" />
+      <nestedChildShapes>
+        <elementListCompartment Id="d38adf5e-e956-44ff-ae22-d91c234cf4c3" absoluteBounds="12.765, 5.71, 1.9700000000000002, 1.9801025390625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="b82d03d0-1766-4188-8db4-d2c7a2c6934b" absoluteBounds="12.75, 10.75, 2, 1.1939925130208344">
+      <DataClassMoniker Name="/AkhbarElyoumDataContext/GalleryPicture" />
+      <nestedChildShapes>
+        <elementListCompartment Id="66748de7-3be3-4576-8d04-938aa4ab3e9b" absoluteBounds="12.765, 11.21, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="1bc89868-5e2b-40d6-8cfa-8915391f8fe1" absoluteBounds="12.75, 12.75, 2, 1.3862939453124987">
+      <DataClassMoniker Name="/AkhbarElyoumDataContext/HomeMostCommented" />
+      <nestedChildShapes>
+        <elementListCompartment Id="2a6b4259-2cb6-4556-b2ee-a332c1731a64" absoluteBounds="12.765, 13.21, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="514ada3d-b472-4d61-8040-7db72a857816" absoluteBounds="6.75, 3.875, 2, 1.7708968098958326">
+      <DataClassMoniker Name="/AkhbarElyoumDataContext/Issue" />
+      <nestedChildShapes>
+        <elementListCompartment Id="a983bdc1-7be8-463e-8a51-39e52cc0c316" absoluteBounds="6.765, 4.335, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="4b830675-ee75-4684-a5fc-fb94a3910d41" absoluteBounds="9.5, 4.25, 2, 1.1939925130208344">
+      <DataClassMoniker Name="/AkhbarElyoumDataContext/IssuesNew" />
+      <nestedChildShapes>
+        <elementListCompartment Id="497d77a1-e411-4e64-9d93-2ec11f48a28d" absoluteBounds="9.515, 4.71, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="a7dab624-ce64-42ff-810c-6bbe8a5cffa1" absoluteBounds="0.75, 13.75, 2, 1.5785953776041666">
+      <DataClassMoniker Name="/AkhbarElyoumDataContext/IssuesTopNew" />
+      <nestedChildShapes>
+        <elementListCompartment Id="c1f8077e-b358-459a-80ae-298c35a40c2e" absoluteBounds="0.765, 14.21, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="c08171d4-efc8-469a-8ea4-2159778b3ca4" absoluteBounds="3.75, 13.75, 2, 1.1939925130208344">
+      <DataClassMoniker Name="/AkhbarElyoumDataContext/Journal" />
+      <nestedChildShapes>
+        <elementListCompartment Id="6bbe305a-b709-4b68-a346-5fd48c4acdd3" absoluteBounds="3.765, 14.21, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="4aec2013-eec6-47f0-bce4-636055def2a7" absoluteBounds="6.75, 13.75, 2, 1.3862939453124987">
+      <DataClassMoniker Name="/AkhbarElyoumDataContext/LinkedNew" />
+      <nestedChildShapes>
+        <elementListCompartment Id="039b642e-bcce-43aa-9459-47d5630bc7f3" absoluteBounds="6.765, 14.21, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="f827a60c-eaca-4430-b6d5-3a2a76f38c98" absoluteBounds="15.75, 0.75, 2, 7.3476383463541666">
+      <DataClassMoniker Name="/AkhbarElyoumDataContext/New" />
+      <nestedChildShapes>
+        <elementListCompartment Id="51e7b019-a2cc-4502-8894-3492b76c263d" absoluteBounds="15.765, 1.21, 1.9700000000000002, 6.7876383463541661" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="53d4b6b1-86ad-4ef0-af85-33fefe80c21f" absoluteBounds="15.625, 10.5, 2, 1.3862939453124987">
+      <DataClassMoniker Name="/AkhbarElyoumDataContext/News_Video" />
+      <nestedChildShapes>
+        <elementListCompartment Id="393c573b-ec59-4cd9-a6fd-e3f77b7c36cd" absoluteBounds="15.64, 10.96, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="83ad5081-7b30-47b2-8ddd-1a34383ae919" absoluteBounds="9.75, 15.75, 2, 1.5785953776041666">
+      <DataClassMoniker Name="/AkhbarElyoumDataContext/NewsBlock" />
+      <nestedChildShapes>
+        <elementListCompartment Id="f87d4940-440e-4956-9d68-4ec089fc6eaa" absoluteBounds="9.765, 16.21, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="19994044-2ef8-4c84-9314-53b6903d2453" absoluteBounds="0.75, 6, 2, 1.3862939453125005">
+      <DataClassMoniker Name="/AkhbarElyoumDataContext/NewsCategory" />
+      <nestedChildShapes>
+        <elementListCompartment Id="4dc4d3fa-9ad4-4c43-a01b-63414c5ec767" absoluteBounds="0.765, 6.46, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="2507c9fa-9dad-45e6-8569-eb6691519b98" absoluteBounds="15.75, 12.75, 2, 1.1939925130208344">
+      <DataClassMoniker Name="/AkhbarElyoumDataContext/NewsGallery" />
+      <nestedChildShapes>
+        <elementListCompartment Id="7f0ade4e-3cef-4bf2-a0e5-15a849c09cd3" absoluteBounds="15.765, 13.21, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="1fc796eb-0fc1-4320-860c-ea41071da2cd" absoluteBounds="12.75, 15.75, 2, 1.1939925130208326">
+      <DataClassMoniker Name="/AkhbarElyoumDataContext/NewsGallery1" />
+      <nestedChildShapes>
+        <elementListCompartment Id="4bad3af7-7b8d-4867-8e8b-b6d27c69b6b2" absoluteBounds="12.765, 16.21, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="e9e195db-589d-451b-bef2-258ddaf5792a" absoluteBounds="15.75, 14.75, 2, 2.3478011067708344">
+      <DataClassMoniker Name="/AkhbarElyoumDataContext/NewsPicture" />
+      <nestedChildShapes>
+        <elementListCompartment Id="30fc13bf-db1e-4cae-aba2-d0bb2ac6ea81" absoluteBounds="15.765, 15.21, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="3adcef1f-ea37-46a4-af4d-b44334147e01" absoluteBounds="0.75, 16.75, 2, 1.1939925130208309">
+      <DataClassMoniker Name="/AkhbarElyoumDataContext/NewsPicturesCat" />
+      <nestedChildShapes>
+        <elementListCompartment Id="ac8017c4-0c5b-4a90-88b4-42f4e290b129" absoluteBounds="0.765, 17.21, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="e7488e35-1148-43d4-9af7-01f3376f10dd" absoluteBounds="3.125, 1, 2, 1.1939925130208335">
+      <DataClassMoniker Name="/AkhbarElyoumDataContext/NewsPoll" />
+      <nestedChildShapes>
+        <elementListCompartment Id="eaed9f1a-2e5b-4f18-8109-ef15d9187620" absoluteBounds="3.14, 1.46, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="948c6cd5-3de8-4587-a408-2eafd34ded6d" absoluteBounds="3.75, 16.75, 2, 2.3478011067708309">
+      <DataClassMoniker Name="/AkhbarElyoumDataContext/NewsSearch" />
+      <nestedChildShapes>
+        <elementListCompartment Id="527bd4c9-0f2c-4f9e-9b9b-964c102f0f37" absoluteBounds="3.765, 17.21, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="a6e6ce50-467f-4d01-a294-ad2f0a3f9c70" absoluteBounds="9.5, 1.25, 2, 1.1939925130208335">
+      <DataClassMoniker Name="/AkhbarElyoumDataContext/NewsSection" />
+      <nestedChildShapes>
+        <elementListCompartment Id="33e3128b-d30c-41c4-852a-c8afc076da00" absoluteBounds="9.515, 1.71, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="60a2f07a-a4f5-432f-9ea8-f2ec6e055afd" absoluteBounds="18.75, 0.75, 2, 1.1939925130208335">
+      <DataClassMoniker Name="/AkhbarElyoumDataContext/NewsTag" />
+      <nestedChildShapes>
+        <elementListCompartment Id="26151c2f-f0e0-4da9-8658-e9941edf8672" absoluteBounds="18.765, 1.21, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="f5c8bd57-e117-4cd6-bda9-afe15e592b8e" absoluteBounds="18.75, 2.75, 2, 1.7708968098958326">
+      <DataClassMoniker Name="/AkhbarElyoumDataContext/NewsTicker" />
+      <nestedChildShapes>
+        <elementListCompartment Id="d3cb0f2a-780f-4dc7-ba9a-02ac7eb36a4a" absoluteBounds="18.765, 3.21, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="0032a72d-21f8-47f2-bdb2-375dcf693b7c" absoluteBounds="18.75, 5.75, 2, 5.4246240234374987">
+      <DataClassMoniker Name="/AkhbarElyoumDataContext/NewsVersion" />
+      <nestedChildShapes>
+        <elementListCompartment Id="a93232a7-9fab-4ba8-8112-78fc304a76d2" absoluteBounds="18.765, 6.21, 1.9700000000000002, 4.8646240234375" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="21e0a2ce-5d52-4cef-9591-92227941c582" absoluteBounds="6.75, 18.75, 2, 1.1939925130208309">
+      <DataClassMoniker Name="/AkhbarElyoumDataContext/NewsView" />
+      <nestedChildShapes>
+        <elementListCompartment Id="84310bae-95a7-40bb-baef-f3d5756a30f9" absoluteBounds="6.765, 19.21, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="2d8b0e86-2e79-4b62-ad36-2b6a752f6fb7" absoluteBounds="9.75, 18.75, 2, 1.0016910807291666">
+      <DataClassMoniker Name="/AkhbarElyoumDataContext/NewsViewsLog" />
+      <nestedChildShapes>
+        <elementListCompartment Id="79974f7d-ef51-40d2-9b12-e4a83c0d3565" absoluteBounds="9.765, 19.21, 1.9700000000000002, 0.44169108072916669" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="5b663f0d-7fa3-485d-b43f-f541c8627ada" absoluteBounds="18.75, 12.75, 2, 1.3862939453124987">
+      <DataClassMoniker Name="/AkhbarElyoumDataContext/PictureofDay" />
+      <nestedChildShapes>
+        <elementListCompartment Id="77bf6cf7-fbd4-423f-bb18-81b8cefddf5c" absoluteBounds="18.765, 13.21, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="deabcd1f-9f26-4484-b4a2-44df19f9d63c" absoluteBounds="0.75, 2.5, 2, 2.3478011067708335">
+      <DataClassMoniker Name="/AkhbarElyoumDataContext/Poll" />
+      <nestedChildShapes>
+        <elementListCompartment Id="8e9b7f8b-d3bf-4448-ac62-404828343797" absoluteBounds="0.765, 2.96, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="0f716976-d740-42c5-acf9-602f28bd1c54" absoluteBounds="3.5, 3.625, 2, 1.5785953776041666">
+      <DataClassMoniker Name="/AkhbarElyoumDataContext/PollsOption" />
+      <nestedChildShapes>
+        <elementListCompartment Id="219aef47-f42d-4bea-a73d-ff78f528de42" absoluteBounds="3.515, 4.085, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="0e531aaa-de9a-4810-933b-8a8d4c651ce5" absoluteBounds="12.75, 18.75, 2, 1.1939925130208309">
+      <DataClassMoniker Name="/AkhbarElyoumDataContext/RelatedNew" />
+      <nestedChildShapes>
+        <elementListCompartment Id="90cdb296-1dcc-4d3a-96ea-abaf20625d27" absoluteBounds="12.765, 19.21, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="a846fb43-bbfa-4782-b093-b24c8c238d71" absoluteBounds="18.75, 15.75, 2, 1.7708968098958326">
+      <DataClassMoniker Name="/AkhbarElyoumDataContext/ReviewerNew" />
+      <nestedChildShapes>
+        <elementListCompartment Id="d5a7024b-885b-4f51-94d3-adb252be0596" absoluteBounds="18.765, 16.21, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="4a103a51-aac2-4807-872e-1ea343688b0b" absoluteBounds="15.75, 18.75, 2, 1.3862939453125023">
+      <DataClassMoniker Name="/AkhbarElyoumDataContext/Role" />
+      <nestedChildShapes>
+        <elementListCompartment Id="0de5b567-ae06-4006-bb58-8d8b45be54ba" absoluteBounds="15.765, 19.21, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="e92233d5-d026-4586-b585-7948d8dbdd86" absoluteBounds="18.75, 18.75, 2, 2.3478011067708309">
+      <DataClassMoniker Name="/AkhbarElyoumDataContext/SectionLatestNew" />
+      <nestedChildShapes>
+        <elementListCompartment Id="a249d53d-180b-48f2-89a6-e7292b45f8f5" absoluteBounds="18.765, 19.21, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="e64c382c-dfb7-496b-b38a-fe05895541a4" absoluteBounds="0.75, 20.75, 2, 1.3862939453125023">
+      <DataClassMoniker Name="/AkhbarElyoumDataContext/SesstionText" />
+      <nestedChildShapes>
+        <elementListCompartment Id="005f4f4f-ebf6-4703-8c33-e0bab5d9e27c" absoluteBounds="0.765, 21.21, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="67374fb5-95ec-4aef-aec8-e1d5b64ce32e" absoluteBounds="3.75, 20.75, 2, 1.1939925130208309">
+      <DataClassMoniker Name="/AkhbarElyoumDataContext/Tag" />
+      <nestedChildShapes>
+        <elementListCompartment Id="b2fbf7bf-6570-4ef3-9848-7e79ed997d92" absoluteBounds="3.765, 21.21, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="7af2b171-aa8e-4732-b5e3-8ac582b55340" absoluteBounds="3.5, 5.875, 2, 1.5785953776041666">
+      <DataClassMoniker Name="/AkhbarElyoumDataContext/TopNew" />
+      <nestedChildShapes>
+        <elementListCompartment Id="d9209d2e-d42d-4f06-9f8e-578e827ad409" absoluteBounds="3.515, 6.335, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="28c45e9c-d786-429c-abfd-f9dce4098cae" absoluteBounds="6.75, 20.75, 2, 3.5016097005208309">
+      <DataClassMoniker Name="/AkhbarElyoumDataContext/TraceTable" />
+      <nestedChildShapes>
+        <elementListCompartment Id="31ac3ea5-5059-44e0-a54c-736068c72a5d" absoluteBounds="6.765, 21.21, 1.9700000000000002, 2.941609700520833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="d55d75c3-9663-47fa-8446-e60f97d810af" absoluteBounds="9.75, 20.75, 2, 1.7708968098958309">
+      <DataClassMoniker Name="/AkhbarElyoumDataContext/UserRole" />
+      <nestedChildShapes>
+        <elementListCompartment Id="feb60eb9-05c4-4bb1-982b-be15b61b471c" absoluteBounds="9.765, 21.21, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="1c39a092-7b89-42ce-92ee-ffd4c5c7237e" absoluteBounds="21.75, 0.75, 2, 3.5016097005208326">
+      <DataClassMoniker Name="/AkhbarElyoumDataContext/UsersOpinion" />
+      <nestedChildShapes>
+        <elementListCompartment Id="131b7cd3-a2da-410e-8b20-f22b4eba1b13" absoluteBounds="21.765, 1.21, 1.9700000000000002, 2.941609700520833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="323f9c6c-0822-4056-982a-301295bf5e6b" absoluteBounds="21.75, 5.75, 2, 1.1939925130208344">
+      <DataClassMoniker Name="/AkhbarElyoumDataContext/VersionTag" />
+      <nestedChildShapes>
+        <elementListCompartment Id="440c12fc-027b-494a-8405-27ec48ba1181" absoluteBounds="21.765, 6.21, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(8.75 : 7.98159912109375); (9.5 : 7.98159912109375)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/AkhbarElyoumDataContext/AdminUser/AdminUser_AdminLog" />
+      <nodes>
+        <classShapeMoniker Id="d2b686f5-4ce2-4b4f-8eb1-0dd8e0c9d5f2" />
+        <classShapeMoniker Id="44097291-8cc4-4bea-8caf-f2ebeadaf0de" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(8.75 : 4.84699625651042); (9.5 : 4.84699625651042)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/AkhbarElyoumDataContext/Issue/Issue_IssuesNew" />
+      <nodes>
+        <classShapeMoniker Id="514ada3d-b472-4d61-8040-7db72a857816" />
+        <classShapeMoniker Id="4b830675-ee75-4684-a5fc-fb94a3910d41" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.75 : 2.5); (3.125 : 2.19399251302083)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/AkhbarElyoumDataContext/Poll/Poll_NewsPoll" />
+      <nodes>
+        <classShapeMoniker Id="deabcd1f-9f26-4484-b4a2-44df19f9d63c" />
+        <classShapeMoniker Id="e7488e35-1148-43d4-9af7-01f3376f10dd" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.75 : 4.23640055338542); (3.5 : 4.23640055338542)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/AkhbarElyoumDataContext/Poll/Poll_PollsOption" />
+      <nodes>
+        <classShapeMoniker Id="deabcd1f-9f26-4484-b4a2-44df19f9d63c" />
+        <classShapeMoniker Id="0f716976-d740-42c5-acf9-602f28bd1c54" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.75 : 6.69314697265625); (3.5 : 6.69314697265625)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/AkhbarElyoumDataContext/NewsCategory/NewsCategory_TopNew" />
+      <nodes>
+        <classShapeMoniker Id="19994044-2ef8-4c84-9314-53b6903d2453" />
+        <classShapeMoniker Id="7af2b171-aa8e-4732-b5e3-8ac582b55340" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="68736191-c8fc-4c79-8999-a6ac5d0512df" absoluteBounds="6.125, 0.75, 2, 2.3478011067708335">
+      <DataClassMoniker Name="/AkhbarElyoumDataContext/MainSection" />
+      <nestedChildShapes>
+        <elementListCompartment Id="fd7ea6dc-f9ab-4e66-a04e-7f5551626096" absoluteBounds="6.1400000000000006, 1.21, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(8.125 : 1.84699625651042); (9.5 : 1.84699625651042)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/AkhbarElyoumDataContext/MainSection/MainSection_NewsSection" />
+      <nodes>
+        <classShapeMoniker Id="68736191-c8fc-4c79-8999-a6ac5d0512df" />
+        <classShapeMoniker Id="a6e6ce50-467f-4d01-a294-ad2f0a3f9c70" />
+      </nodes>
+    </associationConnector>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

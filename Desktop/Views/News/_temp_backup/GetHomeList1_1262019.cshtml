@@ -1,0 +1,1796 @@
+﻿@model IEnumerable<AkhbarElyoum.Models.NewsDetails>
+@{bool flg = true; int count = 0; string JID = AkhbarElyoum.Controllers.HomeController.GetJournalID(HttpContext.Current.Request.Url.Host, int.Parse((HttpContext.Current.Request.QueryString["JournalID"] != null) ? HttpContext.Current.Request.QueryString["JournalID"].ToString() : "0"));}
+
+
+
+<!-- Start Ad1 -->
+<section class="module" id="globeAd1">
+    <div class="container">
+        <div class="nohighlight">
+        </div>
+        <div align="center">
+		@*<iframe src="https://reyadi.akhbarelyom.com/sport_tbl1.aspx" scrolling="No" frameborder="0" width="100%" height="220"></iframe>*@
+		
+		<div class="desktop-add">
+
+						<!-- /21675648325/PORTAL_LEADERBOARD_728X90 -->
+				<div id='div-gpt-ad-1515485521497-0' style='height:90px; width:728px;'>
+				<script>
+				googletag.cmd.push(function() { googletag.display('div-gpt-ad-1515485521497-0'); });
+				</script>
+				</div>
+		</div>
+		
+
+        @*  <div class="desktop-add">
+                @Html.Action("GetBlockTextList", "Blocks", new { BlockID = 4, JournalID = 1 })	
+            </div>*@
+
+			
+        </div>
+    </div>
+</section>
+<!-- End Ad1 -->
+
+<!-- start Block1 With 5 News -->
+<section class="module" id="news">
+    <div class="container bord-tb">
+        <div class="nohighlight p-t-0">
+
+            <div class="col-md-8">
+                <div class="news">
+
+                    @foreach (var item in Model.Where(a => a.DisplayOrder == 1))
+                    {
+
+                        if (flg)
+                        {
+
+                    <h2>
+                        <a href="/news/newssection/@item.SectionID/@JID/@(AkhbarElyoum.Controllers.HomeController.GetPureURL(item.SecTitle))" title="@item.SecTitle" class="HomeSecTitle">@item.SecTitle</a>
+                    </h2>
+
+
+                            flg = false;
+                        }
+                        if (count == 0)
+                        {
+                            ViewContext.Writer.Write("<div class=\"row no-gutter\">");
+                            ViewContext.Writer.Write("<div class=\"col-md-8 p-0\">");
+
+
+                    <div class="last-news container-full bottom-text full-photo">
+                        <div class="entry-media">
+                            <a href="/news/newdetails/@item.NewsID/@JID/@(AkhbarElyoum.Controllers.HomeController.GetPureURL(item.Title))" title="@item.Title">
+                                <img class="image" src="https://Images.akhbarelyom.com/images/images/Medium/@item.PictureName1" alt="@item.Title" />
+                            </a>
+                        </div>
+                        <div class="content">
+                            <h2 class="custom-content-inline">
+                                <a href="/news/newdetails/@item.NewsID/@JID/@(AkhbarElyoum.Controllers.HomeController.GetPureURL(item.Title))" title="@item.Title"> @item.Title </a>
+                            </h2>
+                        </div>
+                    </div>
+                        }
+                        if (count == 1)
+                        {
+                            ViewContext.Writer.Write("<div class=\"row\">");
+                        }
+                        if (count > 0 && count < 3)
+                        {
+                    <div class="col-md-6 col-sm-6 col-xs-6 p-05">
+                        <!-- Begin .container-half -->
+                        <div class="last-news container-half">
+                            <div class="entry-media">
+                                <a href="/news/newdetails/@item.NewsID/@JID/@(AkhbarElyoum.Controllers.HomeController.GetPureURL(item.Title))" title="@item.Title">
+                                    <img class="image" src="https://Images.akhbarelyom.com/images/images/Small/@item.PictureName1" alt="@item.Title" />
+                                </a>
+                            </div>
+                            <div class="content">
+                                <h4><a href="/news/newdetails/@item.NewsID/@JID/@(AkhbarElyoum.Controllers.HomeController.GetPureURL(item.Title))" title="@item.Title">@item.Title</a></h4>
+                            </div>
+                        </div>
+                        <!-- End .container- entry- -->
+                    </div>
+                        }
+
+                        if (count == 2)
+                        {
+                            ViewContext.Writer.Write("</div></div>");
+                            ViewContext.Writer.Write("<div class=\"col-md-4 p-0\">");
+                            ViewContext.Writer.Write("<div class=\"row\">");
+                        }
+
+                        if (count > 2 && count < 5)
+                        {
+                    <div class="col-md-12 col-sm-6 col-xs-6">
+                        <!-- Begin .container-half -->
+                        <div class="last-news container-half">
+                            <div class="entry-media">
+                                <a href="/news/newdetails/@item.NewsID/@JID/@(AkhbarElyoum.Controllers.HomeController.GetPureURL(item.Title))" title="@item.Title">
+                                    <img class="image" src="https://Images.akhbarelyom.com/images/images/Small/@item.PictureName1" alt="@item.Title" />
+                                </a>
+                            </div>
+                            <div class="content">
+                                <h4><a href="/news/newdetails/@item.NewsID/@JID/@(AkhbarElyoum.Controllers.HomeController.GetPureURL(item.Title))" title="@item.Title">@item.Title</a></h4>
+                            </div>
+                        </div>
+                        <!-- End .container- entry- -->
+                    </div>
+                        }
+
+                        count++;
+
+                        if (@item == Model.Where(a => a.DisplayOrder == 1).Last())
+                        {
+                            ViewContext.Writer.Write("</div></div> </div>");
+                        }
+
+                    }
+
+                </div>
+            </div>
+
+            <div class="col-md-4">
+
+                <div class="row">
+                    <div class="col-md-12 col-sm-6 col-xs-12">
+                        <!-- /21675648325/PORTAL_SIDEPAR_300X600 -->
+                        <div id='div-gpt-ad-1517986678965-0' style='height:600px; width:300px;'>
+                            <script>
+                                googletag.cmd.push(function () { googletag.display('div-gpt-ad-1517986678965-0'); });
+                            </script>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+<!-- End Block1 -->
+
+<!-- start Ad2  -->
+<section class="module" id="globeAd2">
+    <div class="container">
+        <div class="nohighlight">
+        </div>
+        <div align="center">
+            <div class="desktop-add">
+                @Html.Action("GetBlockTextList", "Blocks", new { BlockID = 5, JournalID = 1 })
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End Ad2  -->
+
+@{flg = true; count = 0;}
+<!-- start Block2 With 4 News -->
+<section class="module" id="Gallery12">
+    <div class="container">
+        <div class="highlight">
+            <!--========== BEGIN .COL-MD-12 ==========-->
+            <div class="col-md-12">
+                <!--========== BEGIN .NEWS ==========-->
+                <div class="news">
+                    @foreach (var item in Model.Where(a => a.DisplayOrder == 2))
+                    {
+                        if (flg)
+                        {
+
+                    <h2>
+                        <a href="/news/newssection/@item.SectionID/@JID/@(AkhbarElyoum.Controllers.HomeController.GetPureURL(item.SecTitle))" title="@item.SecTitle" class="HomeSecTitle">@item.SecTitle</a>
+                    </h2>
+
+                            flg = false;
+                        }
+                        if (count == 0)
+                        {
+                            ViewContext.Writer.Write("<div class=\"row\">");
+                        }
+
+                        count++;
+
+                        if (count > 0 && count < 5)
+                        {
+                    <div class="col-md-3 col-sm-6 col-xs-6">
+                        <!-- Begin .container-half -->
+                        <div class="container-half container-half-custom">
+                            <a href="/news/newdetails/@item.NewsID/@JID/@(AkhbarElyoum.Controllers.HomeController.GetPureURL(item.Title))" title="@item.Title" class="entry-media img-link">
+                                <img class="image" src="https://Images.akhbarelyom.com/images/images/Small/@item.PictureName1" alt="@item.Title" />
+                            </a>
+                            <div class="content">
+                                <h4><a href="/news/newdetails/@item.NewsID/@JID/@(AkhbarElyoum.Controllers.HomeController.GetPureURL(item.Title))" title="@item.Title">@item.Title</a></h4>
+                            </div>
+                        </div>
+                        <!-- End .container- entry- -->
+                    </div>
+
+
+                        }
+
+                        if (@item == Model.Where(a => a.DisplayOrder == 2).Last())
+                        {
+                            ViewContext.Writer.Write("</div>");
+                        }
+                    }
+                </div>
+                <!--========== End .NEWS ==========-->
+            </div>
+            <!--========== End .COL-MD-12 ==========-->
+        </div>
+    </div>
+</section>
+<!-- End Block2 -->
+
+<!-- start Ad3  -->
+<section class="module" id="globeAd3">
+    <div class="container">
+        <div class="nohighlight">
+        </div>
+        <div align="center">
+            <div class="desktop-add">
+              @*  @Html.Action("GetBlockTextList", "Blocks", new { BlockID = 6, JournalID = 1 })*@
+			  
+			  
+			   <!-- /21675648325/PORTAL_LEADERBOARD_728X90 -->
+                <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                <!-- portal mobile -->
+                <ins class="adsbygoogle"
+                     style="display:block"
+                     data-ad-client="ca-pub-7445302147671862"
+                     data-ad-slot="6290631053"
+                     data-ad-format="auto"></ins>
+                <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+
+
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End Ad4  -->
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End Ad3  -->
+
+
+@{flg = true; count = 0;}
+<!-- start Block3 With 4 News -->
+<section class="module" id="sports">
+    <div class="container pt-5">
+        <div>
+            <div class="col-md-8">
+
+                @foreach (var item in Model.Where(a => a.DisplayOrder == 3))
+                {
+                    if (flg)
+                    {
+
+                        <h2>
+                            <a href="/news/newssection/@item.SectionID/@JID/@(AkhbarElyoum.Controllers.HomeController.GetPureURL(item.SecTitle))" title="@item.SecTitle" class="HomeSecTitle">@item.SecTitle</a>
+                        </h2>
+
+                        flg = false;
+                    }
+
+                    if (count == 0)
+                    {
+                        <div class="entry-block-full">
+                            <div class="image-full">
+                                <a href="/news/newdetails/@item.NewsID/@JID/@(AkhbarElyoum.Controllers.HomeController.GetPureURL(item.Title))" title="@item.Title">
+                                    <img src="https://Images.akhbarelyom.com/images/images/Medium/@item.PictureName1" alt="@item.Title">
+                                </a>
+                            </div>
+                            <div class="content">
+                                <div class="title-left title-style04 underline04">
+                                    <h3><a href="/news/newdetails/@item.NewsID/@JID/@(AkhbarElyoum.Controllers.HomeController.GetPureURL(item.Title))" title="@item.Title">@item.Title</a></h3>
+                                </div>
+                            </div>
+                        </div>
+
+                        ViewContext.Writer.Write("<div class=\"news-block p-05\">");
+
+                    }
+                    if (count > 0 && count < 5)
+                    {
+                        <div class="item-block">
+                            <div class="item-image">
+                                <a class="img-link" href="/news/newdetails/@item.NewsID/@JID/@(AkhbarElyoum.Controllers.HomeController.GetPureURL(item.Title))" title="@item.Title">
+                                    <img class="img-responsive img-full" src="https://Images.akhbarelyom.com/images/images/Small/@item.PictureName1" alt="@item.Title">
+                                </a>
+                            </div>
+                            <div class="item-content">
+                                <h4 class="last"><a href="/news/newdetails/@item.NewsID/@JID/@(AkhbarElyoum.Controllers.HomeController.GetPureURL(item.Title))" title="@item.Title">@item.Title</a></h4>
+                            </div>
+                        </div>
+                    }
+
+                    count++;
+
+                    if (@item == Model.Where(a => a.DisplayOrder == 3).Last())
+                    {
+                        ViewContext.Writer.Write("</div>");
+                    }
+                }
+            </div>
+
+            <div class="col-md-4 pt-35">
+                <div class="internal-sidebar">
+                    <div class="row">
+				
+                        <!-- Begin Adv3 -->
+                        <div class="col-md-12 col-sm-6 col-xs-12">
+                            <div class="sidebar-add-place">
+                                <a href="/Tags/NewsTagList/2566/1/ياسر-رزق">
+                                    <img class="ad-beside-slider h-100" src="/Images/yasserArt.m.png" alt="">
+                                </a>
+                            </div>
+                            <div class="sidebar-add-place">
+                                <a href="/Tags/NewsTagList/128158/1/محمد-البهنساوي">
+                                    <img class="ad-beside-slider h-100" src="/Images/BahnasawyArt.m.png" alt="">
+                                </a>
+                            </div>
+                        </div>
+						
+ 
+						
+						  <!-- Begin .title-style01 -->
+                    <div class="col-md-12 col-sm-6 col-xs-12">
+                         <div class="sidebar-add-place">	
+
+							<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+							<!-- portal_300x250 -->
+							<ins class="adsbygoogle"
+								 style="display:inline-block;width:300px;height:250px"
+								 data-ad-client="ca-pub-7445302147671862"
+								 data-ad-slot="7917230032"></ins>
+							<script>
+							(adsbygoogle = window.adsbygoogle || []).push({});
+							</script>
+							
+							
+						</div>	
+                    </div>
+					
+
+                        @*<div class="col-md-12 col-sm-6 col-xs-12">
+                            <div class="sidebar-add-place">
+				
+								
+								<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+								<!-- portal_300x250 -->
+								<ins class="adsbygoogle"
+									 style="display:inline-block;width:300px;height:250px"
+									 data-ad-client="ca-pub-7445302147671862"
+									 data-ad-slot="7917230032"></ins>
+								<script>
+								(adsbygoogle = window.adsbygoogle || []).push({});
+								</script>
+								
+								
+                            </div>                
+                        </div>*@
+						
+						<!--
+					<p><a href="https://akhbarelyom.com/Tags/NewsTagList/481905/1/%D8%AF%D8%B1%D8%B3-%D8%AE%D8%B5%D9%88%D8%B5%D9%8A-2019">
+					<img alt="" src="https://Images.akhbarelyom.com/UP/20190428130420343.gif" style="width: 300px; height: 90px;">
+					</a></p>	
+						//-->
+					<p><a href="https://akhbarelyom.com/Natega2019/Natega2019.aspx" target="natiga">
+					<img alt="" src="https://images.akhbarelyom.com/images/banner/prep2019.jpg" style="width: 300px; height: 90px;">
+					</a></p>	
+						
+                </div>
+            </div>
+
+        </div>
+    </div>
+    </div>
+</section>
+<!-- End Block3 -->
+
+
+
+
+
+<!-- start Ad4  -->
+<section class="module" id="globeAd4">
+    <div class="container">
+        <div class="nohighlight">
+        </div>
+        <div align="center">
+            <div class="desktop-add">
+				@Html.Action("GetBlockTextList", "Blocks", new { BlockID = 7, JournalID = 1 })
+	
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End Ad4  -->
+
+
+
+
+
+@{flg = true; count = 0;}
+<!-- start Block4 With 4 News -->
+<section class="module" id="Gallery11">
+    <div class="container bord-tb">
+        <div class="nohighlight">
+            <!--========== BEGIN .COL-MD-12 ==========-->
+            <div class="col-md-12">
+                <!--========== BEGIN .NEWS ==========-->
+                <div class="news">
+                    @foreach (var item in Model.Where(a => a.DisplayOrder == 4))
+                    {
+                        if (flg)
+                        {
+
+                            <h2>
+                                <a href="/news/newssection/@item.SectionID/@JID/@(AkhbarElyoum.Controllers.HomeController.GetPureURL(item.SecTitle))" title="@item.SecTitle" class="HomeSecTitle">@item.SecTitle</a>
+                            </h2>
+
+                            flg = false;
+                        }
+                        if (count == 0)
+                        {
+                            ViewContext.Writer.Write("<div class=\"row\">");
+                        }
+
+                        count++;
+
+                        if (count > 0 && count < 5)
+                        {
+                            <div class="col-md-3 col-sm-6 col-xs-6">
+                                <!-- Begin .container-half -->
+                                <div class="container-half container-half-custom">
+                                    <a href="/news/newdetails/@item.NewsID/@JID/@(AkhbarElyoum.Controllers.HomeController.GetPureURL(item.Title))" title="@item.Title" class="entry-media img-link">
+                                        <img class="image" src="https://Images.akhbarelyom.com/images/images/Small/@item.PictureName1" alt="@item.Title" />
+                                    </a>
+                                    <div class="content">
+                                        <h4><a href="/news/newdetails/@item.NewsID/@JID/@(AkhbarElyoum.Controllers.HomeController.GetPureURL(item.Title))" title="@item.Title">@item.Title</a></h4>
+                                    </div>
+                                </div>
+                                <!-- End .container- entry- -->
+                            </div>
+
+
+                        }
+
+                        if (@item == Model.Where(a => a.DisplayOrder == 4).Last())
+                        {
+                            ViewContext.Writer.Write("</div>");
+                        }
+                    }
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</section>
+<!-- End Block4 -->
+
+<!-- start Ad5  -->
+<section class="module" id="globeAd5">
+    <div class="container">
+        <div class="nohighlight">
+        </div>
+        <div align="center">
+            <div class="desktop-add">
+			
+              @*  @Html.Action("GetBlockTextList", "Blocks", new { BlockID = 8, JournalID = 1 })  *@
+				
+					   <!-- /21675648325/ENI_728_90 -->
+						<div id='div-gpt-ad-1549209315282-0' style='height:90px; width:728px;'>
+						<script>
+						googletag.cmd.push(function() { googletag.display('div-gpt-ad-1549209315282-0'); });
+						</script>
+						</div>
+
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End Ad5  -->
+
+@{flg = true; count = 0;}
+<!-- start Block5,6,MoreReads With 2 News -->
+<section class="module" id="globe11">
+    <div class="container bb-1">
+        <div class="nohighlight">
+            @foreach (var item in Model.Where(a => a.DisplayOrder == 5))
+            {
+
+                if (count == 0)
+                {
+                    ViewContext.Writer.Write("<div class=\"col-sm-4\">");
+                }
+
+                if (flg)
+                {
+
+                    <h2>
+                        <a href="/news/newssection/@item.SectionID/@JID/@(AkhbarElyoum.Controllers.HomeController.GetPureURL(item.SecTitle))" title="@item.SecTitle" class="HomeSecTitle">@item.SecTitle</a>
+                    </h2>
+
+                    flg = false;
+                }
+
+                if (count == 0)
+                {
+                    ViewContext.Writer.Write("<div class=\"article\">");
+                }
+
+                count++;
+                if (count > 0 && count < 3)
+                {
+
+                    <div class="container-half">
+                        <div class="entry-media">
+                            <a href="/news/newdetails/@item.NewsID/@JID/@(AkhbarElyoum.Controllers.HomeController.GetPureURL(item.Title))" title="@item.Title">
+                                <img class="image" src="https://Images.akhbarelyom.com/images/images/Small/@item.PictureName1" alt="@item.Title" />
+                            </a>
+                        </div>
+                        <div class="content">
+                            <h4><a href="/news/newdetails/@item.NewsID/@JID/@(AkhbarElyoum.Controllers.HomeController.GetPureURL(item.Title))" title="@item.Title">@item.Title</a></h4>
+                        </div>
+                    </div>
+                }
+
+                if (@item == Model.Where(a => a.DisplayOrder == 5).Last())
+                {
+                    ViewContext.Writer.Write("</div></div>");
+                }
+            }
+
+
+
+
+            @{flg = true; count = 0;}
+            @foreach (var item in Model.Where(a => a.DisplayOrder == 6))
+            {
+                if (count == 0)
+                {
+                    ViewContext.Writer.Write("<div class=\"col-sm-4\">");
+                }
+                if (flg)
+                {
+                    <h2>
+                        <a href="/news/newssection/@item.SectionID/@JID/@(AkhbarElyoum.Controllers.HomeController.GetPureURL(item.SecTitle))" title="@item.SecTitle" class="HomeSecTitle">@item.SecTitle</a>
+                    </h2>
+
+                    flg = false;
+                }
+
+                if (count == 0)
+                {
+                    ViewContext.Writer.Write("<div class=\"article\">");
+                }
+                count++;
+                if (count > 0 && count < 3)
+                {
+                    <div class="container-half">
+                        <div class="entry-media">
+                            <a href="/news/newdetails/@item.NewsID/@JID/@(AkhbarElyoum.Controllers.HomeController.GetPureURL(item.Title))" title="@item.Title">
+                                <img class="image" src="https://Images.akhbarelyom.com/images/images/Small/@item.PictureName1" alt="@item.Title">
+                            </a>
+                        </div>
+                        <div class="content">
+                            <h4><a href="/news/newdetails/@item.NewsID/@JID/@(AkhbarElyoum.Controllers.HomeController.GetPureURL(item.Title))" title="@item.Title">@item.Title</a></h4>
+                        </div>
+                    </div>
+
+                }
+
+                if (@item == Model.Where(a => a.DisplayOrder == 6).Last())
+                {
+                    ViewContext.Writer.Write("</div></div>");
+                }
+            }
+
+
+
+            <div class="col-sm-4">
+                @Html.Action("GetHomeMostViewedList", "News", new { JournalID = JID })
+            </div>
+
+        </div>
+    </div>
+</section>
+<!-- End Block5,6,More Reads With 2 News -->
+
+<!-- Start Ad6 -->
+<section class="module" id="globe56">
+    <div class="container">
+        <div class="nohighlight">
+        </div>
+        <div align="center">
+            <div class="desktop-add">
+				<!-- /21675648325/PORTAL_LEADERBOARD_728X90 -->
+				@*<div id='div-gpt-ad-1515485521497-0' style='height:90px; width:728px;'>
+				<script>
+				googletag.cmd.push(function() { googletag.display('div-gpt-ad-1515485521497-0'); });
+				</script>
+				</div>*@
+				
+				
+		
+			<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- portal728x90 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:728px;height:90px"
+     data-ad-client="ca-pub-7445302147671862"
+     data-ad-slot="7600992969"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+
+           </div>
+        </div>
+    </div>
+</section>
+
+<!-- End Ad6 -->
+
+
+			
+
+
+@{flg = true; count = 0;}
+<!-- start Block7 With 5 News -->
+<section class="module pt-20" id="news11">
+    <div class="container">
+        <div class="nohighlight p-t-0">
+
+            <div class="col-md-8">
+                <div class="news">
+
+                    @foreach (var item in Model.Where(a => a.DisplayOrder == 7))
+                    {
+
+                        if (flg)
+                        {
+                            <h2>
+                                <a href="/news/newssection/@item.SectionID/@JID/@(AkhbarElyoum.Controllers.HomeController.GetPureURL(item.SecTitle))" title="@item.SecTitle" class="HomeSecTitle">@item.SecTitle</a>
+                            </h2>
+
+                            flg = false;
+                        }
+                        if (count == 0)
+                        {
+                            ViewContext.Writer.Write("<div class=\"row no-gutter\">");
+                            ViewContext.Writer.Write("<div class=\"col-md-8 p-0\">");
+
+
+                            <div class="last-news container-full bottom-text full-photo">
+                                <div class="entry-media">
+                                    <a href="/news/newdetails/@item.NewsID/@JID/@(AkhbarElyoum.Controllers.HomeController.GetPureURL(item.Title))" title="@item.Title">
+                                        <img class="image" src="https://Images.akhbarelyom.com/images/images/Medium/@item.PictureName1" alt="@item.Title" />
+                                    </a>
+                                </div>
+                                <div class="content">
+                                    <h2 class="custom-content-inline"><a href="/news/newdetails/@item.NewsID/@JID/@(AkhbarElyoum.Controllers.HomeController.GetPureURL(item.Title))" title="@item.Title"> @item.Title </a></h2>
+                                </div>
+                            </div>
+                        }
+                        if (count == 1)
+                        {
+                            ViewContext.Writer.Write("<div class=\"row\">");
+                        }
+                        if (count > 0 && count < 3)
+                        {
+                            <div class="col-md-6 col-sm-6 col-xs-6 p-05">
+                                <!-- Begin .container-half -->
+                                <div class="last-news container-half">
+                                    <div class="entry-media">
+                                        <a href="/news/newdetails/@item.NewsID/@JID/@(AkhbarElyoum.Controllers.HomeController.GetPureURL(item.Title))" title="@item.Title">
+                                            <img class="image" src="https://Images.akhbarelyom.com/images/images/Small/@item.PictureName1" alt="@item.Title">
+                                        </a>
+                                    </div>
+                                    <div class="content">
+                                        <h4><a href="/news/newdetails/@item.NewsID/@JID/@(AkhbarElyoum.Controllers.HomeController.GetPureURL(item.Title))" title="@item.Title">@item.Title</a></h4>
+                                    </div>
+                                </div>
+                                <!-- End .container- entry- -->
+                            </div>
+                        }
+
+                        if (count == 2)
+                        {
+                            ViewContext.Writer.Write("</div></div>");
+                            ViewContext.Writer.Write("<div class=\"col-md-4 p-0\">");
+                            ViewContext.Writer.Write("<div class=\"row\">");
+                        }
+
+                        if (count > 2 && count < 5)
+                        {
+                            <div class="col-md-12 col-sm-6 col-xs-6">
+                                <!-- Begin .container-half -->
+                                <div class="last-news container-half">
+                                    <div class="entry-media">
+                                        <a href="/news/newdetails/@item.NewsID/@JID/@(AkhbarElyoum.Controllers.HomeController.GetPureURL(item.Title))" title="@item.Title">
+                                            <img class="image" src="https://Images.akhbarelyom.com/images/images/Small/@item.PictureName1" alt="@item.Title" />
+                                        </a>
+                                    </div>
+                                    <div class="content">
+                                        <h4><a href="/news/newdetails/@item.NewsID/@JID/@(AkhbarElyoum.Controllers.HomeController.GetPureURL(item.Title))" title="@item.Title">@item.Title</a></h4>
+                                    </div>
+                                </div>
+                                <!-- End .container- entry- -->
+                            </div>
+                        }
+
+                        count++;
+
+                        if (@item == Model.Where(a => a.DisplayOrder == 7).Last())
+                        {
+                            ViewContext.Writer.Write("</div></div> </div>");
+                        }
+
+                    }
+
+                </div>
+            </div>
+
+            <div class="col-md-4">
+
+                <div class="row">
+                  
+					@*<h2 class="HomeSecTitle">  مقالات </h2>*@
+                   <div class="col-md-12 col-sm-6 col-xs-12">
+                        <div class="sidebar-add-place">
+                            @Html.Action("Articles", "Esdarat")
+                        </div>
+                    </div>
+								
+						 <div class="col-md-12 col-sm-6 col-xs-12">
+                            <div class="sidebar-add-place">
+							
+                                @*@Html.Action("Articles", "Esdarat")
+							<iframe width="300" height="250" src="https://www.youtube.com/embed/kOH35DzTcwE" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>*@
+							@*
+							<!-- /21675648325/PORTAL_300X168_SIDEBAR -->
+							<div id='div-gpt-ad-1540156590818-0' style='height:250px; width:300px;'>
+							<script>
+							googletag.cmd.push(function() { googletag.display('div-gpt-ad-1540156590818-0'); });
+							</script>
+							</div>
+							*@
+						  </div>
+                        </div>
+								
+					
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+<!-- End Block7 -->
+
+
+
+<!-- start Ad6  -->
+<section class="module" id="globeAd6">
+    <div class="container">
+        <div class="nohighlight">
+        </div>
+        <div align="center">
+            <div class="desktop-add">
+                @Html.Action("GetBlockTextList", "Blocks", new { BlockID = 9, JournalID = 1 })
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End Ad6  -->
+
+
+@Html.Action("Classic", "Esdarat")
+
+
+
+
+
+
+@{flg = true; count = 0;}
+<!-- start Block8 With 5 News -->
+<section class="module pt-20" id="news22">
+    <div class="container">
+        <div class="nohighlight p-t-0">
+
+            <div class="col-md-8">
+                <div class="news">
+
+                    @foreach (var item in Model.Where(a => a.DisplayOrder == 8))
+                    {
+
+                        if (flg)
+                        {
+                            <h2>
+                                <a href="/news/newssection/@item.SectionID/@JID/@(AkhbarElyoum.Controllers.HomeController.GetPureURL(item.SecTitle))" title="@item.SecTitle" class="HomeSecTitle">@item.SecTitle</a>
+                            </h2>
+
+
+                            flg = false;
+                        }
+                        if (count == 0)
+                        {
+                            ViewContext.Writer.Write("<div class=\"row no-gutter\">");
+                            ViewContext.Writer.Write("<div class=\"col-md-8 p-0\">");
+
+
+                            <div class="last-news container-full bottom-text full-photo">
+                                <div class="entry-media">
+                                    <a href="/news/newdetails/@item.NewsID/@JID/@(AkhbarElyoum.Controllers.HomeController.GetPureURL(item.Title))" title="@item.Title">
+                                        <img class="image" src="https://Images.akhbarelyom.com/images/images/Medium/@item.PictureName1" alt="@item.Title" />
+                                    </a>
+                                </div>
+                                <div class="content">
+                                    <h2 class="custom-content-inline">
+                                        <a href="/news/newdetails/@item.NewsID/@JID/@(AkhbarElyoum.Controllers.HomeController.GetPureURL(item.Title))" title="@item.Title"> @item.Title </a>
+                                    </h2>
+                                </div>
+                            </div>
+                        }
+                        if (count == 1)
+                        {
+                            ViewContext.Writer.Write("<div class=\"row\">");
+                        }
+                        if (count > 0 && count < 3)
+                        {
+                            <div class="col-md-6 col-sm-6 col-xs-6 p-05">
+                                <!-- Begin .container-half -->
+                                <div class="last-news container-half">
+                                    <div class="entry-media">
+                                        <a href="/news/newdetails/@item.NewsID/@JID/@(AkhbarElyoum.Controllers.HomeController.GetPureURL(item.Title))" title="@item.Title">
+                                            <img class="image" src="https://Images.akhbarelyom.com/images/images/Small/@item.PictureName1" alt="@item.Title" />
+                                        </a>
+                                    </div>
+                                    <div class="content">
+                                        <h4><a href="/news/newdetails/@item.NewsID/@JID/@(AkhbarElyoum.Controllers.HomeController.GetPureURL(item.Title))" title="@item.Title">@item.Title</a></h4>
+                                    </div>
+                                </div>
+                                <!-- End .container- entry- -->
+                            </div>
+                        }
+
+                        if (count == 2)
+                        {
+                            ViewContext.Writer.Write("</div></div>");
+                            ViewContext.Writer.Write("<div class=\"col-md-4 p-0\">");
+                            ViewContext.Writer.Write("<div class=\"row\">");
+                        }
+
+                        if (count > 2 && count < 5)
+                        {
+                            <div class="col-md-12 col-sm-6 col-xs-6">
+                                <!-- Begin .container-half -->
+                                <div class="last-news container-half">
+                                    <div class="entry-media">
+                                        <a href="/news/newdetails/@item.NewsID/@JID/@(AkhbarElyoum.Controllers.HomeController.GetPureURL(item.Title))" title="@item.Title">
+                                            <img class="image" src="https://Images.akhbarelyom.com/images/images/Small/@item.PictureName1" alt="@item.Title" />
+                                        </a>
+                                    </div>
+                                    <div class="content">
+                                        <h4><a href="/news/newdetails/@item.NewsID/@JID/@(AkhbarElyoum.Controllers.HomeController.GetPureURL(item.Title))" title="@item.Title">@item.Title</a></h4>
+                                    </div>
+                                </div>
+                                <!-- End .container- entry- -->
+                            </div>
+                        }
+
+                        count++;
+
+                        if (@item == Model.Where(a => a.DisplayOrder == 8).Last())
+                        {
+                            ViewContext.Writer.Write("</div></div> </div>");
+                        }
+
+                    }
+
+                </div>
+            </div>
+
+            <div class="col-md-4 pt-35">
+
+                <div class="row">
+				
+				 <!-- Begin .title-style01 -->
+                    <div class="col-md-12 col-sm-6 col-xs-12">
+                        <div class="sidebar-add-place">
+                          
+								<!-- /21675648325/PORTAL_SIDEBAR_300X250_2 -->
+								<div id='div-gpt-ad-1556806032067-0' style='height:250px; width:300px;'>
+								<script>
+								googletag.cmd.push(function() { googletag.display('div-gpt-ad-1556806032067-0'); });
+								</script>
+								</div>
+							
+							
+                        </div>
+                    </div>
+				
+				
+
+                    <div class="col-md-12 col-sm-6 col-xs-12">
+                            <div class="sidebar-add-place">
+							
+							 <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+							<!-- portal250x250 -->
+							<ins class="adsbygoogle"
+								 style="display:inline-block;width:250px;height:250px"
+								 data-ad-client="ca-pub-7445302147671862"	
+								 data-ad-slot="6441756943"></ins>
+							<script>
+							(adsbygoogle = window.adsbygoogle || []).push({});
+							</script>
+
+						
+                            </div>                
+                   </div>
+                    
+                   
+					
+					
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End Block8 -->
+
+@*<section class="module " id="qebly-bahary">
+        <div class="container">
+            <div class="nohighlight">
+            </div>
+        </div>
+    </section>*@
+
+
+<!-- Start Adv7 -->
+<section class="module" id="globeAd7">
+    <div class="container">
+        <div class="nohighlight">
+        </div>
+        <div align="center">
+            <div class="desktop-add">
+			      @Html.Action("GetBlockTextList", "Blocks", new { BlockID = 10, JournalID = 1 })
+
+            @*<a href="https://akhbarelyom.com/Tags/NewsTagList/354112/1/%D8%B3%D9%87%D8%B1%D8%A7%D8%AA-%D8%B1%D9%85%D8%B6%D8%A7%D9%86" title="سهرات رمضان ">
+                    <img src="/images/banner/ramadan-saharat.jpg" alt="سهرات رمضان ">
+                </a>*@
+				
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End  Adv7 -->
+
+
+@{flg = true; count = 0;}
+<!-- start Block9,10,11 With 2 News -->
+<section class="module" id="globe">
+    <div class="container">
+        <div class="highlight">
+            @foreach (var item in Model.Where(a => a.DisplayOrder == 9))
+            {
+
+                if (count == 0)
+                {
+                    ViewContext.Writer.Write("<div class=\"col-sm-4\">");
+                }
+
+                if (flg)
+                {
+
+                    <h2>
+                        <a href="/news/newssection/@item.SectionID/@JID/@(AkhbarElyoum.Controllers.HomeController.GetPureURL(item.SecTitle))" title="@item.SecTitle" class="HomeSecTitle">@item.SecTitle</a>
+                    </h2>
+
+                    flg = false;
+                }
+
+                if (count == 0)
+                {
+                    ViewContext.Writer.Write("<div class=\"article\">");
+                }
+
+                count++;
+
+                if (count > 0 && count < 3)
+                {
+                    <div class="container-half">
+                        <div class="entry-media">
+                            <a href="/news/newdetails/@item.NewsID/@JID/@(AkhbarElyoum.Controllers.HomeController.GetPureURL(item.Title))" title="@item.Title">
+                                <img class="image" src="https://Images.akhbarelyom.com/images/images/Small/@item.PictureName1" alt="@item.Title" />
+                            </a>
+                        </div>
+                        <div class="content">
+                            <h4><a href="/news/newdetails/@item.NewsID/@JID/@(AkhbarElyoum.Controllers.HomeController.GetPureURL(item.Title))" title="@item.Title">@item.Title</a></h4>
+                        </div>
+                    </div>
+                }
+
+
+                if (@item == Model.Where(a => a.DisplayOrder == 9).Last())
+                {
+                    ViewContext.Writer.Write("</div></div>");
+                }
+            }
+
+
+
+
+            @{flg = true; count = 0;}
+            @foreach (var item in Model.Where(a => a.DisplayOrder == 10))
+            {
+                if (count == 0)
+                {
+                    ViewContext.Writer.Write("<div class=\"col-sm-4\">");
+                }
+                if (flg)
+                {
+
+                    <h2>
+                        <a href="/news/newssection/@item.SectionID/@JID/@(AkhbarElyoum.Controllers.HomeController.GetPureURL(item.SecTitle))" title="@item.SecTitle" class="HomeSecTitle">@item.SecTitle</a>
+                    </h2>
+
+                    flg = false;
+                }
+
+                if (count == 0)
+                {
+                    ViewContext.Writer.Write("<div class=\"article\">");
+                }
+
+                count++;
+                if (count > 0 && count < 3)
+                {
+                    <div class="container-half">
+                        <div class="entry-media">
+                            <a href="/news/newdetails/@item.NewsID/@JID/@(AkhbarElyoum.Controllers.HomeController.GetPureURL(item.Title))" title="@item.Title">
+                                <img class="image" src="https://Images.akhbarelyom.com/images/images/Small/@item.PictureName1" alt="@item.Title" />
+                            </a>
+                        </div>
+                        <div class="content">
+                            <h4><a href="/news/newdetails/@item.NewsID/@JID/@(AkhbarElyoum.Controllers.HomeController.GetPureURL(item.Title))" title="@item.Title">@item.Title</a></h4>
+                        </div>
+                    </div>
+
+                }
+
+                if (@item == Model.Where(a => a.DisplayOrder == 10).Last())
+                {
+                    ViewContext.Writer.Write("</div></div>");
+                }
+            }
+
+
+
+            @{flg = true; count = 0;}
+
+            @foreach (var item in Model.Where(a => a.DisplayOrder == 11))
+            {
+
+                if (count == 0)
+                {
+                    ViewContext.Writer.Write("<div class=\"col-sm-4\">");
+                }
+                if (flg)
+                {
+
+                    <h2>
+                        <a href="/news/newssection/@item.SectionID/@JID/@(AkhbarElyoum.Controllers.HomeController.GetPureURL(item.SecTitle))" title="@item.SecTitle" class="HomeSecTitle">@item.SecTitle</a>
+                    </h2>
+
+                    flg = false;
+                }
+
+                if (count == 0)
+                {
+                    ViewContext.Writer.Write("<div class=\"article\">");
+                }
+
+                count++;
+
+                if (count > 0 && count < 3)
+                {
+                    <div class="container-half">
+                        <div class="entry-media">
+                            <a href="/news/newdetails/@item.NewsID/@JID/@(AkhbarElyoum.Controllers.HomeController.GetPureURL(item.Title))" title="@item.Title">
+                                <img class="image" src="https://Images.akhbarelyom.com/images/images/Small/@item.PictureName1" alt="@item.Title" />
+                            </a>
+                        </div>
+                        <div class="content">
+                            <h4><a href="/news/newdetails/@item.NewsID/@JID/@(AkhbarElyoum.Controllers.HomeController.GetPureURL(item.Title))" title="@item.Title">@item.Title</a></h4>
+                        </div>
+                    </div>
+
+                }
+                if (@item == Model.Where(a => a.DisplayOrder == 11).Last())
+                {
+                    ViewContext.Writer.Write("</div></div>");
+                }
+            }
+
+
+        </div>
+    </div>
+</section>
+<!-- End Block9,10,11 With 2 News -->
+
+<!-- Start Ad2 -->
+<section class="module" id="globe444">
+    <div class="container">
+        <div class="nohighlight">
+        </div>
+        <div align="center">
+            <div class="desktop-add">
+                    <!-- /21675648325/PORTAL_LEADERBOARD_728X90 -->
+                    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                    <!-- portal mobile -->
+                    <ins class="adsbygoogle"
+                         style="display:block"
+                         data-ad-client="ca-pub-7445302147671862"
+                         data-ad-slot="6290631053"
+                         data-ad-format="auto"></ins>
+                    <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End Ad2 -->
+
+
+@{flg = true; count = 0;}
+<!-- Start Block12,13,14,15 With 2 News -->
+<section class="module" id="globe333">
+    <div class="container">
+        <div class="highlight">
+            <div class="col-md-3 col-sm-6 col-xs-6">
+
+                @foreach (var item in Model.Where(a => a.DisplayOrder == 12))
+                {
+
+                    if (flg)
+                    {
+                        <h2>
+                            <a href="/news/newssection/@item.SectionID/@JID/@(AkhbarElyoum.Controllers.HomeController.GetPureURL(item.SecTitle))" title="@item.SecTitle" class="HomeSecTitle">@item.SecTitle</a>
+                        </h2>
+
+                        flg = false;
+                    }
+
+                    if (count == 0)
+                    {
+                        ViewContext.Writer.Write("<div class=\"article\">");
+                    }
+
+                    count++;
+
+                    if (count > 0 && count < 3)
+                    {
+
+                        <div class="container-half">
+                            <div class="entry-media">
+                                <a href="/news/newdetails/@item.NewsID/@JID/@(AkhbarElyoum.Controllers.HomeController.GetPureURL(item.Title))" title="@item.Title">
+                                    <img class="image" src="https://Images.akhbarelyom.com/images/images/Small/@item.PictureName1" alt="@item.Title" />
+                                </a>
+                            </div>
+                            <div class="content">
+                                <h4><a href="/news/newdetails/@item.NewsID/@JID/@(AkhbarElyoum.Controllers.HomeController.GetPureURL(item.Title))" title="@item.Title">@item.Title</a></h4>
+                            </div>
+                        </div>
+                    }
+
+
+                    if (@item == Model.Where(a => a.DisplayOrder == 12).Last())
+                    {
+                        ViewContext.Writer.Write("</div>");
+                    }
+                }
+            </div>
+
+
+            @{flg = true; count = 0;}
+            <div class="col-md-3 col-sm-6 col-xs-6">
+
+                @foreach (var item in Model.Where(a => a.DisplayOrder == 13))
+                {
+
+                    if (flg)
+                    {
+
+                        <h2>
+                            <a href="/news/newssection/@item.SectionID/@JID/@(AkhbarElyoum.Controllers.HomeController.GetPureURL(item.SecTitle))" title="@item.SecTitle" class="HomeSecTitle">@item.SecTitle</a>
+                        </h2>
+
+                        flg = false;
+                    }
+
+                    if (count == 0)
+                    {
+                        ViewContext.Writer.Write("<div class=\"article\">");
+                    }
+
+
+                    count++;
+
+                    if (count > 0 && count < 3)
+                    {
+
+                        <div class="container-half">
+                            <div class="entry-media">
+                                <a href="/news/newdetails/@item.NewsID/@JID/@(AkhbarElyoum.Controllers.HomeController.GetPureURL(item.Title))" title="@item.Title">
+                                    <img class="image" src="https://Images.akhbarelyom.com/images/images/Small/@item.PictureName1" alt="@item.Title" />
+                                </a>
+                            </div>
+                            <div class="content">
+                                <h4><a href="/news/newdetails/@item.NewsID/@JID/@(AkhbarElyoum.Controllers.HomeController.GetPureURL(item.Title))" title="@item.Title">@item.Title</a></h4>
+                            </div>
+                        </div>
+                    }
+
+                    if (@item == Model.Where(a => a.DisplayOrder == 13).Last())
+                    {
+                        ViewContext.Writer.Write("</div>");
+                    }
+                }
+            </div>
+
+
+
+
+            @{flg = true; count = 0;}
+            <div class="col-md-3 col-sm-6 col-xs-6">
+                @foreach (var item in Model.Where(a => a.DisplayOrder == 14))
+                {
+
+                    if (flg)
+                    {
+                        <h2>
+                            <a href="/news/newssection/@item.SectionID/@JID/@(AkhbarElyoum.Controllers.HomeController.GetPureURL(item.SecTitle))" title="@item.SecTitle" class="HomeSecTitle">@item.SecTitle</a>
+                        </h2>
+
+                        flg = false;
+                    }
+
+                    if (count == 0)
+                    {
+                        ViewContext.Writer.Write("<div class=\"article\">");
+                    }
+
+                    count++;
+                    if (count > 0 && count < 3)
+                    {
+
+                        <div class="container-half">
+                            <div class="entry-media">
+                                <a href="/news/newdetails/@item.NewsID/@JID/@(AkhbarElyoum.Controllers.HomeController.GetPureURL(item.Title))" title="@item.Title">
+                                    <img class="image" src="https://Images.akhbarelyom.com/images/images/Small/@item.PictureName1" alt="@item.Title" />
+                                </a>
+                            </div>
+                            <div class="content">
+                                <h4><a href="/news/newdetails/@item.NewsID/@JID/@(AkhbarElyoum.Controllers.HomeController.GetPureURL(item.Title))" title="@item.Title">@item.Title</a></h4>
+                            </div>
+                        </div>
+                    }
+
+
+                    if (@item == Model.Where(a => a.DisplayOrder == 14).Last())
+                    {
+                        ViewContext.Writer.Write("</div>");
+                    }
+                }
+            </div>
+
+
+
+            @{flg = true; count = 0;}
+            <div class="col-md-3 col-sm-6 col-xs-6">
+
+                @foreach (var item in Model.Where(a => a.DisplayOrder == 15))
+                {
+
+                    if (flg)
+                    {
+                        <h2>
+                            <a href="/news/newssection/@item.SectionID/@JID/@(AkhbarElyoum.Controllers.HomeController.GetPureURL(item.SecTitle))" title="@item.SecTitle" class="HomeSecTitle">@item.SecTitle</a>
+                        </h2>
+                        flg = false;
+                    }
+
+                    if (count == 0)
+                    {
+                        ViewContext.Writer.Write("<div class=\"article\">");
+                    }
+
+                    count++;
+                    if (count > 0 && count < 3)
+                    {
+
+                        <div class="container-half">
+                            <div class="entry-media">
+                                <a href="/news/newdetails/@item.NewsID/@JID/@(AkhbarElyoum.Controllers.HomeController.GetPureURL(item.Title))" title="@item.Title">
+                                    <img class="image" src="https://Images.akhbarelyom.com/images/images/Small/@item.PictureName1" alt="@item.Title" />
+                                </a>
+                            </div>
+                            <div class="content">
+                                <h4><a href="/news/newdetails/@item.NewsID/@JID/@(AkhbarElyoum.Controllers.HomeController.GetPureURL(item.Title))" title="@item.Title">@item.Title</a></h4>
+                            </div>
+                        </div>
+                    }
+
+
+
+                    if (@item == Model.Where(a => a.DisplayOrder == 15).Last())
+                    {
+                        ViewContext.Writer.Write("</div>");
+                    }
+                }
+            </div>
+
+
+        </div>
+    </div>
+</section>
+<!-- End Block12,13,14,15 With 2 News -->
+
+
+<!-- Start Adv -->
+<section class="module" id="globe555">
+    <div class="container">
+        <div class="nohighlight">
+        </div>
+        <div align="center">
+            <div class="desktop-add">
+ 		
+				 <!-- /21675648325/PORTAL_LEADERBOARD_728X90 -->
+                    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                    <!-- portal mobile -->
+                    <ins class="adsbygoogle"
+                         style="display:block"
+                         data-ad-client="ca-pub-7445302147671862"
+                         data-ad-slot="6290631053"
+                         data-ad-format="auto"></ins>
+                    <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End  Adv -->
+
+
+
+@Html.Action("GetHomeVideoList", "News", new { JournalID = JID })
+
+
+
+@{flg = true; count = 0;}
+<!-- start Block16 With 4 News -->
+<section class="module pt-10" id="Gallery13">
+    <div class="container">
+        <div class="highlight">
+            <!--========== BEGIN .COL-MD-12 ==========-->
+            <div class="col-md-12">
+                <!--========== BEGIN .NEWS ==========-->
+                <div class="news">
+                    @foreach (var item in Model.Where(a => a.DisplayOrder == 16))
+                    {
+                        if (flg)
+                        {
+                            <h2>
+                                <a href="/news/newssection/@item.SectionID/@JID/@(AkhbarElyoum.Controllers.HomeController.GetPureURL(item.SecTitle))" title="@item.SecTitle" class="HomeSecTitle">@item.SecTitle</a>
+                            </h2>
+
+                            flg = false;
+                        }
+                        if (count == 0)
+                        {
+                            ViewContext.Writer.Write("<div class=\"row\">");
+                        }
+
+                        count++;
+
+                        if (count > 0 && count < 5)
+                        {
+                            <div class="col-md-3 col-sm-6 col-xs-6">
+                                <!-- Begin .container-half -->
+                                <div class="container-half container-half-custom">
+                                    <a href="/news/newdetails/@item.NewsID/@JID/@(AkhbarElyoum.Controllers.HomeController.GetPureURL(item.Title))" title="@item.Title" class="entry-media img-link">
+                                        <img class="image" src="https://Images.akhbarelyom.com/images/images/Small/@item.PictureName1" alt="@item.Title" />
+                                    </a>
+                                    <div class="content">
+                                        <h4><a href="/news/newdetails/@item.NewsID/@JID/@(AkhbarElyoum.Controllers.HomeController.GetPureURL(item.Title))" title="@item.Title">@item.Title</a></h4>
+                                    </div>
+                                </div>
+                                <!-- End .container- entry- -->
+                            </div>
+
+
+                        }
+
+                        if (@item == Model.Where(a => a.DisplayOrder == 16).Last())
+                        {
+                            ViewContext.Writer.Write("</div>");
+                        }
+                    }
+                </div>
+                <!--========== End .NEWS ==========-->
+            </div>
+            <!--========== End .COL-MD-12 ==========-->
+        </div>
+    </div>
+</section>
+<!-- End Block11 -->
+<!-- start Block17 With 5 News -->
+@{flg = true; count = 0;}
+<section class="module" id="talkShow">
+    <div class="container">
+        <div class="nohighlight">
+
+            @foreach (var item in Model.Where(a => a.DisplayOrder == 17))
+            {
+
+                if (flg)
+                {
+                    <h2>
+                        <a href="/news/newssection/@item.SectionID/@JID/@(AkhbarElyoum.Controllers.HomeController.GetPureURL(item.SecTitle))" title="@item.SecTitle" class="HomeSecTitle">@item.SecTitle</a>
+                    </h2>
+
+                    flg = false;
+                }
+                if (count == 0)
+                {
+                    ViewContext.Writer.Write("<div class=\"col-md-12\">");
+                    ViewContext.Writer.Write("<div class=\"news\">");
+                    ViewContext.Writer.Write("<div class=\"row no-gutter\">");
+                    ViewContext.Writer.Write("<div class=\"col-md-8 p-0\">");
+
+                    <!-- Begin.container-full-->
+
+                    <div class="container-full bottom-text full-photo">
+                        <div class="entry-media">
+                            <a href="/news/newdetails/@item.NewsID/@JID/@(AkhbarElyoum.Controllers.HomeController.GetPureURL(item.Title))" title="@item.Title">
+                                <img class="image" src="https://Images.akhbarelyom.com/images/images/Medium/@item.PictureName1" alt="@item.Title" />
+                            </a>
+                        </div>
+                        <div class="content">
+                            <h2 class="custom-content-inline">
+                                <a href="/news/newdetails/@item.NewsID/@JID/@(AkhbarElyoum.Controllers.HomeController.GetPureURL(item.Title))" title="@item.Title"> @item.Title</a>
+                            </h2>
+                        </div>
+                    </div>
+                }
+                if (count == 0)
+                {
+                    ViewContext.Writer.Write("<div class=\"row\">");
+                }
+                if (count > 0 && count < 3)
+                {
+                    <div class="col-md-6 col-sm-6 col-xs-6 p-05">
+                        <!-- Begin.container-half -->
+                        <div class="container-half">
+                            <div class="entry-media">
+                                <a href="/news/newdetails/@item.NewsID/@JID/@(AkhbarElyoum.Controllers.HomeController.GetPureURL(item.Title))" title="@item.Title">
+                                    <img src="https://Images.akhbarelyom.com/images/images/Small/@item.PictureName1" class="image" alt="@item.Title" />
+                                </a>
+                            </div>
+                            <div class="content">
+                                <h4><a href="/news/newdetails/@item.NewsID/@JID/@(AkhbarElyoum.Controllers.HomeController.GetPureURL(item.Title))" title="@item.Title">@item.Title</a></h4>
+                            </div>
+                        </div>
+                        <!-- End.container- entry- -->
+                    </div>
+                }
+
+                if (count == 2)
+                {
+                    ViewContext.Writer.Write("</div> </div>");
+                    ViewContext.Writer.Write("<div class=\"col-md-4 p-0\">");
+                    ViewContext.Writer.Write("<div class=\"row\">");
+                }
+
+                if (count > 2 && count < 5)
+                {
+                    if (count == 3)
+                    {
+                        ViewContext.Writer.Write("<div class=\"col-md-12 col-sm-6 col-xs-6\">");
+
+                    }
+                    else if (count == 4)
+                    {
+                        ViewContext.Writer.Write("<div class=\"col-md-12 col-sm-6 col-xs-6 mt-10\">");
+                    }
+                <!-- Begin.container-half -->
+                    <div class="container-half">
+                        <div class="entry-media">
+                            <a href="/news/newdetails/@item.NewsID/@JID/@(AkhbarElyoum.Controllers.HomeController.GetPureURL(item.Title))" title="@item.Title">
+                                <img src="https://Images.akhbarelyom.com/images/images/Small/@item.PictureName1" class="image" alt="@item.Title" />
+                            </a>
+                        </div>
+                        <div class="content">
+                            <h4><a href="/news/newdetails/@item.NewsID/@JID/@(AkhbarElyoum.Controllers.HomeController.GetPureURL(item.Title))" title="@item.Title">@item.Title</a></h4>
+                        </div>
+                    </div>
+                <!-- End.container- entry- -->
+
+                    ViewContext.Writer.Write("</div>");
+
+                }
+
+
+                count++;
+
+                  <!--========== End.NEWS ==========-->
+
+                if (@item == Model.Where(a => a.DisplayOrder == 17).Last())
+                {
+                    ViewContext.Writer.Write(" </div></div></div></div></div>");
+                }
+
+
+            }
+
+
+        </div>
+    </div>
+</section>
+<!-- End Block17 -->
+
+
+<!-- Start Ad6 -->
+<section class="module" id="globe56">
+    <div class="container">
+        <div class="nohighlight">
+        </div>
+        <div align="center" style="height:100px;">
+            <div class="desktop-add">
+               @* <a href="https://akhbarelyom.com/Tags/NewsTagList/177386/1/%D8%B1%D9%88%D8%B3%D9%8A%D8%A7-2%D9%A018" title="روسيا 2018 ">
+                    <img src="/images/banner/russia2018.gif" alt="روسيا 2018 ">
+                </a>*@
+				
+				   <!-- /21675648325/PORTAL_LEADERBOARD_728X90 -->
+                    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                    <!-- portal mobile -->
+                    <ins class="adsbygoogle"
+                         style="display:block"
+                         data-ad-client="ca-pub-7445302147671862"
+                         data-ad-slot="6290631053"
+                         data-ad-format="auto"></ins>
+                    <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+					
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End Ad6 -->
+
+
+@Html.Action("GetHomeGalleryList", "Galleries", new { JournalID = JID })
+
+<!-- Start Ad3 -->
+<section class="module" id="globe444">
+    <div class="container">
+        <div class="nohighlight">
+        </div>
+        <div align="center">
+            <div class="desktop-add">
+                @*<a href="#">
+                    <img src="/images/banner/Sha3b2.jpg" alt="">
+                </a>*@
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End Ad3 -->
+
+@{flg = true; count = 0;}
+<!-- start Block18,19,20,21 With 1 News -->
+<section class="module last-module" id="others">
+    <div class="container">
+        <div class="highlight">
+            <!-- start Block18 With 1 News -->
+            @foreach (var item in Model.Where(a => a.DisplayOrder == 18))
+            {
+
+                if (count == 0)
+                {
+                    ViewContext.Writer.Write("<div class=\"col-md-3 col-sm-3\">");
+                }
+                if (flg)
+                {
+                    <h2>
+                        <a href="/news/newssection/@item.SectionID/@JID/@(AkhbarElyoum.Controllers.HomeController.GetPureURL(item.SecTitle))" title="@item.SecTitle" class="HomeSecTitle">@item.SecTitle</a>
+                    </h2>
+
+                    flg = false;
+                }
+
+                if (count == 0)
+                {
+                    ViewContext.Writer.Write("<div class=\"article\">");
+                }
+
+                count++;
+
+                if (count == 1)
+                {
+                    <div class="container-half">
+                        <div class="entry-media">
+                            <a href="/news/newdetails/@item.NewsID/@JID/@(AkhbarElyoum.Controllers.HomeController.GetPureURL(item.Title))" title="@item.Title">
+                                <img class="image" src="https://Images.akhbarelyom.com/images/images/Small/@item.PictureName1" alt="@item.Title">
+                            </a>
+                        </div>
+                        <div class="content">
+                            <h4><a href="/news/newdetails/@item.NewsID/@JID/@(AkhbarElyoum.Controllers.HomeController.GetPureURL(item.Title))" title="@item.Title">@item.Title </a></h4>
+                        </div>
+                    </div>
+                }
+                if (@item == Model.Where(a => a.DisplayOrder == 18).Last())
+                {
+                    ViewContext.Writer.Write("</div></div>");
+                }
+            }
+
+
+            <!-- start Block19 With 1 News -->
+            @{flg = true; count = 0;}
+            @foreach (var item in Model.Where(a => a.DisplayOrder == 19))
+            {
+
+                if (count == 0)
+                {
+                    ViewContext.Writer.Write("<div class=\"col-md-3 col-sm-3\">");
+                }
+                if (flg)
+                {
+                    <h2>
+                        <a href="/news/newssection/@item.SectionID/@JID/@(AkhbarElyoum.Controllers.HomeController.GetPureURL(item.SecTitle))" title="@item.SecTitle" class="HomeSecTitle">@item.SecTitle</a>
+                    </h2>
+
+                    flg = false;
+                }
+
+                if (count == 0)
+                {
+                    ViewContext.Writer.Write("<div class=\"article\">");
+                }
+
+                count++;
+
+                if (count == 1)
+                {
+
+                    <div class="container-half">
+                        <div class="entry-media">
+                            <a href="/news/newdetails/@item.NewsID/@JID/@(AkhbarElyoum.Controllers.HomeController.GetPureURL(item.Title))" title="@item.Title">
+                                <img class="image" src="https://Images.akhbarelyom.com/images/images/Small/@item.PictureName1" alt="@item.Title" />
+                            </a>
+                        </div>
+                        <div class="content">
+                            <h4><a href="/news/newdetails/@item.NewsID/@JID/@(AkhbarElyoum.Controllers.HomeController.GetPureURL(item.Title))" title="@item.Title">@item.Title </a></h4>
+                        </div>
+                    </div>
+                }
+                if (@item == Model.Where(a => a.DisplayOrder == 19).Last())
+                {
+                    ViewContext.Writer.Write("</div></div>");
+                }
+            }
+
+
+
+
+            <!-- start Block20 With 1 News -->
+            @{flg = true; count = 0;}
+            @foreach (var item in Model.Where(a => a.DisplayOrder == 20))
+            {
+
+                if (count == 0)
+                {
+                    ViewContext.Writer.Write("<div class=\"col-md-3 col-sm-3\">");
+                }
+                if (flg)
+                {
+                    <h2>
+                        <a href="/news/newssection/@item.SectionID/@JID/@(AkhbarElyoum.Controllers.HomeController.GetPureURL(item.SecTitle))" title="@item.SecTitle" class="HomeSecTitle">@item.SecTitle</a>
+                    </h2>
+
+                    flg = false;
+                }
+
+                if (count == 0)
+                {
+                    ViewContext.Writer.Write("<div class=\"article\">");
+                }
+
+                count++;
+
+                if (count == 1)
+                {
+
+                    <div class="container-half">
+                        <div class="entry-media">
+                            <a href="/news/newdetails/@item.NewsID/@JID/@(AkhbarElyoum.Controllers.HomeController.GetPureURL(item.Title))" title="@item.Title">
+                                <img class="image" src="https://Images.akhbarelyom.com/images/images/Small/@item.PictureName1" alt="@item.Title" />
+                            </a>
+                        </div>
+                        <div class="content">
+                            <h4><a href="/news/newdetails/@item.NewsID/@JID/@(AkhbarElyoum.Controllers.HomeController.GetPureURL(item.Title))" title="@item.Title">@item.Title </a></h4>
+                        </div>
+                    </div>
+                }
+                if (@item == Model.Where(a => a.DisplayOrder == 20).Last())
+                {
+                    ViewContext.Writer.Write("</div></div>");
+                }
+            }
+
+            <!-- start Block21 With 1 News -->
+            @{flg = true; count = 0;}
+            @foreach (var item in Model.Where(a => a.DisplayOrder == 21))
+            {
+
+                if (count == 0)
+                {
+                    ViewContext.Writer.Write("<div class=\"col-md-3 col-sm-3\">");
+                }
+                if (flg)
+                {
+                    <h2>
+                        <a href="/news/newssection/@item.SectionID/@JID/@(AkhbarElyoum.Controllers.HomeController.GetPureURL(item.SecTitle))" title="@item.SecTitle" class="HomeSecTitle">@item.SecTitle</a>
+                    </h2>
+
+                    flg = false;
+                }
+
+                if (count == 0)
+                {
+                    ViewContext.Writer.Write("<div class=\"article\">");
+                }
+
+                count++;
+
+                if (count == 1)
+                {
+                    <div class="container-half">
+                        <div class="entry-media">
+                            <a href="/news/newdetails/@item.NewsID/@JID/@(AkhbarElyoum.Controllers.HomeController.GetPureURL(item.Title))" title="@item.Title">
+                                <img class="image" src="https://Images.akhbarelyom.com/images/images/Small/@item.PictureName1" alt="@item.Title" />
+                            </a>
+                        </div>
+                        <div class="content">
+                            <h4><a href="/news/newdetails/@item.NewsID/@JID/@(AkhbarElyoum.Controllers.HomeController.GetPureURL(item.Title))" title="@item.Title">@item.Title </a></h4>
+                        </div>
+                    </div>
+                }
+
+                if (@item == Model.Where(a => a.DisplayOrder == 21).Last())
+                {
+                    ViewContext.Writer.Write("</div></div>");
+                }
+            }
+
+
+        </div>
+    </div>
+</section>
+<!-- End Block18,19,20,21 With 1 News -->
+
+
+

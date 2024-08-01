@@ -1,0 +1,52 @@
+﻿@{string JID = AkhbarElyoum.Controllers.HomeController.GetJournalID(HttpContext.Current.Request.Url.Host, int.Parse((HttpContext.Current.Request.QueryString["JournalID"] != null) ? HttpContext.Current.Request.QueryString["JournalID"].ToString() : "0"));}
+<!-- Start Side Block -->
+
+<div class="col-md-4">
+    <div class="internal-sidebar">
+        <div class="row">
+				
+            <div class="col-md-12 col-sm-6 col-xs-12" align="center">
+			
+				@Html.Action("GetBlockTextList", "Blocks", new { BlockID = 29, JournalID = 1 })	
+
+            </div>
+			
+			
+			
+
+
+            <div class="col-md-12 col-sm-6 col-xs-12" style="padding-top:10px;">
+                @Html.Action("GetHomeMostViewedList", "News", new { JournalID = JID })
+            </div>
+
+			
+		
+		
+           @* <div class="col-md-12 col-sm-6 col-xs-12" style="padding-top:10px;">
+              <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+				<!-- portal250x250 -->
+				<ins class="adsbygoogle"
+					 style="display:inline-block;width:250px;height:250px"
+					 data-ad-client="ca-pub-7445302147671862"
+					 data-ad-slot="6441756943"></ins>
+				<script>
+				(adsbygoogle = window.adsbygoogle || []).push({});
+				</script>
+            </div>*@
+			
+			
+			 <div class="col-md-12 col-sm-6 col-xs-12" style="padding-top:10px;">
+						<!-- /21675648325/PORTAL_CONNECTADS_300X250 -->
+						<div id='div-gpt-ad-1528385702536-0' style='height:250px; width:300px;'>
+						<script>
+						googletag.cmd.push(function() { googletag.display('div-gpt-ad-1528385702536-0'); });
+						</script>
+						</div>
+			</div>
+
+        </div>
+
+    </div>
+</div>
+
+<!-- EndSideBlock -->

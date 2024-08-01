@@ -1,0 +1,82 @@
+﻿@model IEnumerable<AkhbarElyoum.Models.NewsDetails>
+@{
+    Layout = "~/Views/Shared/_Layout1Mobile.cshtml";
+    if (Model.ElementAt(0).Title.Length > 12)
+    {
+        ViewBag.Title = Model.ElementAt(0).Title.Substring(0, 12);
+    }
+    else
+    {
+        ViewBag.Title = Model.ElementAt(0).Title;
+    }
+}
+@section Header{
+    @foreach (var item in Model)
+    {
+        <meta property="og:image" content="/images/images/large/@item.PictureName1" />
+        <meta name="keywords" content="@item.Keywords" />
+        <meta name="Description" content="@item.Breif" />
+        
+        <!-- Schema.org markup for Google+ -->
+        <meta itemprop="name" content="@item.Desription">
+        <meta itemprop="description" content="@item.Breif">
+        <meta itemprop="image" content="/images/images/large/@item.PictureName1">
+
+        <!-- Twitter Card data -->
+@*<meta name="twitter:site" content="@publisher_handle">*@
+        <meta name="twitter:title" content="@item.Title">
+        <meta name="twitter:description" content="@item.Breif">
+@*<meta name="twitter:creator" content="@author_handle">*@
+        <!-- Twitter summary card with large image must be at least 280x150px -->
+        <meta name="twitter:image:src" content="/images/images/large/@item.PictureName1">
+
+        <!-- Open Graph data -->
+        <meta property="og:title" content="@item.Title" />
+        <meta property="og:type" content="article" />
+        <meta property="og:image" content="/images/images/large/@item.PictureName1" />
+        <meta property="og:description" content="@item.Desription" />
+        <meta property="og:site_name" content="http://akhbarelyom.com/" />
+        <meta property="article:published_time" content="2009-09-17T05:59:00+01:00" />
+        <meta property="article:modified_time" content="2009-09-16T19:08:47+01:00" />
+        <meta property="article:section" content="Article Section" />
+        <meta property="article:tag" content="@item.Keywords" />
+    }
+}
+@section Mobilehome {
+    @foreach (var item in Model)
+    {
+        <div class="newNews">
+            <div class="imgcont2">
+                <img alt="@item.PictureCaption1" class="img-responsive" src="/images/images/large/@item.PictureName1"/>
+                <span>@item.PictureCaption1</span></div>
+            <h2 class="title ">
+                @item.Title
+            </h2>
+           @{if (item.SubTitle != "")
+              {        <h2 class="subtitle">@item.SubTitle</h2>  }}
+            @{if (item.ByLine != "")
+              {        <span class="topSecDate">@item.ByLine</span>  }}
+            @{if (item.CategoryID == 2 && item.ByLine == "")
+              {        <span class="topSecDate">@item.EditorName</span> }}
+            <span class="topSecDate">@item.PublishDate</span>
+            <div class="txtwrapper" style="font-size: 20px;">
+                <div data-role="page">
+                    <div data-role="header">
+                    </div>
+                    <!-- /header -->
+                </div>
+                <!-- /page -->
+            </div>
+            <p class="txtwrapper" id="txtwrapper">
+                @Html.Raw(HttpUtility.HtmlDecode(item.Story))
+            </p>
+            <div>
+                @Html.Action("GetMobileTagsForSpecificNew", "Tags", new { NID = @item.NewsID })
+            </div>
+            <div>
+                @Html.Action("GetMobileRelatedNewsList", "News", new { NID = @item.NewsID, secid = @item.SectionID })
+            </div>
+        </div>
+    
+    }
+}

@@ -1,0 +1,28 @@
+﻿@model IEnumerable<AkhbarElyoum.Models.Editors>
+    @{
+        int count = 0;
+    }
+    @foreach (var item in Model)
+    {
+            <div class="entry-block-small">
+                <div class="entry-image">
+                    <a class="img-link" href="/Editors/EditorNews/@item.EditorID/1/@(AkhbarElyoum.Controllers.HomeController.GetPureURL(item.EditorName))" title="@item.EditorName">
+                        <img class="img-responsive img-full" src="https://Images.akhbarelyom.com/images/images/AdminUsers/@item.picture" alt="@item.EditorName" />
+                    </a>
+                </div>
+                <div class="entry-content">
+                    <h4><a href="/Editors/EditorNews/@item.EditorID/1/@(AkhbarElyoum.Controllers.HomeController.GetPureURL(item.EditorName))" title="@item.EditorName"> @item.EditorName</a></h4>
+                </div>
+            </div>
+       
+
+        count++;
+
+
+        if (count == Model.Count())
+        {
+            <p class="lastid" idx="@item.DisplayOrder">
+            </p>
+        }
+
+    }

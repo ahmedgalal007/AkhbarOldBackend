@@ -1,0 +1,340 @@
+﻿@using System.Collections.Generic;
+@model IEnumerable<AkhbarElyoum.Models.NewsDetails>
+    @{
+        int? SectionID2 = 12;
+        string JID = AkhbarElyoum.Controllers.HomeController.GetJournalID(HttpContext.Current.Request.Url.Host, int.Parse((HttpContext.Current.Request.QueryString["JournalID"] != null) ? HttpContext.Current.Request.QueryString["JournalID"].ToString() : "0"));
+        Layout = "../Shared/_LayoutInner.cshtml";
+        foreach (var item in Model)
+        {
+            SectionID2 = item.SectionID == null ? 0 : item.SectionID;
+        }
+
+        string LayoutHawadeth = "../Shared/_LayoutInnerHawadeth.cshtml";
+        string LayoutNogoom = "../Shared/_LayoutInnerNogoom.cshtml";
+        string LayoutRiadah = "../Shared/_LayoutInnerRiadah.cshtml";
+
+        switch (SectionID2)
+        {
+            case 11:
+                Layout = LayoutHawadeth;
+                break;
+            case 36:
+                Layout = LayoutNogoom;
+                break;
+            case 23:
+                Layout = LayoutRiadah;
+                break;
+            default:
+                break;
+        }
+        string css = "";
+    }
+    @section Meta{
+
+        @foreach (var item in Model)
+        {
+            <title>@item.Title | بوابة أخبار اليوم الإلكترونية</title>
+
+            <meta name="description" content="@item.Breif" />
+            <meta name="keywords" content="@item.Keywords" />
+
+            <link rel="original-source" href="https://akhbarelyom.com/news/newdetails/@item.NewsID/1/@AkhbarElyoum.Controllers.HomeController.GetPureURL(item.Title)" />
+            <link rel="amphtml" id="canonicalUrl" href="https://akhbarelyom.com/news/newdetails/@item.NewsID/1/@AkhbarElyoum.Controllers.HomeController.GetPureURL(item.Title)/amp" />
+            <link rel="canonical" id="canonicalUrl" href="https://akhbarelyom.com/news/newdetails/@item.NewsID/1/@AkhbarElyoum.Controllers.HomeController.GetPureURL(item.Title)" />
+
+
+            <!-- Schema.org markup for Google+ -->
+            <meta itemprop="name" content="@item.SubTitle">
+            <meta itemprop="description" content="@item.Breif">
+            <meta itemprop="image" content="https://Images.akhbarelyom.com/images/images/large/@item.PictureName1">
+
+            <!-- Open Graph data -->
+
+            if (@item.SocialTitle != "")
+            {
+                <meta name="twitter:title" content="@item.SocialTitle">
+                <meta property="og:title" content="@item.SocialTitle" />
+            }
+            else
+            {
+                <meta name="twitter:title" content="@item.Title">
+                <meta property="og:title" content="@item.Title" />
+            }
+
+
+            if (@item.SocialPictureName != "")
+            {
+
+                <meta name="twitter:image:src" content="https://Images.akhbarelyom.com/images/images/social/@item.SocialPictureName">
+                <meta property="og:image" content="https://Images.akhbarelyom.com/images/images/social/@item.SocialPictureName" />
+            }
+            else
+            {
+                <meta name="twitter:image:src" content="https://Images.akhbarelyom.com/images/images/large/@item.PictureName1">
+                <meta property="og:image" content="https://Images.akhbarelyom.com/images/images/large/@item.PictureName1" />
+            }
+
+            @*<meta name="twitter:description" content="@item.Breif">
+                <meta property="og:description" content="@item.Breif" />*@
+
+            <meta name="twitter:description" content="@item.Breif">
+            <meta property="og:description" content="بوابة أخبار اليوم الإلكترونية" />
+
+            <meta property="og:type" content="article" />
+            <meta property="og:site_name" content="https://akhbarelyom.com/" />
+            <meta property="article:published_time" content="@item.PublishDate" />
+            <meta property="article:modified_time" content="@item.PublishDate" />
+            <meta property="article:section" content="@item.SectionTitle" />
+
+
+            string[] TagsArray = item.Keywords.Split(',');
+            foreach (var tag in TagsArray)
+            {
+                <meta property="article:tag" content="@tag" />
+            }
+            @*<meta property="article:tag" content="@item.Keywords" />*@
+        }
+    }
+
+    @section home {
+
+        <style type="text/css">
+            .post .entry-content p > a {
+                color: #ff0000ad;
+                text-decoration: none;
+                text-transform: uppercase;
+            }
+
+            .post .entry-content img {
+                height: auto !important;
+            }
+        </style>
+
+        <section class="module">
+
+
+            <div class="container">
+                    <div class="">
+                        {
+                            List<int,string> Headers = new List<int,string>();
+                            Headers.Add(1123, "Welcome");
+                            @helper RenderSectionHeader(string color)
+                            {
+                                <h1>@color</h1>
+                            }
+                            }
+                            <h1>Section = @SectionID2</h1>
+                            <!--========== BEGIN .COL-MD-9 ==========-->
+                            @foreach (var item in Model)
+                            {
+                                if (item.SectionID == 13)
+                                {
+                                    RenderSectionHeader("");
+                                }
+                                <div class="col-md-8">
+                                    <article>
+                                        <nav class="breadcrumb">
+                                            <ul>
+                                                <li>
+                                                    <a href="https://akhbarelyom.com" title="الرئيسية اخبار اليوم">
+                                                        <h6>الرئيسية</h6>
+                                                    </a>
+                                                </li>
+                                                <li class="active">
+                                                    <a href="/news/newssection/@item.SectionID/@JID/@(AkhbarElyoum.Controllers.HomeController.GetPureURL(item.SectionTitle))" title="@item.SectionTitle">
+                                                        <h6>@item.SectionTitle</h6>
+                                                    </a>
+                                                </li>
+
+                                            </ul>
+                                        </nav>
+
+                                        <div class="post post-full clearfix">
+                                            <div class="entry-title">
+                                                <h2>
+                                                    @item.SubTitle
+                                                </h2>
+                                                <h1 class="entry-title" style="text-transform: initial;">
+                                                    @item.Title
+                                                </h1>
+
+                                                <div class="post-meta-date" style="font-size:13px;"> <i class="fa fa-calendar"></i>@item.PublishDate</div>
+                                            </div>
+                                            <div class="entry-media">
+                                                <a href="/news/newdetails/@item.NewsID/@JID/@(AkhbarElyoum.Controllers.HomeController.GetPureURL(item.Title))" title="@item.Title">
+                                                    <img src="https://Images.akhbarelyom.com/images/images/large/@item.PictureName1" alt="@item.PictureCaption1" class="img-responsive" />
+                                                </a>
+                                                <figcaption class="img-caption">@item.PictureCaption1</figcaption>
+                                            </div>
+                                            <div class="entry-main">
+
+                                                <div style="border-bottom: 1px solid #ddd;margin-bottom: 10px;">
+                                                    <div class="post-meta-elements">
+                                                        @Html.Action("GetNewByLines", "Editors", new { NID = @item.NewsID })
+
+
+                                                    </div>
+                                                </div>
+
+
+
+                                                <!-- start Ads loc1-->
+
+                                                <div align="center">
+
+
+                                                    <div class="desktop-add_12">
+
+                                                        @if (item.SectionID == 13)
+                                                        {
+                                                            @Html.Action("GetBlockTextList", "Blocks", new { BlockID = 155, JournalID = 1 })
+                                                        }
+                                                        else
+                                                        {
+                                                            @Html.Action("GetBlockTextList", "Blocks", new { BlockID = 14, JournalID = 1 })
+                                                        }
+                                                    </div>
+
+
+
+                                                </div>
+
+
+
+                                                <!-- End Ads loc1 -->
+
+
+                                                <div class="entry-content HtmlDecode">
+
+                                                    @Html.Raw(HttpUtility.HtmlDecode(item.Story))
+                                                </div>
+
+                                                <div id="ADonContent">
+                                                    @if (item.SectionID == 13)
+                                                    {
+                                                        @Html.Action("GetBlockTextList", "Blocks", new { BlockID = 156, JournalID = 1 })
+                                                    }
+                                                    else
+                                                    {
+                                                        @Html.Action("GetBlockTextList", "Blocks", new { BlockID = 24, JournalID = 1 })
+                                                    }
+                                                </div>
+
+
+
+                                                @Html.Action("GetNewsGalleryList", "Galleries", new { NID = @item.NewsID })
+
+
+
+
+                                                <div align="center">
+
+                                                    @if (item.SectionID == 13)
+                                                    {
+                                                        @Html.Action("GetBlockTextList", "Blocks", new { BlockID = 157, JournalID = 1 })
+                                                    }
+                                                    else
+                                                    {
+                                                        @Html.Action("GetBlockTextList", "Blocks", new { BlockID = 23, JournalID = 1 })
+                                                    }
+
+                                                </div>
+
+
+                                                @Html.Action("GetNewTags", "Tags", new { NID = @item.NewsID })
+
+
+                                            </div>
+                                        </div>
+
+
+
+                                        @Html.Action("GetShareLinks", "Home", new { URL = "/news/newdetails/" + @item.NewsID + "/1/" + @AkhbarElyoum.Controllers.HomeController.GetPureURL(item.Title), Position = "Bottom" })
+
+
+
+                                        @Html.Action("GetRelatedNewsList", "News", new { NID = @item.NewsID, secid = @item.SectionID })
+                                        @*  H__tml.Action("GetMoreReadListInside", "News", new { JournalID = JID }) *@
+
+
+
+
+                                        <script>
+                                            $(document).ready(function () {
+                                                $(".entry-content p").first().after(Related);
+                                                $(".entry-content br").first().after(ADonContent);
+
+
+                                            });
+                                        </script>
+
+
+                                        @if (item.SectionID == 13)
+                                        {
+                                            @Html.Action("GetBlockTextList", "Blocks", new { BlockID = 158, JournalID = 1 })
+                                        }
+                                        else
+                                        {
+                                            @Html.Action("GetBlockTextList", "Blocks", new { BlockID = 142, JournalID = 1 })
+                                        }
+
+
+
+
+
+                                    </article>
+                                </div>
+
+                                <div class="col-md-4">
+                                    @Html.Action("GetNewsLeftSideServices", "Home", new { SecID = @item.SectionID })
+                                    <p></p>
+                                    @Html.Action("GetHomeMostViewedList", "News", new { JournalID = JID })
+                                    <p></p>
+                                    @Html.Action("GetBlockTextList", "Blocks", new { BlockID = 164, JournalID = 1 })
+                                </div>
+
+
+                            }
+                    </div>
+            </div>
+        </section>
+
+    }
+
+    @section ArticleSchema {
+        @foreach (var item in Model)
+        {
+            <script type="application/ld+json">
+            {
+              "@@context": "https://schema.org",
+              "@@type": "NewsArticle",
+              "mainEntityOfPage": {
+                "@@type": "WebPage",
+                "@@id": "https://akhbarelyom.com/news/newdetails/@item.NewsID/1/@AkhbarElyoum.Controllers.HomeController.GetPureURL(item.Title)"
+              },
+              "headline": "@item.Title",
+              "description": "@item.Breif",
+              "image": [
+                    "https://Images.akhbarelyom.com/images/images/large/@item.PictureName1",
+                    "https://Images.akhbarelyom.com/images/images/Meduim/@item.PictureName1",
+                    "https://Images.akhbarelyom.com/images/images/Small/@item.PictureName1"
+                   ],
+              "datePublished": "@item.PublishDate.ToString()",
+              "dateModified": "@item.PublishDate.ToString()",
+              "author": {
+                "@@type": "Person",
+                "name": "@item.ByLine"
+              },
+              "publisher": {
+                "@@type": "Organization",
+                "name": "مؤسسة - أخبار اليوم",
+                "url": "https://akhbarelyom.com.com",
+                "logo": {
+                  "@@type": "ImageObject",
+                  "url": "https://images.akhbarelyom.com/UP/20231115122307124.jpg"
+                }
+              }
+            }
+            </script>
+        }
+    }

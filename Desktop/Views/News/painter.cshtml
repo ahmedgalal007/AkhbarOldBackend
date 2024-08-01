@@ -1,0 +1,207 @@
+﻿@model IEnumerable<AkhbarElyoum.Models.Gallery>
+<!--jqury taps JS-->
+@{
+    string JID = AkhbarElyoum.Controllers.HomeController.GetJournalID(HttpContext.Current.Request.Url.Host, int.Parse((HttpContext.Current.Request.QueryString["JournalID"] != null) ? HttpContext.Current.Request.QueryString["JournalID"].ToString() : "0"));
+    Layout = "../Shared/_LayoutInner.cshtml";
+    //"../Shared/_Layout" + JID + ".cshtml";
+    int count = 0;
+    var cssclass = "";
+    int? SectionID = 0;
+    string SecID = "0";
+    int galleryid = 0;
+    if (Model.Count()>0)
+    {
+        ViewBag.Title = @Model.FirstOrDefault().Title;
+        galleryid = @Model.FirstOrDefault().GalleryID;
+    }
+    
+}
+<link rel="stylesheet" type="text/css" href="/css/@JID/taps/style.css" />
+
+<script type="text/javascript">
+
+    var isenabled = true;
+    var page = -1;
+    if ($(".lastid:last").attr("idx")) {
+        page = $(".lastid:last").attr("idx").toString();
+    }
+    else {
+        $('.showMore').hide();
+        $('.no-more-data').show();
+    }
+    var GetSection = function () {
+        $.ajax({
+            type: "GET",
+            url: '/News/painterpaged?LastID=' + page + '&Galleryid=' +@galleryid,
+            contentType: "html/text",
+            dataType: "html",
+            cache: false,
+            success: function (msg) {
+                var container = $("#NewsSectionPaging");
+                if (msg.trim() !== "") {
+                    container.append(msg);
+                } else {
+                    $('.showMore').hide();
+                    $('.no-more-data').show();
+                }
+                var isenabled = true;
+            }
+        });
+    }
+    $(document).ready(function () {
+        //console.log("Init complete.");
+        // create a long list of items
+        var container = $("#NewsSectionPaging");
+        var pagenumber = 0;
+        if ($(".lastid:last").attr("idx")) {
+            page = $(".lastid:last").attr("idx").toString();
+        }
+        else {
+            $('.showMore').hide();
+            $('.no-more-data').show();
+        }
+        var appendToList = function (msg) {
+            container.append(msg);
+        }
+        container.bind("infinite-scroll", function (args) {
+            if ($(".lastid:last").attr("idx")) {
+                page = $(".lastid:last").attr("idx").toString();
+            }
+            else {
+                $('.showMore').hide();
+                $('.no-more-data').show();
+            }
+            //console.log("Received", args);
+            $.ajax({
+                type: "GET",
+                 url: '/News/painterpaged?LastID=' + page + '&Galleryid=' +@galleryid,
+                contentType: "html/text",
+                dataType: "html",
+                cache: false,
+                success: function (msg) {
+                    if (msg.trim() !== "") {
+                        container.append(msg);
+                    } else {
+                        $('.showMore').hide();
+                        $('.no-more-data').show();
+                    }
+                    pagenumber++;
+                    isenabled = true;
+                }
+            });
+        });
+
+        var infiniteScroll = new $.InfiniteScroll('#NewsSectionPaging', true).setup();
+
+
+    });
+</script>
+
+    <div class="onePostErea">
+        <!-- start onePostErea -->
+        <!-- start lftSide -->
+        <div class="onePostEreaLft">
+            <div class="adv2 drop-shadow lifted">
+                <!-- start adv2 -->
+                <div class="adv-code drop-shadow lifted">
+                    <a href="#">
+                        @Html.Action("GetBlockTextList", "Blocks", new { BlockID = 27, JournalID = JID })
+                </div>
+            </div>
+            <div class="adv2 drop-shadow lifted" style="margin-top: 17.75px;">
+                <!-- start adv2 -->
+                <div class="adv-code">
+                    @Html.Action("GetBlockTextList", "Blocks", new { BlockID = 25, JournalID = JID })
+                </div>
+            </div>
+            <!-- end adv2 -->
+            <!-- start shareUs -->
+            <!-- start shareUs -->
+            <!-- start news -->
+            @*@Html.Action("GetEditorsList", "Editors")*@
+            <!-- end news -->
+            @*<div class="lftBoxNews" style="height: 329px; overflow: hidden;">
+                    <div id="blogSlider">
+                        <div class="innerWrap">
+                            <div class="panelContainer">
+                                <div class="panel" title="الأكثر تعليقا">
+                                    @Html.Action("GetHomeMostCommentedSectionList", "News", new { SectionID = (@Model.FirstOrDefault() != null) ? @Model.FirstOrDefault().SectionID : 0, JournalID = JID })
+                                </div>
+                                <div class="panel" title="الأحدث">
+                                    @Html.Action("GetHomeLatestSectionList", "News", new { SectionID = (@Model.FirstOrDefault() != null) ? @Model.FirstOrDefault().SectionID : 0, JournalID = JID })
+                                </div>
+                                <div class="panel" title="الأكثر قراءة">
+                                    @Html.Action("GetHomeMostViewedSectionList", "News", new { SectionID = (@Model.FirstOrDefault() != null) ? @Model.FirstOrDefault().SectionID : 0, JournalID = JID })
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>*@
+            <!-- end small adv -->
+            <div class="adv2 drop-shadow lifted" style="margin-top: 17.75px;">
+                <!-- start adv2 -->
+                <div class="adv-code drop-shadow lifted">
+                    @Html.Action("GetBlockTextList", "Blocks", new { BlockID = 28, JournalID = JID })
+                </div>
+            </div>
+            <!-- end adv2 -->
+            <div class="adv2" style="margin-top: 17.75px;">
+                <!-- start adv2 -->
+                <div class="adv-code drop-shadow lifted">
+                    @Html.Action("GetBlockTextList", "Blocks", new { BlockID = 29, JournalID = JID })
+                </div>
+            </div>
+            <!-- end adv2 -->
+        </div>
+        <!-- end lftSide -->
+        <div class="onePostEreaRit">
+            <!-- start block1Rit -->
+            <div class="block1Rit" id="gridcontainer">
+               
+                @foreach (var item in Model)
+                {
+                    if (count == 0)
+                {
+                    @section Header{
+                    <meta name="keywords" content="@item.Keywords" />
+                        <meta name="Description" content="@item.PicCaption" />
+                    }
+                    ViewContext.Writer.Write("<div id=\"NewsSectionPaging\" class=\"newNewsBoxWrapper\" style=\"margin-top:20px; margin-bottom: 20px;\">");
+
+                }
+                   <div class="ImgView">
+                       <a href="https://Images.akhbarelyom.com/images/images/large/@item.Picturename" class="highslide" onclick="return hs.expand(this)">
+                           <img style="height:294px;max-width:297px;" src="https://Images.akhbarelyom.com/images/images/large/@item.Picturename" title="Click to enlarge" />
+                       </a>
+
+                   </div>
+                    count++;
+                    if (count == Model.Count())
+                    {
+                        <p class="lastid" idx="@item.pictureid">
+                        </p>
+                        ViewContext.Writer.Write("</div>");
+                    }
+                   
+                }
+                @if (Model.Count() > 0)
+                {
+
+                    <div class="no-more-data" style="display: none;">
+                        <p>
+                            لا يوجد المزيد من البيانات.
+                        </p>
+                    </div>
+                    <input name="" id="" onclick="GetSection();" class="showMore" type="submit" value="" />
+                    <div class="SecID" style="display: none;"></div>
+
+                }
+            </div>
+        </div>
+    </div>
+    <script>
+        var test = $(".SecID").text();
+        if (test != "")
+            $('.menuItem[titles|=' + test + '] span').addClass('jquerySelected');
+        $('.footer_menu-wrapper[titles|=' + test + '] span').addClass('jquerySelected');
+    </script>

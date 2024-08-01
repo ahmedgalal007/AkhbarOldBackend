@@ -15,3 +15,39 @@ Stack Trace:
    at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<>c__DisplayClass2b.<BeginInvokeAction>b__1c()
    at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<BeginInvokeAction>b__1e(IAsyncResult asyncResult)
 
+------  Error Happen With UserID: 2 - UserName: مدير النظام - At: 29/07/2024 11:49:45 م ---------
+Message: There was no endpoint listening at http://195.122.191.98:8030/ReportServer/ReportExecution2005.asmx that could accept the message. This is often caused by an incorrect address or SOAP action. See InnerException, if present, for more details.
+Stack Trace: 
+
+Server stack trace: 
+   at System.ServiceModel.Channels.HttpOutput.WebRequestHttpOutput.GetOutputStream()
+   at System.ServiceModel.Channels.HttpOutput.Send(TimeSpan timeout)
+   at System.ServiceModel.Channels.HttpChannelFactory`1.HttpRequestChannel.HttpChannelRequest.SendRequest(Message message, TimeSpan timeout)
+   at System.ServiceModel.Channels.RequestChannel.Request(Message message, TimeSpan timeout)
+   at System.ServiceModel.Dispatcher.RequestChannelBinder.Request(Message message, TimeSpan timeout)
+   at System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs, TimeSpan timeout)
+   at System.ServiceModel.Channels.ServiceChannelProxy.InvokeService(IMethodCallMessage methodCall, ProxyOperationRuntime operation)
+   at System.ServiceModel.Channels.ServiceChannelProxy.Invoke(IMessage message)
+
+Exception rethrown at [0]: 
+   at System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   at System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   at CMS.ReportingWebService.ReportExecutionServiceSoap.LoadReport(LoadReportRequest request)
+   at CMS.ReportingWebService.ReportExecutionServiceSoapClient.CMS.ReportingWebService.ReportExecutionServiceSoap.LoadReport(LoadReportRequest request) in E:\Dot Net Projects\_Akhbar\Github\AkhbarOldBackend\CMS\Service References\ReportingWebService\Reference.cs:line 3349
+   at CMS.ReportingWebService.ReportExecutionServiceSoapClient.LoadReport(TrustedUserHeader TrustedUserHeader, String Report, String HistoryID, ServerInfoHeader& ServerInfoHeader, ExecutionInfo& executionInfo) in E:\Dot Net Projects\_Akhbar\Github\AkhbarOldBackend\CMS\Service References\ReportingWebService\Reference.cs:line 3357
+   at ReportingServiceClientLib.ReportExporter.Export(String wcfEndpointConfigName, NetworkCredential clientCredentials, String report, ParameterValue[] parameters, ExportFormat format, Byte[]& output, String& extension, String& mimeType, String& encoding, Warning[]& warnings, String[]& streamIds) in E:\Dot Net Projects\_Akhbar\Github\AkhbarOldBackend\CMS\App_Code\ReportingServiceClientLib.cs:line 96
+   at CMS.Areas.Reports.Controllers.ReportController.SaveReport(ExportFormat outPutFormat, ReportsVM vm) in E:\Dot Net Projects\_Akhbar\Github\AkhbarOldBackend\CMS\Areas\Reports\Controllers\ReportController.cs:line 176
+   at CMS.Areas.Reports.Controllers.ReportController.GetReport(String submitButton, ReportsVM vm) in E:\Dot Net Projects\_Akhbar\Github\AkhbarOldBackend\CMS\Areas\Reports\Controllers\ReportController.cs:line 219
+   at lambda_method(Closure , ControllerBase , Object[] )
+   at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<BeginInvokeSynchronousActionMethod>b__39(IAsyncResult asyncResult, ActionInvocation innerInvokeState)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`2.CallEndDelegate(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<InvokeActionMethodFilterAsynchronouslyRecursive>b__3d()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<>c__DisplayClass46.<InvokeActionMethodFilterAsynchronouslyRecursive>b__3f()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<>c__DisplayClass46.<InvokeActionMethodFilterAsynchronouslyRecursive>b__3f()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<>c__DisplayClass2b.<BeginInvokeAction>b__1c()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<BeginInvokeAction>b__1e(IAsyncResult asyncResult)
+

@@ -1,0 +1,211 @@
+﻿@model AkhbarElyoum.Models.Comments
+@{string JID = AkhbarElyoum.Controllers.HomeController.GetJournalID(HttpContext.Current.Request.Url.Host, int.Parse((HttpContext.Current.Request.QueryString["JournalID"] != null) ? HttpContext.Current.Request.QueryString["JournalID"].ToString() : "0"));
+string ID = "";
+    if (Request.QueryString["id"] != null)
+    {
+        ID = Request.QueryString["id"].ToString();
+    }
+    else
+    {
+        ID = ViewContext.RouteData.Values["ID"].ToString();
+    }
+}
+<script type="text/javascript">
+$(document).ready(function () {
+        $('#NewId').val(@ID);
+    });
+    function CreateComment() {
+        var comment = new Array();
+        comment[0] = $('#UserName').val();
+        comment[1] = $('#Email').val();
+        comment[2] = $('#Subject').val();
+        comment[3] = $('#messagebody').val();
+        var postData = { Comment: comment };
+        if ($.cookie('Comment') === null) {
+            $.ajax({
+                type: "POST",
+                url: '/Comments/Create',
+                data: postData,
+                cache: false,
+                success: function (msg) {
+                    //alert(msg);
+                    // get the index of the row for the fnDeleteRow
+                    //appendToList(msg);
+                    //pagenumber++;
+                    if (msg.toString().toLowerCase() == "true".toLowerCase()) {
+                        var date = new Date();
+                        var Seconds = 30;
+                        date.setTime(date.getTime() + (Seconds * 1000));
+                        $.cookie("Comment", "1", { expires: date });
+                        //$('#contactus').hide();
+                        //$('.no-more-data_green').show();
+                        $('#contactus').html('<div class="SuccessComment">تم استقبال تعليقك.. سيتم ظهوره في اقرب وقت فور مراجعته. نشكرك على مشاركتك.</div>');
+                    } else {
+                        $('#contactus').html('<div class="FailComment">لا يسمح بإضافة تعليق جديد خلال وقت قصير.</div>');
+                    }
+                },
+                dataType: "json",
+                traditional: true
+            });
+        }
+        else {
+            $('#contactus').html('<div class="FailComment">لا يسمح بإضافة تعليق جديد خلال وقت قصير.</div>');
+        }
+    }
+    function ReloadForm(xhr) {
+        $('#contactus').html(xhr.responseText);
+    }
+    function checkcookie() {
+        if ($.cookie('Comment') === null) {
+            var date = new Date();
+            var Seconds = 30;
+            date.setTime(date.getTime() + (Seconds * 1000));
+            $.cookie("Comment", "1", { expires: date });
+            return true;
+        }
+        else {
+            $('#contactus').html('<div class="FailComment">لا يسمح بإضافة تعليق جديد خلال وقت قصير.</div>');
+            return false;
+        }
+    }
+    function ClearValidationErrors() {
+        $('.validation-summary-errors').html('');
+        $('.input-validation-error').removeClass('input-validation-error');
+        $('.field-validation-error').remove();
+        $('#contactus').html('<div class="SuccessComment">تم استقبال تعليقك.. سيتم ظهوره في اقرب وقت فور مراجعته. نشكرك على مشاركتك.</div>');
+    }
+    (function () {
+        jQuery.validator.addMethod('mustbe', function (value, element, params) {
+            var testValue = params['propertyvalue'];
+            var condition = params['condition'];
+            if ((condition == '0') && (value != testValue))
+                return true;
+            if ((condition == '1') && (value == testValue))
+                return true;
+            return false;
+        });
+        var setValidationValues = function (options, ruleName, value) {
+            options.rules[ruleName] = value;
+            if (options.message) {
+                options.messages[ruleName] = options.message;
+            }
+        };
+        var $Unob = $.validator.unobtrusive;
+        $Unob.adapters.add("mustbe", ["propertyvalue", "condition"], function (options) {
+            var value = {
+                propertyvalue: options.params.propertyvalue,
+                condition: options.params.condition
+            };
+            setValidationValues(options, "mustbe", value);
+        });
+
+    })();
+</script>
+<style>
+#Email {
+	 border: 1px solid #D1D1D1;
+    border-radius: 2px;
+    box-shadow: 0 0 10px rgba(173, 173, 173, 0.3) inset;
+    color: #B2B2B2;
+    direction: rtl;
+    font-size: 16px;
+    font-weight: bold;
+    height: 18px;
+    text-align: right;
+    width: 610px;
+}
+</style>
+<script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+@if(JID == "6") {
+									<div class="tr border-radius box-border top-space">
+										<div class="tr box-title border-radius-top-left border-radius-top-right">
+											<div class="td first"><span>اضف تعليق</span></div>
+										</div>
+										<div class="content border-radius-bottom-left border-radius-bottom-right" id="create-comments">
+											@using (Ajax.BeginForm("Create", "Comments", Model, new AjaxOptions { UpdateTargetId = "formresults", HttpMethod = "Post", OnSuccess = "ClearValidationErrors", OnFailure = "ReloadForm(xhr)", OnBegin = "checkcookie" }, new { id = "contactus" })) {					
+											@Html.ValidationSummary(true)  
+												<fieldset>
+													<div class='container'>
+														<label for='name'>الاسم</label>
+														@Html.EditorFor(model => model.UserName)
+														<span id='contactus_email_errorloc' class='error'>@Html.ValidationMessageFor(model => model.UserName)</span>
+													</div>
+													<div class='container'>
+														<label for='email'>البريد الإلكتروني</label>
+														@Html.EditorFor(model => model.Email)
+														<span id='contactus_email_errorloc' class='error'>@Html.ValidationMessageFor(model => model.Email)</span>
+													</div>
+													<div class='container'>
+														<label for='email'>عنوان التعليقي</label>
+														@Html.EditorFor(model => model.Subject)
+														<span id='contactus_email_errorloc' class='error'>@Html.ValidationMessageFor(model => model.Subject)</span>
+													</div>
+													<div class='container'>
+														<label for='message'>التعليق</label>
+														@Html.TextAreaFor(model => model.messagebody)
+														<span id='contactus_email_errorloc' class='error'>@Html.ValidationMessageFor(model => model.messagebody)</span>
+													</div>
+													@Html.HiddenFor(model => model.NewId)
+													<input style="display:none;" id="JournalID" value="@JID" />
+													<div class='container  newCont'>
+														   <input type="submit" class="border-radius" value="اضف" />
+													</div>
+												</fieldset>
+											}
+										</div>
+									</div>
+} else {
+<div class=" drop-shadow lifted">
+<div class="newBoxnews newStyleadd contactus">
+    <!-- start newBoxnews -->
+    <div class="newBoxnewsTitle">
+        <h4 style="width: 620px;">
+            أضف تعليقاً</h4>
+    </div>
+        @*@using (Ajax.BeginForm("Create", "Comments", FormMethod.Post, new { id = "contactus" }))*@
+    @using (Ajax.BeginForm("Create", "Comments", Model, new AjaxOptions { UpdateTargetId = "formresults", HttpMethod = "Post", OnSuccess = "ClearValidationErrors", OnFailure = "ReloadForm(xhr)", OnBegin = "checkcookie" }, new { id = "contactus" }))
+    {
+        @Html.ValidationSummary(true)  
+        <fieldset>
+            <div class='container'>
+                <label for='name'>
+                    الاسم
+                </label>
+                <br />
+                @Html.EditorFor(model => model.UserName)
+                <span id='contactus_email_errorloc' class='error'>@Html.ValidationMessageFor(model => model.UserName)</span>
+            </div>
+            <div class='container'>
+                <label for='email'>
+                    البريد الإلكتروني</label><br />
+                @Html.EditorFor(model => model.Email)
+                <span id='contactus_email_errorloc' class='error'>@Html.ValidationMessageFor(model => model.Email)</span>
+            </div>
+            <div class='container'>
+                <label for='email'>
+                    عنوان التعليقي</label><br />
+                @Html.EditorFor(model => model.Subject)
+                <span id='contactus_email_errorloc' class='error'>@Html.ValidationMessageFor(model => model.Subject)</span>
+            </div>
+            <div class='container'>
+                <label for='message'>
+                    التعليق</label><br />
+                @Html.TextAreaFor(model => model.messagebody)
+                <span id='contactus_email_errorloc' class='error'>@Html.ValidationMessageFor(model => model.messagebody)</span>
+            </div>
+			@Html.HiddenFor(model => model.NewId)
+            <input style="display:none;" id="JournalID" value="@JID" />
+            <div class='container  newCont'>
+                   <input type="submit" value="اضف" />
+                @*<button type="button" onclick="CreateComment();" onclick='CreateComment();'>
+                    اضف</button>*@
+            </div>
+        </fieldset>
+    }
+</div>
+</div>
+<!--to any container min-height-->
+<div style="clear: both;">
+</div>
+}

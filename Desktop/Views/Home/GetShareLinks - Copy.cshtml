@@ -1,0 +1,44 @@
+﻿ <!-- Begin Share .post -->
+
+@if (@ViewBag.Position == "Bottom")
+{
+    <div class="post-tags share-icons">
+        <span class="post-tags_title">مشاركه الخبر :</span>
+        <ul class="sidebar-social-icons">
+            <li> <a href="https://facebook.com/sharer.php?u=@ViewBag.URL" target="_blank" class="facebook"><i class="fa fa-facebook"></i></a> </li>
+            <li> <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=@ViewBag.URL" target="_blank" class="linkedin"><i class="fa fa-linkedin"></i></a> </li>
+            <li> <a href="https://twitter.com/intent/tweet?url=@ViewBag.URL" target="_blank" class="twitter"><i class="fa fa-twitter"></i></a> </li>
+
+            @*<li> <a href="https://plus.google.com/+akhbarelyoum" target="_blank" class="google-plus"><i class="fa fa-google-plus"></i></a> </li>*@
+            <li style="background-color: #2e9edd;"> <a href="https://www.instagram.com/alakhbargate" target="_blank" class="instagram" style="color: #FFF;"><i class="fa fa-instagram"></i></a> </li>
+            @*<li> <a href="#" class="youtube"><i class="fa fa-youtube"></i></a> </li>
+            <li> <a href="#" class="pinterest"><i class="fa fa-pinterest"></i></a> </li>      
+            <li> <a href="#" class="rss"><i class="fa fa-rss"></i></a> </li>
+            <li> <a href="#" class="tumblr"><i class="fa fa-tumblr"></i></a> </li>*@
+        </ul>
+    </div>
+}
+
+else
+{
+    <div class="share-icons pull-left">
+
+        <ul class="sidebar-social-icons">
+            @*<li class="Ar"> <a href="#" target="_blank" class="fa-Ar" ></a> </li>
+            <li class="La7za"> <a href="#" target="_blank" class="fa-La7za" ></a> </li>*@
+
+            <li> <a href="https://www.facebook.com/Alakhbargate" target="_blank" class="facebook"><i class="fa fa-facebook"></i></a> </li>
+            <li> <a href="https://akhbarelyom.com/RSS/GetSectionRSS?JournalID=1" target="_blank" class="rss"><i class="fa fa-rss"></i></a> </li>
+            <li> <a href="https://twitter.com/akhbarelyom" target="_blank" class="twitter"><i class="fa fa-twitter"></i></a> </li>
+            <li> <a href="https://plus.google.com/+akhbarelyoum" target="_blank" class="google-plus"><i class="fa fa-google-plus"></i></a> </li>
+            <li> <a href="https://www.youtube.com/user/akhbarelyoumtv" target="_blank" class="youtube"><i class="fa fa-youtube"></i></a> </li>
+
+            @*<li> <a href="#" class="youtube"><i class="fa fa-youtube"></i></a> </li>
+            <li> <a href="#" class="pinterest"><i class="fa fa-pinterest"></i></a> </li>
+            <li> <a href="#" class="rss"><i class="fa fa-rss"></i></a> </li>
+            <li> <a href="#" class="tumblr"><i class="fa fa-tumblr"></i></a> </li>*@
+
+        </ul>
+
+    </div>
+}

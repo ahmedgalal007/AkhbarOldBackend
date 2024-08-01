@@ -1,0 +1,26 @@
+﻿<div class="module" style="float: right; margin-top: 10px;">
+    <div class="Related"> 
+        <h2>
+            <a title="الأكثر قراءة" class="HomeSecTitle" >
+                الأكثر قراءة           
+             </a>
+        </h2>
+    </div>
+    <div class="article">
+        @foreach (var item in @Model)
+            {
+            <div class="entry-block-small">
+                <div class="entry-image">
+                    <a class="img-link" href="/news/newdetails/@item.NewsID/1/@(AkhbarElyoum.Controllers.HomeController.GetPureURL(item.Title))" title="@item.Title">
+                        <img class="img-responsive img-full" src="https://Images.akhbarelyom.com/images/images/small/@item.PictureName1" alt="@item.Title" />
+                        <span class="label-1">@item.SectionTitle</span>
+                    </a>
+                </div>
+                <div class="content">
+                    <h4 class="RelatedNewsHead"><a href="/news/newdetails/@item.NewsID/1/@(AkhbarElyoum.Controllers.HomeController.GetPureURL(item.Title))" title="@item.Title"> @item.Title</a></h4>
+
+                </div>
+            </div>
+        }
+    </div>
+</div>

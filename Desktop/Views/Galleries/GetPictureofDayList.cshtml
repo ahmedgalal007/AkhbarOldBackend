@@ -1,0 +1,32 @@
+﻿@model IEnumerable<AkhbarElyoum.Models.Pictures>
+@{string JID = AkhbarElyoum.Controllers.HomeController.GetJournalID(HttpContext.Current.Request.Url.Host, int.Parse((HttpContext.Current.Request.QueryString["JournalID"] != null) ? HttpContext.Current.Request.QueryString["JournalID"].ToString() : "0"));}
+<div class="files" style="height: 344px;">
+    <div class="newTitle-red">
+        @if (JID == "3")
+        {
+        <h4 class="vh4">
+                نجم اليوم</h4>
+        }
+        else
+        {
+            <h4 class="vh4">
+                صورة اليوم</h4>
+        }
+    </div>
+    <div class="div-files">
+        <div class="highslide-gallery">
+        <div class="imgeStrip">
+        <p>نجم اليوم</p>
+        </div>
+        @*<a href="/images/highslide/gallery1.jpg" class="highslide" title="متظاهرون يحتجون في ميدان التحريرأمس علي الاحكام المخيفة" onclick="return hs.expand(this)">
+                    <img src="/images/highslide/gallery1.thumb.jpg" title="اضغط هنا لتكبير الصورة" />
+                </a>*@
+            @foreach (var item in @Model)
+            {
+                <a href="https://Images.akhbarelyom.com/images/images/large/@item.PictureName" title="@item.PictureCaption" class="highslide" onclick="return hs.expand(this)">
+                    <img src="https://Images.akhbarelyom.com/images/images/small/@item.PictureName" title="@item.PictureCaption" />
+                </a>
+            }
+        </div>
+    </div>
+</div>

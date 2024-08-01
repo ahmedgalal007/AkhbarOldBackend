@@ -1,0 +1,246 @@
+﻿@model IEnumerable<AkhbarElyoum.Models.NewsDetails>
+    @{
+        int count = 0;
+        Layout = "../Shared/_LayoutInner.cshtml";
+        int EditorID = Convert.ToInt32(ViewContext.RouteData.Values["ID"].ToString());
+    }
+    @section Meta{
+
+        <title>@ViewBag.Title| بوابة أخبار اليوم الإلكترونية</title>
+
+        <meta name="description" content="بوابة اخبار اليوم تقدم احدث واهم اخبار مصر على مدار اليوم مع تغطيات مصورة صور الاحداث وفيديوهات حصريه لها اولا باول كما نقدم اهم اخبار الرياضة والفن والاقتصاد والحوادث" />
+        <meta name="keywords" content="بوابه اخبار اليوم الإلكترونية, جريدة, الكترونية, أخبار ,اخبار, مصر, اليوم السابع, المصرى اليوم, القاهرة اليوم, الاخبار,الحوادث, اقتصاد, رياضة,فيديوهات, @ViewBag.Title" />
+        <meta property="og:title" content="@ViewBag.Title| بوابة أخبار اليوم الإلكترونية">
+
+    }
+
+    @section home{
+
+
+        <style type="text/css">
+            .showMore {
+                background: rgba(252, 135, 82, 1);
+                border-radius: 5px 5px 5px 5px;
+                color: #FFFFFF;
+                cursor: pointer;
+                direction: rtl;
+                display: block;
+                height: 30px;
+                margin: 10px auto;
+                width: 100%;
+            }
+        </style>
+
+        <script>
+            var isenabled = true;
+            var page = -1;
+            if ($(".lastid:last").attr("idx")) {
+                page = $(".lastid:last").attr("idx").toString();
+            }
+            else {
+                $('.showMore').hide();
+                $('.no-more-data').show();
+            }
+            var GetTags = function () {
+                page = $(".lastid:last").attr("idx").toString();
+                if (page != -1) {
+                    $.ajax({
+                        type: "GET",
+                        url: '/Editors/EditorNewsListPaging?LastID=' + page + '&JournalID=1&ID=' + @EditorID ,
+                        contentType: "html/text",
+                        dataType: "html",
+                        cache: false,
+                        success: function (msg) {
+                            //alert("success");
+                            // get the index of the row for the fnDeleteRow
+                            //appendToList(msg);
+                            //pagenumber++;
+                            var container = $("#NewsSectionPaging");
+                            if (msg.trim() !== "") {
+                                container.append(msg);
+                            } else {
+                                $('.showMore').hide();
+                                $('.no-more-data').show();
+                            }
+                            var isenabled = true;
+                        }
+                    });
+                }
+            }
+            $(document).ready(function () {
+                //console.log("Init complete.");
+                // create a long list of items
+                var container = $("#NewsSectionPaging");
+                var pagenumber = 0;
+                if ($(".lastid:last").attr("idx")) {
+                    page = $(".lastid:last").attr("idx").toString();
+                }
+                else {
+                    $('.showMore').hide();
+                    $('.no-more-data').show();
+                }
+                var appendToList = function (msg) {
+                    container.append(msg);
+                }
+                container.bind("infinite-scroll", function (args) {
+                    if ($(".lastid:last").attr("idx")) {
+                        page = $(".lastid:last").attr("idx").toString();
+                    }
+                    else {
+                        $('.showMore').hide();
+                        $('.no-more-data').show();
+                    }
+                    if (page != -1) {
+                        $.ajax({
+                            type: "GET",
+                            url: '/Editors/EditorNewsListPaging?LastID=' + page + '&JournalID=1&ID=' + @EditorID ,
+                            contentType: "html/text",
+                            dataType: "html",
+                            cache: false,
+                            success: function (msg) {
+                                //alert("success");
+                                // get the index of the row for the fnDeleteRow
+                                if (msg.trim() !== "") {
+                                    container.append(msg);
+                                } else {
+                                    $('.showMore').hide();
+                                    $('.no-more-data').show();
+                                }
+                                pagenumber++;
+                                isenabled = true;
+                            }
+                        });
+                    }
+                });
+            });
+        </script>
+
+
+
+
+
+
+
+
+        <section class="module">
+            <div class="container">
+                <div class="">
+
+                    <div class="col-md-8">
+
+                        @foreach (var item in Model)
+                        {
+
+                            if (count == 0)
+                            {
+                                <h2>
+                                    <a href="/Editors/EditorNews/@EditorID/1/@(AkhbarElyoum.Controllers.HomeController.GetPureURL(item.EditorName))" class="HomeSecTitle">@item.EditorName </a>
+                                </h2>
+                            }
+
+                            if (count == 0)
+                            {
+                                <div class="entry-block-full">
+
+                                    @if (item.SectionID == 149 || item.SectionID == 150 || item.SectionID == 151 || item.SectionID == 156)
+                                    {
+                                        <div class="image-full">
+                                            <a href="/news/VideoDisplay/@item.NewsID/1/@(AkhbarElyoum.Controllers.HomeController.GetPureURL(item.Title))" title="@item.Title">
+                                                <img src="https://Images.akhbarelyom.com/images/images/medium/@item.PictureName1" alt="@item.Title" />
+                                            </a>
+                                        </div>
+                                        <div class="content">
+                                            <div class="title-left title-style04 underline04">
+                                                <h3><a href="/news/VideoDisplay/@item.NewsID/1/@(AkhbarElyoum.Controllers.HomeController.GetPureURL(item.Title))" title="@item.Title">@item.Title</a></h3>
+                                            </div>
+                                        </div>
+                                    }
+                                    else
+                                    {
+                                        <div class="image-full">
+                                            <a href="/news/newdetails/@item.NewsID/1/@(AkhbarElyoum.Controllers.HomeController.GetPureURL(item.Title))" title="@item.Title">
+                                                <img src="https://Images.akhbarelyom.com/images/images/medium/@item.PictureName1" alt="@item.Title" />
+                                            </a>
+                                        </div>
+                                        <div class="content">
+                                            <div class="title-left title-style04 underline04">
+                                                <h3><a href="/news/newdetails/@item.NewsID/1/@(AkhbarElyoum.Controllers.HomeController.GetPureURL(item.Title))" title="@item.Title">@item.Title</a></h3>
+                                            </div>
+                                        </div>
+                                    }
+                                </div>
+
+                            }
+                            if (count == 1)
+                            {
+                                ViewContext.Writer.Write("<div class=\"article\"  id=\"NewsSectionPaging\"  >");
+                                count++;
+                            }
+
+                            if (count > 1)
+                            {
+                                if (item.SectionID == 149 || item.SectionID == 150 || item.SectionID == 151 || item.SectionID == 156)
+                                {
+                                    <div class="entry-block-small">
+                                        <div class="entry-image">
+                                            <a class="img-link" href="/news/VideoDisplay/@item.NewsID/1/@(AkhbarElyoum.Controllers.HomeController.GetPureURL(item.Title))" title="@item.Title">
+                                                <img class="img-responsive img-full" src="https://Images.akhbarelyom.com/images/images/small/@item.PictureName1" alt="@item.Title" />
+                                            </a>
+                                        </div>
+                                        <div class="entry-content">
+                                            <h4><a href="/news/newdetails/@item.NewsID/1/@(AkhbarElyoum.Controllers.HomeController.GetPureURL(item.Title))" title="@item.Title"> @item.Title</a></h4>
+                                        </div>
+                                    </div>
+                                }
+                                else
+                                {
+                                    <div class="entry-block-small">
+                                        <div class="entry-image">
+                                            <a class="img-link" href="/news/newdetails/@item.NewsID/1/@(AkhbarElyoum.Controllers.HomeController.GetPureURL(item.Title))" title="@item.Title">
+                                                <img class="img-responsive img-full" src="https://Images.akhbarelyom.com/images/images/small/@item.PictureName1" alt="@item.Title" />
+                                            </a>
+                                        </div>
+                                        <div class="entry-content">
+                                            <h4><a href="/news/newdetails/@item.NewsID/1/@(AkhbarElyoum.Controllers.HomeController.GetPureURL(item.Title))" title="@item.Title"> @item.Title</a></h4>
+                                        </div>
+                                    </div>
+                                }
+
+                                if (count == Model.Count())
+                                {
+
+                                    <p class="lastid" idx="@item.NewsID">
+                                    </p>
+                                    ViewContext.Writer.Write("</div>");
+                                }
+
+                            }
+
+                            count++;
+
+                        }
+
+
+                        @if (Model.Count() > 0)
+                        {
+
+                            <div class="no-more-data" style="display: none;">
+                                <p>
+                                    لا يوجد المزيد من البيانات.
+                                </p>
+                            </div>
+
+                            <div class="more-btn" style="width:100%;float:right;">
+                                <input name="" id="" onclick="GetTags();" class="btn btn-default" type="submit" value="اقرأ المزيد" />
+                                <div class="EditorID" style="display: none;">@EditorID</div>
+                            </div>
+                        }
+                    </div>
+
+                    @Html.Action("GetSiteLeftSideServicesInner", "Home", new { JournalID = 1 })
+
+
+                </div>
+            </div>
+        </section>
+    }

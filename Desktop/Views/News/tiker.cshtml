@@ -1,0 +1,14 @@
+﻿@model IEnumerable<AkhbarElyoum.Models.Ticker>
+@{string JID = AkhbarElyoum.Controllers.HomeController.GetJournalID(HttpContext.Current.Request.Url.Host, int.Parse((HttpContext.Current.Request.QueryString["JournalID"] != null) ? HttpContext.Current.Request.QueryString["JournalID"].ToString() : "0"));}
+
+    <ul>
+        @foreach (var item in Model)
+        {
+            <li>
+                <h4 class="h-40"><span class="category">@item.SecTitle:</span>
+                    <a href="/news/newdetails/@item.NewsID/@JID/@(AkhbarElyoum.Controllers.HomeController.GetPureURL(item.Title))"  title="@item.Title" >  @item.Title </a>
+                </h4>
+            </li>
+        }
+    </ul>
+

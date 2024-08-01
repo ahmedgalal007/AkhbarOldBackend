@@ -1,0 +1,92 @@
+﻿@{int count = 0;string JID = AkhbarElyoum.Controllers.HomeController.GetJournalID(HttpContext.Current.Request.Url.Host, int.Parse((HttpContext.Current.Request.QueryString["JournalID"] != null) ? HttpContext.Current.Request.QueryString["JournalID"].ToString() : "0"));}
+
+
+<!-- Start Side Block -->
+<div class="col-md-4 col-xs-12">      
+
+<div class="carousel-2-section hidden-sm hidden-xs"> 
+ @Html.Action("GetHomeGalleryList", "Galleries", new { JournalID = JID, lefSideFlag = true })
+</div>
+
+<div style=" margin: 20px auto 0px auto;"></div>
+@Html.Action("GetHomeMostViewedList", "News", new { JournalID = JID })
+
+
+<div style=" margin: 20px auto 0px auto;">
+<a href="http://tbiby.net/index.aspx" target="_blank">
+<img class="img-responsive2 center-block" style="width: 100%;" src="/img/tbiby.GIF" alt="طبيبى"/>
+</a>
+</div>
+
+
+
+ @* <div style=" margin: 20px auto 0px auto;"></div>
+   @Html.Action("GetPollList", "Polls", new { JournalID = JID })</div>*@
+
+  
+
+  
+
+
+
+  <div style=" margin: 20px auto 0px auto;"></div>
+  <div class="section-header-normal">
+      <a class="gold-header-title">
+          <span class="section-header-name">أسعار الذهب</span>
+            <i class="fa-bar-chart"></i>
+      </a>
+  </div>
+  <div class="service-section">
+      <div class="service-content">
+          <iframe width="100%" height="214" id="freshgoldprice" src="http://egypt.freshgoldprice.com/embed/vgoldprice.aspx?size=f&amp;s=0&amp;t=0&amp;g10=0&amp;ou=0&amp;pnd=0&amp;k=0&amp;md=0&amp;hc=ff0000" frameborder="0" scrolling="no"></iframe>
+      </div>
+  </div>
+    <div class="section-header-normal">
+        <a class="weather-header-title">
+            <span class="section-header-name">درجات الحرارة</span>
+              <i class="fa fa-cloud"></i>
+        </a>
+    </div>
+    <div class="service-section">
+        <div class="service-content">
+            <ul>
+                  <li>12 - 25 °C <br/></li>
+                <li><br/> سرعه الرياح :11.27<br/></li>
+            </ul>
+        </div>
+    </div>
+    <div class="section-header-normal">
+        <a class="currency-header-title">
+            <span class="section-header-name">اسعار العملات </span>
+              <i class="fa fa-usd"></i>
+        </a>
+    </div>
+    <div class="service-section">
+        <div class="service-content">
+            <div class="service-title">
+
+                <span></span>
+            </div>
+           <ul>
+                <li>
+                  <span>دولار أمريكى :</span>
+                  18.1190                 </li>
+                <li>
+                    <span>يورو :</span>
+                    19.5187                 </li>
+                <li>
+                    <span>ريال سعودي :</span>
+                    4.8315                 </li>
+            </ul>
+        </div>
+    </div>
+
+      <div style=" margin: 20px auto 0px auto;"></div>
+
+      <!-- Editor List -->
+     @Html.Action("GetEditorsList", "Editors", new { JournalID = JID })
+      <!-- End Editor List -->
+
+</div>
+
+<!-- EndSideBlock -->

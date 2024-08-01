@@ -1,0 +1,200 @@
+﻿@model IEnumerable<AkhbarElyoum.Models.Comments>
+@{string JID = AkhbarElyoum.Controllers.HomeController.GetJournalID(HttpContext.Current.Request.Url.Host, int.Parse((HttpContext.Current.Request.QueryString["JournalID"] != null) ? HttpContext.Current.Request.QueryString["JournalID"].ToString() : "0"));
+string ID = "";
+    if (Request.QueryString["id"] != null)
+    {
+        ID = Request.QueryString["id"].ToString();
+    }
+    else
+    {
+        ID = ViewContext.RouteData.Values["ID"].ToString();
+    }
+}
+<script type="text/javascript">
+    var isenabled = true;
+    var page = -1;
+    if ($(".lastid:last").attr("idx")) {
+        page = $(".lastid:last").attr("idx").toString();
+    }
+    else {
+        $('.showMore').hide();
+        $('.no-more-data').show();
+    }
+    function GetComments() {
+	if (page != -1) {
+        $.ajax({
+            type: "GET",
+            url: '/Comments/CommentsPaged?page=' + page + '&NID=' + @ID ,
+            contentType: "html/text",
+            dataType: "html",
+            cache: false,
+            success: function (msg) {
+                //alert("success");
+                // get the index of the row for the fnDeleteRow
+                //appendToList(msg);
+                //pagenumber++;
+                var container = $("#pagingdiv");
+                if (msg.trim() !== "") {
+                    container.append(msg);
+                } else {
+                    $('.showMore').hide();
+                    $('.no-more-data').show();
+                }
+                var isenabled = true;
+            }
+        });
+		}
+    }
+    $(document).ready(function () {
+        //console.log("Init complete.");
+        // create a long list of items
+        var container = $("#pagingdiv");
+        var pagenumber = 0;
+        if ($(".lastid:last").attr("idx")) {
+            page = $(".lastid:last").attr("idx").toString();
+        }
+        else {
+            $('.showMore').hide();
+            $('.no-more-data').show();
+        }
+        var appendToList = function (msg) {
+            container.append(msg);
+        }
+        container.bind("infinite-scroll", function (args) {
+            if ($(".lastid:last").attr("idx")) {
+                page = $(".lastid:last").attr("idx").toString();
+            }
+            else {
+                $('.showMore').hide();
+                $('.no-more-data').show();
+            }
+			if (page != -1) {
+            $.ajax({
+                type: "GET",
+                url: '/Comments/CommentsPaged?page=' + page + '&NID=' + @ID ,
+                contentType: "html/text",
+                dataType: "html",
+                cache: false,
+                success: function (msg) {
+                    //alert("success");
+                    // get the index of the row for the fnDeleteRow
+                    if (msg.trim() !== "") {
+                        container.append(msg);
+                    } else {
+                        $('.showMore').hide();
+                        $('.no-more-data').show();
+                    }
+                    pagenumber++;
+                    isenabled = true;
+                }
+            });
+			}
+        });
+
+        var infiniteScroll = new $.InfiniteScroll('#pagingdiv', true).setup();
+
+
+    });
+    </script>
+@if(JID == "6") {
+								if (Model.Count() == 0) {
+									<div class="no-more-data border-radius top-space" style="margin:10px auto">
+										<p>لا يوجد تعليقات على الخبر.</p>
+									</div>
+								} else {
+									<div class="tr border-radius box-border top-space">
+										<div class="tr box-title border-radius-top-left border-radius-top-right">
+											<div class="td first"><span>االتعليقات</span></div>
+										</div>
+										<div class="content">
+										</div>
+									</div>
+								}
+} else {
+    <div class="drop-shadow lifted">
+<div id="pagingdiv" class="newBoxnews">
+    <!-- start newBoxnews -->
+    <div class="newBoxnewsTitle">
+        <h4 style="width: 620px;">
+            تعليقات</h4>
+    </div>
+	
+	@if (Model.Count() == 0)
+{
+	 <div class="no-more-data" style="">
+<p>
+   لا يوجد تعليقات على الخبر.
+</p>
+</div>
+}
+
+    @foreach (var item in Model)
+    {
+	
+        <div class="commentWrapper">
+            <div class="comHeader">
+                <div class="comCounter">
+                    <p style="text-align: center;">@item.Count</p>
+                </div>
+                <h3 class="boxH3nn comh3">@item.Subject</h3>
+                <h3 class="boxH3nn1 comhBy">
+                    بواسطة : @item.UserName</h3>
+                <span class="postDate postCom">@item.messagedate</span>
+            </div>
+            <p class="supject comment more">@item.messagebody</p>
+            <div class="rateDiv">
+                <p class="rate">
+                    تقييم</p>
+                <div class="rateValu">
+                    <img src="/images/rate.png" width="62" height="10" />
+                    @*@Html.Action("GetNewsRating", "NewsRating", new { CommentID = @item.CommentID });*@
+                </div>
+            </div>
+        </div>
+        <p class="lastid" idx="@item.CommentID">
+        </p>
+        <!-- end newBoxnews -->}
+</div>
+</div>
+if (Model.Count() > 0) {
+    <div class="no-more-data" style="display:none">
+		<p>لا يوجد المزيد من البيانات.</p>
+	</div>
+    <input name="" id="" onclick="GetComments()" class="showMore" type="submit" value="" />
+	}
+}
+<script>
+    $(document).ready(function () {
+        var showChar = 240;
+        var ellipsestext = " ...";
+        var moretext = "مزيد";
+        var lesstext = "قليل";
+        $('.more').each(function () {
+            var content = $(this).html();
+
+            if (content.length > showChar) {
+
+                var c = content.substr(0, showChar);
+                var h = content.substr(showChar - 1, content.length - showChar);
+
+                var html = c + '<span class="moreelipses">' + ellipsestext + '</span>&nbsp;<span class="morecontent"><span>' + h + '</span>&nbsp;&nbsp;<a href="" class="morelink">' + moretext + '</a></span>';
+
+                $(this).html(html);
+            }
+
+        });
+
+        $(".morelink").click(function () {
+            if ($(this).hasClass("less")) {
+                $(this).removeClass("less");
+                $(this).html(moretext);
+            } else {
+                $(this).addClass("less");
+                $(this).html(lesstext);
+            }
+            $(this).parent().prev().toggle();
+            $(this).prev().toggle();
+            return false;
+        });
+    });
+</script>

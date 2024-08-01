@@ -1,0 +1,32 @@
+﻿@model IEnumerable<AkhbarElyoum.Models.NewsDetails>
+@{int count = 0; string JID = AkhbarElyoum.Controllers.HomeController.GetJournalID(HttpContext.Current.Request.Url.Host, int.Parse((HttpContext.Current.Request.QueryString["JournalID"] != null) ? HttpContext.Current.Request.QueryString["JournalID"].ToString() : "0"));}
+@if (Model.Count() > 0)
+{
+    <div class="tr display-area">
+        <div class="td first border-radius box-border top-space">
+            <div class="tr box-title a-right">
+                <div class="td first dark">
+                    <span>صفحات خاصة</span></div>
+                <div class="td light">
+                    <a href="#">@ViewBag.Title</a></div>
+            </div>
+            @foreach (var item in Model)
+            {
+                if (count < 4)
+                {
+                <div class="tr content quick-news-box">
+                    <div class="td first content article quick-news">
+                        <div class="content title">
+                            <a href="/news/newdetails/@item.NewsID/@JID/@(AkhbarElyoum.Controllers.HomeController.GetPureURL(item.Title))">@item.Title</a></div>
+                        <div class="content">
+                            <a href="#">
+                                <img src="https://Images.akhbarelyom.com/images/images/small/@item.PictureName1" alt="@item.Title" /><a />
+                        </div>
+                    </div>
+                </div>
+                }
+                count++;
+            }
+        </div>
+    </div>
+}

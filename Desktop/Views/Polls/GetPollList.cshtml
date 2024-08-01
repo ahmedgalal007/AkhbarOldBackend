@@ -1,0 +1,79 @@
+﻿@*@model IEnumerable<AkhbarElyoum.Models.Polls>
+<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/jquery-ui.min.js"></script>
+		<script type="text/javascript" async src="/js/jquery.cookie.js"></script>
+@{bool flg = true; int PollID = 0;string JID = AkhbarElyoum.Controllers.HomeController.GetJournalID(HttpContext.Current.Request.Url.Host, int.Parse((HttpContext.Current.Request.QueryString["JournalID"] != null) ? HttpContext.Current.Request.QueryString["JournalID"].ToString() : "0"));}
+@*@using (Html.BeginForm("SubmitPoll", "News", FormMethod.Post, new { name = "value" }))
+{*@
+@if(JID == "6") {
+	foreach (var item in Model) {
+		if (flg) {
+			<h3>@item.PollName</h3>
+			PollID = @item.PollID;
+		}
+		<span class="polls-element voteRadio" style="display:block"><input type="radio" name="Option" value="@item.OptionID" id="@item.OptionID" /><span>@item.OptionName</span></span>
+		flg = false;
+	}
+	if(Model.Count() >0) {
+		<button class="border-radius button Results" name="Button" value="Results">صوت</button>
+		<!--<input type="button" class="border-radius button" value="النتائج" />-->
+	}
+} else {
+	foreach (var item in Model) {
+		if (flg) {
+		<h4 class="boxH3" style="margin-top:18px;">@item.PollName</h4>
+			PollID = @item.PollID;
+		}
+		<div class="voteRadio">@item.OptionName
+		<input type="radio" name="Option" value="@item.OptionID" id="@item.OptionID" /></div>
+		flg = false;
+	
+	}
+	if(Model.Count() >0) {
+    <button class="Results" name="Button" value="Results">صوت</button>
+	}
+	if(Model.Count() <=0) {
+       <div class="nopoll">لا يوجد استطلاع رأى.</div>
+	}
+}
+@*}*@
+<script>
+//alert($.cookie('Cookie'+@PollID+''));  //gets the value....
+
+    if ($.cookie('Cookie'+@PollID+'') == null) { //Check to see if a cookie with name of "query" exists
+    }
+    else {
+        $.ajax({
+                type: "GET",
+                url: '/Polls/GetPollResults?PollID='+@PollID+'',
+                contentType: "html/text",
+                dataType: "html",
+                cache: false,
+                success: function (msg) {
+                    $(".polldiv").html(msg);
+                }
+            });
+    }
+    $(function () {
+
+        $('button.Results').click(function () {
+            var optionid = '';
+            optionid = $('input:radio[name=Option]:checked').val();
+			//alert(optionid);
+            if(optionid != '' && $.cookie('Cookie'+@PollID+'') == null)
+            {
+            $.ajax({
+                type: "GET",
+                url: '/Polls/SubmitPoll?PollID='+@PollID+'&OptionID='+optionid+'',
+                contentType: "html/text",
+                dataType: "html",
+                cache: false,
+                success: function (msg) {
+                    $(".polldiv").html(msg);
+                    $.cookie('Cookie'+@PollID+'', '1', { expires: 1 });
+                }
+            });}
+        });
+    });
+
+</script>
+*@

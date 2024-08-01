@@ -1,0 +1,177 @@
+﻿@{
+    ViewBag.Title = "من نحن";
+    string JID = AkhbarElyoum.Controllers.HomeController.GetJournalID(HttpContext.Current.Request.Url.Host, int.Parse((HttpContext.Current.Request.QueryString["JournalID"] != null) ? HttpContext.Current.Request.QueryString["JournalID"].ToString() : "0"));
+    Layout = "../Shared/_LayoutInner.cshtml";
+}
+@section Meta{
+<title>بوابة أخبار اليوم - من نحن</title>
+}
+@section home{
+
+<section class="module-top">
+    <div class="container">
+        <div class="row no gutter">
+            <!-- Begin .contact-us -->
+            <div class="contact-us">
+                <div class="col-xs-12 col-sm-5 col-md-5">
+                    <div class="form-group">
+                        <div class="title-left title-style04 underline04">
+                            <h3>عن أخبار اليوم</h3>
+                        </div>
+						
+						
+						
+						<p>
+						دارأخبار اليوم من أكبر المؤسسات الصحفية؛ أسسها مصطفى أمين وعلى أمين سنة 1944 بإصدار جريدة أخبار اليوم، وكان هدفهما تقديم أفضل خدمة صحفية للقارئ المصري والعربي. 
+وكان طموح التؤمان مصطفى وعلي أمين أن تكون أخبار اليوم على غرار مثيلاتها في أوروبا والولايات المتحدة الأمريكية، تقدم صحافة حديثة تنير العقل وتحقق مقولة مصطفى أمين الشهيرة "من حق الشعب أن يعرف". 
+وتوالت إصدارات دار أخبار اليوم منذ ذلك الحين لتشمل باقة متنوعة من الإصدارات هى الأخبار، والأخبار المسائي، وآخر ساعة، وأخبارالحوادث، وأخبار النجوم، وأخبار الأدب، وأخبار السيارات، وكتاب اليوم.
+وتعتبر أخبار اليوم بمثابة قاعدة إطلاق النجوم إلى عالم الصحافة، فمن معطف مصطفى أمين خرجت العديد من المواهب منهم محمد حسنين هيكل، وأنيس منصور، وأحمد رجب وغيرهم.
+وأخبار اليوم هى المؤسسة التى عرف من خلالها المصريون والعرب صحافة الملايين فاحتلت صحفها الصدارة بين القراء لما تميزت به من جرأة وتجدد.
+منذ اليوم الأول لصدورها جعلت أخبار اليوم القارئ نصب عينيها فلم تكن الصحيفة أو المؤسسة نخبوية؛ بل كانت نبض الإنسان البسيط فجاءت معبرة عن الآمة وأحلامها وآمالها.
+وفى عام 2000 اقتحمت أخبار اليوم عالم الصحافة الإلكترونية فكانت من السباقين فى هذا المجال على مستوى مصر والعالم العربى.
+و اننا اذ نحرص دائما على تجديد خدماتها الاخبارية للقارئ تعيد أخبار اليوم إطلاق بوابتها الالكترونية؛ ونتعهد لقارئنا ببذل قصارى جهدنا لنوفر له السبق والصدق معا ً.
+						
+						
+						
+						
+						</p>
+						
+						<!--
+            
+                        <p>
+                            تهتم بوابة أخبار اليوم بتقديم الأخبار العاجلة لحظة حدوثها، منفردة بالموضوعات الحصرية
+                            والصور والفيديوهات، من خلال شبكة مراسلين داخل وخارج مصر وفي شتى المحافظات، وترفع
+                            شعار؛ الخبر الدقيق الموثوق منه.
+                        </p>
+                       
+                        <p>
+                            وتتفرد بوابة أخبار اليوم بإصدارات عديدة لأقدم وأوسع الصحف المصرية والعربية انتشارًا
+                            وهي: الأخبار اليومي و«أخبار اليوم» الأسبوعية، ومجلة «آخر ساعة»، و«أخبار الحوادث»
+                            التي تهتم بمتابعة أخبار الجريمة ، وجريدة و«أخبار النجوم» لمتابعة أخبار وقضايا النجوم
+                            في مجال السينما والدراما والتليفزيون والغناء والأوبرا، وجريدة «أخبار الأدب» وتهتم
+                            بالفكر والثقافة في مصر والعالم وحياة رموز الفكر والمبدعين.
+                        </p>
+                     
+                        <p>
+                            ويصدر عنها أيضا جريدة «أخبار الرياضة»، وتهتم بمتابعة أخبار الرياضة وكرة القدم، وكل
+                            الرياضات في مصر والعالم العربي والدولي.
+                        </p>
+                        <p>
+                            وجريدة اللواء الإسلامي؛ وتهتم بقضايا الإسلام والمسلمين بشكل عام.
+                        </p>
+                      
+                        <p>
+                            كما يصدر عن «دار أخبار اليوم» إصدار شهري يعني بالطفل وأخباره وأحلامه وهو «مجلة فارس».
+                        </p>
+                      
+                        <p>
+                            و«كتاب اليوم» وهو من أقدم الكتب التي تصدر شهريًا عن دار صحفية و«كتاب اليوم الطبي»
+                            إضافة إلى «الأخبار برايل» أحدث إصدارات الدار الموجهة للمكفوفين.
+                        </p>
+						
+						!-->
+						
+                       <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+						<ins class="adsbygoogle"
+							 style="display:block; text-align:center;"
+							 data-ad-layout="in-article"
+							 data-ad-format="fluid"
+							 data-ad-client="ca-pub-7445302147671862"
+							 data-ad-slot="1805627497"></ins>
+						<script>
+							 (adsbygoogle = window.adsbygoogle || []).push({});
+						</script>
+						
+						
+                         <!--      
+                        <p>
+                            وفي عالم صحافة الأون لاين قامت أخبار اليوم بإصدار تطبيق «أبلكيشن آخر لحظة»؛ لتجمع
+                            الأخبار لحظة بلحظة من شتى المواقع وإتاحتها في تطبيق واحد.
+                        </p>
+                        
+                        <p>
+                            وتطبيق(AR الأخبار) وهو يقدم هدية جديدة فريدة لربط الصحافة الورقية بالأون لاين من
+                            خلال تطبيق تكنولوجيا محاكاة الواقع.
+                        </p>
+                        !-->
+                        
+                          <div class="title-left title-style04 underline04">
+                            <h3>معلومات التواصل</h3>
+                        </div>
+                        <ul class="contact-ul">
+                            <li><i class="fa fa-map-marker" aria-hidden="true"></i><span>العنوان:</span> 6 شارع الصحافة - بجوار محطةجمال عبد الناصر</li>
+                            <li><i class="fa fa-phone" aria-hidden="true"></i><span>الهاتف:</span>7211 2578 (02) 20+  </li>
+                            <li><i class="fa fa-envelope-o" aria-hidden="true"></i><span>واتس اب :</span> <a href="01200000991">01200000991</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-7 col-md-7">
+                    <div class="title-left title-style04 underline04">
+                        <h3>على الخريطة</h3>
+                    </div>
+                    <!-- Begin Google Map  -->
+                    <div id="map-canvas">
+
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d27627.80857899978!2d31.22367151772924!3d30.051885428540547!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x145840eae427af2f%3A0x6420f0d5489b97f1!2z2YXYpNiz2LPYqSDYo9iu2KjYp9ixINin2YTZitmI2YUgLSBBa2hiYXIgRWwgeW9tIEZvdW5kYXRpb24!5e0!3m2!1sen!2seg!4v1537731382212" width="400" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+
+                    </div>
+                    <!-- End Google Map -->
+                </div>
+            </div>
+            <!-- End .contact-us -->
+        </div>
+
+
+    </div>
+</section>
+
+
+
+   
+@*<script src="/js/jquery-3.1.1.min.js"></script>*@
+
+
+@*<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAhvyGCRCkTlvboC92nONMJ0dS38tevYUc"></script>*@
+
+<!-- JavaScripts -->
+
+@*<script>
+        // ========== Google Map ========== //
+        $(function() {
+            // Setup map
+            function initialize() {
+
+                // Options
+                var myLatlng = new google.maps.LatLng(30.056446, 31.1679192, 12);
+                var mapOptions = {
+                    zoom: 15,
+                    center: myLatlng
+                };
+
+                var map = new google.maps.Map($('#map-canvas')[0], mapOptions);
+                var contentString = 'Your Office';
+
+
+                var infowindow = new google.maps.InfoWindow({
+                    content: contentString
+                });
+
+                var marker = new google.maps.Marker({
+                    position: myLatlng,
+                    map: map,
+                    title: ''
+                });
+
+                google.maps.event.addListener(marker, 'click', function() {
+                    infowindow.open(map, marker);
+                });
+
+            };
+
+            // Initialize map on window load
+            google.maps.event.addDomListener(window, 'load', initialize);
+
+        });
+</script>*@
+
+}

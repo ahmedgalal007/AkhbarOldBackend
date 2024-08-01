@@ -1,0 +1,110 @@
+@model IEnumerable<AkhbarElyoum.Models.NewsDetails>
+@{int count = 0; string cssclass = ""; string JID = AkhbarElyoum.Controllers.HomeController.GetJournalID(HttpContext.Current.Request.Url.Host, int.Parse((HttpContext.Current.Request.QueryString["JournalID"] != null) ? HttpContext.Current.Request.QueryString["JournalID"].ToString() : "0"));}
+
+
+<div class="important-news">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="section-header-normal">
+                    <a href="#">
+                        <span class="section-header-name">„Œ «—« </span>
+                        <i class="fa fa-ellipsis-h fa-2x"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4 hidden-sm hidden-xs">
+                <div class="important-news-thump">
+
+
+                    @foreach (var item in Model)
+                    {
+                        if (count <= 3)
+                        {
+                            <a href="/news/newdetails/@item.NewsID/@JID/@(AkhbarElyoum.Controllers.HomeController.GetPureURL(item.Title))" class="important-news-th-block">
+                                <span><h2 style="font-size: 12px;line-height: 20px;font-weight: bold;">@item.Title</h2></span>
+                                <img src="https://Images.akhbarelyom.com/images/images/small/@item.PictureName1" alt="@item.Title" class="img-responsive" />
+                            </a>
+                        }
+
+                        count++;
+                    }
+
+                </div>
+            </div>
+
+
+            <div class="col-md-4">
+                <div class="mobile-topstory">
+                    <div id="important-news-next" class="topstoryNextBtnM hidden-md">
+                        <span class="fa fa-arrow-left"></span>
+                    </div>
+                    <div id="important-news-prev" class="topstoryPrevBtnM hidden-md">
+                        <span class="fa fa-arrow-right"></span>
+                    </div>
+                    <div id="important-news" class="owl-carousel">
+
+
+                        @foreach (var item in Model)
+                        {
+                            <div class="item">
+                                <a href="/news/newdetails/@item.NewsID/@JID/@(AkhbarElyoum.Controllers.HomeController.GetPureURL(item.Title))" class="topstory-block">
+                                    <img src="https://Images.akhbarelyom.com/images/images/large/@item.PictureName1" alt="@item.Title" class="img-responsive" />
+                                    <div class="topstory-text">
+                                        <span>@item.Title</span>
+                                    </div>
+                                </a>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+            <div class="col-md-4 hidden-sm hidden-xs">
+                <div class="important-news-thump">
+
+                    @{count = 0;}
+
+                    @foreach (var item in Model)
+                    {
+
+                        if (count > 3)
+                        {
+                            <a href="/news/newdetails/@item.NewsID/@JID/@(AkhbarElyoum.Controllers.HomeController.GetPureURL(item.Title))" class="important-news-th-block">
+                                <span><h2 style="font-size: 12px;line-height: 20px;font-weight: bold;">@item.Title</h2></span>
+                                <img src="https://Images.akhbarelyom.com/images/images/small/@item.PictureName1" alt="@item.Title" class="img-responsive">
+                            </a>
+                        }
+
+                        count++;
+                    }
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

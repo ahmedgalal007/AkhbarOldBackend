@@ -1,0 +1,34 @@
+﻿@model IEnumerable<AkhbarElyoum.Models.EsdaratClassicArticles>
+
+
+
+<div class="sidebar-schedule m-t-55">
+
+    <div id="sidebar-schedule-slider" class="owl-carousel">
+       
+@foreach (var item in Model)
+{
+
+
+
+        <div class="sidebar-schedule-slide">
+            <div class="sidebar-schedule-slider-layer full">
+
+                <a href="https://www.elakhbaar.com/artical.aspx?id=@(item.NewID)"  title="@item.Title">
+                    <div class="content">
+                        <h4 class="article-name"> @item.EditorName</h4>
+                    </div>
+                    <p class="article-title">@item.Title</p>
+                    <img src="https://file.akhbarelyom.com/images/images/small/editor@(item.EditorID).jpg" alt="@item.EditorName">
+                </a>
+
+            </div>
+        </div>
+
+
+}
+
+    </div>
+</div>
+
+

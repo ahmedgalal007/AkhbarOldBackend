@@ -1,0 +1,78 @@
+﻿@{
+    ViewBag.Title = "akhbarelyommobile";
+    string JID = AkhbarElyoum.Controllers.HomeController.GetJournalID(HttpContext.Current.Request.Url.Host, int.Parse((HttpContext.Current.Request.QueryString["JournalID"] != null) ? HttpContext.Current.Request.QueryString["JournalID"].ToString() : "0"));
+    Layout = "../Shared/_LayoutInner.cshtml";
+}
+
+
+<style>
+.mobile-app {width:900px;margin:25px auto 0;padding:10px 30px;background:#FFF;}
+.mob-title {text-align:center;margin-bottom:20px;}
+.mob-right {float:right;background:url("/akhbarelyommobile/border-border-mob.png") no-repeat scroll 68px 0px rgba(0, 0, 0, 0);width:290px;height:868px;}
+.mob-num {width:233px;height:113px;margin-bottom:20px;margin-top:61px;}
+.mob1 {background: url(/akhbarelyommobile/mobile-num1.png) no-repeat center center;}
+.mob2 {background: url(/akhbarelyommobile/mobile-num2.png) no-repeat center center;}
+.mob3 {background: url(/akhbarelyommobile/mobile-num3.png) no-repeat center center;margin-top:189px !important;}
+.mob-left {width:600px;text-align:right;}
+.mob-left-1 {direction:rtl;margin-top:126px;}
+.mob-left-1-title {background:url(/akhbarelyommobile/ta7melproMob.png) no-repeat center right;width:171px;height:21px;}
+.content-mob-app {margin-top:10px;font-family:arial;font-size:20px;text-align:justify}
+.mob-left-2 {direction:rtl;margin-top:54px;}
+.mob-left-2-title {background:url(/akhbarelyommobile/toroqdaf3Mob.png) no-repeat center right;width:162;height:21px;}
+.mob-left-3 {direction:rtl;margin-top:103px;}
+.mob-left-3-title {background:url(/akhbarelyommobile/toro2estkhdam-mob.png) no-repeat center right;width:137;height:21px;}
+.powerdby-mob {width:536px;height:69px;margin:60px auto 20px;}
+
+</style>
+
+
+<div class="mobile-app">
+	<div class="mob-title"> <img style="margin-top:33px;" src="/akhbarelyommobile/title-mo.png" /> </div>
+	<div class="mob-right">
+		<div class="mob-num mob1"></div>
+		<div class="mob-num mob2"></div>
+		<div class="mob-num mob3"></div>
+	</div>
+	<div class="mob-left">
+
+		<div class="mob-left-1">
+		  <div class="mob-left-1-title"></div>
+		  <div class="content-mob-app">يتم تحميل البرنامج عن طريق الرابط التالى <a href="/mobile.apk">akhbarelyom/mobile.apk</a>  من 
+جهازك المحمول ثم تثبيت البرنامج مباشرة . يتيح هذا التطبيق كل الخدمات مجاناً ولكن ينبغى 
+عليك تسجيل رقم هاتفك المحمول لانه يعتبر رقم محفظتك عند الدفع عبر فورى او اى من طرق 
+الدفع المختلفة .
+ </div>
+		</div>
+		<div class="mob-left-2">
+			<div class="mob-left-2-title"></div>
+			<div class="content-mob-app">
+			<span> الخدمة الان متاحة مجانا خلال فترة البث التجريبى على أن يعقبها نوعان من الخدمات: احداهما مجانية للأعداد السابقة و حتى اليوم الجارى, والأخرى مدفوعة للأعداد القادمة</span>
+			<br style="margin-bottom:10px;">
+			<span>من خارج مصر يمكنك الدفع باستخدام خدمة
+<img src="/akhbarelyommobile/paypallogo.png" style="margin-bottom:-9px;"/>
+بواقع دولار واحد لكل نسخة. </span>
+<br style="margin-bottom:10px;">
+			<span>من داخل مصر يمكنك الدفع فى اكثر من 25 ألف نقطة تحصيل تحمل علامة 
+<img src="/akhbarelyommobile/fawryMob.png" style="margin-bottom:-5px;"/>
+.
+ </span>
+ <br style="margin-bottom:10px;">
+ <span> لابد من شحن رصيدك بحد أدنى 10 جنيهات لكى تتمتع بتحميل الأعداد الجديده من الجرائد والمجلات المختلفة . سعر النسخة الإليكترونية هو نفس سعرالنسخة الورقية .</span>
+			</div>
+		<div class="mob-left-3">
+			<div class="mob-left-3-title"></div>
+			<div class="content-mob-app">
+				<span> بعد الإنتهاء من عملية التثبيت ستنتقل لشاشة عرض دار اخبار اليوم و التى تحتوى على الفئات المختلفة فى شريط عرض افقى فى اعلى الشاشة مثل ( اخر ساعة, الأخبار, أخبار الرياضة, الحوادث, إلخ...). يمكنك إختيار الفئة التى تود تصفحها عن طريق الضغط عليها. طريقة العرض واحدة لكل الفئات </span>
+				
+				<span><img style="float:left;margin-right:10px;" src="/akhbarelyommobile/mobile-abb-img.png" />سوف تنتقل إلى الفئة التى تم إختيارها و ستجد لديك فى الأعلى يساراً ثلاثة علامات تبويب ( PDF, أخبارى, مباشر) و ستكون علامة التبويب الإفتراضية دائماً هى ال PDF حيث ستجد بها كافة الأعداد فى قائمة عرض  تحتوى هذه القائمة على تاريخ كل عدد, و نوع العدد (مجانى او إشتراك)ستجد ان الأعداد المجانية تظهر باللون السماوى و اعداد الإشتراك تظهر باللون الأحمر, بمجرد الوقوف و إختيار عدد ما من القائمة, تظهر صورته و معها زر لعرض العدد و اخر للإشتراك إذا لم يكن مجانى, عند الضغط على "عرض العدد" سيتم تحميل العدد بالكامل و إظهاره </span>
+				
+				<span>يمكنك الان التصفح بسهولة و الإنتقال ما بين الصفحات, كما يمكنك تكبير أو تصغير الصورة, البحث عن كلمة معينة بداخل المحتوى و معرفة رقم الصفحة المتواجد بداخلها, كذلك يمكنك الضغط على اطراف الصفحة من اليمين او اليسار للإنتقال بشكل اسرع للصفحة التالية أو السابقة.
+هناك علامة التبويب الاخرى و هى "مباشر" و التى من اسمها تحتوى على اخر الأخبار المتعلقة بالفئة المُختارة فى قائمة  و فى الأعلى يساراً اسفل علامة التبويب "PDF" هناك زر "قائمة الأقسام" الخاصة بالفئة المختارة و التى تظهر بمجرد الضغط عليها لتستعرض الأقسام و تختار منها ما ترغب. </span>
+
+
+			</div>
+		</div>
+	</div>
+</div>
+<div class="powerdby-mob"><img src="/akhbarelyommobile/respons-mob-app.png" /></div>
+</div>

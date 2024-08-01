@@ -1,0 +1,34 @@
+﻿@model IEnumerable<AkhbarElyoum.Models.NewsDetails>
+@{
+    string JID = AkhbarElyoum.Controllers.HomeController.GetJournalID(HttpContext.Current.Request.Url.Host, int.Parse((HttpContext.Current.Request.QueryString["JournalID"] != null) ? HttpContext.Current.Request.QueryString["JournalID"].ToString() : "0"));
+    int count = 0;
+}
+@foreach (var item in Model)
+{
+    if (count < 4)
+    {
+        if (count == 0)
+        {
+    <div class="td first content article quick-news">
+        <div class="content title">
+            <a href="/news/newdetails/@item.NewsID/@JID/@(AkhbarElyoum.Controllers.HomeController.GetPureURL(item.Title))">@item.Title</a></div>
+        <div class="content">
+            <a href="/news/newdetails/@item.NewsID/@JID/@(AkhbarElyoum.Controllers.HomeController.GetPureURL(item.Title))">
+                <img src="https://Images.akhbarelyom.com/images/images/small/@item.PictureName1" alt="@item.Title" /></a>
+        </div>
+    </div>
+        }
+        else
+        {
+    <div class="td content article quick-news">
+        <div class="content title">
+            <a href="/news/newdetails/@item.NewsID/@JID/@(AkhbarElyoum.Controllers.HomeController.GetPureURL(item.Title))">@item.Title</a></div>
+        <div class="content">
+            <a href="/news/newdetails/@item.NewsID/@JID/@(AkhbarElyoum.Controllers.HomeController.GetPureURL(item.Title))">
+                <img src="https://Images.akhbarelyom.com/images/images/small/@item.PictureName1" alt="@item.Title" /></a>
+        </div>
+    </div>
+        }
+    }
+    count++;
+}

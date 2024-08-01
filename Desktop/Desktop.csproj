@@ -1,0 +1,810 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{A77BB500-1291-4FE3-8C2F-E573162B569E}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Desktop</RootNamespace>
+    <AssemblyName>Desktop</AssemblyName>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="LinqKit, Version=1.1.3.1, Culture=neutral, PublicKeyToken=bc217f8844052a91, processorArchitecture=MSIL">
+      <HintPath>..\packages\LinqKit.1.1.3.1\lib\net45\LinqKit.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebHelpers.3.3.0\lib\net45\Microsoft.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList.Mvc, Version=4.5.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.3.0\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.3.0\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.3.0\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.3.0\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.3.0\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.3.0\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.2.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="WebMatrix.Data, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.Data.3.3.0\lib\net45\WebMatrix.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="WebMatrix.WebData, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.WebData.3.3.0\lib\net45\WebMatrix.WebData.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AkhbarElyoum.cs" />
+    <Compile Include="AkhbarElyoum.designer.cs">
+      <DependentUpon>AkhbarElyoum.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="ChangeFrequency.cs" />
+    <Compile Include="Controllers\AdabController.cs" />
+    <Compile Include="Controllers\AkhbarController.cs" />
+    <Compile Include="Controllers\AkhbarElyomController.cs" />
+    <Compile Include="Controllers\AkherSaaController.cs" />
+    <Compile Include="Controllers\AllwaaController.cs" />
+    <Compile Include="Controllers\AlmsaeyController.cs" />
+    <Compile Include="Controllers\BlocksController.cs" />
+    <Compile Include="Controllers\ClassicController.cs" />
+    <Compile Include="Controllers\CommentsController.cs" />
+    <Compile Include="Controllers\EditorsController.cs" />
+    <Compile Include="Controllers\EsdaratController.cs" />
+    <Compile Include="Controllers\FaresController.cs" />
+    <Compile Include="Controllers\GalleriesController.cs" />
+    <Compile Include="Controllers\HawadethController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\KetabElyomController.cs" />
+    <Compile Include="Controllers\NewsController.cs" />
+    <Compile Include="Controllers\NogoomController.cs" />
+    <Compile Include="Controllers\PollsController.cs" />
+    <Compile Include="Controllers\RiadahController.cs" />
+    <Compile Include="Controllers\RSSController.cs" />
+    <Compile Include="Controllers\SayaratController.cs" />
+    <Compile Include="Controllers\SiteMapController.cs" />
+    <Compile Include="Controllers\TagsController.cs" />
+    <Compile Include="Controllers\test2Controller.cs" />
+    <Compile Include="Controllers\testController.cs" />
+    <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="ISitemapItem.cs" />
+    <Compile Include="Models\AccountModels.cs" />
+    <Compile Include="Models\Attachment.cs" />
+    <Compile Include="Models\Block.cs" />
+    <Compile Include="Models\Comments.cs" />
+    <Compile Include="Models\Editors.cs" />
+    <Compile Include="Models\ErrorModel.cs" />
+    <Compile Include="Models\EsdaratClassicArticles.cs" />
+    <Compile Include="Models\EsdaratClassicData.cs" />
+    <Compile Include="Models\EsdarIndexModel.cs" />
+    <Compile Include="Models\Gallery.cs" />
+    <Compile Include="Models\HtmlHelpers.cs" />
+    <Compile Include="Models\News.cs" />
+    <Compile Include="Models\NewsDetails.cs" />
+    <Compile Include="Models\NewsRating.cs" />
+    <Compile Include="Models\Pictures.cs" />
+    <Compile Include="Models\Polls.cs" />
+    <Compile Include="Models\RSSNewsDetails.cs" />
+    <Compile Include="Models\Sections.cs" />
+    <Compile Include="Models\Tags.cs" />
+    <Compile Include="Models\Ticker.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SitemapItem.cs" />
+    <Compile Include="XmlSitemapResult.cs" />
+    <Compile Include="XmlSitemapResult2.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ads.txt" />
+    <Content Include="Content\font-awesome.css" />
+    <Content Include="Content\font-awesome.min.css" />
+    <Content Include="Content\PagedList.css" />
+    <Content Include="css\AjaxLoader.html" />
+    <Content Include="css\animate.min.css" />
+    <Content Include="css\banner_styles10.css" />
+    <Content Include="css\banner_styles11.css" />
+    <Content Include="css\banner_styles12.css" />
+    <Content Include="css\banner_styles13.css" />
+    <Content Include="css\banner_styles14.css" />
+    <Content Include="css\banner_styles15.css" />
+    <Content Include="css\banner_styles16.css" />
+    <Content Include="css\banner_styles17.css" />
+    <Content Include="css\banner_styles18.css" />
+    <Content Include="css\banner_styles19.css" />
+    <Content Include="css\banner_styles20.css" />
+    <Content Include="css\banner_styles21.css" />
+    <Content Include="css\banner_styles5.css" />
+    <Content Include="css\banner_styles6.css" />
+    <Content Include="css\banner_styles7.css" />
+    <Content Include="css\banner_styles8.css" />
+    <Content Include="css\banner_styles9.css" />
+    <Content Include="css\bootstrap-theme.min.css" />
+    <Content Include="css\bootstrap.min.css" />
+    <Content Include="css\colors.css" />
+    <Content Include="css\droidarabickufi.css" />
+    <Content Include="css\droidarabicnaskh.css" />
+    <Content Include="css\font-awesome.min.css" />
+    <Content Include="css\fonts\flexslider-icon-2.html" />
+    <Content Include="css\fonts\flexslider-icon-3.html" />
+    <Content Include="css\fonts\flexslider-icon-4.html" />
+    <Content Include="css\fonts\flexslider-icon.html" />
+    <Content Include="css\fonts\flexslider-icond41d.html" />
+    <Content Include="css\fonts\fontawesome-webfontba72.svg" />
+    <Content Include="css\grabbing.html" />
+    <Content Include="css\images\ui-icons_444444_256x240.html" />
+    <Content Include="css\images\ui-icons_555555_256x240.html" />
+    <Content Include="css\images\ui-icons_777620_256x240.html" />
+    <Content Include="css\images\ui-icons_777777_256x240.html" />
+    <Content Include="css\images\ui-icons_cc0000_256x240.html" />
+    <Content Include="css\images\ui-icons_ffffff_256x240.html" />
+    <Content Include="css\jquery-ui.min.css" />
+    <Content Include="css\lightbox.min.css" />
+    <Content Include="css\main.css" />
+    <Content Include="css\mCSB_buttons.html" />
+    <Content Include="css\responsive - Copy.css" />
+    <Content Include="css\responsive.css" />
+    <Content Include="css\responsive28012018.css" />
+    <Content Include="css\site.css" />
+    <Content Include="css\style - Copy.css" />
+    <Content Include="css\style.css" />
+    <Content Include="css\style28012018.css" />
+    <Content Include="css\StyleStickyVideo.css" />
+    <Content Include="css\weather-icons.min.css" />
+    <Content Include="favicon.ico" />
+    <Content Include="fonts\fontawesome-webfont.svg" />
+    <Content Include="fonts\fontawesome-webfontba72.svg" />
+    <Content Include="fonts\GESS Two\GE_SS_Two_Light.svg" />
+    <Content Include="fonts\GESS Two\GE_SS_Two_Medium.svg" />
+    <Content Include="fonts\glyphicons-halflings-regular.html" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="fonts\weathericons-regular-webfont.html" />
+    <Content Include="fonts\weathericons-regular-webfont.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="Images\images\bg.jpg" />
+    <Content Include="Images\images\_bg.jpg" />
+    <Content Include="img\148002312621.jpg" />
+    <Content Include="img\1482433651751.jpg" />
+    <Content Include="img\19042017Moatamer1.jpg" />
+    <Content Include="img\3.gif" />
+    <Content Include="img\3956851ec84b6938da738038bf1104ca.jpg" />
+    <Content Include="img\ad11.jpg" />
+    <Content Include="img\ad12.jpg" />
+    <Content Include="img\adv.jpg" />
+    <Content Include="img\adv.png" />
+    <Content Include="img\adv1.png" />
+    <Content Include="img\app-store.png" />
+    <Content Include="img\ar-logo.png" />
+    <Content Include="img\art-entertainment_370x185-image04.jpg" />
+    <Content Include="img\art-entertainment_370x185-image06.jpg" />
+    <Content Include="img\art-entertainment_800x400-image02.jpg" />
+    <Content Include="img\art-entertainment_800x400-image05.jpg" />
+    <Content Include="img\art-entertainment_800x400-image06.jpg" />
+    <Content Include="img\art-entertainment_800x400-image07.jpg" />
+    <Content Include="img\art-entertainment_slider-image05.jpg" />
+    <Content Include="img\author.jpg" />
+    <Content Include="img\autos_slider-large-image02.jpg" />
+    <Content Include="img\avatar01.jpg" />
+    <Content Include="img\avatar02.jpg" />
+    <Content Include="img\avatar03.jpg" />
+    <Content Include="img\banner_1248x100.jpg" />
+    <Content Include="img\banner_300x600.jpg" />
+    <Content Include="img\banner_400x270.jpg" />
+    <Content Include="img\banner_728x90.jpg" />
+    <Content Include="img\banner_820x100.jpg" />
+    <Content Include="img\classic.png" />
+    <Content Include="img\close.png" />
+    <Content Include="img\deals_875x656-image02.jpg" />
+    <Content Include="img\degla1.gif" />
+    <Content Include="img\degla2.gif" />
+    <Content Include="img\efad1a18695e208567ee745d89ae24ea.jpg" />
+    <Content Include="img\Fav-icon-yom.ico" />
+    <Content Include="img\favicon.ico" />
+    <Content Include="img\febfd95da35db03ad06c9238322c35bb.gif" />
+    <Content Include="img\Footerlogo.png" />
+    <Content Include="img\google-play.png" />
+    <Content Include="img\header\akhbar-logo.png" />
+    <Content Include="img\header\ar-logo.png" />
+    <Content Include="img\header\ar.png" />
+    <Content Include="img\header\classic-1.jpg" />
+    <Content Include="img\header\classic-2.jpg" />
+    <Content Include="img\header\classic.png" />
+    <Content Include="img\header\Editor1.jpg" />
+    <Content Include="img\header\esdar-1.png" />
+    <Content Include="img\header\esdar-2.png" />
+    <Content Include="img\header\esdar-3.png" />
+    <Content Include="img\header\esdar-4.png" />
+    <Content Include="img\header\esdar-5.png" />
+    <Content Include="img\header\esdar-6.png" />
+    <Content Include="img\header\esdar-7.png" />
+    <Content Include="img\header\fares.png" />
+    <Content Include="img\header\Haj.gif" />
+    <Content Include="img\header\ketab.png" />
+    <Content Include="img\header\Kotby.jpg" />
+    <Content Include="img\header\l7za.png" />
+    <Content Include="img\header\la7za.png" />
+    <Content Include="img\header\lifestyle-446x316px-2i.gif" />
+    <Content Include="img\header\logo-adv.gif" />
+    <Content Include="img\header\logo-new.png" />
+    <Content Include="img\header\logo.png" />
+    <Content Include="img\header\logo333.png" />
+    <Content Include="img\header\logoTrail.png" />
+    <Content Include="img\header\logo_classic.png" />
+    <Content Include="img\header\messi.jpg" />
+    <Content Include="img\header\new-logo.png" />
+    <Content Include="img\header\news1.jpeg" />
+    <Content Include="img\header\news3.jpg" />
+    <Content Include="img\header\nogoom.png" />
+    <Content Include="img\header\nwes2.JPG" />
+    <Content Include="img\header\ramadan-logo.png" />
+    <Content Include="img\header\RamadanLogo.png" />
+    <Content Include="img\header\right-left-adv.jpg" />
+    <Content Include="img\header\tbiby.GIF" />
+    <Content Include="img\header\yasser-rizk.png" />
+    <Content Include="img\header\____logo.png" />
+    <Content Include="img\header\ياسر رزق.jpg" />
+    <Content Include="img\index_800x400-image11.jpg" />
+    <Content Include="img\jeep.jpg" />
+    <Content Include="img\Kotby.jpg" />
+    <Content Include="img\l7za.png" />
+    <Content Include="img\left.png" />
+    <Content Include="img\load.gif" />
+    <Content Include="img\logo-large.png" />
+    <Content Include="img\logo.png" />
+    <Content Include="img\main_logo-large.png" />
+    <Content Include="img\manhaten.jpg" />
+    <Content Include="img\menia.jpg" />
+    <Content Include="img\Moatamer.jpg" />
+    <Content Include="img\Moatamer1.jpg" />
+    <Content Include="img\news--in-pictures_big-image01.jpg" />
+    <Content Include="img\news--in-pictures_big-image02.jpg" />
+    <Content Include="img\news--in-pictures_big-image03.jpg" />
+    <Content Include="img\news--in-pictures_big-image04.jpg" />
+    <Content Include="img\news--in-pictures_big-image05.jpg" />
+    <Content Include="img\news--in-pictures_big-image06.jpg" />
+    <Content Include="img\news--in-pictures_big-image07.jpg" />
+    <Content Include="img\news--in-pictures_big-image08.jpg" />
+    <Content Include="img\news-in-pictures_215x126-thumbnail01.jpg" />
+    <Content Include="img\news-in-pictures_215x126-thumbnail02.jpg" />
+    <Content Include="img\news-in-pictures_215x126-thumbnail03.jpg" />
+    <Content Include="img\news-in-pictures_215x126-thumbnail04.jpg" />
+    <Content Include="img\news-in-pictures_215x126-thumbnail05.jpg" />
+    <Content Include="img\news-in-pictures_215x126-thumbnail06.jpg" />
+    <Content Include="img\news-in-pictures_215x126-thumbnail07.jpg" />
+    <Content Include="img\news-in-pictures_215x126-thumbnail08.jpg" />
+    <Content Include="img\news_800x400-image01.jpg" />
+    <Content Include="img\news_800x400-image05.jpg" />
+    <Content Include="img\news_800x400-image06.jpg" />
+    <Content Include="img\news_800x400-image07.jpg" />
+    <Content Include="img\next.png" />
+    <Content Include="img\panner.jpg" />
+    <Content Include="img\parallax-image01.jpg" />
+    <Content Include="img\politics_817x410-image01.jpg" />
+    <Content Include="img\prev.png" />
+    <Content Include="img\qatar.jpg" />
+    <Content Include="img\quma.jpg" />
+    <Content Include="img\right.png" />
+    <Content Include="img\ronaldo.gif" />
+    <Content Include="img\ronaldo1.gif" />
+    <Content Include="img\sad-logo-large.png" />
+    <Content Include="img\samsung_ad1.jpg" />
+    <Content Include="img\sisi.jpg" />
+    <Content Include="img\spinner.gif" />
+    <Content Include="img\sport_800x400-image09.jpg" />
+    <Content Include="img\tab1-image01.jpg" />
+    <Content Include="img\tab1-image02.jpg" />
+    <Content Include="img\tab1-image03.jpg" />
+    <Content Include="img\tab1-image04.jpg" />
+    <Content Include="img\tab2-image01.jpg" />
+    <Content Include="img\tab2-image02.jpg" />
+    <Content Include="img\tab2-image03.jpg" />
+    <Content Include="img\tab2-image04.jpg" />
+    <Content Include="img\tab3-image01.jpg" />
+    <Content Include="img\tab3-image02.jpg" />
+    <Content Include="img\tab3-image03.jpg" />
+    <Content Include="img\tab3-image04.jpg" />
+    <Content Include="img\tbiby.GIF" />
+    <Content Include="img\thanawya.jpg" />
+    <Content Include="img\Tipo2.jpg" />
+    <Content Include="img\travel_slider-image02.jpg" />
+    <Content Include="img\twitter.gif" />
+    <Content Include="img\ui.totop.png" />
+    <Content Include="img\Unknown.jpeg" />
+    <Content Include="img\yasser-rizk.png" />
+    <Content Include="img\zoom.png" />
+    <Content Include="img\_Fav-icon-yom.ico" />
+    <Content Include="img\_jeep.jpg" />
+    <Content Include="IsdaratImages\adab.jpg" />
+    <Content Include="IsdaratImages\akhbar.jpg" />
+    <Content Include="IsdaratImages\akhbarelyom.jpg" />
+    <Content Include="IsdaratImages\akhbarNogom.jpg" />
+    <Content Include="IsdaratImages\akhbarSayart.jpg" />
+    <Content Include="IsdaratImages\akhbarYom.jpg" />
+    <Content Include="IsdaratImages\akhersaa.jpg" />
+    <Content Include="IsdaratImages\akhersaa.png" />
+    <Content Include="IsdaratImages\clasic.jpg" />
+    <Content Include="IsdaratImages\classic_news.jpg" />
+    <Content Include="IsdaratImages\fares.jpg" />
+    <Content Include="IsdaratImages\hwadeth.jpg" />
+    <Content Include="IsdaratImages\ketab.jpg" />
+    <Content Include="IsdaratImages\ktabYom.jpg" />
+    <Content Include="IsdaratImages\lewa2.jpg" />
+    <Content Include="IsdaratImages\lewaa.jpg" />
+    <Content Include="IsdaratImages\msaaey.jpg" />
+    <Content Include="IsdaratImages\msaee.jpg" />
+    <Content Include="IsdaratImages\nogoom.jpg" />
+    <Content Include="IsdaratImages\reyada.jpg" />
+    <Content Include="IsdaratImages\ryada.JPG" />
+    <Content Include="IsdaratImages\saaa.jpg" />
+    <Content Include="IsdaratImages\sayarat.jpg" />
+    <Content Include="IsdaratImages\tadreeb.jpg" />
+    <Content Include="js\affix.js" />
+    <Content Include="js\alfaNavbar.js" />
+    <Content Include="js\bootstrap.min.js" />
+    <Content Include="js\contact.js" />
+    <Content Include="js\countdown.js" />
+    <Content Include="js\functions.js" />
+    <Content Include="js\functions28012018.js" />
+    <Content Include="js\google-map.js" />
+    <Content Include="js\jquery-3.1.1.min.js" />
+    <Content Include="js\jquery-ui.min.js" />
+    <Content Include="js\jquery.cookie.js" />
+    <Content Include="js\jquery.countdown.js" />
+    <Content Include="js\jquery.easing.min.js" />
+    <Content Include="js\jquery.scrollNav.js" />
+    <Content Include="js\jquery.stickyNavbar.min.js" />
+    <Content Include="js\jquery.validate.min.js" />
+    <Content Include="js\plugins.js" />
+    <Content Include="js\PopUp\close-icon.png" />
+    <Content Include="js\PopUp\swc.css" />
+    <Content Include="js\PopUp\swc.js" />
+    <Content Include="js\PopUp\volvo.jpg" />
+    <Content Include="js\validator.js" />
+    <Content Include="js\wow.min.js" />
+    <Content Include="png\app-store.png" />
+    <Content Include="png\ar-logo.png" />
+    <Content Include="png\classic.png" />
+    <Content Include="png\google-play.png" />
+    <Content Include="png\l7za.png" />
+    <Content Include="png\left.png" />
+    <Content Include="png\logo.png" />
+    <Content Include="png\right.png" />
+    <Content Include="png\yasser-rizk.png" />
+    <Content Include="robots.txt" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Views\Blocks\skins\tn3a\bg.png" />
+    <Content Include="Views\Blocks\skins\tn3a\bullets.css" />
+    <Content Include="Views\Blocks\skins\tn3a\bullets.html" />
+    <Content Include="Views\Blocks\skins\tn3a\preloader.gif" />
+    <Content Include="Views\Blocks\skins\tn3a\tn3a.css" />
+    <Content Include="Views\Blocks\skins\tn3a\tn3a.html" />
+    <Content Include="Views\Blocks\skins\tn3a\tn3a.png" />
+    <Content Include="Views\Blocks\skins\tn3e\bg.png" />
+    <Content Include="Views\Blocks\skins\tn3e\bullets.css" />
+    <Content Include="Views\Blocks\skins\tn3e\bullets.html" />
+    <Content Include="Views\Blocks\skins\tn3e\grad.jpg" />
+    <Content Include="Views\Blocks\skins\tn3e\preload.gif" />
+    <Content Include="Views\Blocks\skins\tn3e\thumb_bg.png" />
+    <Content Include="Views\Blocks\skins\tn3e\thumb_bg_v.png" />
+    <Content Include="Views\Blocks\skins\tn3e\tn3e.css" />
+    <Content Include="Views\Blocks\skins\tn3e\tn3e.html" />
+    <Content Include="Views\Blocks\skins\tn3e\tn3e.png" />
+    <Content Include="Views\Blocks\skins\tn3e\vertical.css" />
+    <Content Include="Views\Blocks\skins\tn3e\vertical.html" />
+    <Content Include="Views\Blocks\skins\tn3\bg.png" />
+    <Content Include="Views\Blocks\skins\tn3\preload.gif" />
+    <Content Include="Views\Blocks\skins\tn3\tbg.png" />
+    <Content Include="Views\Blocks\skins\tn3\tbg2.png" />
+    <Content Include="Views\Blocks\skins\tn3\tn3.css" />
+    <Content Include="Views\Blocks\skins\tn3\tn3.html" />
+    <Content Include="Views\Blocks\skins\tn3\tn3.png" />
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="attachment\" />
+    <Folder Include="Images\imagesSlider\" />
+    <Folder Include="Images\images\large\" />
+    <Folder Include="Images\images\small\" />
+    <Folder Include="Images\mainSlider\" />
+    <Folder Include="Images\slider\" />
+    <Folder Include="Images\UP\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="css\123" />
+    <Content Include="css\fonts\fontawesome-webfont.woff2" />
+    <Content Include="css\fonts\fontawesome-webfontba72.eot" />
+    <Content Include="css\fonts\fontawesome-webfontba72.ttf" />
+    <Content Include="css\fonts\fontawesome-webfontba72.woff" />
+    <Content Include="css\fonts\fontawesome-webfontd41d.eot" />
+    <Content Include="fonts\cordoba.ttf" />
+    <Content Include="fonts\DroidKufi-Regular.eot" />
+    <Content Include="fonts\DroidKufi-Regular.ttf" />
+    <Content Include="fonts\DroidKufi-Regular.woff" />
+    <Content Include="fonts\fontawesome-webfont.eot" />
+    <Content Include="fonts\fontawesome-webfont.ttf" />
+    <Content Include="fonts\fontawesome-webfont.woff" />
+    <Content Include="fonts\fontawesome-webfont.woff2" />
+    <Content Include="fonts\fontawesome-webfontba72.eot" />
+    <Content Include="fonts\fontawesome-webfontba72.ttf" />
+    <Content Include="fonts\fontawesome-webfontba72.woff" />
+    <Content Include="fonts\fontawesome-webfontd41d.eot" />
+    <Content Include="fonts\FontAwesome.otf" />
+    <Content Include="fonts\GESS Two\GE_SS_Two_Light.eot" />
+    <Content Include="fonts\GESS Two\GE_SS_Two_Light.otf" />
+    <Content Include="fonts\GESS Two\GE_SS_Two_Light.ttf" />
+    <Content Include="fonts\GESS Two\GE_SS_Two_Light.woff" />
+    <Content Include="fonts\GESS Two\GE_SS_Two_Medium.eot" />
+    <Content Include="fonts\GESS Two\GE_SS_Two_Medium.otf" />
+    <Content Include="fonts\GESS Two\GE_SS_Two_Medium.ttf" />
+    <Content Include="fonts\GESS Two\GE_SS_Two_Medium.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="fonts\glyphicons-halflings-regulard41d.eot" />
+    <Content Include="fonts\weathericons-regular-webfont.eot" />
+    <Content Include="fonts\weathericons-regular-webfont.ttf" />
+    <Content Include="fonts\weathericons-regular-webfont.woff" />
+    <Content Include="fonts\weathericons-regular-webfontd41d.eot" />
+    <Content Include="AkhbarElyoum.dbml" />
+    <Content Include="AkhbarElyoum.dbml.layout" />
+    <None Include="packages.config" />
+    <Content Include="Views\Shared\AccessDenied.cshtml" />
+    <Content Include="Views\Shared\_Layout1.cshtml" />
+    <Content Include="Views\Shared\_LayoutAMP.cshtml" />
+    <Content Include="Views\Shared\_LayoutInner.cshtml" />
+    <Content Include="Views\Shared\_LayoutInnerAdab.cshtml" />
+    <Content Include="Views\Shared\_LayoutInnerAkhbar.cshtml" />
+    <Content Include="Views\Shared\_LayoutInnerAkhbarElyom.cshtml" />
+    <Content Include="Views\Shared\_LayoutInnerAkherSaa.cshtml" />
+    <Content Include="Views\Shared\_LayoutInnerFares.cshtml" />
+    <Content Include="Views\Shared\_LayoutInnerHawadeth.cshtml" />
+    <Content Include="Views\Shared\_LayoutInnerKetabElyom.cshtml" />
+    <Content Include="Views\Shared\_LayoutInnerNogoom.cshtml" />
+    <Content Include="Views\Shared\_LayoutInnerRiadah.cshtml" />
+    <Content Include="Views\Shared\_LayoutInnerSayarat.cshtml" />
+    <Content Include="Views\Shared\Error09072018.cshtml" />
+    <Content Include="Views\Shared\NotFound.cshtml" />
+    <Content Include="Views\Tags\backup-tage-27-09-2020\NewsTagList.cshtml" />
+    <Content Include="Views\Tags\GetNewTags.cshtml" />
+    <Content Include="Views\Tags\NewsTagList.cshtml" />
+    <Content Include="Views\Tags\NewsTagListPaging.cshtml" />
+    <Content Include="Views\KetabElyom\Index.cshtml" />
+    <Content Include="Views\News\15022020\NewDetails.cshtml" />
+    <Content Include="Views\News\Articles.cshtml" />
+    <Content Include="Views\News\ArticleSectionList.cshtml" />
+    <Content Include="Views\News\ArticleSectionListPaging.cshtml" />
+    <Content Include="Views\News\ArticlesPaging.cshtml" />
+    <Content Include="Views\News\backup-get-home-list-04-10-2020\GetHomeList1.cshtml" />
+    <Content Include="Views\News\backup-get-home-list-04-10-2020\GetHomeMkatatList.cshtml" />
+    <Content Include="Views\News\backupp-gethomelist1-31-10-2020\GetHomeList1.cshtml" />
+    <Content Include="Views\News\commic.cshtml" />
+    <Content Include="Views\News\GetAttachments.cshtml" />
+    <Content Include="Views\News\GetComicsofDayList.cshtml" />
+    <Content Include="Views\News\GetHomeLatestList.cshtml" />
+    <Content Include="Views\News\GetHomeLatestSectionList.cshtml" />
+    <Content Include="Views\News\GetHomeList.cshtml" />
+    <Content Include="Views\News\GetHomeList1 - Copy %282%29.cshtml" />
+    <Content Include="Views\News\GetHomeList1 - Copy %283%29.cshtml" />
+    <Content Include="Views\News\GetHomeList1 - Copy %284%29.cshtml" />
+    <Content Include="Views\News\GetHomeList1 - Copy %285%29.cshtml" />
+    <Content Include="Views\News\GetHomeList1 - Copy.cshtml" />
+    <Content Include="Views\News\GetHomeList1-24102020.rar" />
+    <Content Include="Views\News\GetHomeList1.cshtml" />
+    <Content Include="Views\News\GetHomeMkatatList.cshtml" />
+    <Content Include="Views\News\GetHomeMostCommentedList.cshtml" />
+    <Content Include="Views\News\GetHomeMostCommentedSectionList.cshtml" />
+    <Content Include="Views\News\GetHomeMostViewedList - Copy %282%29.cshtml" />
+    <Content Include="Views\News\GetHomeMostViewedList - Copy.cshtml" />
+    <Content Include="Views\News\GetHomeMostViewedList.cshtml" />
+    <Content Include="Views\News\GetHomeMostViewedSectionList.cshtml" />
+    <Content Include="Views\News\GetHomeSecondSlideList1.cshtml" />
+    <Content Include="Views\News\GetHomeVideoList - Copy.cshtml" />
+    <Content Include="Views\News\GetHomeVideoList.cshtml" />
+    <Content Include="Views\News\GetMobileNewDetails.cshtml" />
+    <Content Include="Views\News\GetMoreReadListInside.cshtml" />
+    <Content Include="Views\News\GetMostCommentedList.cshtml" />
+    <Content Include="Views\News\GetRelatedNewsList - Copy.cshtml" />
+    <Content Include="Views\News\GetRelatedNewsList.cshtml" />
+    <Content Include="Views\News\GetRelatedNewsListInside.cshtml" />
+    <Content Include="Views\News\GetRelatedNewsVideoList.cshtml" />
+    <Content Include="Views\News\GetReport.cshtml" />
+    <Content Include="Views\News\GetReport.cshtmlnow" />
+    <Content Include="Views\News\GetReportNews.cshtml" />
+    <Content Include="Views\News\GetSectionsList.cshtml" />
+    <Content Include="Views\News\GetSectionsListFooter.cshtml" />
+    <Content Include="Views\News\GetSideSectionsList.cshtml" />
+    <Content Include="Views\News\GetTodayStar.cshtml" />
+    <Content Include="Views\News\GetTopStoriesList1.cshtml" />
+    <Content Include="Views\News\GetTopStoriesList2 - Copy %282%29.cshtml" />
+    <Content Include="Views\News\GetTopStoriesList2 - Copy.cshtml" />
+    <Content Include="Views\News\GetTopStoriesList2.cshtml" />
+    <Content Include="Views\News\GetTopStoriesTest.cshtml" />
+    <Content Include="Views\News\Hwarat.cshtml" />
+    <Content Include="Views\News\karekaters.cshtml" />
+    <Content Include="Views\News\karekaterspaged.cshtml" />
+    <Content Include="Views\News\NewDetails - Copy %282%29.cshtml" />
+    <Content Include="Views\News\NewDetails - Copy %283%29.cshtml" />
+    <Content Include="Views\News\NewDetails - Copy.cshtml" />
+    <Content Include="Views\News\NewDetails.amp.cshtml" />
+    <Content Include="Views\News\NewDetails.cshtml" />
+    <Content Include="Views\News\NewsSection.cshtml" />
+    <Content Include="Views\News\NewsSection2.cshtml" />
+    <Content Include="Views\News\NewsSectionLeftSide.cshtml" />
+    <Content Include="Views\News\NewsSectionPaged.cshtml" />
+    <Content Include="Views\News\NewsSectionTop.cshtml" />
+    <Content Include="Views\News\nogoomtv.cshtml" />
+    <Content Include="Views\News\nogoom_magazine.cshtml" />
+    <Content Include="Views\News\onesec.cshtml" />
+    <Content Include="Views\News\painter.cshtml" />
+    <Content Include="Views\News\painterpaged.cshtml" />
+    <Content Include="Views\News\painters.cshtml" />
+    <Content Include="Views\News\photos.cshtml" />
+    <Content Include="Views\News\photospaged.cshtml" />
+    <Content Include="Views\News\Print.cshtml" />
+    <Content Include="Views\News\Search.cshtml" />
+    <Content Include="Views\News\SearchPaging.cshtml" />
+    <Content Include="Views\News\Specificsec.cshtml" />
+    <Content Include="Views\News\tiker.cshtml" />
+    <Content Include="Views\News\VideoDisplay.cshtml" />
+    <Content Include="Views\News\_temp_backup\07042017GetHomeList1.cshtml" />
+    <Content Include="Views\News\_temp_backup\13042017GetTopStoriesList1.cshtml" />
+    <Content Include="Views\News\_temp_backup\15042017GetHomeList1.cshtml" />
+    <Content Include="Views\News\_temp_backup\15042017GetTopStoriesList1.cshtml" />
+    <Content Include="Views\News\_temp_backup\18042017NewDetails.cshtml" />
+    <Content Include="Views\News\_temp_backup\18042017VideoDisplay.cshtml" />
+    <Content Include="Views\News\_temp_backup\22042017NewDetails.cshtml" />
+    <Content Include="Views\News\_temp_backup\27052017GetHomeMostViewedList.cshtml" />
+    <Content Include="Views\News\_temp_backup\31052017GetTopStoriesList1.cshtml" />
+    <Content Include="Views\News\_temp_backup\GetHomeList1 - 11052018.cshtml" />
+    <Content Include="Views\News\_temp_backup\GetHomeList1_1262019.cshtml" />
+    <Content Include="Views\News\_temp_backup\GetHomeList1_28122017.cshtml" />
+    <Content Include="Views\News\_temp_backup\GetTopStoriesList1-09012018.cshtml" />
+    <Content Include="Views\News\_temp_backup\VideoDisplay28122017.cshtml" />
+    <Content Include="Views\News\_temp_backup\__GetHomeList1.cshtml" />
+    <Content Include="Views\News\_temp_backup\__NewDetails.cshtml" />
+    <Content Include="Views\News\_temp_backup\_____GetHomeList1.cshtml" />
+    <Content Include="Views\Nogoom\Index - Copy.cshtml" />
+    <Content Include="Views\Nogoom\Index.cshtml" />
+    <Content Include="Views\Nogoom\_Index.cshtml" />
+    <Content Include="Views\Polls\GetCurrentPoll.cshtml" />
+    <Content Include="Views\Polls\GetPollList.cshtml" />
+    <Content Include="Views\Polls\GetPollList_opinionpoll.cshtml" />
+    <Content Include="Views\Polls\GetPollResults.cshtml" />
+    <Content Include="Views\Polls\GetPollResultsss.cshtml" />
+    <Content Include="Views\Polls\GetPollResultss_opinionpoll.cshtml" />
+    <Content Include="Views\Polls\OPinion_poll.cshtml" />
+    <Content Include="Views\Polls\OPinion_pollpaged.cshtml" />
+    <Content Include="Views\Polls\SubmitPoll1.cshtml" />
+    <Content Include="Views\Riadah\Index.cshtml" />
+    <Content Include="Views\RSS\GetSectionNewsRSS-hold.cshtml" />
+    <Content Include="Views\RSS\GetSectionRSS-hold.cshtml" />
+    <Content Include="Views\RSS\GetSectionRSS.cshtml" />
+    <Content Include="Views\RSS\NewsRSS.cshtml" />
+    <Content Include="Views\Sayarat\Index.cshtml" />
+    <Content Include="Views\Home\19042017GetSiteLeftSideServices.cshtml" />
+    <Content Include="Views\Home\About-Us.cshtml" />
+    <Content Include="Views\Home\Advertising.cshtml" />
+    <Content Include="Views\Home\akhbarelyommobile.cshtml" />
+    <Content Include="Views\Home\Error.cshtml" />
+    <Content Include="Views\Home\FooterIsdaratBlock - Copy %282%29.cshtml" />
+    <Content Include="Views\Home\FooterIsdaratBlock - Copy.cshtml" />
+    <Content Include="Views\Home\FooterIsdaratBlock.cshtml" />
+    <Content Include="Views\Home\FooterIsdaratBlock28012018.cshtml" />
+    <Content Include="Views\Home\GetNewsLeftSideServices.cshtml" />
+    <Content Include="Views\Home\GetShareLinks - Copy.cshtml" />
+    <Content Include="Views\Home\GetShareLinks.cshtml" />
+    <Content Include="Views\Home\GetSiteLeftSideServices.cshtml" />
+    <Content Include="Views\Home\GetSiteLeftSideServicesInner.cshtml" />
+    <Content Include="Views\Home\Hawadeth.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Home\Nogoom.cshtml" />
+    <Content Include="Views\Home\Privacy - Copy.cshtml" />
+    <Content Include="Views\Home\Privacy.cshtml" />
+    <Content Include="Views\Home\Responsibility.cshtml" />
+    <Content Include="Views\Home\Riadah.cshtml" />
+    <Content Include="Views\Home\WhoWeAre - Copy %282%29.cshtml" />
+    <Content Include="Views\Home\WhoWeAre - Copy.cshtml" />
+    <Content Include="Views\Home\WhoWeAre.cshtml" />
+    <Content Include="Views\Home\_About-Us.cshtml" />
+    <Content Include="Views\Home\_GetSiteLeftSideServices.cshtml" />
+    <Content Include="Views\Home\__GetSiteLeftSideServices.cshtml" />
+    <Content Include="Views\Adab\Index.cshtml" />
+    <Content Include="Views\AkhbarElyom\Index.cshtml" />
+    <Content Include="Views\Akhbar\Index.cshtml" />
+    <Content Include="Views\AkherSaa\Index.cshtml" />
+    <Content Include="Views\Allwaa\Index.cshtml" />
+    <Content Include="Views\Blocks\GetBlockTextList.cshtml" />
+    <Content Include="Views\Blocks\service.cshtml" />
+    <Content Include="Views\Blocks\Services.cshtml" />
+    <Content Include="Views\Comments\Comments.cshtml" />
+    <Content Include="Views\Comments\CommentsPaged.cshtml" />
+    <Content Include="Views\Comments\Create.cshtml" />
+    <Content Include="Views\Editors\15022020\GetNewByLines.cshtml" />
+    <Content Include="Views\Editors\EditorNews.cshtml" />
+    <Content Include="Views\Editors\EditorNewsListPaging.cshtml" />
+    <Content Include="Views\Editors\GateEditors.cshtml" />
+    <Content Include="Views\Editors\GateEditorsPaging.cshtml" />
+    <Content Include="Views\Editors\GetEditorsList.cshtml" />
+    <Content Include="Views\Editors\GetEditorsPageList.cshtml" />
+    <Content Include="Views\Editors\GetNewByLines.cshtml" />
+    <Content Include="Views\Esdarat\Articles.cshtml" />
+    <Content Include="Views\Esdarat\Classic - Copy.cshtml" />
+    <Content Include="Views\Esdarat\Classic.cshtml" />
+    <Content Include="Views\Fares\Index.cshtml" />
+    <Content Include="Views\Galleries\18042017GetHomeGalleryPicturesList.cshtml" />
+    <Content Include="Views\Galleries\GalleryImages.cshtml" />
+    <Content Include="Views\Galleries\GalleryPictures.cshtml" />
+    <Content Include="Views\Galleries\GallerySection.cshtml" />
+    <Content Include="Views\Galleries\GallerySectionPaged.cshtml" />
+    <Content Include="Views\Galleries\GallerySectionTop.cshtml" />
+    <Content Include="Views\Galleries\GetComicsofDayList.cshtml" />
+    <Content Include="Views\Galleries\GetGalleryList.cshtml" />
+    <Content Include="Views\Galleries\GetHomeGalleryList.cshtml" />
+    <Content Include="Views\Galleries\GetHomeGalleryPicturesList1.cshtml" />
+    <Content Include="Views\Galleries\GetNewsGalleryList.cshtml" />
+    <Content Include="Views\Galleries\GetPictureofDayList.cshtml" />
+    <Content Include="Views\Hawadeth\Index - Copy %282%29.cshtml" />
+    <Content Include="Views\Hawadeth\Index - Copy.cshtml" />
+    <Content Include="Views\Hawadeth\Index.cshtml" />
+    <Content Include="png\.DS_Store" />
+    <Content Include="png\logo.png-old" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>59972</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:59972/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

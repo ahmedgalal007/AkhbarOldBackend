@@ -1,0 +1,33 @@
+﻿@model IEnumerable<AkhbarElyoum.Models.NewsDetails>
+@{string JID = AkhbarElyoum.Controllers.HomeController.GetJournalID(HttpContext.Current.Request.Url.Host, int.Parse((HttpContext.Current.Request.QueryString["JournalID"] != null) ? HttpContext.Current.Request.QueryString["JournalID"].ToString() : "0"));}
+
+<div class="module">
+    <div class="Related">
+
+            <h2>
+                    <a title="الأخبار المرتبطة" class="HomeSecTitle">
+					الأخبار المرتبطة</a> 
+            </h2>
+
+        <div class="article">
+            @foreach (var item in @Model)
+            {
+       
+			 <div class="entry-block-small">
+                    <div class="entry-image">
+                            <a href="/news/VideoDisplay/@item.NewsID/@JID/@(AkhbarElyoum.Controllers.HomeController.GetPureURL(item.Title))" class="img-link" title="@item.Title">
+                                <img class="img-responsive img-full" src="https://Images.akhbarelyom.com/images/images/small/@item.PictureName1" alt="@item.Title" />
+                                <span class="label-1">@item.SectionTitle</span>
+                            </a>
+                    </div>
+                    <div class="content" style="height:70px;overflow:hidden;">
+                        <h4><a href="/news/VideoDisplay/@item.NewsID/@JID/@(AkhbarElyoum.Controllers.HomeController.GetPureURL(item.Title))"  title="@item.Title"> @item.Title</a></h4>
+                       
+                    </div>
+                </div>
+	
+		}
+        </div>
+    </div>
+</div>
+

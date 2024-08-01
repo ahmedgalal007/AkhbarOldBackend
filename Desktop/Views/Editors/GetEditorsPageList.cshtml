@@ -1,0 +1,211 @@
+
+@{
+    string JID = AkhbarElyoum.Controllers.HomeController.GetJournalID(HttpContext.Current.Request.Url.Host, int.Parse((HttpContext.Current.Request.QueryString["JournalID"] != null) ? HttpContext.Current.Request.QueryString["JournalID"].ToString() : "0"));
+    Layout = "../Shared/_LayoutInner.cshtml";
+    int count = 0;
+    var cssclass = "";
+}
+
+@section home{
+    <style type="text/css">
+        .showMore
+        {
+           background:rgba(252, 135, 82, 1);
+            border-radius: 5px 5px 5px 5px;
+            color: #FFFFFF;
+            cursor: pointer;
+            direction: rtl;
+            display: block;
+            height: 30px;
+            margin: 10px auto;
+            width: 100%;
+        }
+    </style>
+
+<script type="text/javascript">
+
+    var isenabled = true;
+    var page = -1;
+    if ($(".lastid:last").attr("idx")) {
+        page = $(".lastid:last").attr("idx").toString();
+    }
+    else {
+        $('.showMore').hide();
+        $('.no-more-data').show();
+    }
+    var GetArticles = function () {
+	if (page != -1) {
+        $.ajax({
+            type: "GET",
+            url: '/News/ArticleSectionListPaging?LastID=' + page + '&JournalID=' + @JID + '&EditorID=' + @EditorID ,
+            contentType: "html/text",
+            dataType: "html",
+            cache: false,
+            success: function (msg) {
+                //alert("success");
+                // get the index of the row for the fnDeleteRow
+                //appendToList(msg);
+                //pagenumber++;
+                var container = $("#NewsSectionPaging");
+                if (msg.trim() !== "") {
+                    container.append(msg);
+                } else {
+                    $('.showMore').hide();
+                    $('.no-more-data').show();
+                }
+                var isenabled = true;
+            }
+        });
+		}
+    }
+    $(document).ready(function () {
+        //console.log("Init complete.");
+        // create a long list of items
+        var container = $("#NewsSectionPaging");
+        if ($(".lastid:last").attr("idx")) {
+            page = $(".lastid:last").attr("idx").toString();
+        }
+        else {
+            $('.showMore').hide();
+            $('.no-more-data').show();
+        }
+        var appendToList = function (msg) {
+            container.append(msg);
+        }
+        container.bind("infinite-scroll", function (args) {
+            if ($(".lastid:last").attr("idx")) {
+                page = $(".lastid:last").attr("idx").toString();
+            }
+            else {
+                $('.showMore').hide();
+                $('.no-more-data').show();
+            }
+			if (page != -1) {
+            $.ajax({
+                type: "GET",
+                url: '/News/ArticleSectionListPaging?LastID=' + page + '&JournalID=' + @JID + '&EditorID=' + @EditorID + ' ',
+                contentType: "html/text",
+                dataType: "html",
+                cache: false,
+                success: function (msg) {
+                    //alert("success");
+                    // get the index of the row for the fnDeleteRow
+                    if (msg.trim() !== "") {
+                        container.append(msg);
+                    } else {
+                        $('.showMore').hide();
+                        $('.no-more-data').show();
+                    }
+                    isenabled = true;
+                }
+            });
+			}
+        });
+
+    });
+    </script>
+	
+
+    <div class="container">
+
+  
+        <div class="row">
+            <div class="col-md-8 section-news">
+                <div class="news-section-2">
+                
+                    @foreach (var item in Model)
+                    {
+
+                        if (count == 0)
+                        {
+                        <div class="row">
+                            <h1>
+                                <div class="col-xs-12">
+                                    <div class="section-header-normal">
+                                        <a href="/News/ArticleSectionList/@item.EditorID/@JID/@(AkhbarElyoum.Controllers.HomeController.GetPureURL(item.EditorName))">
+                                            <span class="section-header-name">  @item.EditorName </span> <i class="fa fa-ellipsis-h fa-2x">
+                                            </i></a>
+                                    </div>
+                                </div>
+                            </h1>
+                        </div>
+                        }
+
+                        if (count == 0)
+                        {
+                       
+                            ViewContext.Writer.Write("<div id=\"NewsSectionPaging\" class=\"newNewsBoxWrapper\" style=\"margin-top:20px; margin-bottom: 20px;\">");
+                        }
+                        
+                        <div class="col-lg-6 col-md-3 col-xs-6" >
+                            <a href="/news/newdetails/@item.NewsID/@JID/@(AkhbarElyoum.Controllers.HomeController.GetPureURL(item.Title))" title="@item.Title" class="news-block">
+                                <img  src="https://Images.akhbarelyom.com/images/images/small/@item.PictureName1" alt="@item.Title" class="img-responsive"/>
+                                <span>@item.Title</span> </a>
+                        </div>
+
+                    
+                        count++;
+
+                        if (count == Model.Count)
+                        {
+                        <p class="lastid" idx="@item.NewsID">
+                        </p>
+                            ViewContext.Writer.Write("</div>");
+                        }
+
+
+                    }
+
+                    @if (Model.Count > 0)
+                    {
+
+                        <div class="no-more-data" style="display: none;">
+                            <p>
+                                ·« ÌÊÃœ «·„“Ìœ „‰ «·»Ì«‰« .</p>
+                        </div>
+                        
+                         <input name="" id="" onclick="GetArticles();"  class="showMore" type="submit" value="«‰ﬁ— ·„“Ìœ „‰ «·«Œ»«—" />
+            
+                    }
+
+
+                </div>
+            </div>
+            @Html.Action("GetSiteLeftSideServicesInner", "Home", new { JournalID = JID })
+        </div>
+    </div>
+}
+
+
+
+
+
+            @foreach (var item in Model)
+            {
+                if (count % 2 == 0)
+                {
+                    cssclass = "fristNews";
+                }
+                else
+                {
+                    cssclass = "secfristNews";
+                }
+                <div class="@cssclass">
+                    <div class="imgAndDate">
+                        <a href="/news/ArticleSectionList/@item.EditorID/@JID/@(AkhbarElyoum.Controllers.HomeController.GetPureURL(item.EditorName))">
+                            <div style="background-color: #000000; border-radius: 5px 5px 5px 5px; height: 82px;
+                                margin: 3px 2px 0 0; overflow: hidden;">
+                                <img src="@item.picture" width="162px" align="center" class="newPostImge" />
+                                
+                            </div>
+                            
+                        </a>
+                    </div>
+                    <div style="display:block;">@item.ArticleName
+                            @item.EditorName</div>
+                </div>
+                count++;
+            }
+        </div>
+    </div>
+</div>

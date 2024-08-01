@@ -1,0 +1,227 @@
+﻿@model List<AkhbarElyoum.Models.NewsDetails>
+@{
+    bool flg = true;
+    string JID = AkhbarElyoum.Controllers.HomeController.GetJournalID(HttpContext.Current.Request.Url.Host, int.Parse((HttpContext.Current.Request.QueryString["JournalID"] != null) ? HttpContext.Current.Request.QueryString["JournalID"].ToString() : "0"));
+}
+<div class="topstory-area slider_cont">
+    <div class="container">
+        <div class="topstory visible-lg visible-md">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div id="topstory2-carousel" class="owl-carousel">
+                        @if (Model != null && Model.Count == 18)
+                        {
+                            <div class="item">
+                                <div class="row">
+                                    <div class="col-md-12 padding-bottom">
+                                        <h1>
+                                            <a href="/news/newdetails?ID=@Model[0].NewsID&JournalID=@JID" class="topstory-block">
+                                                <div class="height-slider">
+                                                    <img src="/images/images/large/@Model[0].PictureName1" class="img-responsive slider_img" alt="@Model[0].Title" /></div>
+                                                <div class="topstory-title1">
+                                                    <span>@Model[0].Title</span></div>
+                                            </a>
+                                        </h1>
+                                    </div>
+                                    <div class="col-md-6 padding-left">
+                                        <h2>
+                                            <a href="/news/newdetails?ID=@Model[1].NewsID&JournalID=@JID" class="topstory-block">
+                                                <div class="height-slider">
+                                                    <img src="/images/images/small/@Model[1].PictureName1" class="img-responsive slider_img"  alt="@Model[1].Title" /></div>
+                                                <div class="topstory-title1">
+                                                    <span>@Model[1].Title</span>
+                                                </div>
+                                            </a>
+                                        </h2>
+                                    </div>
+                                    <div class="col-md-6 padding-right">
+                                        <a href="/news/newdetails?ID=@Model[2].NewsID&JournalID=@JID" class="topstory-block">
+                                            <div class="height-slider">
+                                                <img src="/images/images/small/@Model[2].PictureName1" class="img-responsive slider_img" alt="@Model[2].Title" /></div>
+                                            <div class="topstory-title1">
+                                                <span>@Model[2].Title</span></div>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="item">
+                                <div class="row">
+                                    <div class="col-md-12 padding-top">
+                                        <a href="/news/newdetails?ID=@Model[3].NewsID&JournalID=@JID" class="topstory-block">
+                                            <div class="height-slider">
+                                                <img src="/images/images/large/@Model[3].PictureName1" class="img-responsive slider_img" alt="@Model[3].Title" /></div>
+                                            <div class="topstory-title1">
+                                                <span>@Model[3].Title</span></div>
+                                        </a>
+                                    </div>
+                                    <div class="col-md-6 padding-left">
+                                        <a href="/news/newdetails?ID=@Model[4].NewsID&JournalID=@JID" class="topstory-block">
+                                            <div class="height-slider">
+                                                <img src="/images/images/small/@Model[4].PictureName1" class="img-responsive slider_img" alt="@Model[4].Title"/></div>
+                                            <div class="topstory-title1">
+                                                <span>@Model[4].Title</span></div>
+                                        </a>
+                                    </div>
+                                    <div class="col-md-6 padding-right">
+                                        <a href="/news/newdetails?ID=@Model[5].NewsID&JournalID=@JID" class="topstory-block">
+                                            <div class="height-slider">
+                                                <img src="/images/images/small/@Model[5].PictureName1" class="img-responsive slider_img" alt="@Model[5].Title"/></div>
+                                            <div class="topstory-title1">
+                                                <span>@Model[5].Title</span></div>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="item">
+                                <div class="row">
+                                    <div class="col-md-12 padding-bottom">
+                                        <a href="/news/newdetails?ID=@Model[6].NewsID&JournalID=@JID" class="topstory-block">
+                                            <div class="height-slider">
+                                                <img src="/images/images/large/@Model[6].PictureName1" class="img-responsive slider_img" alt="@Model[6].Title"/></div>
+                                            <div class="topstory-title1">
+                                                <span>@Model[6].Title</span></div>
+                                        </a>
+                                    </div>
+                                    <div class="col-md-6 padding-left">
+                                        <a href="/news/newdetails?ID=@Model[7].NewsID&JournalID=@JID" class="topstory-block">
+                                            <div class="height-slider">
+                                                <img src="/images/images/small/@Model[7].PictureName1" class="img-responsive slider_img" alt="@Model[7].Title"/></div>
+                                            <div class="topstory-title1">
+                                                <span>@Model[7].Title</span></div>
+                                        </a>
+                                    </div>
+                                    <div class="col-md-6 padding-right">
+                                        <a href="/news/newdetails?ID=@Model[8].NewsID&JournalID=@JID" class="topstory-block">
+                                            <div class="height-slider">
+                                                <img src="/images/images/small/@Model[8].PictureName1" class="img-responsive slider_img" alt="@Model[8].Title"/></div>
+                                            <div class="topstory-title1">
+                                                <span>@Model[8].Title</span></div>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="item">
+                                <div class="row">
+                                    <div class="col-md-12 padding-top">
+                                        <a href="/news/newdetails?ID=@Model[9].NewsID&JournalID=@JID" class="topstory-block">
+                                            <div class="height-slider">
+                                                <img src="/images/images/large/@Model[9].PictureName1" class="img-responsive slider_img" alt="@Model[9].Title" /></div>
+                                            <div class="topstory-title1">
+                                                <span>@Model[9].Title</span></div>
+                                        </a>
+                                    </div>
+                                    <div class="col-md-6 padding-left">
+                                        <a href="/news/newdetails?ID=@Model[10].NewsID&JournalID=@JID" class="topstory-block">
+                                            <div class="height-slider">
+                                                <img src="/images/images/small/@Model[10].PictureName1" class="img-responsive slider_img" alt="@Model[10].Title" /></div>
+                                            <div class="topstory-title1">
+                                                <span>@Model[10].Title</span></div>
+                                        </a>
+                                    </div>
+                                    <div class="col-md-6 padding-right">
+                                        <a href="/news/newdetails?ID=@Model[11].NewsID&JournalID=@JID" class="topstory-block">
+                                            <div class="height-slider">
+                                                <img src="/images/images/small/@Model[11].PictureName1" class="img-responsive slider_img" alt="@Model[11].Title" /></div>
+                                            <div class="topstory-title1">
+                                                <span>@Model[11].Title</span></div>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="item">
+                                <div class="row">
+                                    <div class="col-md-12 padding-bottom">
+                                        <a href="/news/newdetails?ID=@Model[12].NewsID&JournalID=@JID" class="topstory-block">
+                                            <div class="height-slider">
+                                                <img src="/images/images/large/@Model[12].PictureName1" class="img-responsive slider_img" alt="@Model[12].Title"/></div>
+                                            <div class="topstory-title1">
+                                                <span>@Model[12].Title</span></div>
+                                        </a>
+                                    </div>
+                                    <div class="col-md-6 padding-left">
+                                        <a href="/news/newdetails?ID=@Model[13].NewsID&JournalID=@JID" class="topstory-block">
+                                            <div class="height-slider">
+                                                <img src="/images/images/small/@Model[13].PictureName1" class="img-responsive slider_img" alt="@Model[13].Title"/></div>
+                                            <div class="topstory-title1">
+                                                <span>@Model[13].Title</span></div>
+                                        </a>
+                                    </div>
+                                    <div class="col-md-6 padding-right">
+                                        <a href="/news/newdetails?ID=@Model[14].NewsID&JournalID=@JID" class="topstory-block">
+                                            <div class="height-slider">
+                                                <img src="/images/images/small/@Model[14].PictureName1" class="img-responsive slider_img" alt="@Model[14].Title"/></div>
+                                            <div class="topstory-title1">
+                                                <span>@Model[14].Title</span></div>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="item">
+                                <div class="row">
+                                    <div class="col-md-12 padding-top">
+                                        <a href="/news/newdetails?ID=@Model[15].NewsID&JournalID=@JID" class="topstory-block">
+                                            <div class="height-slider">
+                                                <img src="/images/images/large/@Model[15].PictureName1" class="img-responsive slider_img" alt="@Model[15].Title"/></div>
+                                            <div class="topstory-title1">
+                                                <span>@Model[15].Title</span></div>
+                                        </a>
+                                    </div>
+                                    <div class="col-md-6 padding-left">
+                                        <a href="/news/newdetails?ID=@Model[16].NewsID&JournalID=@JID" class="topstory-block">
+                                            <div class="height-slider">
+                                                <img src="/images/images/small/@Model[16].PictureName1" class="img-responsive slider_img" alt="@Model[16].Title"/></div>
+                                            <div class="topstory-title1">
+                                                <span>@Model[16].Title</span></div>
+                                        </a>
+                                    </div>
+                                    <div class="col-md-6 padding-right">
+                                        <a href="/news/newdetails?ID=@Model[17].NewsID&JournalID=@JID" class="topstory-block">
+                                            <div class="height-slider">
+                                                <img src="/images/images/small/@Model[17].PictureName1" class="img-responsive slider_img" alt="@Model[17].Title"/></div>
+                                            <div class="topstory-title1">
+                                                <span>@Model[17].Title</span></div>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="mobile-topstory hidden-lg hidden-md">
+            <div id="topstoryNextBtnM" class="topstoryNextBtnM">
+                <span class="fa fa-arrow-left"></span>
+            </div>
+            <div id="topstoryPrevBtnM" class="topstoryPrevBtnM">
+                <span class="fa fa-arrow-right"></span>
+            </div>
+            <div id="topstory-mobile" class="owl-carousel">
+                @foreach (var item in Model)
+                {
+                    <div class="item">
+                        <a href="/news/newdetails?ID=@item.NewsID&JournalID=@JID" class="topstory-block">
+                            <img src="../images/images/large/@item.PictureName1" alt="@item.Title" class="img-responsive"/>
+                            <div class="topstory-text">
+                                <span>@item.Title</span>
+                            </div>
+                        </a>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12 center-block">
+            <div align="center" style="margin: 20px auto 0px auto;" class="center-block">
+                <div class="">
+                    <!---9---->
+                    <script type="text/javascript" src='https://www.googletagservices.com/tag/js/gpt.js'>                        googletag.pubads().definePassback('/62183278/Akhbarelyom_Responsive_2', [[728, 90]]).display();</script>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

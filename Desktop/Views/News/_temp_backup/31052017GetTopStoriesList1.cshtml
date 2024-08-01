@@ -1,0 +1,81 @@
+﻿@model List<AkhbarElyoum.Models.NewsDetails>
+@{
+    bool flg = true;
+    string JID = AkhbarElyoum.Controllers.HomeController.GetJournalID(HttpContext.Current.Request.Url.Host, int.Parse((HttpContext.Current.Request.QueryString["JournalID"] != null) ? HttpContext.Current.Request.QueryString["JournalID"].ToString() : "0"));
+
+    int counter = 0;
+}
+
+    <!-- Begin Slider -->
+    <link href="/MobileViewScripts/Slider/Sliderstyle.css" rel="stylesheet" type="text/css" />
+    <script src="/MobileViewScripts/Slider/jshead.js"></script>
+    <!-- End Slider -->
+
+
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-8">
+            <div class="news-section-2" style="padding-right: 15px;">
+                <div class="row">
+
+       <div class="topOne">
+            <div style="visibility: visible;" id="slider" class="swipe">
+                <div style="width: 8094px;" class="swipe-wrap">
+        @foreach (var item in Model)
+        {
+            <div data-index="count" style="width: 1349px; left: 0px; transition-duration: 400ms; transform: translateX(-1349px);">
+               <a href="/news/NewDetails/@item.NewsID/@JID/@(AkhbarElyoum.Controllers.HomeController.GetPureURL(item.Title)).html">
+               <img src="/images/images/Large/@item.PictureName1" title="@item.Title" alt="@item.Title"/></a>
+               <h2><a href="/news/NewDetails/@item.NewsID/@JID/@(AkhbarElyoum.Controllers.HomeController.GetPureURL(item.Title)).html">@item.Title</a></h2>
+            </div>
+            counter++;
+        }
+
+             </div>
+              <nav>
+                <ul id="position">
+
+        @{counter = 0;}
+        @foreach (var item in Model)
+        {
+            if (counter == 0)
+            {
+                <li class="on"></li>
+            }
+            else
+            {
+                  <li class=" "></li>
+            }
+            counter++;
+        }
+         </ul>
+            </nav>
+            <div id="left-arrow" style="position: absolute; left: 0%; top: 25%; z-index: 1000;" onClick="javascript:window.mySwipe.prev();">
+            </div>
+            <div id="right-arrow" style="position: absolute; right: 0%; top: 25%; z-index: 1000;" onClick="javascript:window.mySwipe.next();">
+            </div>
+        </div>
+        </div>
+
+
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4" style=" margin-right: 15px;
+            margin-top: 20px; width: 30%;">
+            <!-- start Ads loc1 -->
+            <div align="center" style="margin: 20px auto 0px auto; width: 95%; height: 320px;">
+               
+                <!-- gate 300*300 -->
+                <ins class="adsbygoogle" style="display: inline-block; width: 300px; height: 300px"
+                    data-ad-client="ca-pub-7445302147671862" data-ad-slot="7900566528"></ins>
+                <script>
+                    (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+            </div>
+            <!-- End Ads loc1 -->
+        </div>
+    </div>
+</div>

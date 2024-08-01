@@ -1,0 +1,61 @@
+@{
+
+    int secid= ViewBag.secId;
+
+ }
+
+<!-- Start Side Block -->
+
+
+    <div class="internal-sidebar">
+
+        <div class="row">
+
+          <div id="Ads-29" class="col-md-12 col-sm-6 col-xs-12" align="center">
+			
+			@if(secid==13)
+			{
+			
+			@Html.Action("GetBlockTextList", "Blocks", new { BlockID = 153, JournalID = 1 })
+
+			}
+			else
+			{
+				@Html.Action("GetBlockTextList", "Blocks", new { BlockID = 29, JournalID = 1 })
+			}
+			
+			</div>
+
+            <div class="col-md-12 col-sm-6 col-xs-12" style="padding-top:10px;">
+
+			@Html.Action("NewsSectionLeftSide", "News", new {SecID = @secid })
+
+            </div>
+			
+			 <div id="Ads-28" class="col-md-12 col-sm-6 col-xs-12" style="padding-top:10px;">
+
+			@if(secid==13)
+			{
+				@Html.Action("GetBlockTextList", "Blocks", new { BlockID = 154, JournalID = 1 })
+			}
+			else
+			{
+			 @Html.Action("GetBlockTextList", "Blocks", new { BlockID = 28, JournalID = 1 })
+			}		
+							
+			</div>
+
+
+
+        </div>
+
+
+
+    </div>
+
+	
+	
+	
+
+
+<!-- EndSideBlock -->

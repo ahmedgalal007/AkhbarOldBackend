@@ -1,0 +1,60 @@
+﻿@model IEnumerable<AkhbarElyoum.Models.EsdaratClassicData>
+
+@{int count = 0; }
+
+
+<section class="module" id="classic">
+    <div class="container">
+        <div class="highlight news-classic">
+
+            <h2>
+                <a href="https://classic.akhbarelyom.com/" title="الأخبار كلاسيك" class="HomeSecTitle">الأخبار كلاسيك</a>
+            </h2>
+
+            <!--========== BEGIN .COL-MD-9 ==========-->
+            <div class="col-md-12">
+                <div class="row">
+
+                    @foreach (var item in Model)
+                    {
+                        if (count >= 0 && count < 4)
+                        {
+                            <div class="col-md-3 col-sm-6 col-xs-12">
+                                <div class="article article-custom">
+                                    <div class="entry-block-small">
+                                        <div class="entry-image">
+                                            <a class="img-link" href="https://classic.akhbarelyom.com/newdetails.aspx?g=15&id=@(item.NewID)&t=@(AkhbarElyoum.Controllers.HomeController.GetPureURL(item.Title))" title="@item.Title">
+                                                <img class="img-responsive img-full grayscale" src="https://file.akhbarelyom.com/images/images/small/@item.PictureName" alt="@item.Title">
+                                            </a>
+                                        </div>
+                                        <div class="entry-content">
+                                            <h4><a href="https://classic.akhbarelyom.com/newdetails.aspx?g=15&id=@(item.NewID)&t=@(AkhbarElyoum.Controllers.HomeController.GetPureURL(item.Title))" title="@item.Title"> @item.Title</a></h4>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+
+                        count++;
+                    }
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,316 @@
+﻿@model IEnumerable<AkhbarElyoum.Models.Polls>
+@{
+
+    string JID = AkhbarElyoum.Controllers.HomeController.GetJournalID(HttpContext.Current.Request.Url.Host, int.Parse((HttpContext.Current.Request.QueryString["JournalID"] != null) ? HttpContext.Current.Request.QueryString["JournalID"].ToString() : "0"));
+    bool flg = true; int PollID = 0; var Chkid = 0; int counter = 0; Layout = Layout = "../Shared/_LayoutInner.cshtml";
+
+    ViewBag.Title = "الأستطلاعات";
+}
+
+<script type="text/javascript">
+
+    var isenabled = true;
+    var page = -1;
+    if ($(".lastid:last").attr("idx")) {
+        page = $(".lastid:last").attr("idx").toString();
+    }
+    else {
+        $('.showMore').hide();
+        $('.no-more-data').show();
+    }
+    function GetPolls () {
+        page = $(".lastid:last").attr("idx").toString();
+        $.ajax({
+            type: "GET",
+            url: '/Polls/OPinion_pollpaged?LastID='+ page,
+            contentType: "html/text",
+            dataType: "html",
+            cache: false,
+            success: function (msg) {
+                var container = $("#NewsSectionPaging");
+                if (msg.trim() !== "") {
+                    container.append(msg);
+                } else {
+                    $('.showMore').hide();
+                    $('.no-more-data').show();
+                }
+                var isenabled = true;
+            }
+        });
+    }
+   
+</script>
+
+
+
+<div class="onePostErea">
+    <!-- start onePostErea -->
+    <!-- start lftSide -->
+    <div class="onePostEreaLft">
+        <div class="adv2 drop-shadow lifted">
+            <!-- start adv2 -->
+            <div class="adv-code drop-shadow lifted">
+                <a href="#">
+                    @Html.Action("GetBlockTextList", "Blocks", new { BlockID = 27, JournalID = JID })
+            </div>
+        </div>
+        <div class="adv2 drop-shadow lifted" style="margin-top: 17.75px;">
+            <!-- start adv2 -->
+            <div class="adv-code">
+                @Html.Action("GetBlockTextList", "Blocks", new { BlockID = 25, JournalID = JID })
+            </div>
+        </div>
+        <!-- end adv2 -->
+        <!-- start shareUs -->
+        <!-- start shareUs -->
+        <!-- start news -->
+        @*@Html.Action("GetEditorsList", "Editors")*@
+        <!-- end news -->
+        @*<div class="lftBoxNews" style="height: 329px; overflow: hidden;">
+                <div id="blogSlider">
+                    <div class="innerWrap">
+                        <div class="panelContainer">
+                            <div class="panel" title="الأكثر تعليقا">
+                                @Html.Action("GetHomeMostCommentedSectionList", "News", new { SectionID = (@Model.FirstOrDefault() != null) ? @Model.FirstOrDefault().SectionID : 0, JournalID = JID })
+                            </div>
+                            <div class="panel" title="الأحدث">
+                                @Html.Action("GetHomeLatestSectionList", "News", new { SectionID = (@Model.FirstOrDefault() != null) ? @Model.FirstOrDefault().SectionID : 0, JournalID = JID })
+                            </div>
+                            <div class="panel" title="الأكثر قراءة">
+                                @Html.Action("GetHomeMostViewedSectionList", "News", new { SectionID = (@Model.FirstOrDefault() != null) ? @Model.FirstOrDefault().SectionID : 0, JournalID = JID })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>*@
+        <!-- end small adv -->
+        <div class="adv2 drop-shadow lifted" style="margin-top: 17.75px;">
+            <!-- start adv2 -->
+            <div class="adv-code drop-shadow lifted">
+                @Html.Action("GetBlockTextList", "Blocks", new { BlockID = 28, JournalID = JID })
+            </div>
+        </div>
+        <!-- end adv2 -->
+        <div class="adv2" style="margin-top: 17.75px;">
+            <!-- start adv2 -->
+            <div class="adv-code drop-shadow lifted">
+                @Html.Action("GetBlockTextList", "Blocks", new { BlockID = 29, JournalID = JID })
+            </div>
+        </div>
+        <!-- end adv2 -->
+    </div>
+    <!-- end lftSide -->
+    <div class="onePostEreaRit">
+        <!-- start block1Rit -->
+        
+		<div class="block1Rit" id="gridcontainer">
+            <div id="r_content" class="newBoxnews">
+                <div id="top_name_all_section" class="newBoxnewsTitle">
+                    <h4 style="width:100%;">
+                        استطلاع الراي
+                    </h4>
+                </div>
+                @foreach (var item in Model)
+                {
+                    if (counter == 0)
+                    {
+                        ViewContext.Writer.Write("<div id=\"NewsSectionPaging\">");
+                    }
+                    if (@item.PollID == Chkid)
+                    {
+                        flg = false;
+                    }
+                    else
+                    {
+                        flg = true;
+                        if (Model.Count() > 0 && counter != 0)
+                        {
+                            <div id="more_opinion_poll">
+                                <ul>
+                                    <li><input id="BtnCheckAll" type="button" value="النتائج" class="ResultsView votevote" name="Button" onclick="checkall(@Chkid)" /></li>
+                                    <li><input type="button" class="ResultsView votevote" value="التصويت " onclick="submitpoll(@Chkid);"></li>
+                                </ul>
+                            </div>
+                            @* <button class="ResultsView votevote" name="Button" value="Results">
+                        النتائج</button>*@
+
+                            ViewContext.Writer.Write("</ul>");
+                            ViewContext.Writer.Write("</div>");
+                            ViewContext.Writer.Write("</div>");
+                            <script>
+//alert($.cookie('Cookie'+@PollID+''));  //gets the value....
+
+                                if ($.cookie('Cookie'+@PollID+'') == null) { //Check to see if a cookie with name of "query" exists
+                                }
+                                else {
+                                    $.ajax({
+                                        type: "GET",
+                                        url: '/Polls/GetPollResults?PollID=' + @PollID + '',
+                                        contentType: "html/text",
+                                        dataType: "html",
+                                        cache: false,
+                                        success: function (msg) {
+                                            $(".div" + @PollID).html(msg);
+                                        }
+                                    });
+                                }
+
+                            </script>
+                        }
+                        if (Model.Count() <= 0)
+                        {
+                            <div class="nopoll">
+                                لا يوجد استطلاع رأى.
+                            </div>
+                        }
+
+                    }
+                    { Chkid = @item.PollID; }
+
+                    if (flg)
+                    {
+                        ViewContext.Writer.Write("<div class=\"div" + (@item.PollID) + "\" id='opinion_poll'>");
+                        ViewContext.Writer.Write("<div id='in_opinion_poll'>");
+                        <div id="question_opinion_poll">
+                            <h2>
+                                @item.PollName
+                            </h2>
+                        </div>
+                        PollID = item.PollID;
+
+                    }
+                    if (flg == true)
+                    {
+                        ViewContext.Writer.Write("<ul class='in_choices'>");
+                    }
+                    <li>
+                        <h3>
+                            <input type="radio" name="@item.PollName" value="@item.OptionID" name="rdoPoll" onchange="setValue(@item.OptionID);" id="rdoPoll0" />&nbsp;&nbsp;@item.OptionName
+                        </h3>
+
+                    </li>
+
+                    flg = false;
+                    counter++;
+                    if (counter == Model.Count())
+                    {
+                        <div id="more_opinion_poll">
+                            <ul>
+                                <li><input id="BtnCheckAll" type="button" value="النتائج" class="ResultsView votevote" name="Button" onclick="checkall(@PollID)" /></li>
+                                <li><input type="button" class="ResultsView votevote" value="التصويت " onclick="submitpoll(@PollID);"></li>
+                            </ul>
+                        </div>
+                        @* <button class="ResultsView votevote" name="Button" value="Results">
+                    النتائج</button>*@
+
+                        ViewContext.Writer.Write("</ul>");
+                        ViewContext.Writer.Write("</div>");
+                        ViewContext.Writer.Write("</div>");
+                        <script>
+//alert($.cookie('Cookie'+@PollID+''));  //gets the value....
+
+                            if ($.cookie('Cookie'+@PollID+'') == null) { //Check to see if a cookie with name of "query" exists
+                            }
+                            else {
+                                $.ajax({
+                                    type: "GET",
+                                    url: '/Polls/GetPollResultsss?PollID=' + @PollID + '',
+                                    contentType: "html/text",
+                                    dataType: "html",
+                                    cache: false,
+                                    success: function (msg) {
+                                        $(".div" + @PollID).html(msg);
+                                    }
+                                });
+                            }
+
+                        </script>
+
+                    }
+
+                    if (counter == Model.Count())
+                    {
+                        <p class="lastid" idx="@item.PollID">
+                        </p>
+                        ViewContext.Writer.Write("</div>");
+                    }
+                }
+                @if (Model.Count() > 0)
+                {
+                    <div class="no-more-data" style="display: none;">
+                        <p>
+                            لا يوجد المزيد من البيانات.
+                        </p>
+                    </div>
+                    <input name="" id="" onclick="GetPolls();" class="showMore" type="submit" value="" />
+
+                }
+                <input name="option" id="option" type="hidden" value="" />
+            </div>
+        
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" async  src="/js/jquery.cookie.js"></script>
+<script type="text/javascript" async src="/js/querystring-0.9.0-min.js"></script>
+
+<script type="text/javascript">
+
+    function checkall(PollID) {
+
+       
+        $.ajax({
+            type: "GET",
+            url: '/Polls/GetPollResultss_opinionpoll?PollID=' + PollID + '',
+            contentType: "html/text",
+            dataType: "html",
+            cache: false,
+            success: function (msg) {
+                $(".div" + PollID).html(msg);
+            }
+        });
+    }
+    function submitpoll(PollID) {
+
+        
+        
+        var optionid = '';
+        optionid = $('#option').val();
+
+        if (optionid != '' && $.cookie('Cookie' + PollID + '') == null) {
+            $.ajax({
+                type: "GET",
+                url: '/Polls/SubmitPoll1?PollID=' + PollID + '&OptionID=' + optionid + '',
+                contentType: "html/text",
+                dataType: "html",
+                cache: false,
+                success: function (msg) {
+
+                    $(".div" + PollID).html(msg);
+                    $.cookie('Cookie' + PollID + '', '1', { expires: 1 });
+                }
+            });
+        }
+
+    }
+    function setValue(option) {
+
+        $('#option').val(option);
+
+    }
+
+</script>

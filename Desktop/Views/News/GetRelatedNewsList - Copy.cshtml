@@ -1,0 +1,67 @@
+﻿@model IEnumerable<AkhbarElyoum.Models.NewsDetails>
+@{string JID = AkhbarElyoum.Controllers.HomeController.GetJournalID(HttpContext.Current.Request.Url.Host, int.Parse((HttpContext.Current.Request.QueryString["JournalID"] != null) ? HttpContext.Current.Request.QueryString["JournalID"].ToString() : "0"));}
+
+
+<div class="module">
+        <div class="article">
+					
+					
+					<script>
+                    (function (d, s, wid, eid) {
+                        var scriptId = "spk-script-" + eid;
+                        var js, fjs = d.getElementsByTagName(s)[0];
+                        if (d.getElementById(scriptId)) return;
+                        js = d.createElement(s);
+                        js.scriptId = scriptId;
+                        js.async = 1;
+                        js.src = "//crawler.speakol.com/sdk/speakol-widget.js?wid=" + wid + "&eid=" + eid;
+                        fjs.parentNode.insertBefore(js, fjs);
+                    })(document, "script", "wi-1371", "spk-wi-1371");
+                    </script>
+                        <!-- Speakol will render the widget here -->
+                    <div class="speakol-widget" id="spk-wi-1371"></div>
+
+                
+		
+		
+	</div>
+</div>
+
+
+<div class="module" id="Related">
+    <div class="Related">
+            <h2>
+                    <a title="الأخبار المرتبطة" class="HomeSecTitle">
+					الأخبار المرتبطة</a>
+            </h2>
+        </div>
+        <div class="article">
+            @foreach (var item in @Model)
+			
+            {
+                <div class="entry-block-small">
+                    <div class="entry-image">
+                        <a class="img-link" href="/news/newdetails/@item.NewsID/@JID/@(AkhbarElyoum.Controllers.HomeController.GetPureURL(item.Title))"   title="@item.Title">
+                            <img class="img-responsive img-full" src="https://Images.akhbarelyom.com/images/images/small/@item.PictureName1" alt="@item.Title"/>
+                            <span class="label-1">@item.SectionTitle</span>
+                        </a>
+                    </div>
+                    <div class="content">
+                        <h4 class="RelatedNewsHead"><a href="/news/newdetails/@item.NewsID/@JID/@(AkhbarElyoum.Controllers.HomeController.GetPureURL(item.Title))"   title="@item.Title"> @item.Title</a></h4>
+                        
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+

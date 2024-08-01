@@ -1,0 +1,288 @@
+﻿@model IEnumerable<AkhbarElyoum.Models.NewsDetails>
+@{
+    string JID = AkhbarElyoum.Controllers.HomeController.GetJournalID(HttpContext.Current.Request.Url.Host, int.Parse((HttpContext.Current.Request.QueryString["JournalID"] != null) ? HttpContext.Current.Request.QueryString["JournalID"].ToString() : "0"));
+    Layout = "../Shared/_LayoutInner.cshtml";
+    string css = "";
+}
+@section Meta{
+    @foreach (var item in Model)
+    {
+        <title>@item.Title | بوابة أخبار اليوم الإلكترونية</title>
+	
+        @*<meta name="description" content="@item.Breif" />*@
+        <meta name="keywords" content="@item.Keywords" />
+		
+		<link rel="original-source" href="https://akhbarelyom.com/news/newdetails/@item.NewsID/1/@AkhbarElyoum.Controllers.HomeController.GetPureURL(item.Title)" />
+        <link rel="amphtml" id="canonicalUrl"  href="https://m.akhbarelyom.com/news/newdetails/@item.NewsID/1/@AkhbarElyoum.Controllers.HomeController.GetPureURL(item.Title)/amp" />
+        <link rel="canonical" id="canonicalUrl"  href="https://akhbarelyom.com/news/newdetails/@item.NewsID/1/@AkhbarElyoum.Controllers.HomeController.GetPureURL(item.Title)" />
+
+
+        <!-- Schema.org markup for Google+ -->
+        <meta itemprop="name" content="@item.SubTitle">
+        <meta itemprop="description" content="@item.Breif">
+        <meta itemprop="image" content="https://Images.akhbarelyom.com/images/images/large/@item.PictureName1">
+
+        <!-- Open Graph data -->
+
+        if (@item.SocialTitle != "")
+        {
+                <meta name="twitter:title" content="@item.SocialTitle">
+                <meta property="og:title" content="@item.SocialTitle" />
+        }
+        else
+        {
+                <meta name="twitter:title" content="@item.Title">
+                <meta property="og:title" content="@item.Title" />
+        }
+       
+
+        if (@item.SocialPictureName != "")
+        {
+
+            <meta name="twitter:image:src" content="https://Images.akhbarelyom.com/images/images/social/@item.SocialPictureName">
+            <meta property="og:image" content="https://Images.akhbarelyom.com/images/images/social/@item.SocialPictureName" />
+        }
+        else
+        {
+            <meta name="twitter:image:src" content="https://Images.akhbarelyom.com/images/images/large/@item.PictureName1">
+            <meta property="og:image" content="https://Images.akhbarelyom.com/images/images/large/@item.PictureName1" />
+        }
+
+        @*<meta name="twitter:description" content="@item.Breif">
+            <meta property="og:description" content="@item.Breif" />*@
+
+        <meta name="twitter:description" content="بوابة أخبار اليوم الإلكترونية">
+        <meta property="og:description" content="بوابة أخبار اليوم الإلكترونية" />
+
+        <meta property="og:type" content="article" />
+        <meta property="og:site_name" content="https://akhbarelyom.com/" />
+        <meta property="article:published_time" content="@item.PublishDate" />
+        <meta property="article:modified_time" content="@item.PublishDate" />
+        <meta property="article:section" content="@item.SectionTitle" />
+        <meta property="article:tag" content="@item.Keywords" />
+    }
+}
+
+@section home {
+
+    <section class="module">
+	
+	
+        <div class="container">
+            <div class="">
+                <!--========== BEGIN .COL-MD-9 ==========-->
+				 @foreach (var item in Model)
+                        {
+				
+                <div class="col-md-8">
+                    <article>
+					
+                       
+                            <nav class="breadcrumb">
+                                <ul>
+                                    <li>
+                                        <a href="https://akhbarelyom.com" title="الرئيسية اخبار اليوم"  >
+                                            <h6>الرئيسية</h6>
+                                        </a>
+                                    </li>
+                                    <li class="active">
+                                        <a href="/news/newssection/@item.SectionID/@JID/@(AkhbarElyoum.Controllers.HomeController.GetPureURL(item.SectionTitle))" title="@item.SectionTitle" >
+                                            <h6>@item.SectionTitle</h6>
+                                        </a>
+                                    </li>
+
+                                </ul>
+                            </nav>
+
+
+                            <div class="post post-full clearfix">
+                                <div class="entry-title">
+                                    <h2>
+                                        @item.SubTitle
+                                    </h2>
+                                    <h1 class="entry-title">
+                                        @item.Title
+                                    </h1>
+                                </div>
+                                <div class="entry-media">
+                                    <a href="/news/newdetails/@item.NewsID/@JID/@(AkhbarElyoum.Controllers.HomeController.GetPureURL(item.Title))"  title="@item.Title">
+                                        <img src="https://Images.akhbarelyom.com/images/images/large/@item.PictureName1" alt="@item.PictureCaption1" class="img-responsive"/>
+                                    </a>
+                                    <figcaption class="img-caption">@item.PictureCaption1</figcaption>
+                                </div>
+                                <div class="entry-main">
+
+
+                                    <div class="post-meta-elements">
+                                        @Html.Action("GetNewByLines", "Editors", new { NID = @item.NewsID })
+                                        <div class="post-meta-date"> <i class="fa fa-calendar"></i>@item.PublishDate</div>
+
+                                    </div>
+
+
+									
+                                    <!-- start Ads loc1-->
+									
+							<div align="center">
+							
+							
+          <div class="desktop-add_12">
+                @Html.Action("GetBlockTextList", "Blocks", new { BlockID = 14, JournalID = 1 })	
+            </div>
+							
+@*							
+							<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+							<!-- portalNewsInside468x60 -->
+							<ins class="adsbygoogle"
+								 style="display:inline-block;width:468px;height:60px"
+								 data-ad-client="ca-pub-7445302147671862"
+								 data-ad-slot="3855866915"></ins>
+							<script>
+								 (adsbygoogle = window.adsbygoogle || []).push({});
+							</script>
+
+*@							
+							
+								
+								
+								</div>
+									
+
+
+                                    <!-- End Ads loc1 -->
+
+
+                                    <div class="entry-content HtmlDecode">
+				@*					
+									
+							<!---------ads----------->	
+<style>
+.list-widget .widget-boxes .article-box .content p {font-size:12px!important;
+font-family: 'DroidKufi', sans-serif;
+word-spacing: -2px!important;
+    padding: 0px 0px!important;}
+	.list-widget .widget-boxes {
+    padding: 0 8px 0px 0px;
+}
+.list-widget .widget-boxes .article-box img {
+    width: 37%;}
+	.list-widget .widget-boxes .article-box .content {width:61%!important;}
+</style>							
+									<script>
+                    (function (d, s, wid, eid) {
+                        var scriptId = "spk-script-" + eid;
+                        var js, fjs = d.getElementsByTagName(s)[0];
+                        if (d.getElementById(scriptId)) return;
+                        js = d.createElement(s);
+                        js.scriptId = scriptId;
+                        js.async = 1;
+                        js.src = "//cdn.speakol.com/widget/js/speakol-widget.js?wid=" + wid + "&eid=" + eid;
+                        fjs.parentNode.insertBefore(js, fjs);
+                    })(document, "script", "wi-3145", "spk-wi-3145");
+                    </script>
+                        <!-- Speakol will render the widget here -->
+                    <div class="speakol-widget" id="spk-wi-3145" style="float: left;width:255px;margin-right: 15px;margin-bottom: 20px;top: 20px;position: relative;"></div>
+					
+							<!---------/ads----------->	
+									
+				*@					
+									
+									
+									
+                                        <p>@Html.Raw(HttpUtility.HtmlDecode(item.Story))</p>
+                                    </div>
+
+                                    @Html.Action("GetNewsGalleryList", "Galleries", new { NID = @item.NewsID })
+
+
+
+                                    <!-- start Ads loc2    stop for problem test -->
+									<div align="center" class="adsbygoogle">
+
+@*																	   
+											<div id='div-gpt-ad-1540156590818-0' style='height:250px; width:300px;'>
+											<script>
+											googletag.cmd.push(function() { googletag.display('div-gpt-ad-1540156590818-0'); });
+											</script>
+											</div>
+											
+*@											
+											
+											
+						<!-- /21675648325/Portal_600x250_undercontent_newspage_desktop -->
+<div id='div-gpt-ad-1566407732731-0' style='width: 600px; height: 250px;'>
+  <script>
+    googletag.cmd.push(function() { googletag.display('div-gpt-ad-1566407732731-0'); });
+  </script>
+</div>					
+											
+											
+											
+											
+											
+											
+											
+											
+									</div>
+			
+
+
+								
+								
+
+                                    @Html.Action("GetNewTags", "Tags", new { NID = @item.NewsID })
+
+
+
+							
+
+                                </div>
+                            </div>
+
+
+                         
+                            @Html.Action("GetShareLinks", "Home", new { URL = "/news/newdetails/"+@item.NewsID+"/1/"+@AkhbarElyoum.Controllers.HomeController.GetPureURL(item.Title), Position = "Bottom" })
+
+
+							
+							
+							
+                            @Html.Action("GetRelatedNewsList", "News", new { NID = @item.NewsID, secid = @item.SectionID })
+							
+
+							
+							
+
+<a href="https://www.cibeg.com/arabic/Personal/Accounts/Pages/Easy-Account.aspx" target=_blank>
+				<img src="https://images.akhbarelyom.com/images/banner/cib2019.jpg">			
+</a>								
+					
+							
+							
+							
+							
+							
+							
+							
+						    @Html.Action("GetMoreReadListInside", "News", new { JournalID = JID }) 
+
+							
+							
+
+
+
+                    </article>
+                </div>
+
+
+
+                    @Html.Action("GetNewsLeftSideServices", "Home", new { SecID = @item.SectionID })
+				
+				}
+
+            </div>
+        </div>
+    </section>
+
+}
+

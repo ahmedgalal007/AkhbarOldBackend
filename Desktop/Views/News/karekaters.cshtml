@@ -1,0 +1,234 @@
+﻿@model IEnumerable<AkhbarElyoum.Models.NewsDetails>
+<!--jqury taps JS-->
+@{
+    string JID = AkhbarElyoum.Controllers.HomeController.GetJournalID(HttpContext.Current.Request.Url.Host, int.Parse((HttpContext.Current.Request.QueryString["JournalID"] != null) ? HttpContext.Current.Request.QueryString["JournalID"].ToString() : "0"));
+    Layout = "../Shared/_LayoutInner.cshtml";
+        //"../Shared/_Layout" + JID + ".cshtml";
+    int count = 0;
+    var cssclass = "";
+    int? SectionID = 0;
+    string SecID = Model.FirstOrDefault().EditorID.ToString();
+}
+<style>
+*
+{
+margin: 0;
+padding: 0;
+border: 0;
+outline: 0;
+}
+body{background-color:#f9f2d8;}.main-page{width:631px;float:right;}.img-con1{width:205px;height:194px;background-color:#FFF;float:right;margin-left:4px;margin-top:17px;}.img-frame{margin:3px;width: 199px;height:149px;overflow:hidden;}.img-title h3{    color: #B1371F;
+    margin-right: 5px;
+    margin-top: 10px;
+    max-height: 22px;
+    overflow: hidden;
+    text-align: right;}.img-title > a {color: #000000;text-decoration: none;}.margin-r{margin-right:0px;}.top-img1{width:205px; display:block;margin:0 auto;}
+.page-head{height:79px;width:629px;background-color:#fff;border:1px solid #F1E4D2;}.page-data{float:right;}.img-div{float:right;margin:6px 6px 0 0;}.title-pic {color: #363636;font-size: 27px;margin-right: 9px;text-align: right;}.title-name {color: #B1371F;font-family: arial;font-size: 23px;margin-right: 9px;}
+</style>
+<link rel="stylesheet" type="text/css" href="/css/@JID/taps/style.css" />
+<script src="/js/jquery-easing.1.2.js" type='text/javascript'></script>
+<script src="/js/jquery-easing-compatibility.1.2.js" type='text/javascript'></script>
+<script src="/js/coda-slider.1.1.1.js" type='text/javascript'></script>
+<script type='text/javascript'>
+    $(function () {
+        $("#blogSlider").codaSlider();
+    });
+</script>
+<script type="text/javascript">
+
+    var isenabled = true;
+    var page = -1;
+    if ($(".lastid:last").attr("idx")) {
+        page = $(".lastid:last").attr("idx").toString();
+    }
+    else {
+        $('.showMore').hide();
+        $('.no-more-data').show();
+    }
+    var GetSection = function () {
+        $.ajax({
+            type: "GET",
+            url: '/News/karekaterspaged?LastID=' + page + '&id=' +@SecID,
+            contentType: "html/text",
+            dataType: "html",
+            cache: false,
+            success: function (msg) {
+                var container = $("#NewsSectionPaging");
+                if (msg.trim() !== "") {
+                    container.append(msg);
+                } else {
+                    $('.showMore').hide();
+                    $('.no-more-data').show();
+                }
+                var isenabled = true;
+            }
+        });
+    }
+    $(document).ready(function () {
+        //console.log("Init complete.");
+        // create a long list of items
+        var container = $("#NewsSectionPaging");
+        var pagenumber = 0;
+        if ($(".lastid:last").attr("idx")) {
+            page = $(".lastid:last").attr("idx").toString();
+        }
+        else {
+            $('.showMore').hide();
+            $('.no-more-data').show();
+        }
+        var appendToList = function (msg) {
+            container.append(msg);
+        }
+        container.bind("infinite-scroll", function (args) {
+            if ($(".lastid:last").attr("idx")) {
+                page = $(".lastid:last").attr("idx").toString();
+            }
+            else {
+                $('.showMore').hide();
+                $('.no-more-data').show();
+            }
+            //console.log("Received", args);
+            $.ajax({
+                type: "GET",
+               url: '/News/karekaterspaged?LastID=' + page + '&id=' +@SecID,
+                contentType: "html/text",
+                dataType: "html",
+                cache: false,
+                success: function (msg) {
+                    if (msg.trim() !== "") {
+                        container.append(msg);
+                    } else {
+                        $('.showMore').hide();
+                        $('.no-more-data').show();
+                    }
+                    pagenumber++;
+                    isenabled = true;
+                }
+            });
+        });
+
+        var infiniteScroll = new $.InfiniteScroll('#NewsSectionPaging', true).setup();
+
+
+    });
+</script>
+<div class="onePostErea">
+    <!-- start onePostErea -->
+    <!-- start lftSide -->
+    <div class="onePostEreaLft">
+        <div class="adv2 drop-shadow lifted">
+            <!-- start adv2 -->
+            <div class="adv-code drop-shadow lifted">
+                <a href="#">
+                @Html.Action("GetBlockTextList", "Blocks", new { BlockID = 27, JournalID = JID })
+            </div>
+        </div>
+        <!-- end adv2 -->
+        <!-- start shareUs -->
+        <!-- start shareUs -->
+        <!-- start news -->
+     @*   @Html.Action("GetEditorsList", "Editors")*@
+        <!-- end news -->
+        @*<div class="lftBoxNews" style="height: 329px; overflow: hidden;">
+            <div id="blogSlider">
+                <div class="innerWrap">
+                    <div class="panelContainer">
+                        <div class="panel" title="الأكثر تعليقا">
+                            @Html.Action("GetHomeMostCommentedSectionList", "News", new { SectionID = (@Model.FirstOrDefault() != null) ? @Model.FirstOrDefault().SectionID : 0, JournalID = JID })
+                        </div>
+                        <div class="panel" title="الأحدث">
+                            @Html.Action("GetHomeLatestSectionList", "News", new { SectionID = (@Model.FirstOrDefault() != null) ? @Model.FirstOrDefault().SectionID : 0, JournalID = JID })
+                        </div>
+                        <div class="panel" title="الأكثر قراءة">
+                            @Html.Action("GetHomeMostViewedSectionList", "News", new { SectionID = (@Model.FirstOrDefault() != null) ? @Model.FirstOrDefault().SectionID : 0, JournalID = JID })
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>*@
+        <!-- end small adv -->
+        <div class="adv2 drop-shadow lifted" style="margin-top: 17.75px;">
+            <!-- start adv2 -->
+            <div class="adv-code drop-shadow lifted">
+                @Html.Action("GetBlockTextList", "Blocks", new { BlockID = 28, JournalID = JID })
+            </div>
+        </div>
+        <!-- end adv2 -->
+        <div class="adv2" style="margin-top: 17.75px;">
+            <!-- start adv2 -->
+            <div class="adv-code drop-shadow lifted">
+                @Html.Action("GetBlockTextList", "Blocks", new { BlockID = 29, JournalID = JID })
+            </div>
+        </div>
+        <!-- end adv2 -->
+    </div>
+    <!-- end lftSide -->
+    <div class="onePostEreaRit">
+        <!-- start block1Rit -->
+        <div class="block1Rit" id="gridcontainer">
+            <div class="main-page">
+                @foreach (var item in Model)
+                {
+                    if (count == 0)
+                    {
+                    @section Header{
+                        <meta name="keywords" content="@item.Keywords" /> <meta name="Description" content="@item.Desription"
+                    />
+                    }
+                    <div class="page-head">
+                        <div class="img-div">
+                            <img src="https://Images.akhbarelyom.com/images/images/small/@item.PictureName2" alt="@item.EditorName" width="77" height="67" /></div>
+                        <div class="page-data">
+                            <p class="title-pic">
+                                ريشة</p>
+                            <p class="title-name">
+                                @item.EditorName</p>
+                        </div>
+                    </div>
+                        ViewContext.Writer.Write("<div id=\"NewsSectionPaging\" class=\"newNewsBoxWrapper\" style=\"margin-top:20px; margin-bottom: 20px;\">");
+
+                    }
+             
+                    <div class="img-con1">
+                        <div class="img-frame">
+                            <a href="/news/commic/@item.NewsID">
+                                <img src="https://Images.akhbarelyom.com/images/images/small/@item.PictureName1" alt="@item.Title" class="top-img1" /></a>
+                        </div>
+                        <div class="img-title">
+                            <a href="#">
+                                <h3>
+                                    @item.Title</h3>
+                            </a>
+                        </div>
+                    </div>
+                    count++;
+                    if (count == Model.Count())
+                    {
+                    <p class="lastid" idx="@item.NewsID">
+                    </p>
+                        ViewContext.Writer.Write("</div>");
+                    }
+                    SectionID = (@item.EditorID != null) ? @item.EditorID : 0;
+                }
+                @if (Model.Count() > 0)
+                {
+
+
+                    <div class="no-more-data" style="display: none;">
+                        <p>
+                            لا يوجد المزيد من البيانات.</p>
+                    </div>
+                    <input name="" id="" onclick="GetSection();" class="showMore" type="submit" value="" />
+                    <div class="SecID" style="display: none;">@SectionID</div>
+				
+                }
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    var test = $(".SecID").text();
+    if (test != "")
+        $('.menuItem[titles|=' + test + '] span').addClass('jquerySelected');
+    $('.footer_menu-wrapper[titles|=' + test + '] span').addClass('jquerySelected');
+</script>

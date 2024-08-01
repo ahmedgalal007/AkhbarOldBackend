@@ -1,0 +1,49 @@
+﻿@model IEnumerable<AkhbarElyoum.Models.Polls>
+@{
+    Layout = null;
+    ViewBag.Title = "GetPollResultss_opinionpoll";
+    var pollID = Model.FirstOrDefault().PollID;
+    int counter = 0;
+
+}
+
+@{bool flg = true;
+Layout = "";
+}
+
+@foreach (var item in Model)
+{
+
+    if (flg)
+    {
+        ViewContext.Writer.Write("<div class=\"div" + (@item.PollID) + "\" id='opinion_poll'>");
+        ViewContext.Writer.Write("<div id='in_opinion_poll'>");
+        <div id="question_opinion_poll">
+            <h2>
+                @item.PollName
+            </h2>
+        </div>
+
+    }
+    <div class="pollsArray">
+        <p class="degree">@item.OptionName</p>
+        <div class="chart">
+            <img src="/images/charts.jpg" width="@item.TotalPixel" height="20" />
+        </div>
+        <span class="evaluation">@item.Total.ToString()%</span>
+    </div>
+    flg = false;
+    if (counter == Model.Count())
+    {
+        ViewContext.Writer.Write("</div>");
+        ViewContext.Writer.Write("</div>");
+
+    }
+
+}
+
+
+
+
+
+

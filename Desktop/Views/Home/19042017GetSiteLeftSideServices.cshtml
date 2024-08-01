@@ -1,0 +1,92 @@
+@{int count = 0; string JID = AkhbarElyoum.Controllers.HomeController.GetJournalID(HttpContext.Current.Request.Url.Host, int.Parse((HttpContext.Current.Request.QueryString["JournalID"] != null) ? HttpContext.Current.Request.QueryString["JournalID"].ToString() : "0"));}
+<!-- Start Side Block -->
+<div class="col-md-4 col-xs-12">
+
+    @*<div class="carousel-2-section hidden-sm hidden-xs"> 
+ @Html.Action("GetHomeGalleryList", "Galleries", new { JournalID = JID, lefSideFlag = true })
+</div>
+*@
+
+
+    <div align="center" style="margin: 20px auto 0px auto;height:400px;">
+    <a href="http://akhbarelyom.com/Tags/NewsTagList/43104/1/%D8%AA%D8%B7%D9%88%D9%8A%D8%B1-%D8%A7%D9%84%D8%AA%D8%B9%D9%84%D9%8A.html" title=" ÿÊÌ— «· ⁄·Ì„" >
+         <img src="/img/Moatamer1.jpg" alt=" ÿÊÌ— «· ⁄·Ì„" />
+         </a>
+    </div>
+
+
+    <!-- start Ads loc1 -->
+   <div align="center" style="margin: 20px auto 0px auto;height: 280px;" >
+        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+        <ins class="adsbygoogle" style="display: block" data-ad-client="ca-pub-7445302147671862"
+            data-ad-slot="5477563726" data-ad-format="auto"></ins>
+        <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+    </div>
+    <!-- End Ads loc1 -->
+
+   
+    @Html.Action("GetHomeMostViewedList", "News", new { JournalID = JID })
+    <div style="margin: 20px auto 0px auto;">
+        <a href="http://tbiby.net/index.aspx" target="_blank">
+            <img class="img-responsive2 center-block" style="width: 100%;" src="/img/tbiby.GIF"
+                alt="ÿ»Ì»Ï" />
+        </a>
+    </div>
+    @* <div style=" margin: 20px auto 0px auto;"></div>
+   @Html.Action("GetPollList", "Polls", new { JournalID = JID })</div>*@
+    <div style="margin: 20px auto 0px auto;">
+    </div>
+    <div class="section-header-normal">
+        <a class="gold-header-title"><span class="section-header-name">√”⁄«— «·–Â»</span> <i
+            class="fa-bar-chart"></i></a>
+    </div>
+    <div class="service-section">
+        <div class="service-content">
+            <iframe width="100%" height="214" id="freshgoldprice" src="http://egypt.freshgoldprice.com/embed/vgoldprice.aspx?size=f&amp;s=0&amp;t=0&amp;g10=0&amp;ou=0&amp;pnd=0&amp;k=0&amp;md=0&amp;hc=ff0000"
+                frameborder="0" scrolling="no"></iframe>
+        </div>
+    </div>
+    <div class="section-header-normal">
+        <a class="weather-header-title"><span class="section-header-name">œ—Ã«  «·Õ—«—…</span>
+            <i class="fa fa-cloud"></i></a>
+    </div>
+    <div class="service-section">
+        <div class="service-content">
+            <ul>
+                <li>12 - 25 ∞C
+                    <br />
+                </li>
+                <li>
+                    <br />
+                    ”—⁄Â «·—Ì«Õ :11.27<br />
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="section-header-normal">
+        <a class="currency-header-title"><span class="section-header-name">«”⁄«— «·⁄„·«  </span>
+            <i class="fa fa-usd"></i></a>
+    </div>
+    <div class="service-section">
+        <div class="service-content">
+            <div class="service-title">
+                <span></span>
+            </div>
+            <ul>
+                <li><span>œÊ·«— √„—ÌﬂÏ :</span> 18.1190 </li>
+                <li><span>ÌÊ—Ê :</span> 19.5187 </li>
+                <li><span>—Ì«· ”⁄ÊœÌ :</span> 4.8315 </li>
+            </ul>
+        </div>
+    </div>
+    <div style="margin: 20px auto 0px auto;">
+    </div>
+    <!-- Editor List -->
+    <iframe style="margin-left: -7px; height: 730px;" scrolling="no" src="http://akhbar.akhbarelyom.com/wdgit_hewarat.aspx"
+        frameborder="0"></iframe>
+    @* @Html.Action("GetEditorsList", "Editors", new { JournalID = JID })*@
+    <!-- End Editor List -->
+</div>
+<!-- EndSideBlock -->

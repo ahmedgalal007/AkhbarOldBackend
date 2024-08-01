@@ -1,0 +1,42 @@
+﻿@model IEnumerable<AkhbarElyoum.Models.Pictures>
+@{
+    string JID = AkhbarElyoum.Controllers.HomeController.GetJournalID(HttpContext.Current.Request.Url.Host, int.Parse((HttpContext.Current.Request.QueryString["JournalID"] != null) ? HttpContext.Current.Request.QueryString["JournalID"].ToString() : "0"));
+
+    int count1 = 0;
+}
+
+  
+            @foreach (var item in Model)
+            {
+                if (count1 == 0)
+                {
+               
+    
+                    ViewContext.Writer.Write("  <div class=\"section-carousel\" style=\"padding-top: 20px;\"> " +
+                                             " <div id=\"post-arrow-l\" class=\"sidebar-arrow-l\"> " +
+                                                 " <span class=\"fa fa-arrow-left\"></span> " +
+                                              "</div>" +
+                                              "<div id=\"post-arrow-r\" class=\"sidebar-arrow-r\">" +
+                                                  "<span class=\"fa fa-arrow-right\"></span> " +
+                                              "</div>" +
+                                              "<div id=\"post-carousel\" class=\"owl-carousel\">");
+
+
+                }
+                                   
+                <div class="item">
+                    <div class="post-carousel-item">
+                        <img src="/images/images/large/@item.PictureName" alt="@item.PictureCaption" class="img-responsive"/>
+                    </div>
+                </div>
+                           
+                count1++;
+
+                if (count1 == Model.Count())
+                {
+                    ViewContext.Writer.Write(" </div>  </div>"); 
+                            
+                }
+            }
+        
+    <!-- start gallery -->

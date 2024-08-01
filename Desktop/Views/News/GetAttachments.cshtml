@@ -1,0 +1,9 @@
+﻿@model IEnumerable<AkhbarElyoum.Models.Attachment>
+@{
+    int count = 1;
+}
+@foreach (var item in Model)
+{
+    <a href="/attachment/@item.FileName">ملف مرفق (@item.FileName)</a>
+    count++;
+}
