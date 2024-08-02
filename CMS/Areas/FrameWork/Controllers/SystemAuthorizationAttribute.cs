@@ -6,7 +6,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
 using Domain.Akhbar.DBEntities;
-using Domain.Akhbar.DBContext;
+using CMS.Contexts;
 
 namespace CMS.Areas.FrameWork.Controllers
 {

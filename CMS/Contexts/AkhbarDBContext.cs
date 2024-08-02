@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq.Expressions;
 
-namespace Domain.Akhbar.DBContext
+namespace CMS.Contexts
 {
     public class AkhbarDBContext : DbContext
     {
@@ -27,13 +27,13 @@ namespace Domain.Akhbar.DBContext
 
         public virtual DbSet<Nationality> Nationalities { get; set; }
 
-        public virtual DbSet<Akhbar.DBEntities.UMModules> UMModules { get; set; }
+        public virtual DbSet<UMModules> UMModules { get; set; }
 
-        public virtual DbSet<Akhbar.DBEntities.UMServices> UMServices { get; set; }
+        public virtual DbSet<UMServices> UMServices { get; set; }
 
         public virtual DbSet<UserRole> UserRoles { get; set; }
 
-        public virtual DbSet<Akhbar.DBEntities.RoleServices> RoleServices { get; set; }
+        public virtual DbSet<RoleServices> RoleServices { get; set; }
 
         public virtual DbSet<Attachment> Attachments { get; set; }
 
@@ -47,7 +47,7 @@ namespace Domain.Akhbar.DBContext
 
         public virtual DbSet<GalleryType> GalleryTypes { get; set; }
 
-        public virtual DbSet<Akhbar.DBEntities.GalleryPictures> GalleryPictures { get; set; }
+        public virtual DbSet<GalleryPictures> GalleryPictures { get; set; }
 
         public virtual DbSet<Issue> Issues { get; set; }
 
@@ -148,7 +148,7 @@ namespace Domain.Akhbar.DBContext
             modelBuilder.Entity<AdminUser>().Property((Expression<Func<AdminUser, string>>)(e => e.Telephone)).IsUnicode(new bool?(false));
             modelBuilder.Entity<AdminUser>().HasMany<UserRole>((Expression<Func<AdminUser, ICollection<UserRole>>>)(e => e.UserRoleLst)).WithRequired((Expression<Func<UserRole, AdminUser>>)(e => e.AdminUser)).HasForeignKey<int?>((Expression<Func<UserRole, int?>>)(e => e.AdminUserID)).WillCascadeOnDelete(false);
             modelBuilder.Entity<Role>().HasMany<UserRole>((Expression<Func<Role, ICollection<UserRole>>>)(e => e.UserRolesLst)).WithOptional((Expression<Func<UserRole, Role>>)(e => e.Role)).HasForeignKey<int?>((Expression<Func<UserRole, int?>>)(e => e.RoleId));
-            modelBuilder.Entity<Role>().HasMany<Akhbar.DBEntities.RoleServices>((Expression<Func<Role, ICollection<Akhbar.DBEntities.RoleServices>>>)(e => e.RoleServiceLst)).WithRequired((Expression<Func<Akhbar.DBEntities.RoleServices, Role>>)(e => e.Role)).HasForeignKey<int>((Expression<Func<Akhbar.DBEntities.RoleServices, int>>)(e => e.RoleId)).WillCascadeOnDelete(false);
+            modelBuilder.Entity<Role>().HasMany<RoleServices>((Expression<Func<Role, ICollection<RoleServices>>>)(e => e.RoleServiceLst)).WithRequired((Expression<Func<RoleServices, Role>>)(e => e.Role)).HasForeignKey<int>((Expression<Func<RoleServices, int>>)(e => e.RoleId)).WillCascadeOnDelete(false);
             modelBuilder.Entity<Editor>().Property((Expression<Func<Editor, string>>)(e => e.EditorName)).IsUnicode(new bool?(false));
             modelBuilder.Entity<Editor>().Property((Expression<Func<Editor, string>>)(e => e.ArticleName)).IsFixedLength();
             modelBuilder.Entity<Gallery>().Property((Expression<Func<Gallery, string>>)(e => e.Title)).IsUnicode(new bool?(false));
@@ -156,7 +156,7 @@ namespace Domain.Akhbar.DBContext
             modelBuilder.Entity<Gallery>().Property((Expression<Func<Gallery, string>>)(e => e.Keywords)).IsUnicode(new bool?(false));
             modelBuilder.Entity<Gallery>().Property((Expression<Func<Gallery, string>>)(e => e.GalleryType)).IsUnicode(new bool?(false));
             modelBuilder.Entity<GalleryType>().Property((Expression<Func<GalleryType, string>>)(e => e.GalleryTypeName)).IsUnicode(new bool?(false));
-            modelBuilder.Entity<Gallery>().HasMany<Akhbar.DBEntities.GalleryPictures>((Expression<Func<Gallery, ICollection<Akhbar.DBEntities.GalleryPictures>>>)(e => e.GalleryPictureLst)).WithRequired((Expression<Func<Akhbar.DBEntities.GalleryPictures, Gallery>>)(e => e.Gallery)).HasForeignKey<int>((Expression<Func<Akhbar.DBEntities.GalleryPictures, int>>)(e => e.GalleryID)).WillCascadeOnDelete(false);
+            modelBuilder.Entity<Gallery>().HasMany<GalleryPictures>((Expression<Func<Gallery, ICollection<GalleryPictures>>>)(e => e.GalleryPictureLst)).WithRequired((Expression<Func<GalleryPictures, Gallery>>)(e => e.Gallery)).HasForeignKey<int>((Expression<Func<GalleryPictures, int>>)(e => e.GalleryID)).WillCascadeOnDelete(false);
             modelBuilder.Entity<Issue>().Property((Expression<Func<Issue, string>>)(e => e.IssueTitle)).IsUnicode(new bool?(false));
             modelBuilder.Entity<Journal>().Property((Expression<Func<Journal, string>>)(e => e.ImageLargeSize)).IsUnicode(new bool?(false));
             modelBuilder.Entity<Journal>().Property((Expression<Func<Journal, string>>)(e => e.ImageSmallSize)).IsUnicode(new bool?(false));
@@ -191,8 +191,8 @@ namespace Domain.Akhbar.DBContext
             modelBuilder.Entity<NewsSearch>().Property((Expression<Func<NewsSearch, string>>)(e => e.brief2)).IsUnicode(new bool?(false));
             modelBuilder.Entity<NewsSearch>().Property((Expression<Func<NewsSearch, string>>)(e => e.byline2)).IsUnicode(new bool?(false));
             modelBuilder.Entity<NewsTicker>().Property((Expression<Func<NewsTicker, string>>)(e => e.Title)).IsUnicode(new bool?(false));
-            modelBuilder.Entity<Akhbar.DBEntities.Polls>().Property((Expression<Func<Polls, string>>)(e => e.PollBody)).IsUnicode(new bool?(false));
-            modelBuilder.Entity<Akhbar.DBEntities.Polls>().HasMany<NewsPoll>((Expression<Func<Polls, ICollection<NewsPoll>>>)(e => e.NewsPollLst)).WithRequired((Expression<Func<NewsPoll, Polls>>)(e => e.Poll)).WillCascadeOnDelete(false);
+            modelBuilder.Entity<Polls>().Property((Expression<Func<Polls, string>>)(e => e.PollBody)).IsUnicode(new bool?(false));
+            modelBuilder.Entity<Polls>().HasMany<NewsPoll>((Expression<Func<Polls, ICollection<NewsPoll>>>)(e => e.NewsPollLst)).WithRequired((Expression<Func<NewsPoll, Polls>>)(e => e.Poll)).WillCascadeOnDelete(false);
             modelBuilder.Entity<PollsOption>().Property((Expression<Func<PollsOption, string>>)(e => e.OptionBody)).IsUnicode(new bool?(false));
             modelBuilder.Entity<SesstionText>().Property((Expression<Func<SesstionText, string>>)(e => e.Story)).IsUnicode(new bool?(false));
             modelBuilder.Entity<UsersOpinion>().Property((Expression<Func<UsersOpinion, string>>)(e => e.UserName)).IsUnicode(new bool?(false));

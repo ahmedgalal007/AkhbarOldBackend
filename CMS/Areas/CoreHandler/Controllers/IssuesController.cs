@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using Domain.Akhbar.DBContext;
+using CMS.Contexts;
 using Domain.Akhbar.DBEntities;
 using Domain.Akhbar.DBBusiness;
 using PagedList;

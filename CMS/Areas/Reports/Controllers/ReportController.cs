@@ -9,9 +9,12 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using CMS.Areas.Reports.Models;
-using Domain.Akhbar.DBContext;
+using CMS.Contexts;
 using Domain.Akhbar.DBBusiness;
 using Domain.Akhbar.DBEntities;
+using System.Data.SqlClient;
+using System.Security;
+using System.ServiceModel.Description;
 
 namespace CMS.Areas.Reports.Controllers
 {
@@ -175,8 +178,7 @@ namespace CMS.Areas.Reports.Controllers
 
             ReportExporter.Export(
                 "ReportExecutionServiceSoap" /* name of the WCF endpoint from Web.config */,
-                // new NetworkCredential("report_service", "r1nZ4#`4!16=Vlh"),     //("ttt","123")
-                new NetworkCredential("NT SERVICE\\SQLServerReportingServices", "Sico007_"),     //("ttt","123")
+                new NetworkCredential("report_service", "r1nZ4#`4!16=Vlh"),     //("ttt","123")
                 vm.ReportPath,
                 parameters.ToArray(),
                 outPutFormat,

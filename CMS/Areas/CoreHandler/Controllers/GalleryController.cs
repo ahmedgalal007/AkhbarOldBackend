@@ -7,7 +7,7 @@ using System.Linq.Expressions;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using Domain.Akhbar.DBContext;
+using CMS.Contexts;
 using Domain.Akhbar.DBEntities;
 using Domain.Akhbar.DBBusiness;
 using PagedList;

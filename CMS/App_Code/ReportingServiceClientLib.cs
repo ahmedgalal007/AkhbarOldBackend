@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using CMS.ReportingWebService;
@@ -87,7 +88,9 @@ namespace ReportingServiceClientLib
             {
 
                 webServiceProxy.ClientCredentials.Windows.AllowedImpersonationLevel = System.Security.Principal.TokenImpersonationLevel.Impersonation;
-                webServiceProxy.ClientCredentials.Windows.ClientCredential = clientCredentials;
+                // webServiceProxy.ClientCredentials.Windows.ClientCredential = clientCredentials;
+                webServiceProxy.ClientCredentials.UserName.UserName = "sa";
+                webServiceProxy.ClientCredentials.UserName.Password = "Sico007_";
 
 
                 // Init Report to execute

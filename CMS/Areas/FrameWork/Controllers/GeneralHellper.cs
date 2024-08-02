@@ -12,7 +12,7 @@ using System.Web.Routing;
 using System.Web.SessionState;
 using Domain.Akhbar.DBBusiness;
 using Domain.Akhbar.DBEntities;
-using Domain.Akhbar.DBContext;
+using CMS.Contexts;
 
 namespace CMS.Areas.FrameWork.Controllers
 {
