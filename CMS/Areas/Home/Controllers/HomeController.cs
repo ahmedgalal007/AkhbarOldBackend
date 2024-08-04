@@ -1,5 +1,5 @@
 ﻿using Domain.Akhbar.DBBusiness;
-using CMS.Contexts;
+using Domain.Akhbar.Contexts;
 using Domain.Akhbar.DBEntities;
 using CMS.Areas.FrameWork.Controllers;
 using CMS.Areas.UserManagment.Models;

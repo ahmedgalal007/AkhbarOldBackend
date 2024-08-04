@@ -8,7 +8,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Domain.Akhbar.DBEntities;
-using CMS.Contexts;
+using Domain.Akhbar.Contexts;
 using Domain.Akhbar.DBBusiness;
 using PagedList;
 using CMS.Areas.FrameWork.Controllers;

@@ -12526,18 +12526,12 @@
     <Compile Include="Areas\UserManagment\UserManagmentAreaRegistration.cs" />
     <Compile Include="Areas\FrameWork\Controllers\BaseController.cs" />
     <Compile Include="Areas\CoreHandler\Controllers\EditorsController.cs" />
-    <Compile Include="Contexts\AkhbarDBContext.cs" />
     <Compile Include="Controllers\testController.cs" />
     <Compile Include="Domain\Interfaces\IisDeletedGlobalFilter.cs" />
     <Compile Include="Domain\Interfaces\IUserGlobalFilter.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202408020257228_InitialCreate.cs" />
-    <Compile Include="Migrations\202408020257228_InitialCreate.Designer.cs">
-      <DependentUpon>202408020257228_InitialCreate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service References\ReportingWebService\Reference.cs">
       <AutoGen>True</AutoGen>
@@ -12692,11 +12686,6 @@
       <Project>{a60be2af-61c7-4bd1-8511-876044854649}</Project>
       <Name>Domain</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\202408020257228_InitialCreate.resx">
-      <DependentUpon>202408020257228_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

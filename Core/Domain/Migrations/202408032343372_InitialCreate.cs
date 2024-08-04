@@ -1,4 +1,4 @@
-﻿namespace CMS.Migrations
+﻿namespace Domain.Migrations
 {
     using System;
     using System.Data.Entity.Migrations;

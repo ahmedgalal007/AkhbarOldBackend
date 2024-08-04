@@ -99,9 +99,14 @@ namespace Domain.Akhbar.DBEntities
         [Display(Name = "وصف الصورة")]
         public string PictureCaption2 { get; set; }
 
-        [Display(Name = "رابط فيديو")]
+        [Display(Name = "فيديو")]
         public bool HasVideo { get; set; } = false;
-        // public int? VideoFeedId { get; set; }
+        [Display(Name = "رابط الفيديو")]
+
+        public int? MainVideoFeedId { get; set; }
+
+        [ForeignKey("EntryID")]
+        public virtual VideoFeed VideoFeed { get; set; }
 
         [Display(Name = "تاريخ الإضافة")]
         public DateTime? AddedDate { get; set; }
@@ -186,7 +191,7 @@ namespace Domain.Akhbar.DBEntities
         public virtual ICollection<Gallery> GalleryLst { get; set; }
 
         public virtual ICollection<NewsGallery> NewsGalleryLst { get; set; }
-        public virtual ICollection<News_Videos> NewsVideoLst { get; set; }
+        // public virtual ICollection<News_Videos> NewsVideoLst { get; set; }
 
         public virtual ICollection<ByLine> ByLineLst { get; set; }
 

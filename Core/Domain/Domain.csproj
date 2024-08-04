@@ -145,6 +145,7 @@
     <Compile Include="Bussines\UsersOpinionBusiness.cs" />
     <Compile Include="Bussines\VersionTagBusiness.cs" />
     <Compile Include="Bussines\VideoFeedBusiness.cs" />
+    <Compile Include="Contexts\AkhbarDBContext.cs" />
     <Compile Include="DBEntities\AdminEditor.cs" />
     <Compile Include="DBEntities\AdminLog.cs" />
     <Compile Include="DBEntities\AdminUser.cs" />
@@ -211,6 +212,15 @@
     <Compile Include="DBEntities\VideoFeed.cs" />
     <Compile Include="DBEntities\vTopNewsToday.cs" />
     <Compile Include="DBEntities\VUserPermissions.cs" />
+    <Compile Include="Migrations\202408032343372_InitialCreate.cs" />
+    <Compile Include="Migrations\202408032343372_InitialCreate.Designer.cs">
+      <DependentUpon>202408032343372_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202408040452008_addMainVideoFeedToNews.cs" />
+    <Compile Include="Migrations\202408040452008_addMainVideoFeedToNews.Designer.cs">
+      <DependentUpon>202408040452008_addMainVideoFeedToNews.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -221,6 +231,14 @@
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202408032343372_InitialCreate.resx">
+      <DependentUpon>202408032343372_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202408040452008_addMainVideoFeedToNews.resx">
+      <DependentUpon>202408040452008_addMainVideoFeedToNews.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

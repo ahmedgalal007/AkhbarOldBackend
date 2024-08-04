@@ -9,7 +9,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using CMS.Areas.Reports.Models;
-using CMS.Contexts;
+using Domain.Akhbar.Contexts;
 using Domain.Akhbar.DBBusiness;
 using Domain.Akhbar.DBEntities;
 using System.Data.SqlClient;

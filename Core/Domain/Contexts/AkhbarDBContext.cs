@@ -1,14 +1,17 @@
 ﻿using Domain.Akhbar.DBEntities;
 using System;
+using System.Configuration;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq.Expressions;
+using System.Data.Entity.ModelConfiguration.Conventions;
 
-namespace CMS.Contexts
+namespace Domain.Akhbar.Contexts
 {
     public class AkhbarDBContext : DbContext
     {
-        public AkhbarDBContext()
+        public AkhbarDBContext() 
+            : base(ConfigurationManager.ConnectionStrings["AkhbarDBConnection"].ConnectionString)
         {
             Database.SetInitializer<AkhbarDBContext>((IDatabaseInitializer<AkhbarDBContext>)null);
         }
@@ -234,6 +237,10 @@ namespace CMS.Contexts
             modelBuilder.Entity<Profile>().Property((Expression<Func<Profile, string>>)(e => e.Keyword)).IsUnicode(new bool?(false));
             modelBuilder.Entity<Profile>().Property((Expression<Func<Profile, string>>)(e => e.Description)).IsUnicode(new bool?(false));
             modelBuilder.Entity<Profile>().Property((Expression<Func<Profile, string>>)(e => e.MainPictureName)).IsUnicode(new bool?(false));
+            modelBuilder.Entity<News>().HasOptional(e => e.VideoFeed).WithMany((e => e.News)).HasForeignKey(e => e.MainVideoFeedId).WillCascadeOnDelete(false);
+            // modelBuilder.Entity<News_Videos>().HasIndex(e => new { e.NewsID, e.VideoFeedID }).IsUnique(true);
+            // modelBuilder.Entity<News_Videos>().HasOptional(e => e.News).WithMany(e => e.NewsVideoLst).HasForeignKey(e => e.NewsID).WillCascadeOnDelete(false);
+            // modelBuilder.Entity<News_Videos>().HasOptional(e => e.VideoFeed).WithMany(e => e.NewsVideos).HasForeignKey(e => e.VideoFeedID).WillCascadeOnDelete(false);
         }
     }
 }

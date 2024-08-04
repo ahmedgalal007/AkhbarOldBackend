@@ -14,7 +14,9 @@ namespace Domain.Akhbar.DBEntities
     public int EntryID { get; set; }
 
     public int? NewsID { get; set; }
+    public News News { get; set; }
 
-    public int? VideoID { get; set; }
+    public int? VideoFeedID { get; set; }
+    public VideoFeed VideoFeed { get; set; }
   }
 }

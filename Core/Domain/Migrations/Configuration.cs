@@ -1,18 +1,18 @@
-﻿namespace CMS.Migrations
+﻿namespace Domain.Migrations
 {
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<CMS.Contexts.AkhbarDBContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<Domain.Akhbar.Contexts.AkhbarDBContext>
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = false;
+            AutomaticMigrationsEnabled = true;
         }
 
-        protected override void Seed(CMS.Contexts.AkhbarDBContext context)
+        protected override void Seed(Domain.Akhbar.Contexts.AkhbarDBContext context)
         {
             //  This method will be called after migrating to the latest version.
 
