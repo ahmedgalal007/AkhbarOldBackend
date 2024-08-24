@@ -1,0 +1,6 @@
+User Machine Name: - UserIP:::1 - User operating system:Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36 - RemoteIP:::1 - Mac/Physical-Address:40B0341E7D3B - UserId:2  - Name:مدير النظام //  Has Logged in at: 11:10:59 ص
+----------------------------------------------------------
+User Machine Name:Admin - UserIP:::1 - User operating system:Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36 - RemoteIP:::1 - Mac/Physical-Address:40B0341E7D3B - UserId:2  - Name:مدير النظام //  Has Logged in at: 11:17:02 ص
+----------------------------------------------------------
+User Machine Name:Admin - UserIP:::1 - User operating system:Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36 - RemoteIP:::1 - Mac/Physical-Address:40B0341E7D3B - UserId:2  - Name:مدير النظام //  Has Logged in at: 11:19:52 ص
+----------------------------------------------------------

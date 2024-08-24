@@ -12147,7 +12147,7 @@
     <Content Include="assets\plugins\jQuery-File-Upload\server\node\.gitignore" />
     <Content Include="assets\plugins\jQuery-File-Upload\server\node\package.json" />
     <Content Include="assets\plugins\jQuery-File-Upload\server\node\public\files\.gitignore" />
-    <Content Include="assets\plugins\jQuery-File-Upload\server\node\public\files\thumbnail\.gitignore" />
+    <!-- <Content Include="assets\plugins\jQuery-File-Upload\server\node\public\files\thumbnail\.gitignore" /> -->
     <Content Include="assets\plugins\jQuery-File-Upload\server\node\tmp\.gitignore" />
     <Content Include="assets\plugins\jQuery-File-Upload\server\php\files\.gitignore" />
     <Content Include="assets\plugins\jQuery-File-Upload\server\php\files\.htaccess" />
@@ -12274,6 +12274,7 @@
     <Content Include="Areas\CoreHandler\Views\News\PublishedBeforeFullDayIndex.cshtml" />
     <Content Include="Areas\CoreHandler\Views\News\EditBeforeDayPublishedNews.cshtml" />
     <Content Include="Areas\CoreHandler\Views\News\TopTrends.cshtml" />
+    <Content Include="libman.json" />
     <None Include="scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="scripts\JCrop\css\jquery.Jcrop.css" />
     <Content Include="scripts\JCrop\css\style-example.css" />

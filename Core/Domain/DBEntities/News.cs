@@ -100,7 +100,7 @@ namespace Domain.Akhbar.DBEntities
         public string PictureCaption2 { get; set; }
 
         [Display(Name = "فيديو")]
-        public bool HasVideo { get; set; } = false;
+        public bool? HasVideo { get; set; } = false;
         [Display(Name = "رابط الفيديو")]
 
         public int? MainVideoFeedId { get; set; }
